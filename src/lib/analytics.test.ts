@@ -1,0 +1,11 @@
+import { expect, it } from 'vitest';
+import { dailyAnalytics, weeklyTonnage } from './analytics';
+import { defaultProfile as p, type Checkin } from './schema';
+import { withFoodHistory, dailyReadiness } from './dailyReadiness';
+import { generate, exerciseById } from './program';
+import { initialState, parseBackup } from './storage';
+it('carries last known lift estimates into total across separate sessions',()=>{const result=dailyAnalytics(p,[],[{date:'2026-11-16',sleep:7,pain:'none',location:'',speed:'normal',dizziness:false,weakness:false,worsening:false}],[],'metric');expect(result[0].total).toBe(370);expect(weeklyTonnage(p,[],'metric')).toHaveLength(8);});
+it('food logs immediately feed yesterday nutrition and preserve explicit entries',()=>{const c:Checkin={date:'2026-11-16',sleep:7,pain:'none',location:'',speed:'normal',dizziness:false,weakness:false,worsening:false};const food=[{date:'2026-11-15',kcal:500,protein:10}];expect(withFoodHistory(c,food).calories).toBe(500);expect(withFoodHistory({...c,calories:2000},food).calories).toBe(2000);expect(dailyReadiness(c,p,[],food).score).toBeLessThan(dailyReadiness(c,p,[],[]).score);});
+it('specialized reference loads progress without pretending to be 1RM',()=>{const rows=generate({...p,goal:'armwrestling'});const reference=rows.find(r=>r.reference==='pronation')!;expect(reference.lift).toBeNull();expect(reference.weight).toBe(p.special.pronation);expect(rows.some(r=>r.lift==='squat')).toBe(true);});
+it('arms specialization increases direct weekly volume then deloads',()=>{const rows=generate({...p,goal:'arms'});const count=(week:number)=>rows.filter(r=>r.week===week&&exerciseById(r.exercise).pattern==='biceps').reduce((n,r)=>n+r.sets,0);expect(count(1)).toBe(12);expect(count(2)).toBe(14);expect(count(3)).toBe(16);expect(count(4)).toBe(6);});
+it('backup rejects unknown exercise references',()=>{expect(()=>parseBackup(JSON.stringify({...initialState,swaps:{'pl-0':'unknown'}}))).toThrow();});

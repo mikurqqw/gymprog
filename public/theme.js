@@ -1,0 +1,1 @@
+try{const data=JSON.parse(localStorage.getItem('ironcycle:data')||'null');if(data?.theme==='light'||data?.theme==='dark')document.documentElement.dataset.theme=data.theme;if(data?.language==='ru'||data?.language==='en')document.documentElement.lang=data.language;}catch{document.documentElement.dataset.theme='dark';}
