@@ -3,7 +3,7 @@ export function roundTo(value:number,step=2.5){if(!Number.isFinite(value)||step<
 export const clamp=(n:number,min:number,max:number)=>Math.max(min,Math.min(max,n));
 export function dateOffset(start:string,days:number){const d=new Date(start+'T12:00:00Z');d.setUTCDate(d.getUTCDate()+days);return d.toISOString().slice(0,10);}
 export function nextMonday(date:string){const day=new Date(date+'T12:00:00Z').getUTCDay();return dateOffset(date,(8-day)%7);}
-export const today=()=>new Intl.DateTimeFormat('en-CA',{year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+export function today(){const date=new Date();return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;}
 export function load(p:Profile,lift:Lift,percent:number,adjustment=0){return roundTo(p.lifts[lift].current*p.lifts[lift].form*percent*(1+adjustment),p.step);}
 // Tuchscherer-style table: rows RPE 10, 9.5 ... 6, columns 1–10 reps.
 const rpeTable=[[100,95.5,92.2,89.2,86.3,83.7,81.1,78.6,76.2,73.9],[97.8,93.9,90.7,87.8,85,82.4,79.9,77.4,75.1,72.3],[95.5,92.2,89.2,86.3,83.7,81.1,78.6,76.2,73.9,71.6],[93.9,90.7,87.8,85,82.4,79.9,77.4,75.1,72.3,69.4],[92.2,89.2,86.3,83.7,81.1,78.6,76.2,73.9,71.6,68.5],[90.7,87.8,85,82.4,79.9,77.4,75.1,72.3,69.4,66.7],[89.2,86.3,83.7,81.1,78.6,76.2,73.9,71.6,68.5,65.3],[87.8,85,82.4,79.9,77.4,75.1,72.3,69.4,66.7,64],[86.3,83.7,81.1,78.6,76.2,73.9,71.6,68.5,65.3,62.6]];
@@ -13,3 +13,6 @@ export function plates(weight:number,bar=20,available=[25,20,15,10,5,2.5,1.25]){
 export function strengthLevel(value:number,bodyweight:number,lift:Lift){const limits=lift==='bench'?[.5,.75,1,1.5,2]:lift==='squat'?[.75,1.25,1.75,2.25,3]:[1,1.5,2,2.75,3.5];return clamp(limits.filter(n=>value/bodyweight>=n).length-1,0,4);}
 export const displayWeight=(kg:number,units:string)=>Math.round(kg*(units==='imperial'?2.2046226218:1)*10)/10;
 export const fromWeight=(value:number,units:string)=>value/(units==='imperial'?2.2046226218:1);
+
+const formatters=new Map<string,Intl.DateTimeFormat>();
+export function formatDate(value:string|Date,locale:string,options:Intl.DateTimeFormatOptions){const key=JSON.stringify([locale,options]);let formatter=formatters.get(key);if(!formatter){formatter=new Intl.DateTimeFormat(locale,options);formatters.set(key,formatter);}return formatter.format(typeof value==='string'?new Date(value+'T12:00:00'):value);}

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { generate, exercises, compatible } from './program';
 import { defaultProfile as p } from './schema';
-import { dateOffset, e1rm, load, nextMonday, plates, roundTo, warmup } from './formulas';
+import { dateOffset, e1rm, load, nextMonday, plates, roundTo, warmup, formatDate } from './formulas';
 import { goals } from '../data/templates';
 const cases:[number,number,number,number][]=[
  [1,0,0,115],[1,0,1,97.5],[1,0,2,60],[1,1,0,115],[1,1,1,97.5],[1,1,2,57.5],[1,2,0,75],[1,2,1,62.5],[1,2,2,87.5],[1,2,3,72.5],
@@ -21,4 +21,5 @@ it('rounds halves up and dates to Mondays',()=>{expect(roundTo(63.75)).toBe(65);
 it('estimates only within calibrated RPE table',()=>{expect(e1rm(100,1,10)).toBe(100);expect(e1rm(92.2,1,8)).toBeCloseTo(100);expect(e1rm(100,12,8)).toBeNull();expect(e1rm(100,5,5)).toBeNull();});
 it('calculates per-side plates and reports residual',()=>{expect(plates(100).result).toEqual([{plate:25,count:1},{plate:15,count:1}]);expect(plates(101).remaining).toBe(.5);});
 it('never warms up above the prescribed work weight',()=>{expect(warmup(140,2.5,87.5).every(s=>s.weight<=87.5)).toBe(true);});
+it('reuses calendar formatters without retaining the first formatted date',()=>{const options={weekday:'short',day:'numeric',month:'short'} as const;expect(formatDate('2026-11-16','en-GB',options)).toBe('Mon, 16 Nov');expect(formatDate('2026-11-18','en-GB',options)).toBe('Wed, 18 Nov');});
 it('reproduces default totals and historic deficits',()=>{expect(['squat','bench','deadlift'].map(k=>p.lifts[k as keyof typeof p.lifts].current-p.lifts[k as keyof typeof p.lifts].pr)).toEqual([0,-10,-15]);expect(Object.values(p.lifts).reduce((n,l)=>n+l.current,0)).toBe(370);expect(Object.values(p.lifts).reduce((n,l)=>n+l.pr,0)).toBe(395);});
