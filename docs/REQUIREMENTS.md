@@ -19,4 +19,4 @@
 
 Deliberate limits: the exact powerlifting template always stays at three days. In low-volume weeks its explicit Excel prescriptions override the general four-to-seven-exercise rule. No unverified exercise videos are invented; MEDIA_TODO.md lists files to supply. Forecast and readiness values remain labeled heuristics. Background timer elapsed time is preserved, but background audio/notifications depend on the browser and are not promised.
 
-The last user instruction postponed GitHub work, so this delivery is local and no public deployment is claimed.
+GitHub Pages deployment is configured in .github/workflows/pages.yml. Pushes to main run validation, build the static site and deploy through GitHub Actions. The public deployment outcome is reported separately after verification.

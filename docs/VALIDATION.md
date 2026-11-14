@@ -39,4 +39,4 @@ Limits: localhost timings do not measure an external host or real mobile network
 
 Reports: `artifacts/lighthouse/`. Screenshots: `artifacts/screenshots/`. Clinical efficacy, individual injury suitability and guarantees of strength gains are not established by software tests.
 
-GitHub publication was explicitly postponed by the user; no deployment was performed or claimed.
+These results describe the local validation stage. Subsequent GitHub Pages deployment is handled by .github/workflows/pages.yml and verified separately.
