@@ -1,3 +1,5 @@
+import type { ProgramDocument } from './programDocument';
+import { injuryEffect, applyInjurySafety } from './injuries';
 import { armSets } from './templateProgression';
 import raw from '../data/powerlifting.json';
 import library from '../data/exercises.json';
@@ -6,12 +8,13 @@ import { dateOffset, load, roundTo } from './formulas';
 import type { Exercise, Lift, Planned, Prescription, Profile } from './schema';
 export const exercises=library as Exercise[];
 export const exerciseById=(id:string)=>exercises.find(e=>e.id===id)!;
-export function compatible(exercise:Exercise,p:Profile){return !exercise.injuries.some(i=>p.injuries.includes(i))&&(p.equipment==='gym'||(p.equipment==='home'?['bodyweight','band','dumbbell']:['bodyweight','band','dumbbell','barbell']).includes(exercise.equipment));}
+export function compatible(exercise:Exercise,p:Profile){return !injuryEffect(exercise,p).blocked&&!exercise.injuries.some(i=>p.injuries.includes(i))&&(p.equipment==='gym'||(p.equipment==='home'?['bodyweight','band','dumbbell']:['bodyweight','band','dumbbell','barbell']).includes(exercise.equipment));}
 export function alternatives(id:string,p:Profile){const ex=exerciseById(id);return exercises.filter(e=>e.id!==id&&e.pattern===ex.pattern&&compatible(e,p));}
 const offsets:Record<number,number[]>={2:[0,3],3:[0,2,4],4:[0,1,3,5],5:[0,1,2,4,5]};
-export function generate(p:Profile,adjustments:Record<string,number>={},shifts:Record<string,string>={},swaps:Record<string,string>={}):Planned[]{
+export function generate(p:Profile,adjustments:Record<string,number>={},shifts:Record<string,string>={},swaps:Record<string,string>={},customProgram:ProgramDocument|null=null):Planned[]{
  let rows:Prescription[];
- if(p.goal==='powerlifting')rows=raw as Prescription[];
+ if(p.goal==='custom'&&customProgram)rows=customProgram.rows.map(row=>({...row,percent:row.percent===null?null:Math.min(.9,row.percent+(row.week-1)*customProgram.progression)*(customProgram.deloadWeeks.includes(row.week)?customProgram.deloadFactor:1),sets:customProgram.deloadWeeks.includes(row.week)?Math.max(1,Math.floor(row.sets*customProgram.deloadFactor)):row.sets,rpe:customProgram.deloadWeeks.includes(row.week)?Math.min(6,row.rpe):row.rpe}));
+ else if(p.goal==='powerlifting')rows=raw as Prescription[];
  else{
   const t=templates[p.goal];rows=[];
   for(let week=1;week<=8;week++)for(let day=0;day<p.days;day++){
@@ -42,6 +45,6 @@ export function generate(p:Profile,adjustments:Record<string,number>={},shifts:R
   const offset=p.goal==='powerlifting'?[0,2,4][row.day]:offsets[p.days][row.day];
   const reference=changed?undefined:row.reference;
   const referenceWeight=reference?roundTo((p.special[reference]??0)*(p.specialForm[reference]??1)*(row.week===4||row.week===8?.7:1+(row.week-1)*(p.goal==='armwrestling'?.01:.025)),p.step):null;
-  return {...row,exercise,percent,lift,reference,tip:changed?replacement.cues[0]:row.tip,date:shifts[`${row.week}-${row.day}`]??dateOffset(p.start,(row.week-1)*7+offset),weight:lift&&percent!==null?load(p,lift,percent,adjustments[`${row.week}-${lift}`]??0):referenceWeight};
- });
+  return {...row,exercise,percent,lift,reference,startingWeight:changed?0:undefined,tip:changed?replacement.cues[0]:row.tip,date:shifts[`${row.week}-${row.day}`]??dateOffset(p.start,(row.week-1)*7+offset),weight:lift&&percent!==null?load(p,lift,percent,adjustments[`${row.week}-${lift}`]??0):referenceWeight};
+ }).filter(row=>compatible(exerciseById(row.exercise),p)).map(row=>applyInjurySafety(row,exerciseById(row.exercise),p)).filter((row):row is Planned=>row!==null);
 }

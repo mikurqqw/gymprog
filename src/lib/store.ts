@@ -1,10 +1,13 @@
+import { dataAllowed, readConsent,readPreferences,PREFERENCES_KEY } from './consent';
+import { detectLanguage } from './language';
 import { createContext, useContext, useSyncExternalStore } from 'react';
-import { readStorage, STORAGE_KEY, type AppState } from './storage';
-const loaded=readStorage();let state=loaded.data;let storageError=loaded.error;let undoState:AppState|null=null;
+import { readStorage, STORAGE_KEY, initialState, type AppState } from './storage';
+let active=false;let state={...initialState,language:detectLanguage(navigator.languages)};let storageError=false;let undoState:AppState|null=null;
 const listeners=new Set<()=>void>();
 export function update(patch:Partial<AppState>|((old:AppState)=>Partial<AppState>)){
  const next={...state,...(typeof patch==='function'?patch(state):patch)};
- try{localStorage.setItem(STORAGE_KEY,JSON.stringify(next));storageError=false;}catch{storageError=true;}
+ try{if(active&&dataAllowed())localStorage.setItem(STORAGE_KEY,JSON.stringify(next));storageError=false;}catch{storageError=true;}
+ if(active&&patch&&next.language!==state.language){const preferences=readPreferences();if(preferences)localStorage.setItem(PREFERENCES_KEY,JSON.stringify({...preferences,language:next.language}));}
  state=next;listeners.forEach(fn=>fn());
 }
 export function replaceWithUndo(data:AppState){undoState=state;update(data);}
@@ -14,6 +17,9 @@ export const hasStorageError=()=>storageError;
 export const StateContext=createContext<AppState>(state);
 export const useStore=()=>useContext(StateContext);
 export const useStoreSnapshot=()=>useSyncExternalStore(fn=>{listeners.add(fn);return ()=>listeners.delete(fn);},()=>state);
-window.addEventListener('storage',event=>{if(event.key===STORAGE_KEY){const result=readStorage();if(!result.error){state=result.data;listeners.forEach(fn=>fn());}}});
+window.addEventListener('storage',event=>{if(active&&dataAllowed()&&event.key===STORAGE_KEY){const result=readStorage();if(!result.error){state=result.data;listeners.forEach(fn=>fn());}}});
 
 export function startRest(minutes:number){update({timer:Date.now()+minutes*60000});}
+
+export function activateStorage(){if(!dataAllowed())return;const loaded=readStorage();const consent=readConsent();state={...loaded.data,language:readPreferences()?.language??consent?.language??loaded.data.language};storageError=loaded.error;active=true;document.documentElement.dataset.theme=state.theme;document.documentElement.lang=state.language;listeners.forEach(fn=>fn());return state;}
+export function resetMemory(){active=false;undoState=null;state={...initialState,language:state.language};listeners.forEach(fn=>fn());}

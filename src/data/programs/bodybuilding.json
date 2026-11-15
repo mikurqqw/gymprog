@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "bodybuilding",
+  "goal": "bodybuilding",
+  "name": {
+    "ru": "Гипертрофия",
+    "kk": "Бұлшықетті ұлғайту",
+    "en": "Hypertrophy"
+  },
+  "kind": "builtin",
+  "template": {
+    "patterns": [
+      "squat",
+      "press",
+      "row",
+      "hinge",
+      "shoulder",
+      "core"
+    ],
+    "reps": 10,
+    "sets": 3,
+    "progress": 0.025,
+    "metrics": [
+      "volume",
+      "reps",
+      "rir"
+    ]
+  }
+}

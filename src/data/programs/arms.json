@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "arms",
+  "goal": "arms",
+  "name": {
+    "ru": "Бицепс и руки",
+    "kk": "Бицепс пен қолдар",
+    "en": "Biceps & arms"
+  },
+  "kind": "builtin",
+  "template": {
+    "patterns": [
+      "press",
+      "biceps",
+      "triceps",
+      "row",
+      "biceps",
+      "core"
+    ],
+    "reps": 10,
+    "sets": 3,
+    "progress": 0.025,
+    "metrics": [
+      "biceps",
+      "triceps",
+      "volume"
+    ]
+  }
+}

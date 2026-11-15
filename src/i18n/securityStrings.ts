@@ -1,0 +1,10 @@
+export const securityStrings:Record<string,{ru:string;kk:string;en:string}>={
+ encryptedBackup:{ru:'Шифрованная копия профиля и дневников',kk:'Профиль мен күнделіктің шифрланған көшірмесі',en:'Encrypted profile and log backup'},
+ encryptionDisclaimer:{ru:'AES-GCM / PBKDF2. Не включает видео и каталог. Пароль минимум 10 символов; утраченный пароль восстановить нельзя. Данные приложения по умолчанию не зашифрованы на устройстве.',kk:'AES-GCM / PBKDF2. Бейнелер мен каталог кірмейді. Құпиясөз кемінде 10 таңба; жоғалған құпиясөз қалпына келмейді. Қолданба деректері құрылғыда әдепкіде шифрланбаған.',en:'AES-GCM / PBKDF2. Excludes videos and catalog. Use at least 10 characters; a lost passphrase cannot be recovered. App data is not encrypted at rest by default.'},
+ passphrase:{ru:'Пароль шифрования',kk:'Шифрлау құпиясөзі',en:'Encryption passphrase'},
+ cryptoError:{ru:'Не удалось обработать файл или пароль. Исходные данные сохранены.',kk:'Файлды не құпиясөзді өңдеу мүмкін болмады. Бастапқы деректер сақталды.',en:'Could not process the file or passphrase. Existing data was preserved.'},
+ appLock:{ru:'Блокировка приложения',kk:'Қолданбаны бұғаттау',en:'App lock'},
+ lockDisclaimer:{ru:'PIN закрывает интерфейс, но не шифрует хранилище и не защищает от доступа через инструменты браузера. Забытый PIN можно сбросить только удалением всех данных.',kk:'PIN интерфейсті жабады, бірақ қойманы шифрламайды және браузер құралдарымен кіруден қорғамайды. Ұмытылған PIN тек барлық деректі жою арқылы қалпына келеді.',en:'The PIN hides the interface; it does not encrypt storage or prevent browser-tool access. A forgotten PIN can only be reset by erasing all data.'},
+ unlock:{ru:'Разблокировать',kk:'Бұғатты ашу',en:'Unlock'},pinError:{ru:'Неверный PIN. После пяти попыток подожди 30 секунд.',kk:'PIN қате. Бес әрекеттен кейін 30 секунд күтіңіз.',en:'Incorrect PIN. After five attempts, wait 30 seconds.'},
+ enableLock:{ru:'Включить PIN',kk:'PIN қосу',en:'Enable PIN'},disableLock:{ru:'Выключить PIN',kk:'PIN өшіру',en:'Disable PIN'},lockNow:{ru:'Заблокировать сейчас',kk:'Қазір бұғаттау',en:'Lock now'},
+};

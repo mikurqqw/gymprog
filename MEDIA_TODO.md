@@ -95,3 +95,7 @@ No unlicensed external media is embedded. Add your own GIF/WebP/MP4 under the li
 - Ankle mobility: public/media/exercises/ex-90.webp (or .gif / .mp4)
 - Thoracic rotation: public/media/exercises/ex-91.webp (or .gif / .mp4)
 - 90/90 breathing: public/media/exercises/ex-92.webp (or .gif / .mp4)
+
+## Attribution and consent
+
+Each exercise now stores media source/author/license/attribution fields. Missing media uses our own CC0 SVG placeholder; it is not a technique demonstration. Rich setup, steps and breathing text is available in RU/KK/EN. YouTube embeds require both storage consent and an explicit load click. Kazakh medical wording requires native and professional review.

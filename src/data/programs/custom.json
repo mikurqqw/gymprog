@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "custom",
+  "goal": "custom",
+  "name": {
+    "ru": "Своя программа",
+    "kk": "Жеке бағдарлама",
+    "en": "Custom program"
+  },
+  "kind": "builtin",
+  "template": {
+    "patterns": [
+      "squat",
+      "press",
+      "row",
+      "biceps",
+      "core"
+    ],
+    "reps": 8,
+    "sets": 3,
+    "progress": 0.025,
+    "metrics": [
+      "priorities",
+      "volume"
+    ]
+  }
+}

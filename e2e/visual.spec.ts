@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './fixtures';
 import AxeBuilder from '@axe-core/playwright';
 for(const width of [375,768,1280,1920])for(const theme of ['dark','light']){
  test(`all layouts ${width}px ${theme}`,async({page})=>{

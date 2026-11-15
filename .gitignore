@@ -9,3 +9,6 @@ playwright-report/
 *.tsbuildinfo
 source-workbook.json
 artifacts/
+
+__pycache__/
+*.pyc

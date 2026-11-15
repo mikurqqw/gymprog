@@ -1,0 +1,11 @@
+import { z } from 'zod';
+import type { Profile } from '../lib/schema';
+import { programDocumentSchema } from '../lib/programDocument';
+const goal=z.enum(['powerlifting','armwrestling','arms','bodybuilding','strength','fatloss','fitness','custom']);
+const template=z.object({patterns:z.array(z.string()),reps:z.number().positive(),sets:z.number().int().positive(),progress:z.number().min(0).max(.03),metrics:z.array(z.string())});
+const entry=z.object({schemaVersion:z.literal(1),id:z.string(),goal,name:z.object({ru:z.string(),kk:z.string(),en:z.string()}),kind:z.enum(['builtin','custom']),source:z.string().optional(),template:template.optional(),document:programDocumentSchema.optional()}).refine(value=>value.kind==='custom'?!!value.document:value.goal==='powerlifting'||!!value.template);
+export const programRegistry=Object.values(import.meta.glob('./programs/*.json',{eager:true,import:'default'})).map(value=>entry.parse(value));
+if(new Set(programRegistry.map(item=>item.id)).size!==programRegistry.length)throw Error('Duplicate program ID');
+export const goals=programRegistry.filter(item=>item.kind==='builtin').map(item=>item.goal);
+export type Goal=Profile['goal'];
+export const templates=Object.fromEntries(programRegistry.filter(item=>item.template).map(item=>[item.goal,item.template])) as Record<Exclude<Goal,'powerlifting'>,z.infer<typeof template>>;

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "strength",
+  "goal": "strength",
+  "name": {
+    "ru": "Общая сила",
+    "kk": "Жалпы күш",
+    "en": "General strength"
+  },
+  "kind": "builtin",
+  "template": {
+    "patterns": [
+      "squat",
+      "press",
+      "hinge",
+      "row",
+      "core"
+    ],
+    "reps": 5,
+    "sets": 5,
+    "progress": 0.025,
+    "metrics": [
+      "squat",
+      "bench",
+      "deadlift"
+    ]
+  }
+}

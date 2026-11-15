@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "fatloss",
+  "goal": "fatloss",
+  "name": {
+    "ru": "Снижение жира",
+    "kk": "Май мөлшерін азайту",
+    "en": "Fat loss"
+  },
+  "kind": "builtin",
+  "template": {
+    "patterns": [
+      "squat",
+      "press",
+      "pull",
+      "hinge",
+      "core",
+      "cardio"
+    ],
+    "reps": 6,
+    "sets": 3,
+    "progress": 0.01,
+    "metrics": [
+      "weight",
+      "strength",
+      "adherence"
+    ]
+  }
+}

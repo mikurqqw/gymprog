@@ -1,0 +1,4 @@
+Contact: https://github.com/mikurqqw/gymprog/security/advisories/new
+Expires: 2027-11-01T00:00:00Z
+Preferred-Languages: ru, kk, en
+Policy: https://github.com/mikurqqw/gymprog/blob/main/SECURITY.md

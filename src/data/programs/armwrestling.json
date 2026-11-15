@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "armwrestling",
+  "goal": "armwrestling",
+  "name": {
+    "ru": "Армрестлинг",
+    "kk": "Армрестлинг",
+    "en": "Armwrestling"
+  },
+  "kind": "builtin",
+  "template": {
+    "patterns": [
+      "pronation",
+      "cup",
+      "rising",
+      "biceps",
+      "row",
+      "core"
+    ],
+    "reps": 12,
+    "sets": 3,
+    "progress": 0.01,
+    "metrics": [
+      "pronation",
+      "cup",
+      "rising",
+      "side"
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "fitness",
+  "goal": "fitness",
+  "name": {
+    "ru": "Общая подготовка",
+    "kk": "Жалпы дене дайындығы",
+    "en": "General fitness"
+  },
+  "kind": "builtin",
+  "template": {
+    "patterns": [
+      "squat",
+      "press",
+      "row",
+      "hinge",
+      "core",
+      "cardio"
+    ],
+    "reps": 10,
+    "sets": 3,
+    "progress": 0.02,
+    "metrics": [
+      "volume",
+      "cardio",
+      "adherence"
+    ]
+  }
+}

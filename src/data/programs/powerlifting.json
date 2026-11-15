@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "powerlifting",
+  "goal": "powerlifting",
+  "name": {
+    "ru": "Пауэрлифтинг",
+    "kk": "Пауэрлифтинг",
+    "en": "Powerlifting"
+  },
+  "kind": "builtin",
+  "source": "src/data/powerlifting.json"
+}

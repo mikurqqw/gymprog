@@ -1,7 +1,13 @@
+import { hasAppLock } from './lib/appLock';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App';
-import { StoreProvider } from './components/StoreProvider';
+import { ApplicationRoot } from './components/ApplicationRoot';
+import { activateStorage } from './lib/store';
+import { dataAllowed } from './lib/consent';
+import { startOffline } from './lib/offline';
+import './fonts.css';
 import './styles.css';
-createRoot(document.getElementById('root')!).render(<StrictMode><StoreProvider><App/></StoreProvider></StrictMode>);
-if(import.meta.env.PROD&&'serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{document.documentElement.dataset.offline='unavailable';});
+import './privacy.css';
+import './device.css';
+if(dataAllowed()&&!hasAppLock()){activateStorage();void startOffline();}
+createRoot(document.getElementById('root')!).render(<StrictMode><ApplicationRoot/></StrictMode>);

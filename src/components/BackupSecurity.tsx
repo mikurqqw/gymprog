@@ -1,0 +1,12 @@
+import { useState } from 'react';
+import { useStore,replaceWithUndo } from '../lib/store';
+import { download,parseBackup } from '../lib/storage';
+import { encryptBackup,decryptBackup } from '../lib/cryptoBackup';
+import { setAppLock,verifyAppLock,disableAppLock,hasAppLock } from '../lib/appLock';
+import { useI18n } from '../i18n';
+import { Card,Field } from './ui';
+export function BackupSecurity(){
+ const state=useStore(),{t}=useI18n(),[pass,setPass]=useState(''),[pin,setPin]=useState(''),[message,setMessage]=useState(''),[busy,setBusy]=useState(false),[locked,setLocked]=useState(hasAppLock);
+ const action=async(task:()=>Promise<void>)=>{setBusy(true);try{await task();setMessage(t('saved'));}catch{setMessage(t('cryptoError'));}finally{setBusy(false);}};
+ return <Card><h2>{t('encryptedBackup')}</h2><p>{t('encryptionDisclaimer')}</p><Field label={t('passphrase')}><input type="password" autoComplete="new-password" minLength={10} maxLength={1024} value={pass} onChange={e=>setPass(e.target.value)}/></Field><div className="inline"><button className="button secondary" disabled={busy||pass.length<10} onClick={()=>void action(async()=>download('ironcycle-encrypted.json',await encryptBackup(JSON.stringify(state),pass)))}>{t('encryptedBackup')} · {t('export')}</button><Field label={t('import')}><input type="file" disabled={busy||pass.length<10} accept=".json,application/json" onChange={e=>{const file=e.target.files?.[0];if(!file)return;void action(async()=>{if(file.size>31_000_000)throw Error('size');const parsed=parseBackup(await decryptBackup(await file.text(),pass));if(confirm(t('importConfirm')))replaceWithUndo(parsed);});e.target.value='';}}/></Field></div><hr/><h2>{t('appLock')}</h2><p>{t('lockDisclaimer')}</p><Field label="PIN · 6–12"><input type="password" inputMode="numeric" autoComplete="new-password" maxLength={12} value={pin} onChange={e=>setPin(e.target.value)}/></Field><div className="inline"><button className="button secondary" disabled={busy||locked||!/^\d{6,12}$/.test(pin)} onClick={()=>void action(async()=>{await setAppLock(pin);setLocked(true);setPin('');})}>{t('enableLock')}</button>{locked&&<><button className="button secondary" onClick={()=>window.dispatchEvent(new Event('ironcycle:lock'))}>{t('lockNow')}</button><button className="button secondary" disabled={busy||!pin} onClick={()=>void action(async()=>{if(!await verifyAppLock(pin))throw Error('PIN');disableAppLock();setLocked(false);setPin('');})}>{t('disableLock')}</button></>}</div>{message&&<p role="status">{message}</p>}</Card>;
+}

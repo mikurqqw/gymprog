@@ -14,7 +14,7 @@ npm run dev
 Открой адрес, напечатанный Vite, обычно http://127.0.0.1:5173/. Для установки на телефон и офлайн-режима используй production-сборку через HTTPS или localhost:
 
 ```sh
-npm run build
+npm run build:preview
 npm run preview
 ```
 
@@ -78,3 +78,7 @@ React Context и внешний адаптер состояния сохраня
 Vite 8.3.8, React 19.3.1, TypeScript 6.0.3, Tailwind 4.3.5, React Router 7.18.5, Recharts 3.10.1, Zod 4.6.7, Vitest 5.1.0. Версии закреплены в package.json и package-lock.json. Zod нужен для границ ввода/импорта, idb-keyval — для локальных видео, react-markdown — для справки без исполнения HTML. Остальные инструменты проверки — только dev-зависимости.
 
 Актуальные API сверены с [Vite](https://vite.dev/guide/), [Tailwind](https://tailwindcss.com/docs/installation/using-vite), [React](https://react.dev/reference/react/useSyncExternalStore), [React Router](https://reactrouter.com/start/declarative/installation), [Recharts](https://recharts.github.io/en-US/api/), [Zod](https://zod.dev/api), [Vitest](https://vitest.dev/guide/) и [Playwright](https://playwright.dev/docs/test-configuration). Научные ссылки из исходной программы сохранены в справке. Они обосновывают общие принципы, не доказывают оптимальность этой конкретной таблицы.
+
+## Safety and privacy update
+
+Development uses an explicit preview banner. `npm run build` intentionally fails until operator details and legal/native-language reviews are complete. Use `npm run build:preview` for local testing. See [compliance status](docs/COMPLIANCE.md), [program schema](docs/PROGRAM_SCHEMA.md) and [food provenance](docs/FOOD_DATA.md). Explicit preview publication uses the Pages manual workflow with `preview=true`; normal production builds remain blocked.

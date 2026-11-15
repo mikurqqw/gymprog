@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './fixtures';
 import AxeBuilder from '@axe-core/playwright';
 test('all pages render without errors and pass serious/critical accessibility checks',async({page})=>{
  const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
@@ -13,7 +13,7 @@ test('logs persist, timer uses timestamps, backup export is valid',async({page})
  await page.goto('/#/workout');const first=page.locator('.workout-line').first();await first.getByRole('button',{name:'По плану',exact:true}).click();await expect(first.getByRole('button',{name:'Выполнено',exact:true})).toBeDisabled();await expect(page.locator('.rest-timer')).toBeVisible();
  await page.reload();await expect(page.locator('.workout-line').first().getByRole('button',{name:'Выполнено',exact:true})).toBeDisabled();
  const stored=await page.evaluate(()=>JSON.parse(localStorage.getItem('ironcycle:data')!));expect(stored.logs[0].weight).toBe(115);expect(stored.timer).toBeGreaterThan(Date.now());
- await page.goto('/#/settings');const downloaded=page.waitForEvent('download');await page.getByRole('button',{name:'Экспорт JSON'}).click();expect((await downloaded).suggestedFilename()).toBe('ironcycle-backup.json');
+ await page.goto('/#/settings');const downloaded=page.waitForEvent('download');await page.getByRole('button',{name:'Экспорт JSON',exact:true}).click();expect((await downloaded).suggestedFilename()).toBe('ironcycle-backup.json');
 });
 test('profile saves new current strength and regenerates the entire plan',async({page})=>{
  await page.goto('/#/profile');await page.getByRole('button',{name:'Текущая сила',exact:false}).click();const input=page.getByLabel('Сейчас (кг)').first();await input.fill('160');await page.getByRole('button',{name:'Далее',exact:true}).click();await page.getByRole('button',{name:'Начать цикл',exact:true}).click();await page.goto('/#/workout');await expect(page.locator('.workout-line').first().locator('.workout-plan')).toContainText('130');
