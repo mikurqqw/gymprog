@@ -1,27 +1,280 @@
 import type { Localized } from '../lib/schema';
-export type Article={id:string;category:string;title:Localized & {kk:string};body:Localized & {kk:string};requiresReview:boolean;translationReview:{kkNativeSpeaker:boolean;qualifiedClinician:boolean}};
-const articleKk:Record<string,{title:string;body:string}>={"program":{"title":"Цикл қалай құрылған","body":"## Пайыздар және RPE\nСалмақ = қазіргі 1ҚМ × дайындық коэффициенті × пайыз × апталық түзету. Ең жақын қадамға дөңгелектеледі.\n\n**RPE — мақсат емес, жоғарғы шек.** 4-аптада жүктеме азаяды, 7-аптада шыңға дайындық, 8-аптада белсендіру мен сынақ бар. Excel-дегі нақты жеңілдету және шыңға дайындық сабақтарында төрттен аз жаттығу болуы — әдейі жасалған ерекшелік."},"rpe":{"title":"RPE және RIR","body":"RPE 10: қорда қайталау жоқ. 9: шамамен 1. 8: шамамен 2. 7: шамамен 3. Бұл — субъективті баға. Егер салмақ шектен кемінде 1 RPE ауыр сезілсе не техника бұзылса, 2,5–5% азайт. Бір қайталауды ешқашан бас тартуға дейін орындама."},"e1rm":{"title":"e1ҚМ нені білдіреді","body":"Қайталау саны мен RPE кестесі бойынша есеп — нақты максимум емес, шамамен алынған үрдіс. Tuchscherer үлгісіндегі кесте 1–10 қайталау мен RPE 6–10 үшін қолданылады. Жоғары қайталаулы немесе тым жеңіл тәсілдер есептелмейді. Бұл бағамен қазіргі 1ҚМ-ды автоматты түрде көтерме."},"warmup":{"title":"Қыздыру тәртібі","body":"5–8 минут жеңіл жалпы қыздыру, кейін 3–5 дайындық тәсілі: бос гриф ×8–10; 40% ×5; 55% ×3; 70% ×2; 80% ×1. Жұмыс салмағына бейімде; қыздыруда жоспарланған тәсілден ауыр көтерме. Дайындық тәсілдері жұмыс тәсілдеріне кірмейді."},"squat":{"title":"Отырып-тұру: тепе-теңдік және денені қатайту","body":"Аяқ аралығын жамбас құрылысына сай таңда. Табанды толық тіре, тізені шамамен аяқ ұшына бағытта. Түспес бұрын денені 360° қатайт. Еңкею грифтің орны мен дене пропорциясына байланысты; барлығына ортақ бұрыш жоқ. Бүйірден және қиғаш бұрыштан түсірілген бейнеден тереңдікті, тепе-теңдікті, тізе мен гриф бағытын тексер. Төменгі қалыпты жоғалтсаң, салмақты азайт; әр тәсіл сайын аяқ аралығын өзгертпе."},"bench":{"title":"Жатып сығымдау: тірек, үзіліс, жанасу","body":"Табан орнықты. Бас, арқаның жоғарғы бөлігі және бөксе орындықта; жауырын тұрақты. Арқа иілімі жайлы әрі федерация ережесіне сай болсын. Білезік шамамен білек үстінде. Грифтің кеудеге тиетін орны жеке ерекшелікке байланысты; тірекке қарай табиғи қиғаш жолға болады. Аптасына бір жұмыс тәсілін түсір. Иық ауырса, ұстау ені мен салмақты қайта қара; бөтен адамның шектен тыс арқа иілімін көшірме."},"deadlift":{"title":"Классикалық тарту — дәл классикалық нұсқа","body":"Бұрынғы 155 кг — отырып-тұру емес, классикалық тарту рекорды. Аяқ шамамен жамбас еніндей, қол тізенің сыртында, гриф табан ортасында. Сирақ грифке жақын, арқаның жалпақ бұлшықеті керілген. Грифтің бос жүрісін алып, еденді аяқпен итер: жамбас пен иық бірге көтеріледі. Гриф тізеден өтпей тұрып тізені құлыптама. Соңында тік тұр, белді артық шалқайтпа. Дәл бүйірден түсір. Қалып бұзылса, салмақты 2,5–5% азайт."},"rdl":{"title":"Румындық тарту және көмекші жұмыс","body":"Жамбас артқа, тізе сәл бүгулі, гриф аяққа жақын. Тек бақылауға болатын аралықта қимылда. Арқа шаршаса, 1–2 тәсілмен шектел не өткізіп жібер. Тарту, санның артқы бөлігі, трицепс және дене ортасы негізгі көтерулерді қолдайды, бірақ техниканы алмастырмайды. Паллоф, dead bug және бүйірлік планка — бас тартусыз, бас айналусыз."},"deload":{"title":"Жүктемені азайту және шыңға дайындық","body":"Жеңілдету: көлемді 40–50% азайтып, қарқынды шамамен 60–65% ұста; баламасы — қайталауды сақтап, салмақты азайту. Шыңға дайындық сынақ алдындағы шаршауды төмендетеді. 4, 7, 8-апталарда автоматты қосу жоқ. RPE қоры мен ұйқы жақсы болса, бір жолды таңда: салмақ +2,5%, +1 қайталау немесе +1 тәсіл."},"readiness":{"title":"Дайындық бағасы қалай есептеледі","body":"Ұйқы ұзақтығының жеке нормаға қатынасы — 30%, ұйқы сапасы — 10%, қалпына келу — 20%, сырқырау — 10%, күйзеліс пен көңіл күй — 10%, энергия мен ақуыз — 10%, қыздыру сезімі — 10%. Бос өріс ең жоғары емес, бейтарап баға алады.\n\n≥75 — жоспар; 55–74 — салмақ −2,5% және RPE −0,5; 35–54 — −5%, тәсіл саны аз және ауыр бір қайталаусыз; 35-тен төмен — демалыс. Ұйқы <5,5 сағ болса, кемінде сары, <4,5 болса, кемінде қызғылт сары. Үш қысқа түн ескерту береді. Екі күн энергия/ақуыз аз болса, баға 20 ұпайға төмендейді. Бұл — диагностикалық құрал емес, эвристика."},"sleep":{"title":"Ұйқы және қалпына келу","body":"Жеке ұйқы нормаңды, сапасын және күндізгі хал-жағдайды бақыла. Қысқа түн, қатты шаршау және ауыр қыздыру қатар болса, соңғы 1–2 тәсілді және қосалқы жаттығуларды алып таста. Бір жақсы түн рекордқа кепіл болмайды. Үнемі шаршау жүктемені қайта қарауды қажет етеді."},"nutrition":{"title":"Энергия және макронутриенттер","body":"Ақуыз — 1,6–2,0 г/кг, әдепкісі 1,8. Май — шамамен 0,9 г/кг, қалған энергияны көмірсу толтырады. Mifflin–St Jeor мен белсенділік коэффициенті — бастапқы бағалау. Тапшылық 20%-дан аспайды. Жеткілікті тамақтан және нақты жарыс мақсатынсыз күрт салмақ қума. Бірдей жағдайда өлшеніп, апталық орташа мәндерді салыстыр. Бұл — жеке емдәм тағайындау емес."},"weightclass":{"title":"Дене салмағы және салмақ санаты","body":"Санатты бір ғана өлшеумен таңдама. Су, тұз және асқорыту жолының құрамы дене салмағын өзгертеді. Жас ересек спортшыларға даму мен жеткілікті тамақтану маңызды. Сусыздандыру мен қауіпті салмақ қуу тәсілдерін қолданба."},"cardio":{"title":"Кардио және күш","body":"Аптасына 1–2 рет, 20–25 минут сөйлесуге болатын қарқын. Күш жаттығуынан кейін немесе бөлек күні орында; ауыр отырып-тұру мен тартудың алдында спринт жасама. Жүктеменің жалпы көтерімділігін бақыла."},"pain":{"title":"Қашан тоқтау керек","body":"Өткір не күшейген ауырсыну, бас айналу және қатты әлсіздік болса, ауыр жұмысты тоқтат. Белгі сақталса, дәрігерге не спорт физиотерапевтіне жүгін. Қолданба арқылы өзіңе диагноз қойма. Бұл қолданба тек 18 жастан асқандарға арналған."},"plateau":{"title":"Ілгерілеудің тоқтауын бір ғана себеппен түсіндірме","body":"2–3 аптадағы бір қайталаудың RPE-сін, көлемнің орындалуын, бейне мен ұйқыны салыстыр. Алдымен жиналған шаршауды, кейін тамақтану мен орындалуды, содан соң техника мен көлем мөлшерін тексер. Бір факторды өзгертіп, келесі аптаны бағала."},"records":{"title":"Алдымен бұрынғы рекордтарға орал","body":"Үзілістен оралған атлеттің жақын мақсаты — бұрынғы рекордты қайтару: жатып сығымдау 90→100, классикалық тарту 140→155. Жұмыс салмағын бұрынғы PR-дан емес, қазіргі 1ҚМ-нан есепте. Болжам тәжірибені, салыстырмалы күшті және дайындықтың оралуын ескереді, бірақ нәтиже кепілдігі емес."},"review":{"title":"Апта қорытындысын қалай оқу керек","body":"Бір қимылдағы екі ауыр сабақтан кейін келесі аптаға −2,5%, қатты шаршауда −5% қарастыр. Екі жеңіл көлемдік сабақ, тұрақты ұйқы мен техника болса, 4/7/8-апталардан басқа кезде +2,5% қабылдауға болады. Орындалу <60% болса, өткен аптаны қайтала. Қолданба ұсынады, атлет шешім қабылдайды."},"test":{"title":"Сынақ ережелері және қауіпсіздік","body":"Отырып-тұру → үзіліспен жатып сығымдау → классикалық тарту. Бірінші әрекет шамамен 90%, екіншісі қазіргі максимум шамасында. Бірінші сәтсіз болса, қайтала не азайт. Үшінші — екінші сәтті болғанда ғана: RPE ≤7 болса +2,5–5 кг; RPE 8 — +2,5 кг; 9+ — қайтала не тоқта. Сақтандырушылар, тіректер және федерация ережелері қажет. Демалыс — 4–7+ минут; қалпына келу сабағынан кейін кемінде 48 сағат болсын."},"supplements":{"title":"Қоспалар және допингке қарсы талаптар","body":"Креатин моногидраты 3–5 г/күн — күшке қатысты зерттелген қоспа; кофеин ұйқыға әсер етуі мүмкін, қабылдау уақытын ескер. D дәрумені — расталған тапшылықта дәрігер кеңесімен. Қоспаларды дәрігермен талқылап, тәуелсіз сертификат пен допингке қарсы ережелерді тексер. Қауіпті және тыйым салынған заттар ұсынылмайды."},"glossary":{"title":"Терминдер сөздігі","body":"**1ҚМ** — бір қайталаудағы максимум. **e1ҚМ** — есептік максимум. **RPE** — субъективті күш салу. **RIR** — қордағы қайталаулар. **AMRAP** — мүмкіндігінше көп қайталау; бұл бағдарламада міндетті емес. **Тоннаж** — салмақ × қайталау × тәсіл. **Көлем** — жұмыс тәсілдері/қайталаулар. **Deload** — жүктемені азайту. **Taper** — сынақ алдындағы шаршауды азайту. **Brace** — дене ортасын қатайту. **Lockout** — көтеруді толық бекітіп аяқтау."}};
-const entry=(id:string,category:string,ruTitle:string,enTitle:string,ru:string,en:string):Article=>({id,category,title:{ru:ruTitle,en:enTitle,kk:articleKk[id].title},body:{ru,en,kk:articleKk[id].body},requiresReview:true,translationReview:{kkNativeSpeaker:true,qualifiedClinician:true}});
-export const articles:Article[]=[
- entry('program','program','Как устроен цикл','How the cycle works','## Проценты и RPE\nВес = текущий 1ПМ × коэффициент формы × процент × недельная корректировка. Округление к ближайшему шагу.\n\n**RPE — потолок, не цель.** На 4-й неделе разгрузка, на 7-й подводка, на 8-й активация и тест. В точной программе Excel разгрузка и подводка содержат меньше 4 упражнений: это намеренное исключение.','## Percentages and RPE\nLoad = current 1RM × form coefficient × percentage × weekly adjustment, rounded to the nearest step.\n\n**RPE is a ceiling, not a target.** Week 4 deloads, week 7 tapers, week 8 activates and tests. Exact Excel deload and taper sessions intentionally contain fewer than four exercises.'),
- entry('rpe','program','RPE и RIR','RPE and RIR','RPE 10: нет повторов в запасе. 9: около 1. 8: около 2. 7: около 3. Оценка субъективна. Если вес на ≥1 RPE тяжелее потолка или техника ухудшилась — снизь 2,5–5%. Никогда не доводи синглы до отказа.','RPE 10: no reps in reserve. 9: about 1. 8: about 2. 7: about 3. Ratings are subjective. If load feels ≥1 RPE over ceiling or technique breaks, reduce by 2.5–5%. Never take singles to failure.'),
- entry('e1rm','progress','Что означает e1ПМ','What e1RM means','Оценка по таблице повторов и RPE — приблизительный тренд, не истинный максимум. Используется таблица в стиле Tuchscherer для 1–10 повторов и RPE 6–10. Высокоповторные и лёгкие подходы не пересчитываются. Не увеличивай текущий 1ПМ автоматически по этой оценке.','Reps/RPE table estimates are approximate trends, not true maximums. A Tuchscherer-style table covers 1–10 reps and RPE 6–10. Higher-rep or easier sets are not estimated. Never automatically replace current 1RM with this estimate.'),
- entry('warmup','technique','Протокол разминки','Warm-up protocol','5–8 минут лёгкой общей разминки, затем 3–5 подводящих подходов: пустой гриф ×8–10; 40% ×5; 55% ×3; 70% ×2; 80% ×1. Подстрой под рабочий вес, не поднимай на разминке тяжелее запланированного подхода. Разминочные подходы не входят в рабочие.','5–8 min easy general warm-up, then 3–5 ramps: empty bar ×8–10; 40% ×5; 55% ×3; 70% ×2; 80% ×1. Adapt to work weight and never warm up heavier than the planned set. Ramps do not count as work sets.'),
- entry('squat','technique','Присед: баланс и брейсинг','Squat: balance and bracing','Стойку подбирай по строению таза. Вся стопа на опоре, колени примерно по носкам. Брейсинг 360° до спуска. Наклон зависит от грифа и пропорций, универсального угла нет. На видео сбоку и под углом проверяй глубину, баланс, колени и путь грифа. Теряешь позицию внизу — снизь вес; не меняй стойку каждый подход.','Choose stance for hip structure. Plant the entire foot and track knees roughly over toes. Brace 360° before descent. Torso lean depends on bar position and proportions, not a universal angle. Side/angled videos show depth, balance, knees and bar path. Reduce load for lost bottom position; avoid changing stance every set.'),
- entry('bench','technique','Жим: опора, пауза, контакт','Bench: support, pause and contact','Ступни устойчивы. Голова, верх спины и ягодицы на скамье; лопатки стабильны. Комфортный умеренный мост по правилам федерации. Запястье примерно над предплечьем. Касание индивидуально, естественная диагональ к стойкам допустима. Снимай рабочий подход раз в неделю. Боль в плече — пересмотри хват и вес; не копируй экстремальный мост.','Plant feet. Keep head, upper back and glutes on bench with stable scapulae. Use comfortable moderate arch within federation rules. Stack wrist roughly above forearm. Touch point is individual; natural diagonal travel toward rack is fine. Film a working set weekly. Review grip/load for shoulder pain; avoid copying extreme arches.'),
- entry('deadlift','technique','Классическая тяга — именно классика','Conventional means conventional','Предыдущие 155 кг — рекорд классической тяги, не приседа. Стопы около ширины таза, руки снаружи коленей, гриф над серединой стопы. Голени к грифу, широчайшие напряжены. Натяни гриф и дави в пол, таз и плечи поднимаются вместе. Не выпрямляй колени до прохождения грифа; финиш вертикальный, без переразгибания. Камера строго сбоку. Потерял позицию — снизь 2,5–5%.','Previous 155 kg was a conventional deadlift PR, not a squat. Feet around hip width, hands outside knees, bar over midfoot. Bring shins to bar and engage lats. Take slack out and push floor, hips/shoulders together. Do not lock knees before bar passes; finish upright without hyperextension. Film strictly from side. Reduce 2.5–5% for lost position.'),
- entry('rdl','technique','Румынская тяга и поддержка','Romanian deadlift and support work','Таз назад, мягкие колени, гриф близко. Только контролируемая амплитуда. Устала спина — 1–2 подхода или пропуск. Тяги, бицепс бедра, трицепс и кор помогают основным движениям, но не заменяют технику. Паллоф, dead bug и боковая планка — без отказа и головокружения.','Hips back, soft knees, bar close; only controlled range. With back fatigue, use 1–2 sets or skip. Rows, hamstrings, triceps and core support main lifts but never replace skill. Pallof, dead bug and side plank stay low-fatigue without failure or dizziness.'),
- entry('deload','program','Разгрузка и подводка','Deload and taper','Разгрузка: снизь объём на 40–50%, интенсивность около 60–65%; второй вариант — меньше вес при тех же повторах. Подводка уменьшает объём перед тестом. Автоматические прибавки запрещены на неделях 4, 7, 8. При запасе RPE и хорошем сне выбирай один путь: +2,5% веса, +1 повтор или +1 подход.','Deload: reduce volume 40–50%, intensity around 60–65%; alternatively lower load while keeping reps. Taper reduces volume before testing. No automatic increases in weeks 4, 7, 8. With RPE margin and recovery choose one path: +2.5% load, +1 rep or +1 set.'),
- entry('readiness','checkin','Как считается готовность','Readiness score explained','Сон к личной норме 30%, качество сна 10%, восстановление 20%, болезненность 10%, стресс и настроение 10%, энергия и белок 10%, разминка 10%. Пропуски получают нейтральную, не максимальную оценку.\n\n≥75 — план; 55–74 — −2,5% и RPE −0,5; 35–54 — −5%, меньше подходов и без тяжёлых синглов; ниже 35 — отдых. Сон <5,5 ч ограничивает жёлтым, <4,5 — оранжевым. Три короткие ночи дают предупреждение. Два дня низких калорий/белка снижают оценку на 20. Это эвристика, не диагностический инструмент.','Sleep vs baseline 30%, sleep quality 10%, recovery 20%, soreness 10%, stress/mood 10%, calories/protein 10%, warm-up 10%. Missing fields get neutral, not perfect scores.\n\n≥75: planned; 55–74: −2.5% and RPE −0.5; 35–54: −5%, fewer sets, no heavy singles; <35: rest. Sleep <5.5 h caps at yellow, <4.5 at orange. Three short nights trigger a warning. Two low-energy/protein days deduct 20 points. This is a heuristic, not a diagnostic tool.'),
- entry('sleep','checkin','Сон и восстановление','Sleep and recovery','Отслеживай личную норму, качество и дневное самочувствие. При короткой ночи, высокой усталости и тяжёлой разминке убери 1–2 финальных подхода и второстепенные упражнения. Не обещай себе рекорд после одной хорошей ночи. Систематическая усталость требует пересмотра нагрузки.','Track personal baseline, quality and daytime recovery. A short night plus fatigue and heavy warm-up calls for 1–2 fewer final sets and no secondary accessories. One good night cannot guarantee a PR. Persistent fatigue warrants reviewing training load.'),
- entry('nutrition','nutrition','Энергия и макронутриенты','Energy and macronutrients','Белок 1,6–2,0 г/кг, по умолчанию 1,8. Жиры около 0,9 г/кг, углеводы заполняют остаток. Калории по Mifflin–St Jeor и коэффициенту активности — начальная оценка. Дефицит не более 20%. Питайся достаточно, не делай агрессивную сгонку без целевого старта. Взвешивайся в одинаковых условиях, сравнивай недельные средние.','Protein 1.6–2.0 g/kg, default 1.8. Fat around 0.9 g/kg; carbs fill remaining energy. Mifflin–St Jeor and activity multipliers provide starting estimates. Deficit is capped at 20%. Eat adequately and avoid aggressive cuts without a target meet. Weigh consistently and compare weekly averages.'),
- entry('weightclass','nutrition','Масса тела и весовая категория','Body weight and weight class','Не выбирай категорию по одному взвешиванию. Вода, соль и содержимое ЖКТ меняют массу. Для молодых атлетов приоритет — развитие и питание. Не применяй обезвоживание или опасные методы сгонки.','Never pick a class from one weigh-in. Water, sodium and gut content affect weight. Young athletes should prioritize development and adequate food. Avoid dehydration and dangerous weight-cutting methods.'),
- entry('cardio','program','Кардио и сила','Cardio and strength','Разговорный темп 20–25 минут, 1–2 раза в неделю. После силовой или в отдельный день; никаких спринтов перед тяжёлыми приседами и тягой. Смотри на общую переносимость нагрузки.','Conversational pace for 20–25 min, 1–2 times weekly, after lifting or separately. No sprints before heavy squats/deadlifts. Monitor overall workload tolerance.'),
- entry('pain','safety','Когда остановиться','When to stop','Острая или нарастающая боль, головокружение и сильная слабость — прекрати тяжёлую работу. Если симптомы сохраняются, обратись к врачу или спортивному физиотерапевту. Не подбирай диагноз по приложению. Приложение предназначено только для пользователей 18+.','Stop heavy work for sharp/worsening pain, dizziness or severe weakness. Consult a physician or sports physiotherapist for persistent symptoms. Do not use this app to diagnose yourself. This app is intended only for users aged 18 and over.'),
- entry('plateau','progress','Анализ плато без единственной причины','Plateau analysis without a single cause','Сравни 2–3 недели: RPE синглов, выполнение объёма, видео и сон. Сначала проверь накопленную усталость, затем питание и выполнение, затем технику и дозировку объёма. Измени один фактор, оцени следующую неделю.','Compare 2–3 weeks of single RPE, volume completion, video and sleep. Review accumulated fatigue first, nutrition/completion next, technique/volume dosing after. Change one factor and assess the next week.'),
- entry('records','progress','Сначала восстанови предыдущие рекорды','Restore previous records first','Ближайшая цель возвращающегося атлета — вернуть рекорд. Жим 90→100, классическая тяга 140→155. Рабочие веса считай от текущего 1ПМ, а не прежнего PR. Прогноз учитывает стаж, относительную силу и возврат формы, но не гарантирует результат.','The returning athlete first aims to regain PRs: bench 90→100, conventional deadlift 140→155. Training loads use current 1RM, never old PRs. Forecasts consider experience, relative strength and return to form but cannot guarantee results.'),
- entry('review','progress','Как читать итоги недели','How to read a weekly review','Две тяжёлые сессии одного движения: предложи −2,5% на следующую неделю, при выраженной усталости −5%. Два лёгких объёмных занятия, стабильный сон и техника: можно принять +2,5%, кроме недель 4/7/8. Выполнение <60%: повтори предыдущую неделю. Изменения предлагает приложение, решение принимает атлет.','Two heavy sessions for the same lift: consider −2.5% next week, −5% with pronounced fatigue. Two easy volume sessions with stable sleep/technique: optional +2.5%, except weeks 4/7/8. Adherence <60%: repeat the prior week. The app proposes; the athlete decides.'),
- entry('test','test','Правила теста и безопасность','Test rules and safety','Присед → жим с паузой → классическая тяга. Первая около 90%, вторая около текущего максимума. Неудачная первая — повтори или снизь. Третья только после успешной второй: RPE ≤7 +2,5–5 кг; RPE 8 +2,5; 9+ повтори или остановись. Страхующие, стойки и правила федерации обязательны. 4–7+ минут отдыха; минимум 48 ч после восстановительной сессии.','Squat → paused bench → conventional deadlift. First around 90%, second around current max. Failed first: repeat or lower. Third only after successful second: RPE ≤7 +2.5–5 kg, RPE 8 +2.5, 9+ repeat or stop. Spotters, rack and federation rules are essential. Rest 4–7+ min and allow 48 h after recovery session.'),
- entry('supplements','nutrition','Добавки и антидопинг','Supplements and anti-doping','Креатин моногидрат 3–5 г/день — изученная добавка для силы; кофеин может влиять на сон, учитывай время. Витамин D — при установленном дефиците по рекомендации врача. Обсуди добавки с врачом, проверяй независимую сертификацию и антидопинговые правила. Опасные и запрещённые вещества не рекомендуются.','Creatine monohydrate 3–5 g/day is studied for strength; caffeine may disrupt sleep, so consider timing. Vitamin D for diagnosed deficiency with medical guidance. Discuss supplements with a clinician, check independent certification and anti-doping rules. Dangerous or banned substances are not recommended.'),
- entry('glossary','reference','Словарь','Glossary','**1ПМ** — максимум на 1 повтор. **e1ПМ** — оценка максимума. **RPE** — субъективное усилие. **RIR** — повторы в запасе. **AMRAP** — максимум повторов, не обязателен в этой программе. **Тоннаж** — кг × повторы × подходы. **Объём** — рабочие подходы/повторы. **Deload** — разгрузка. **Taper** — подводка. **Brace** — стабилизация корпуса. **Lockout** — завершённая фиксация.','**1RM**: one-rep maximum. **e1RM**: estimated maximum. **RPE**: perceived effort. **RIR**: reps in reserve. **AMRAP**: as many reps as possible, not required here. **Tonnage**: load × reps × sets. **Volume**: working sets/reps. **Deload**: reduced workload. **Taper**: reduced pre-test fatigue. **Brace**: torso stabilization. **Lockout**: completed lift position.'),
+export type Article = {
+  id: string;
+  category: string;
+  title: Localized & { kk: string };
+  body: Localized & { kk: string };
+  requiresReview: boolean;
+  translationReview: { kkNativeSpeaker: boolean; qualifiedClinician: boolean };
+};
+const articleKk: Record<string, { title: string; body: string }> = {
+  program: {
+    title: 'Цикл қалай құрылған',
+    body: '## Пайыздар және RPE\nСалмақ = қазіргі 1ҚМ × дайындық коэффициенті × пайыз × апталық түзету. Ең жақын қадамға дөңгелектеледі.\n\n**RPE — мақсат емес, жоғарғы шек.** 4-аптада жүктеме азаяды, 7-аптада шыңға дайындық, 8-аптада белсендіру мен сынақ бар. Excel-дегі нақты жеңілдету және шыңға дайындық сабақтарында төрттен аз жаттығу болуы — әдейі жасалған ерекшелік.',
+  },
+  rpe: {
+    title: 'RPE және RIR',
+    body: 'RPE 10: қорда қайталау жоқ. 9: шамамен 1. 8: шамамен 2. 7: шамамен 3. Бұл — субъективті баға. Егер салмақ шектен кемінде 1 RPE ауыр сезілсе не техника бұзылса, 2,5–5% азайт. Бір қайталауды ешқашан бас тартуға дейін орындама.',
+  },
+  e1rm: {
+    title: 'e1ҚМ нені білдіреді',
+    body: 'Қайталау саны мен RPE кестесі бойынша есеп — нақты максимум емес, шамамен алынған үрдіс. Tuchscherer үлгісіндегі кесте 1–10 қайталау мен RPE 6–10 үшін қолданылады. Жоғары қайталаулы немесе тым жеңіл тәсілдер есептелмейді. Бұл бағамен қазіргі 1ҚМ-ды автоматты түрде көтерме.',
+  },
+  warmup: {
+    title: 'Қыздыру тәртібі',
+    body: '5–8 минут жеңіл жалпы қыздыру, кейін 3–5 дайындық тәсілі: бос гриф ×8–10; 40% ×5; 55% ×3; 70% ×2; 80% ×1. Жұмыс салмағына бейімде; қыздыруда жоспарланған тәсілден ауыр көтерме. Дайындық тәсілдері жұмыс тәсілдеріне кірмейді.',
+  },
+  squat: {
+    title: 'Отырып-тұру: тепе-теңдік және денені қатайту',
+    body: 'Аяқ аралығын жамбас құрылысына сай таңда. Табанды толық тіре, тізені шамамен аяқ ұшына бағытта. Түспес бұрын денені 360° қатайт. Еңкею грифтің орны мен дене пропорциясына байланысты; барлығына ортақ бұрыш жоқ. Бүйірден және қиғаш бұрыштан түсірілген бейнеден тереңдікті, тепе-теңдікті, тізе мен гриф бағытын тексер. Төменгі қалыпты жоғалтсаң, салмақты азайт; әр тәсіл сайын аяқ аралығын өзгертпе.',
+  },
+  bench: {
+    title: 'Жатып сығымдау: тірек, үзіліс, жанасу',
+    body: 'Табан орнықты. Бас, арқаның жоғарғы бөлігі және бөксе орындықта; жауырын тұрақты. Арқа иілімі жайлы әрі федерация ережесіне сай болсын. Білезік шамамен білек үстінде. Грифтің кеудеге тиетін орны жеке ерекшелікке байланысты; тірекке қарай табиғи қиғаш жолға болады. Аптасына бір жұмыс тәсілін түсір. Иық ауырса, ұстау ені мен салмақты қайта қара; бөтен адамның шектен тыс арқа иілімін көшірме.',
+  },
+  deadlift: {
+    title: 'Классикалық тарту — дәл классикалық нұсқа',
+    body: 'Бұрынғы 155 кг — отырып-тұру емес, классикалық тарту рекорды. Аяқ шамамен жамбас еніндей, қол тізенің сыртында, гриф табан ортасында. Сирақ грифке жақын, арқаның жалпақ бұлшықеті керілген. Грифтің бос жүрісін алып, еденді аяқпен итер: жамбас пен иық бірге көтеріледі. Гриф тізеден өтпей тұрып тізені құлыптама. Соңында тік тұр, белді артық шалқайтпа. Дәл бүйірден түсір. Қалып бұзылса, салмақты 2,5–5% азайт.',
+  },
+  rdl: {
+    title: 'Румындық тарту және көмекші жұмыс',
+    body: 'Жамбас артқа, тізе сәл бүгулі, гриф аяққа жақын. Тек бақылауға болатын аралықта қимылда. Арқа шаршаса, 1–2 тәсілмен шектел не өткізіп жібер. Тарту, санның артқы бөлігі, трицепс және дене ортасы негізгі көтерулерді қолдайды, бірақ техниканы алмастырмайды. Паллоф, dead bug және бүйірлік планка — бас тартусыз, бас айналусыз.',
+  },
+  deload: {
+    title: 'Жүктемені азайту және шыңға дайындық',
+    body: 'Жеңілдету: көлемді 40–50% азайтып, қарқынды шамамен 60–65% ұста; баламасы — қайталауды сақтап, салмақты азайту. Шыңға дайындық сынақ алдындағы шаршауды төмендетеді. 4, 7, 8-апталарда автоматты қосу жоқ. RPE қоры мен ұйқы жақсы болса, бір жолды таңда: салмақ +2,5%, +1 қайталау немесе +1 тәсіл.',
+  },
+  readiness: {
+    title: 'Дайындық бағасы қалай есептеледі',
+    body: 'Ұйқы ұзақтығының жеке нормаға қатынасы — 30%, ұйқы сапасы — 10%, қалпына келу — 20%, сырқырау — 10%, күйзеліс пен көңіл күй — 10%, энергия мен ақуыз — 10%, қыздыру сезімі — 10%. Бос өріс ең жоғары емес, бейтарап баға алады.\n\n≥75 — жоспар; 55–74 — салмақ −2,5% және RPE −0,5; 35–54 — −5%, тәсіл саны аз және ауыр бір қайталаусыз; 35-тен төмен — демалыс. Ұйқы <5,5 сағ болса, кемінде сары, <4,5 болса, кемінде қызғылт сары. Үш қысқа түн ескерту береді. Екі күн энергия/ақуыз аз болса, баға 20 ұпайға төмендейді. Бұл — диагностикалық құрал емес, эвристика.',
+  },
+  sleep: {
+    title: 'Ұйқы және қалпына келу',
+    body: 'Жеке ұйқы нормаңды, сапасын және күндізгі хал-жағдайды бақыла. Қысқа түн, қатты шаршау және ауыр қыздыру қатар болса, соңғы 1–2 тәсілді және қосалқы жаттығуларды алып таста. Бір жақсы түн рекордқа кепіл болмайды. Үнемі шаршау жүктемені қайта қарауды қажет етеді.',
+  },
+  nutrition: {
+    title: 'Энергия және макронутриенттер',
+    body: 'Ақуыз — 1,6–2,0 г/кг, әдепкісі 1,8. Май — шамамен 0,9 г/кг, қалған энергияны көмірсу толтырады. Mifflin–St Jeor мен белсенділік коэффициенті — бастапқы бағалау. Тапшылық 20%-дан аспайды. Жеткілікті тамақтан және нақты жарыс мақсатынсыз күрт салмақ қума. Бірдей жағдайда өлшеніп, апталық орташа мәндерді салыстыр. Бұл — жеке емдәм тағайындау емес.',
+  },
+  weightclass: {
+    title: 'Дене салмағы және салмақ санаты',
+    body: 'Санатты бір ғана өлшеумен таңдама. Су, тұз және асқорыту жолының құрамы дене салмағын өзгертеді. Жас ересек спортшыларға даму мен жеткілікті тамақтану маңызды. Сусыздандыру мен қауіпті салмақ қуу тәсілдерін қолданба.',
+  },
+  cardio: {
+    title: 'Кардио және күш',
+    body: 'Аптасына 1–2 рет, 20–25 минут сөйлесуге болатын қарқын. Күш жаттығуынан кейін немесе бөлек күні орында; ауыр отырып-тұру мен тартудың алдында спринт жасама. Жүктеменің жалпы көтерімділігін бақыла.',
+  },
+  pain: {
+    title: 'Қашан тоқтау керек',
+    body: 'Өткір не күшейген ауырсыну, бас айналу және қатты әлсіздік болса, ауыр жұмысты тоқтат. Белгі сақталса, дәрігерге не спорт физиотерапевтіне жүгін. Қолданба арқылы өзіңе диагноз қойма. Бұл қолданба тек 18 жастан асқандарға арналған.',
+  },
+  plateau: {
+    title: 'Ілгерілеудің тоқтауын бір ғана себеппен түсіндірме',
+    body: '2–3 аптадағы бір қайталаудың RPE-сін, көлемнің орындалуын, бейне мен ұйқыны салыстыр. Алдымен жиналған шаршауды, кейін тамақтану мен орындалуды, содан соң техника мен көлем мөлшерін тексер. Бір факторды өзгертіп, келесі аптаны бағала.',
+  },
+  records: {
+    title: 'Алдымен бұрынғы рекордтарға орал',
+    body: 'Үзілістен оралған атлеттің жақын мақсаты — бұрынғы рекордты қайтару: жатып сығымдау 90→100, классикалық тарту 140→155. Жұмыс салмағын бұрынғы PR-дан емес, қазіргі 1ҚМ-нан есепте. Болжам тәжірибені, салыстырмалы күшті және дайындықтың оралуын ескереді, бірақ нәтиже кепілдігі емес.',
+  },
+  review: {
+    title: 'Апта қорытындысын қалай оқу керек',
+    body: 'Бір қимылдағы екі ауыр сабақтан кейін келесі аптаға −2,5%, қатты шаршауда −5% қарастыр. Екі жеңіл көлемдік сабақ, тұрақты ұйқы мен техника болса, 4/7/8-апталардан басқа кезде +2,5% қабылдауға болады. Орындалу <60% болса, өткен аптаны қайтала. Қолданба ұсынады, атлет шешім қабылдайды.',
+  },
+  test: {
+    title: 'Сынақ ережелері және қауіпсіздік',
+    body: 'Отырып-тұру → үзіліспен жатып сығымдау → классикалық тарту. Бірінші әрекет шамамен 90%, екіншісі қазіргі максимум шамасында. Бірінші сәтсіз болса, қайтала не азайт. Үшінші — екінші сәтті болғанда ғана: RPE ≤7 болса +2,5–5 кг; RPE 8 — +2,5 кг; 9+ — қайтала не тоқта. Сақтандырушылар, тіректер және федерация ережелері қажет. Демалыс — 4–7+ минут; қалпына келу сабағынан кейін кемінде 48 сағат болсын.',
+  },
+  supplements: {
+    title: 'Қоспалар және допингке қарсы талаптар',
+    body: 'Креатин моногидраты 3–5 г/күн — күшке қатысты зерттелген қоспа; кофеин ұйқыға әсер етуі мүмкін, қабылдау уақытын ескер. D дәрумені — расталған тапшылықта дәрігер кеңесімен. Қоспаларды дәрігермен талқылап, тәуелсіз сертификат пен допингке қарсы ережелерді тексер. Қауіпті және тыйым салынған заттар ұсынылмайды.',
+  },
+  glossary: {
+    title: 'Терминдер сөздігі',
+    body: '**1ҚМ** — бір қайталаудағы максимум. **e1ҚМ** — есептік максимум. **RPE** — субъективті күш салу. **RIR** — қордағы қайталаулар. **AMRAP** — мүмкіндігінше көп қайталау; бұл бағдарламада міндетті емес. **Тоннаж** — салмақ × қайталау × тәсіл. **Көлем** — жұмыс тәсілдері/қайталаулар. **Deload** — жүктемені азайту. **Taper** — сынақ алдындағы шаршауды азайту. **Brace** — дене ортасын қатайту. **Lockout** — көтеруді толық бекітіп аяқтау.',
+  },
+};
+const entry = (
+  id: string,
+  category: string,
+  ruTitle: string,
+  enTitle: string,
+  ru: string,
+  en: string,
+): Article => ({
+  id,
+  category,
+  title: { ru: ruTitle, en: enTitle, kk: articleKk[id].title },
+  body: { ru, en, kk: articleKk[id].body },
+  requiresReview: true,
+  translationReview: { kkNativeSpeaker: true, qualifiedClinician: true },
+});
+export const articles: Article[] = [
+  entry(
+    'program',
+    'program',
+    'Как устроен цикл',
+    'How the cycle works',
+    '## Проценты и RPE\nВес = текущий 1ПМ × коэффициент формы × процент × недельная корректировка. Округление к ближайшему шагу.\n\n**RPE — потолок, не цель.** На 4-й неделе разгрузка, на 7-й подводка, на 8-й активация и тест. В точной программе Excel разгрузка и подводка содержат меньше 4 упражнений: это намеренное исключение.',
+    '## Percentages and RPE\nLoad = current 1RM × form coefficient × percentage × weekly adjustment, rounded to the nearest step.\n\n**RPE is a ceiling, not a target.** Week 4 deloads, week 7 tapers, week 8 activates and tests. Exact Excel deload and taper sessions intentionally contain fewer than four exercises.',
+  ),
+  entry(
+    'rpe',
+    'program',
+    'RPE и RIR',
+    'RPE and RIR',
+    'RPE 10: нет повторов в запасе. 9: около 1. 8: около 2. 7: около 3. Оценка субъективна. Если вес на ≥1 RPE тяжелее потолка или техника ухудшилась — снизь 2,5–5%. Никогда не доводи синглы до отказа.',
+    'RPE 10: no reps in reserve. 9: about 1. 8: about 2. 7: about 3. Ratings are subjective. If load feels ≥1 RPE over ceiling or technique breaks, reduce by 2.5–5%. Never take singles to failure.',
+  ),
+  entry(
+    'e1rm',
+    'progress',
+    'Что означает e1ПМ',
+    'What e1RM means',
+    'Оценка по таблице повторов и RPE — приблизительный тренд, не истинный максимум. Используется таблица в стиле Tuchscherer для 1–10 повторов и RPE 6–10. Высокоповторные и лёгкие подходы не пересчитываются. Не увеличивай текущий 1ПМ автоматически по этой оценке.',
+    'Reps/RPE table estimates are approximate trends, not true maximums. A Tuchscherer-style table covers 1–10 reps and RPE 6–10. Higher-rep or easier sets are not estimated. Never automatically replace current 1RM with this estimate.',
+  ),
+  entry(
+    'warmup',
+    'technique',
+    'Протокол разминки',
+    'Warm-up protocol',
+    '5–8 минут лёгкой общей разминки, затем 3–5 подводящих подходов: пустой гриф ×8–10; 40% ×5; 55% ×3; 70% ×2; 80% ×1. Подстрой под рабочий вес, не поднимай на разминке тяжелее запланированного подхода. Разминочные подходы не входят в рабочие.',
+    '5–8 min easy general warm-up, then 3–5 ramps: empty bar ×8–10; 40% ×5; 55% ×3; 70% ×2; 80% ×1. Adapt to work weight and never warm up heavier than the planned set. Ramps do not count as work sets.',
+  ),
+  entry(
+    'squat',
+    'technique',
+    'Присед: баланс и брейсинг',
+    'Squat: balance and bracing',
+    'Стойку подбирай по строению таза. Вся стопа на опоре, колени примерно по носкам. Брейсинг 360° до спуска. Наклон зависит от грифа и пропорций, универсального угла нет. На видео сбоку и под углом проверяй глубину, баланс, колени и путь грифа. Теряешь позицию внизу — снизь вес; не меняй стойку каждый подход.',
+    'Choose stance for hip structure. Plant the entire foot and track knees roughly over toes. Brace 360° before descent. Torso lean depends on bar position and proportions, not a universal angle. Side/angled videos show depth, balance, knees and bar path. Reduce load for lost bottom position; avoid changing stance every set.',
+  ),
+  entry(
+    'bench',
+    'technique',
+    'Жим: опора, пауза, контакт',
+    'Bench: support, pause and contact',
+    'Ступни устойчивы. Голова, верх спины и ягодицы на скамье; лопатки стабильны. Комфортный умеренный мост по правилам федерации. Запястье примерно над предплечьем. Касание индивидуально, естественная диагональ к стойкам допустима. Снимай рабочий подход раз в неделю. Боль в плече — пересмотри хват и вес; не копируй экстремальный мост.',
+    'Plant feet. Keep head, upper back and glutes on bench with stable scapulae. Use comfortable moderate arch within federation rules. Stack wrist roughly above forearm. Touch point is individual; natural diagonal travel toward rack is fine. Film a working set weekly. Review grip/load for shoulder pain; avoid copying extreme arches.',
+  ),
+  entry(
+    'deadlift',
+    'technique',
+    'Классическая тяга — именно классика',
+    'Conventional means conventional',
+    'Предыдущие 155 кг — рекорд классической тяги, не приседа. Стопы около ширины таза, руки снаружи коленей, гриф над серединой стопы. Голени к грифу, широчайшие напряжены. Натяни гриф и дави в пол, таз и плечи поднимаются вместе. Не выпрямляй колени до прохождения грифа; финиш вертикальный, без переразгибания. Камера строго сбоку. Потерял позицию — снизь 2,5–5%.',
+    'Previous 155 kg was a conventional deadlift PR, not a squat. Feet around hip width, hands outside knees, bar over midfoot. Bring shins to bar and engage lats. Take slack out and push floor, hips/shoulders together. Do not lock knees before bar passes; finish upright without hyperextension. Film strictly from side. Reduce 2.5–5% for lost position.',
+  ),
+  entry(
+    'rdl',
+    'technique',
+    'Румынская тяга и поддержка',
+    'Romanian deadlift and support work',
+    'Таз назад, мягкие колени, гриф близко. Только контролируемая амплитуда. Устала спина — 1–2 подхода или пропуск. Тяги, бицепс бедра, трицепс и кор помогают основным движениям, но не заменяют технику. Паллоф, dead bug и боковая планка — без отказа и головокружения.',
+    'Hips back, soft knees, bar close; only controlled range. With back fatigue, use 1–2 sets or skip. Rows, hamstrings, triceps and core support main lifts but never replace skill. Pallof, dead bug and side plank stay low-fatigue without failure or dizziness.',
+  ),
+  entry(
+    'deload',
+    'program',
+    'Разгрузка и подводка',
+    'Deload and taper',
+    'Разгрузка: снизь объём на 40–50%, интенсивность около 60–65%; второй вариант — меньше вес при тех же повторах. Подводка уменьшает объём перед тестом. Автоматические прибавки запрещены на неделях 4, 7, 8. При запасе RPE и хорошем сне выбирай один путь: +2,5% веса, +1 повтор или +1 подход.',
+    'Deload: reduce volume 40–50%, intensity around 60–65%; alternatively lower load while keeping reps. Taper reduces volume before testing. No automatic increases in weeks 4, 7, 8. With RPE margin and recovery choose one path: +2.5% load, +1 rep or +1 set.',
+  ),
+  entry(
+    'readiness',
+    'checkin',
+    'Как считается готовность',
+    'Readiness score explained',
+    'Сон к личной норме 30%, качество сна 10%, восстановление 20%, болезненность 10%, стресс и настроение 10%, энергия и белок 10%, разминка 10%. Пропуски получают нейтральную, не максимальную оценку.\n\n≥75 — план; 55–74 — −2,5% и RPE −0,5; 35–54 — −5%, меньше подходов и без тяжёлых синглов; ниже 35 — отдых. Сон <5,5 ч ограничивает жёлтым, <4,5 — оранжевым. Три короткие ночи дают предупреждение. Два дня низких калорий/белка снижают оценку на 20. Это эвристика, не диагностический инструмент.',
+    'Sleep vs baseline 30%, sleep quality 10%, recovery 20%, soreness 10%, stress/mood 10%, calories/protein 10%, warm-up 10%. Missing fields get neutral, not perfect scores.\n\n≥75: planned; 55–74: −2.5% and RPE −0.5; 35–54: −5%, fewer sets, no heavy singles; <35: rest. Sleep <5.5 h caps at yellow, <4.5 at orange. Three short nights trigger a warning. Two low-energy/protein days deduct 20 points. This is a heuristic, not a diagnostic tool.',
+  ),
+  entry(
+    'sleep',
+    'checkin',
+    'Сон и восстановление',
+    'Sleep and recovery',
+    'Отслеживай личную норму, качество и дневное самочувствие. При короткой ночи, высокой усталости и тяжёлой разминке убери 1–2 финальных подхода и второстепенные упражнения. Не обещай себе рекорд после одной хорошей ночи. Систематическая усталость требует пересмотра нагрузки.',
+    'Track personal baseline, quality and daytime recovery. A short night plus fatigue and heavy warm-up calls for 1–2 fewer final sets and no secondary accessories. One good night cannot guarantee a PR. Persistent fatigue warrants reviewing training load.',
+  ),
+  entry(
+    'nutrition',
+    'nutrition',
+    'Энергия и макронутриенты',
+    'Energy and macronutrients',
+    'Белок 1,6–2,0 г/кг, по умолчанию 1,8. Жиры около 0,9 г/кг, углеводы заполняют остаток. Калории по Mifflin–St Jeor и коэффициенту активности — начальная оценка. Дефицит не более 20%. Питайся достаточно, не делай агрессивную сгонку без целевого старта. Взвешивайся в одинаковых условиях, сравнивай недельные средние.',
+    'Protein 1.6–2.0 g/kg, default 1.8. Fat around 0.9 g/kg; carbs fill remaining energy. Mifflin–St Jeor and activity multipliers provide starting estimates. Deficit is capped at 20%. Eat adequately and avoid aggressive cuts without a target meet. Weigh consistently and compare weekly averages.',
+  ),
+  entry(
+    'weightclass',
+    'nutrition',
+    'Масса тела и весовая категория',
+    'Body weight and weight class',
+    'Не выбирай категорию по одному взвешиванию. Вода, соль и содержимое ЖКТ меняют массу. Для молодых атлетов приоритет — развитие и питание. Не применяй обезвоживание или опасные методы сгонки.',
+    'Never pick a class from one weigh-in. Water, sodium and gut content affect weight. Young athletes should prioritize development and adequate food. Avoid dehydration and dangerous weight-cutting methods.',
+  ),
+  entry(
+    'cardio',
+    'program',
+    'Кардио и сила',
+    'Cardio and strength',
+    'Разговорный темп 20–25 минут, 1–2 раза в неделю. После силовой или в отдельный день; никаких спринтов перед тяжёлыми приседами и тягой. Смотри на общую переносимость нагрузки.',
+    'Conversational pace for 20–25 min, 1–2 times weekly, after lifting or separately. No sprints before heavy squats/deadlifts. Monitor overall workload tolerance.',
+  ),
+  entry(
+    'pain',
+    'safety',
+    'Когда остановиться',
+    'When to stop',
+    'Острая или нарастающая боль, головокружение и сильная слабость — прекрати тяжёлую работу. Если симптомы сохраняются, обратись к врачу или спортивному физиотерапевту. Не подбирай диагноз по приложению. Приложение предназначено только для пользователей 18+.',
+    'Stop heavy work for sharp/worsening pain, dizziness or severe weakness. Consult a physician or sports physiotherapist for persistent symptoms. Do not use this app to diagnose yourself. This app is intended only for users aged 18 and over.',
+  ),
+  entry(
+    'plateau',
+    'progress',
+    'Анализ плато без единственной причины',
+    'Plateau analysis without a single cause',
+    'Сравни 2–3 недели: RPE синглов, выполнение объёма, видео и сон. Сначала проверь накопленную усталость, затем питание и выполнение, затем технику и дозировку объёма. Измени один фактор, оцени следующую неделю.',
+    'Compare 2–3 weeks of single RPE, volume completion, video and sleep. Review accumulated fatigue first, nutrition/completion next, technique/volume dosing after. Change one factor and assess the next week.',
+  ),
+  entry(
+    'records',
+    'progress',
+    'Сначала восстанови предыдущие рекорды',
+    'Restore previous records first',
+    'Ближайшая цель возвращающегося атлета — вернуть рекорд. Жим 90→100, классическая тяга 140→155. Рабочие веса считай от текущего 1ПМ, а не прежнего PR. Прогноз учитывает стаж, относительную силу и возврат формы, но не гарантирует результат.',
+    'The returning athlete first aims to regain PRs: bench 90→100, conventional deadlift 140→155. Training loads use current 1RM, never old PRs. Forecasts consider experience, relative strength and return to form but cannot guarantee results.',
+  ),
+  entry(
+    'review',
+    'progress',
+    'Как читать итоги недели',
+    'How to read a weekly review',
+    'Две тяжёлые сессии одного движения: предложи −2,5% на следующую неделю, при выраженной усталости −5%. Два лёгких объёмных занятия, стабильный сон и техника: можно принять +2,5%, кроме недель 4/7/8. Выполнение <60%: повтори предыдущую неделю. Изменения предлагает приложение, решение принимает атлет.',
+    'Two heavy sessions for the same lift: consider −2.5% next week, −5% with pronounced fatigue. Two easy volume sessions with stable sleep/technique: optional +2.5%, except weeks 4/7/8. Adherence <60%: repeat the prior week. The app proposes; the athlete decides.',
+  ),
+  entry(
+    'test',
+    'test',
+    'Правила теста и безопасность',
+    'Test rules and safety',
+    'Присед → жим с паузой → классическая тяга. Первая около 90%, вторая около текущего максимума. Неудачная первая — повтори или снизь. Третья только после успешной второй: RPE ≤7 +2,5–5 кг; RPE 8 +2,5; 9+ повтори или остановись. Страхующие, стойки и правила федерации обязательны. 4–7+ минут отдыха; минимум 48 ч после восстановительной сессии.',
+    'Squat → paused bench → conventional deadlift. First around 90%, second around current max. Failed first: repeat or lower. Third only after successful second: RPE ≤7 +2.5–5 kg, RPE 8 +2.5, 9+ repeat or stop. Spotters, rack and federation rules are essential. Rest 4–7+ min and allow 48 h after recovery session.',
+  ),
+  entry(
+    'supplements',
+    'nutrition',
+    'Добавки и антидопинг',
+    'Supplements and anti-doping',
+    'Креатин моногидрат 3–5 г/день — изученная добавка для силы; кофеин может влиять на сон, учитывай время. Витамин D — при установленном дефиците по рекомендации врача. Обсуди добавки с врачом, проверяй независимую сертификацию и антидопинговые правила. Опасные и запрещённые вещества не рекомендуются.',
+    'Creatine monohydrate 3–5 g/day is studied for strength; caffeine may disrupt sleep, so consider timing. Vitamin D for diagnosed deficiency with medical guidance. Discuss supplements with a clinician, check independent certification and anti-doping rules. Dangerous or banned substances are not recommended.',
+  ),
+  entry(
+    'glossary',
+    'reference',
+    'Словарь',
+    'Glossary',
+    '**1ПМ** — максимум на 1 повтор. **e1ПМ** — оценка максимума. **RPE** — субъективное усилие. **RIR** — повторы в запасе. **AMRAP** — максимум повторов, не обязателен в этой программе. **Тоннаж** — кг × повторы × подходы. **Объём** — рабочие подходы/повторы. **Deload** — разгрузка. **Taper** — подводка. **Brace** — стабилизация корпуса. **Lockout** — завершённая фиксация.',
+    '**1RM**: one-rep maximum. **e1RM**: estimated maximum. **RPE**: perceived effort. **RIR**: reps in reserve. **AMRAP**: as many reps as possible, not required here. **Tonnage**: load × reps × sets. **Volume**: working sets/reps. **Deload**: reduced workload. **Taper**: reduced pre-test fatigue. **Brace**: torso stabilization. **Lockout**: completed lift position.',
+  ),
 ];

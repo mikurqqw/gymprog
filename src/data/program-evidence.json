@@ -1,28 +1,298 @@
 {
   "powerlifting": [
-    {"principle":{"ru":"Регулярная силовая работа развивает максимальную силу.","kk":"Тұрақты күш жаттығулары ең жоғары күшті дамытады.","en":"Regular resistance training develops maximal strength."},"application":{"ru":"Используем повторную практику основных движений и постепенно переносимую нагрузку.","kk":"Негізгі қимылдарды қайталап, көтере алатын жүктемені біртіндеп арттырамыз.","en":"Use repeated practice of the main lifts and gradually tolerated loading."},"source":{"title":"ACSM (2026): Resistance Training Prescription — Overview of Reviews","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC12965823/"},"studyType":{"ru":"Обзор систематических обзоров","kk":"Жүйелі шолуларға шолу","en":"Overview of systematic reviews"},"limitation":{"ru":"Данные здоровых взрослых; точный восьминедельный шаблон приложения не испытывался и не является реабилитацией.","kk":"Деректер дені сау ересектерден алынған; қолданбаның нақты сегіз апталық үлгісі сыналмаған және оңалту бағдарламасы емес.","en":"Healthy-adult evidence; the app's exact eight-week template was not tested and is not rehabilitation."},"strength":"high","verifiedOn":"2026-11-15"},
-    {"principle":{"ru":"Снижение тренировочного объёма перед проверкой силы может уменьшать накопленное утомление.","kk":"Күшті тексерер алдында жаттығу көлемін азайту жиналған шаршауды төмендетуі мүмкін.","en":"Reducing training volume before a strength test may reduce accumulated fatigue."},"application":{"ru":"Подводку индивидуализируем; не добавляем тяжёлые подходы ради компенсации пропусков.","kk":"Сынақ алдындағы дайындықты жеке бейімдейміз; өткізіп алған жаттығуды өтеу үшін ауыр тәсіл қоспаймыз.","en":"Individualize the taper; do not add heavy sets to compensate for missed sessions."},"source":{"title":"Tapering and Peaking Maximal Strength for Powerlifting Performance: A Review (2020)","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC7552788/"},"studyType":{"ru":"Обзор небольших исследований подводки и прекращения тренировок","kk":"Дайындық көлемін азайту мен жаттығуды тоқтату жөніндегі шағын зерттеулерге шолу","en":"Review of small tapering and training-cessation studies"},"limitation":{"ru":"Малые разнородные выборки; универсальная длительность и процент снижения объёма не установлены. Это не испытание нашего цикла.","kk":"Іріктемелер шағын әрі әртүрлі; барлығына ортақ мерзім мен көлемді азайту пайызы анықталмаған. Біздің цикл сыналмаған.","en":"Small, heterogeneous samples; no universal taper duration or volume reduction is established. Our cycle was not tested."},"strength":"moderate","verifiedOn":"2026-11-15"}
+    {
+      "principle": {
+        "ru": "Регулярная силовая работа развивает максимальную силу.",
+        "kk": "Тұрақты күш жаттығулары ең жоғары күшті дамытады.",
+        "en": "Regular resistance training develops maximal strength."
+      },
+      "application": {
+        "ru": "Используем повторную практику основных движений и постепенно переносимую нагрузку.",
+        "kk": "Негізгі қимылдарды қайталап, көтере алатын жүктемені біртіндеп арттырамыз.",
+        "en": "Use repeated practice of the main lifts and gradually tolerated loading."
+      },
+      "source": {
+        "title": "ACSM (2026): Resistance Training Prescription — Overview of Reviews",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12965823/"
+      },
+      "studyType": {
+        "ru": "Обзор систематических обзоров",
+        "kk": "Жүйелі шолуларға шолу",
+        "en": "Overview of systematic reviews"
+      },
+      "limitation": {
+        "ru": "Данные здоровых взрослых; точный восьминедельный шаблон приложения не испытывался и не является реабилитацией.",
+        "kk": "Деректер дені сау ересектерден алынған; қолданбаның нақты сегіз апталық үлгісі сыналмаған және оңалту бағдарламасы емес.",
+        "en": "Healthy-adult evidence; the app's exact eight-week template was not tested and is not rehabilitation."
+      },
+      "strength": "high",
+      "verifiedOn": "2026-11-15"
+    },
+    {
+      "principle": {
+        "ru": "Снижение тренировочного объёма перед проверкой силы может уменьшать накопленное утомление.",
+        "kk": "Күшті тексерер алдында жаттығу көлемін азайту жиналған шаршауды төмендетуі мүмкін.",
+        "en": "Reducing training volume before a strength test may reduce accumulated fatigue."
+      },
+      "application": {
+        "ru": "Подводку индивидуализируем; не добавляем тяжёлые подходы ради компенсации пропусков.",
+        "kk": "Сынақ алдындағы дайындықты жеке бейімдейміз; өткізіп алған жаттығуды өтеу үшін ауыр тәсіл қоспаймыз.",
+        "en": "Individualize the taper; do not add heavy sets to compensate for missed sessions."
+      },
+      "source": {
+        "title": "Tapering and Peaking Maximal Strength for Powerlifting Performance: A Review (2020)",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7552788/"
+      },
+      "studyType": {
+        "ru": "Обзор небольших исследований подводки и прекращения тренировок",
+        "kk": "Дайындық көлемін азайту мен жаттығуды тоқтату жөніндегі шағын зерттеулерге шолу",
+        "en": "Review of small tapering and training-cessation studies"
+      },
+      "limitation": {
+        "ru": "Малые разнородные выборки; универсальная длительность и процент снижения объёма не установлены. Это не испытание нашего цикла.",
+        "kk": "Іріктемелер шағын әрі әртүрлі; барлығына ортақ мерзім мен көлемді азайту пайызы анықталмаған. Біздің цикл сыналмаған.",
+        "en": "Small, heterogeneous samples; no universal taper duration or volume reduction is established. Our cycle was not tested."
+      },
+      "strength": "moderate",
+      "verifiedOn": "2026-11-15"
+    }
   ],
   "armwrestling": [
-    {"principle":{"ru":"Борьба на руках может сопровождаться спиральными переломами плечевой кости.","kk":"Қол күресінде тоқпан жіліктің бұралмалы сынуы болуы мүмкін.","en":"Arm wrestling can cause spiral humeral-shaft fractures."},"application":{"ru":"Не выводим безопасную дозу бокового давления из этого обзора; при травме нагрузку определяет лечащий специалист.","kk":"Бұл шолудан жанға қысымның қауіпсіз мөлшерін шығармаймыз; жарақат кезінде жүктемені емдеуші маман анықтайды.","en":"Do not infer a safe side-pressure dose from this review; an injury requires clinician-directed loading."},"source":{"title":"Fractures of the humeral shaft caused by arm wrestling: a systematic review (2022)","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC10426487/"},"studyType":{"ru":"Систематический обзор опубликованных клинических случаев","kk":"Жарияланған клиникалық жағдайларға жүйелі шолу","en":"Systematic review of reported clinical cases"},"limitation":{"ru":"Случаи травм не дают частоту риска и не доказывают безопасность, эффективность или профилактический эффект тренировочного шаблона.","kk":"Жарақат жағдайлары қауіптің жиілігін көрсетпейді және жаттығу үлгісінің қауіпсіздігін, тиімділігін не алдын алу әсерін дәлелдемейді.","en":"Case reports cannot establish incidence or a training template's safety, effectiveness or preventive effect."},"strength":"limited","verifiedOn":"2026-11-15"}
+    {
+      "principle": {
+        "ru": "Борьба на руках может сопровождаться спиральными переломами плечевой кости.",
+        "kk": "Қол күресінде тоқпан жіліктің бұралмалы сынуы болуы мүмкін.",
+        "en": "Arm wrestling can cause spiral humeral-shaft fractures."
+      },
+      "application": {
+        "ru": "Не выводим безопасную дозу бокового давления из этого обзора; при травме нагрузку определяет лечащий специалист.",
+        "kk": "Бұл шолудан жанға қысымның қауіпсіз мөлшерін шығармаймыз; жарақат кезінде жүктемені емдеуші маман анықтайды.",
+        "en": "Do not infer a safe side-pressure dose from this review; an injury requires clinician-directed loading."
+      },
+      "source": {
+        "title": "Fractures of the humeral shaft caused by arm wrestling: a systematic review (2022)",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10426487/"
+      },
+      "studyType": {
+        "ru": "Систематический обзор опубликованных клинических случаев",
+        "kk": "Жарияланған клиникалық жағдайларға жүйелі шолу",
+        "en": "Systematic review of reported clinical cases"
+      },
+      "limitation": {
+        "ru": "Случаи травм не дают частоту риска и не доказывают безопасность, эффективность или профилактический эффект тренировочного шаблона.",
+        "kk": "Жарақат жағдайлары қауіптің жиілігін көрсетпейді және жаттығу үлгісінің қауіпсіздігін, тиімділігін не алдын алу әсерін дәлелдемейді.",
+        "en": "Case reports cannot establish incidence or a training template's safety, effectiveness or preventive effect."
+      },
+      "strength": "limited",
+      "verifiedOn": "2026-11-15"
+    }
   ],
   "arms": [
-    {"principle":{"ru":"Силовая работа может увеличивать мышечную массу.","kk":"Күш жаттығулары бұлшықет көлемін арттыра алады.","en":"Resistance training can increase muscle size."},"application":{"ru":"Объём упражнений на руки увеличиваем постепенно с учётом восстановления.","kk":"Қол жаттығуларының көлемін қалпына келуді ескеріп, біртіндеп арттырамыз.","en":"Increase arm-training volume gradually according to recovery."},"source":{"title":"ACSM (2026): Resistance Training Prescription — Overview of Reviews","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC12965823/"},"studyType":{"ru":"Обзор систематических обзоров","kk":"Жүйелі шолуларға шолу","en":"Overview of systematic reviews"},"limitation":{"ru":"Общие данные здоровых взрослых не подтверждают точную комбинацию упражнений приложения и не разрешают нагрузку травмированной руки.","kk":"Дені сау ересектер туралы жалпы деректер қолданбадағы нақты жаттығулар жиынтығын растамайды және жарақаттанған қолға күш салуға рұқсат бермейді.","en":"General healthy-adult evidence does not validate this exact exercise combination or clear an injured arm for loading."},"strength":"high","verifiedOn":"2026-11-15"}
+    {
+      "principle": {
+        "ru": "Силовая работа может увеличивать мышечную массу.",
+        "kk": "Күш жаттығулары бұлшықет көлемін арттыра алады.",
+        "en": "Resistance training can increase muscle size."
+      },
+      "application": {
+        "ru": "Объём упражнений на руки увеличиваем постепенно с учётом восстановления.",
+        "kk": "Қол жаттығуларының көлемін қалпына келуді ескеріп, біртіндеп арттырамыз.",
+        "en": "Increase arm-training volume gradually according to recovery."
+      },
+      "source": {
+        "title": "ACSM (2026): Resistance Training Prescription — Overview of Reviews",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12965823/"
+      },
+      "studyType": {
+        "ru": "Обзор систематических обзоров",
+        "kk": "Жүйелі шолуларға шолу",
+        "en": "Overview of systematic reviews"
+      },
+      "limitation": {
+        "ru": "Общие данные здоровых взрослых не подтверждают точную комбинацию упражнений приложения и не разрешают нагрузку травмированной руки.",
+        "kk": "Дені сау ересектер туралы жалпы деректер қолданбадағы нақты жаттығулар жиынтығын растамайды және жарақаттанған қолға күш салуға рұқсат бермейді.",
+        "en": "General healthy-adult evidence does not validate this exact exercise combination or clear an injured arm for loading."
+      },
+      "strength": "high",
+      "verifiedOn": "2026-11-15"
+    }
   ],
   "bodybuilding": [
-    {"principle":{"ru":"Силовые тренировки стимулируют гипертрофию; переносимый объём имеет значение.","kk":"Күш жаттығулары гипертрофияны ынталандырады; көтере алатын жаттығу көлемі маңызды.","en":"Resistance training supports hypertrophy; tolerable training volume matters."},"application":{"ru":"Отслеживаем рабочие подходы и переносимость, без обещаний фиксированной прибавки мышц.","kk":"Жұмыс тәсілдері мен жүктемені көтеруді бақылаймыз; бұлшықет өсімінің нақты мөлшеріне уәде бермейміз.","en":"Track working sets and tolerance without promising a fixed amount of muscle gain."},"source":{"title":"ACSM (2026): Resistance Training Prescription — Overview of Reviews","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC12965823/"},"studyType":{"ru":"Обзор систематических обзоров","kk":"Жүйелі шолуларға шолу","en":"Overview of systematic reviews"},"limitation":{"ru":"Средние результаты не определяют оптимальный объём конкретного человека; точный шаблон приложения не проверялся.","kk":"Орташа нәтижелер нақты адамға оңтайлы көлемді анықтамайды; қолданбаның дәл үлгісі тексерілмеген.","en":"Average results do not determine an individual's optimal volume; the exact app template was not tested."},"strength":"high","verifiedOn":"2026-11-15"},
-    {"principle":{"ru":"Для большинства тренирующихся ISSN указывает примерно 1,4–2,0 г белка/кг/сутки.","kk":"ISSN жаттығатын адамдардың көбіне тәулігіне шамамен 1,4–2,0 г/кг ақуызды көрсетеді.","en":"ISSN describes approximately 1.4–2.0 g protein/kg/day for most exercising people."},"application":{"ru":"Это ориентир общей обеспеченности белком, а не требование покупать добавки.","kk":"Бұл — ақуыздың жалпы жеткіліктілігіне бағдар, қоспа сатып алу талабы емес.","en":"Use this as a general protein-adequacy reference, not a requirement to buy supplements."},"source":{"title":"ISSN position stand: protein and exercise (2017)","url":"https://pubmed.ncbi.nlm.nih.gov/28642676/"},"studyType":{"ru":"Позиционный документ с обзором исследований","kk":"Зерттеулерге шолу жасалған ұстаным құжаты","en":"Position stand reviewing research"},"limitation":{"ru":"Не индивидуальное назначение; при заболеваниях почек и других медицинских ограничениях нужен специалист. Не испытание меню приложения.","kk":"Жеке тағайындау емес; бүйрек ауруы мен басқа медициналық шектеулерде маман қажет. Қолданба мәзірі сыналмаған.","en":"Not an individual prescription; kidney disease and other medical restrictions need professional assessment. The app's meal plan was not tested."},"strength":"moderate","verifiedOn":"2026-11-15"}
+    {
+      "principle": {
+        "ru": "Силовые тренировки стимулируют гипертрофию; переносимый объём имеет значение.",
+        "kk": "Күш жаттығулары гипертрофияны ынталандырады; көтере алатын жаттығу көлемі маңызды.",
+        "en": "Resistance training supports hypertrophy; tolerable training volume matters."
+      },
+      "application": {
+        "ru": "Отслеживаем рабочие подходы и переносимость, без обещаний фиксированной прибавки мышц.",
+        "kk": "Жұмыс тәсілдері мен жүктемені көтеруді бақылаймыз; бұлшықет өсімінің нақты мөлшеріне уәде бермейміз.",
+        "en": "Track working sets and tolerance without promising a fixed amount of muscle gain."
+      },
+      "source": {
+        "title": "ACSM (2026): Resistance Training Prescription — Overview of Reviews",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12965823/"
+      },
+      "studyType": {
+        "ru": "Обзор систематических обзоров",
+        "kk": "Жүйелі шолуларға шолу",
+        "en": "Overview of systematic reviews"
+      },
+      "limitation": {
+        "ru": "Средние результаты не определяют оптимальный объём конкретного человека; точный шаблон приложения не проверялся.",
+        "kk": "Орташа нәтижелер нақты адамға оңтайлы көлемді анықтамайды; қолданбаның дәл үлгісі тексерілмеген.",
+        "en": "Average results do not determine an individual's optimal volume; the exact app template was not tested."
+      },
+      "strength": "high",
+      "verifiedOn": "2026-11-15"
+    },
+    {
+      "principle": {
+        "ru": "Для большинства тренирующихся ISSN указывает примерно 1,4–2,0 г белка/кг/сутки.",
+        "kk": "ISSN жаттығатын адамдардың көбіне тәулігіне шамамен 1,4–2,0 г/кг ақуызды көрсетеді.",
+        "en": "ISSN describes approximately 1.4–2.0 g protein/kg/day for most exercising people."
+      },
+      "application": {
+        "ru": "Это ориентир общей обеспеченности белком, а не требование покупать добавки.",
+        "kk": "Бұл — ақуыздың жалпы жеткіліктілігіне бағдар, қоспа сатып алу талабы емес.",
+        "en": "Use this as a general protein-adequacy reference, not a requirement to buy supplements."
+      },
+      "source": {
+        "title": "ISSN position stand: protein and exercise (2017)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28642676/"
+      },
+      "studyType": {
+        "ru": "Позиционный документ с обзором исследований",
+        "kk": "Зерттеулерге шолу жасалған ұстаным құжаты",
+        "en": "Position stand reviewing research"
+      },
+      "limitation": {
+        "ru": "Не индивидуальное назначение; при заболеваниях почек и других медицинских ограничениях нужен специалист. Не испытание меню приложения.",
+        "kk": "Жеке тағайындау емес; бүйрек ауруы мен басқа медициналық шектеулерде маман қажет. Қолданба мәзірі сыналмаған.",
+        "en": "Not an individual prescription; kidney disease and other medical restrictions need professional assessment. The app's meal plan was not tested."
+      },
+      "strength": "moderate",
+      "verifiedOn": "2026-11-15"
+    }
   ],
   "strength": [
-    {"principle":{"ru":"Регулярная силовая работа развивает максимальную силу.","kk":"Тұрақты күш жаттығулары ең жоғары күшті дамытады.","en":"Regular resistance training develops maximal strength."},"application":{"ru":"Планируем повторяемую практику и постепенно переносимую нагрузку.","kk":"Қайталанатын тәжірибе мен біртіндеп көтере алатын жүктемені жоспарлаймыз.","en":"Plan repeated practice and gradually tolerated loading."},"source":{"title":"ACSM (2026): Resistance Training Prescription — Overview of Reviews","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC12965823/"},"studyType":{"ru":"Обзор систематических обзоров","kk":"Жүйелі шолуларға шолу","en":"Overview of systematic reviews"},"limitation":{"ru":"Изучались здоровые взрослые. Общий эффект силовой работы не доказывает превосходство точного шаблона приложения.","kk":"Дені сау ересектер зерттелген. Күш жаттығуларының жалпы әсері қолданбадағы нақты үлгінің артықшылығын дәлелдемейді.","en":"The evidence concerns healthy adults. General resistance-training benefits do not establish superiority of the app's exact template."},"strength":"high","verifiedOn":"2026-11-15"}
+    {
+      "principle": {
+        "ru": "Регулярная силовая работа развивает максимальную силу.",
+        "kk": "Тұрақты күш жаттығулары ең жоғары күшті дамытады.",
+        "en": "Regular resistance training develops maximal strength."
+      },
+      "application": {
+        "ru": "Планируем повторяемую практику и постепенно переносимую нагрузку.",
+        "kk": "Қайталанатын тәжірибе мен біртіндеп көтере алатын жүктемені жоспарлаймыз.",
+        "en": "Plan repeated practice and gradually tolerated loading."
+      },
+      "source": {
+        "title": "ACSM (2026): Resistance Training Prescription — Overview of Reviews",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12965823/"
+      },
+      "studyType": {
+        "ru": "Обзор систематических обзоров",
+        "kk": "Жүйелі шолуларға шолу",
+        "en": "Overview of systematic reviews"
+      },
+      "limitation": {
+        "ru": "Изучались здоровые взрослые. Общий эффект силовой работы не доказывает превосходство точного шаблона приложения.",
+        "kk": "Дені сау ересектер зерттелген. Күш жаттығуларының жалпы әсері қолданбадағы нақты үлгінің артықшылығын дәлелдемейді.",
+        "en": "The evidence concerns healthy adults. General resistance-training benefits do not establish superiority of the app's exact template."
+      },
+      "strength": "high",
+      "verifiedOn": "2026-11-15"
+    }
   ],
   "fatloss": [
-    {"principle":{"ru":"Достаточное потребление белка важно при тренировках и контроле массы тела.","kk":"Жаттығу мен дене салмағын бақылауда ақуыздың жеткілікті болуы маңызды.","en":"Adequate protein matters during exercise and body-mass management."},"application":{"ru":"Показываем умеренный ориентир белка без обещания сохранить всю силу или мышечную массу при дефиците.","kk":"Тапшылық кезінде бүкіл күш пен бұлшықетті сақтауға уәде бермей, ақуызға қалыпты бағдар көрсетеміз.","en":"Offer a moderate protein reference without promising complete strength or muscle retention during an energy deficit."},"source":{"title":"ISSN position stand: protein and exercise (2017)","url":"https://pubmed.ncbi.nlm.nih.gov/28642676/"},"studyType":{"ru":"Позиционный документ с обзором исследований","kk":"Зерттеулерге шолу жасалған ұстаным құжаты","en":"Position stand reviewing research"},"limitation":{"ru":"Не испытание нашего дефицита калорий или меню. Индивидуальная потребность зависит от здоровья и рациона; медицинские ограничения требуют специалиста.","kk":"Біздің калория тапшылығымыз не мәзіріміз сыналмаған. Жеке қажеттілік денсаулық пен тағамға байланысты; медициналық шектеуде маман қажет.","en":"Not a trial of our calorie deficit or meal plan. Needs depend on health and diet; medical restrictions require professional assessment."},"strength":"moderate","verifiedOn":"2026-11-15"}
+    {
+      "principle": {
+        "ru": "Достаточное потребление белка важно при тренировках и контроле массы тела.",
+        "kk": "Жаттығу мен дене салмағын бақылауда ақуыздың жеткілікті болуы маңызды.",
+        "en": "Adequate protein matters during exercise and body-mass management."
+      },
+      "application": {
+        "ru": "Показываем умеренный ориентир белка без обещания сохранить всю силу или мышечную массу при дефиците.",
+        "kk": "Тапшылық кезінде бүкіл күш пен бұлшықетті сақтауға уәде бермей, ақуызға қалыпты бағдар көрсетеміз.",
+        "en": "Offer a moderate protein reference without promising complete strength or muscle retention during an energy deficit."
+      },
+      "source": {
+        "title": "ISSN position stand: protein and exercise (2017)",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28642676/"
+      },
+      "studyType": {
+        "ru": "Позиционный документ с обзором исследований",
+        "kk": "Зерттеулерге шолу жасалған ұстаным құжаты",
+        "en": "Position stand reviewing research"
+      },
+      "limitation": {
+        "ru": "Не испытание нашего дефицита калорий или меню. Индивидуальная потребность зависит от здоровья и рациона; медицинские ограничения требуют специалиста.",
+        "kk": "Біздің калория тапшылығымыз не мәзіріміз сыналмаған. Жеке қажеттілік денсаулық пен тағамға байланысты; медициналық шектеуде маман қажет.",
+        "en": "Not a trial of our calorie deficit or meal plan. Needs depend on health and diet; medical restrictions require professional assessment."
+      },
+      "strength": "moderate",
+      "verifiedOn": "2026-11-15"
+    }
   ],
   "fitness": [
-    {"principle":{"ru":"Аэробную и силовую работу можно сочетать без среднего ухудшения прироста максимальной силы и мышц.","kk":"Аэробтық және күш жұмысын ең жоғары күш пен бұлшықет өсімін орта есеппен нашарлатпай қатар жүргізуге болады.","en":"Concurrent aerobic and strength work need not reduce average maximal-strength or muscle-size gains."},"application":{"ru":"Сочетаем посильную аэробную активность и силовую работу; взрывную работу по возможности разделяем с кардио.","kk":"Көтере алатын аэробтық белсенділікті күш жұмысымен үйлестіреміз; жарылғыш күш жұмысын мүмкіндігінше кардиодан бөлеміз.","en":"Combine tolerable aerobic and resistance work; separate explosive-strength work from cardio when practical."},"source":{"title":"Schumann et al. (2022): Compatibility of Concurrent Aerobic and Strength Training","url":"https://pubmed.ncbi.nlm.nih.gov/34757594/"},"studyType":{"ru":"Систематический обзор и метаанализ 43 исследований","kk":"43 зерттеудің жүйелі шолуы мен метаталдауы","en":"Systematic review and meta-analysis of 43 studies"},"limitation":{"ru":"Взрывная сила могла улучшаться меньше, особенно в одной сессии. Конкретная длительность кардио и шаблон приложения не проверялись.","kk":"Жарылғыш күш, әсіресе бір сессияда, азырақ өсуі мүмкін. Кардионың нақты ұзақтығы мен қолданба үлгісі тексерілмеген.","en":"Explosive-strength gains could be attenuated, especially within one session. The app's exact cardio duration and template were not tested."},"strength":"moderate","verifiedOn":"2026-11-15"}
+    {
+      "principle": {
+        "ru": "Аэробную и силовую работу можно сочетать без среднего ухудшения прироста максимальной силы и мышц.",
+        "kk": "Аэробтық және күш жұмысын ең жоғары күш пен бұлшықет өсімін орта есеппен нашарлатпай қатар жүргізуге болады.",
+        "en": "Concurrent aerobic and strength work need not reduce average maximal-strength or muscle-size gains."
+      },
+      "application": {
+        "ru": "Сочетаем посильную аэробную активность и силовую работу; взрывную работу по возможности разделяем с кардио.",
+        "kk": "Көтере алатын аэробтық белсенділікті күш жұмысымен үйлестіреміз; жарылғыш күш жұмысын мүмкіндігінше кардиодан бөлеміз.",
+        "en": "Combine tolerable aerobic and resistance work; separate explosive-strength work from cardio when practical."
+      },
+      "source": {
+        "title": "Schumann et al. (2022): Compatibility of Concurrent Aerobic and Strength Training",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34757594/"
+      },
+      "studyType": {
+        "ru": "Систематический обзор и метаанализ 43 исследований",
+        "kk": "43 зерттеудің жүйелі шолуы мен метаталдауы",
+        "en": "Systematic review and meta-analysis of 43 studies"
+      },
+      "limitation": {
+        "ru": "Взрывная сила могла улучшаться меньше, особенно в одной сессии. Конкретная длительность кардио и шаблон приложения не проверялись.",
+        "kk": "Жарылғыш күш, әсіресе бір сессияда, азырақ өсуі мүмкін. Кардионың нақты ұзақтығы мен қолданба үлгісі тексерілмеген.",
+        "en": "Explosive-strength gains could be attenuated, especially within one session. The app's exact cardio duration and template were not tested."
+      },
+      "strength": "moderate",
+      "verifiedOn": "2026-11-15"
+    }
   ],
   "custom": [
-    {"principle":{"ru":"Общие принципы силовой работы помогают планированию, но не подтверждают произвольную программу.","kk":"Күш жұмысының жалпы қағидалары жоспарлауға көмектеседі, бірақ кез келген бағдарламаны растамайды.","en":"General resistance-training principles inform planning but do not validate an arbitrary program."},"application":{"ru":"Пользовательский план оцениваем по переносимости, регулярности и восстановлению; не помечаем его как клинически проверенный.","kk":"Жеке жоспарды көтере алу, тұрақтылық және қалпына келу бойынша бағалаймыз; оны клиникалық тексерілген деп белгілемейміз.","en":"Review a custom plan through tolerance, consistency and recovery; do not label it clinically validated."},"source":{"title":"ACSM (2026): Resistance Training Prescription — Overview of Reviews","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC12965823/"},"studyType":{"ru":"Обзор систематических обзоров; косвенное применение","kk":"Жүйелі шолуларға шолу; жанама қолдану","en":"Overview of systematic reviews; indirect application"},"limitation":{"ru":"Каждый пользовательский план отличается; источник не проверяет его дозировку, безопасность при травме или эффективность.","kk":"Әр жеке жоспар өзгеше; дереккөз оның мөлшерін, жарақат кезіндегі қауіпсіздігін не тиімділігін тексермейді.","en":"Every custom plan differs; this source does not test its dose, safety with injury or effectiveness."},"strength":"limited","verifiedOn":"2026-11-15"}
+    {
+      "principle": {
+        "ru": "Общие принципы силовой работы помогают планированию, но не подтверждают произвольную программу.",
+        "kk": "Күш жұмысының жалпы қағидалары жоспарлауға көмектеседі, бірақ кез келген бағдарламаны растамайды.",
+        "en": "General resistance-training principles inform planning but do not validate an arbitrary program."
+      },
+      "application": {
+        "ru": "Пользовательский план оцениваем по переносимости, регулярности и восстановлению; не помечаем его как клинически проверенный.",
+        "kk": "Жеке жоспарды көтере алу, тұрақтылық және қалпына келу бойынша бағалаймыз; оны клиникалық тексерілген деп белгілемейміз.",
+        "en": "Review a custom plan through tolerance, consistency and recovery; do not label it clinically validated."
+      },
+      "source": {
+        "title": "ACSM (2026): Resistance Training Prescription — Overview of Reviews",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12965823/"
+      },
+      "studyType": {
+        "ru": "Обзор систематических обзоров; косвенное применение",
+        "kk": "Жүйелі шолуларға шолу; жанама қолдану",
+        "en": "Overview of systematic reviews; indirect application"
+      },
+      "limitation": {
+        "ru": "Каждый пользовательский план отличается; источник не проверяет его дозировку, безопасность при травме или эффективность.",
+        "kk": "Әр жеке жоспар өзгеше; дереккөз оның мөлшерін, жарақат кезіндегі қауіпсіздігін не тиімділігін тексермейді.",
+        "en": "Every custom plan differs; this source does not test its dose, safety with injury or effectiveness."
+      },
+      "strength": "limited",
+      "verifiedOn": "2026-11-15"
+    }
   ]
 }

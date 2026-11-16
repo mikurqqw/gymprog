@@ -1,62 +1,113 @@
 [
   {
     "id": "usda-sr-legacy-2018",
-    "title": {"ru":"USDA FoodData Central — SR Legacy, апрель 2018","kk":"USDA FoodData Central — SR Legacy, сәуір 2018","en":"USDA FoodData Central — SR Legacy, April 2018"},
-    "author":"U.S. Department of Agriculture, Agricultural Research Service",
-    "url":"https://fdc.nal.usda.gov/download-datasets/",
-    "datasetUrl":"https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip",
-    "license":"CC0-1.0",
-    "licenseUrl":"https://creativecommons.org/publicdomain/zero/1.0/",
-    "licenseEvidenceUrl":"https://fdc.nal.usda.gov/api-guide/#bkmk-9",
-    "version":"SR Legacy April 2018 CSV",
-    "checkedOn":"2026-11-15",
-    "datasetSha256":"b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0",
-    "recordCount":584,
-    "estimated":false,
-    "attribution":{"ru":"Источник: USDA, Agricultural Research Service, FoodData Central, SR Legacy (2018). Перевод и отбор IronCycle.","kk":"Дереккөз: USDA, Agricultural Research Service, FoodData Central, SR Legacy (2018). Аудару мен іріктеу: IronCycle.","en":"Source: U.S. Department of Agriculture, Agricultural Research Service. FoodData Central, SR Legacy (2018). Selection and translations by IronCycle."},
-    "notes":{"ru":"Макронутриенты скопированы из официального CSV для реальных FDC ID: 1008 — ккал, 1003 — белок, 1004 — жир, 1005 — углеводы, на 100 г. Состояние продукта указано в названии. estimated=false означает прямую запись источника, а не отсутствие неопределённости анализа. Аллергены, переводы и пищевые метки добавлены IronCycle и требуют проверки этикетки.","kk":"Макронутриенттер нақты FDC ID бойынша ресми CSV-ден алынған: 1008 — ккал, 1003 — ақуыз, 1004 — май, 1005 — көмірсу, 100 грамға. Өнім күйі атауда берілген. estimated=false дереккөз мәнін білдіреді, талдау дәлдігіне кепілдік емес. Аллергендер, аударма және белгілерді IronCycle қосты; заттаңбасын тексеріңіз.","en":"Macros are copied from the official CSV for actual FDC IDs: 1008 energy kcal, 1003 protein, 1004 fat, 1005 carbohydrate, per 100 g. Product state is part of the name. estimated=false denotes a direct source record, not laboratory certainty. Allergens, translations and diet tags are IronCycle annotations; check the product label."}
+    "title": {
+      "ru": "USDA FoodData Central — SR Legacy, апрель 2018",
+      "kk": "USDA FoodData Central — SR Legacy, сәуір 2018",
+      "en": "USDA FoodData Central — SR Legacy, April 2018"
+    },
+    "author": "U.S. Department of Agriculture, Agricultural Research Service",
+    "url": "https://fdc.nal.usda.gov/download-datasets/",
+    "datasetUrl": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "licenseEvidenceUrl": "https://fdc.nal.usda.gov/api-guide/#bkmk-9",
+    "version": "SR Legacy April 2018 CSV",
+    "checkedOn": "2026-11-15",
+    "datasetSha256": "b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0",
+    "recordCount": 584,
+    "estimated": false,
+    "attribution": {
+      "ru": "Источник: USDA, Agricultural Research Service, FoodData Central, SR Legacy (2018). Перевод и отбор IronCycle.",
+      "kk": "Дереккөз: USDA, Agricultural Research Service, FoodData Central, SR Legacy (2018). Аудару мен іріктеу: IronCycle.",
+      "en": "Source: U.S. Department of Agriculture, Agricultural Research Service. FoodData Central, SR Legacy (2018). Selection and translations by IronCycle."
+    },
+    "notes": {
+      "ru": "Макронутриенты скопированы из официального CSV для реальных FDC ID: 1008 — ккал, 1003 — белок, 1004 — жир, 1005 — углеводы, на 100 г. Состояние продукта указано в названии. estimated=false означает прямую запись источника, а не отсутствие неопределённости анализа. Аллергены, переводы и пищевые метки добавлены IronCycle и требуют проверки этикетки.",
+      "kk": "Макронутриенттер нақты FDC ID бойынша ресми CSV-ден алынған: 1008 — ккал, 1003 — ақуыз, 1004 — май, 1005 — көмірсу, 100 грамға. Өнім күйі атауда берілген. estimated=false дереккөз мәнін білдіреді, талдау дәлдігіне кепілдік емес. Аллергендер, аударма және белгілерді IronCycle қосты; заттаңбасын тексеріңіз.",
+      "en": "Macros are copied from the official CSV for actual FDC IDs: 1008 energy kcal, 1003 protein, 1004 fat, 1005 carbohydrate, per 100 g. Product state is part of the name. estimated=false denotes a direct source record, not laboratory certainty. Allergens, translations and diet tags are IronCycle annotations; check the product label."
+    }
   },
   {
-    "id":"ironcycle-legacy-estimates",
-    "title":{"ru":"IronCycle — исходные ориентировочные продукты","kk":"IronCycle — бастапқы шамаланған өнімдер","en":"IronCycle — original approximate food values"},
-    "author":"IronCycle contributors",
-    "url":"https://github.com/mikurqqw/gymprog/blob/main/docs/FOOD_DATA.md",
-    "license":"CC0-1.0",
-    "licenseUrl":"https://creativecommons.org/publicdomain/zero/1.0/",
-    "version":"2026-11-15",
-    "checkedOn":"2026-11-15",
-    "recordCount":90,
-    "estimated":true,
-    "attribution":{"ru":"Исходный каталог IronCycle: 90 сохранённых оценок, без подтверждённой внешней атрибуции.","kk":"Бастапқы IronCycle каталогы: сыртқы дереккөзі расталмаған 90 сақталған баға.","en":"Original IronCycle catalog: 90 preserved estimates without verified external attribution."},
-    "notes":{"ru":"ID, русские и английские названия, ккал и БЖУ сохранены для совместимости существующих журналов. Эти записи не представлены как данные USDA и не учитываются для достижения минимума 600 новых записей. Добавленные переводы и метаданные доступны по CC0; происхождение прежних численных ориентиров документально не подтверждено.","kk":"ID, орысша және ағылшынша атаулар, ккал мен макронутриенттер журнал үйлесімділігі үшін сақталған. USDA дерегі деп көрсетілмейді, 600 жаңа жазба санына кірмейді. Қосылған аударма мен метадеректер CC0 бойынша ашық; бұрынғы сандық бағалардың түпкі дереккөзі расталмаған.","en":"IDs, Russian/English names and all macro values are retained for existing-log compatibility. These are not attributed to USDA and are excluded from the 600-new-entry minimum. Added translations and metadata are CC0; documentary provenance of the pre-existing numerical estimates is unavailable."}
+    "id": "ironcycle-legacy-estimates",
+    "title": {
+      "ru": "IronCycle — исходные ориентировочные продукты",
+      "kk": "IronCycle — бастапқы шамаланған өнімдер",
+      "en": "IronCycle — original approximate food values"
+    },
+    "author": "IronCycle contributors",
+    "url": "https://github.com/mikurqqw/gymprog/blob/main/docs/FOOD_DATA.md",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "version": "2026-11-15",
+    "checkedOn": "2026-11-15",
+    "recordCount": 90,
+    "estimated": true,
+    "attribution": {
+      "ru": "Исходный каталог IronCycle: 90 сохранённых оценок, без подтверждённой внешней атрибуции.",
+      "kk": "Бастапқы IronCycle каталогы: сыртқы дереккөзі расталмаған 90 сақталған баға.",
+      "en": "Original IronCycle catalog: 90 preserved estimates without verified external attribution."
+    },
+    "notes": {
+      "ru": "ID, русские и английские названия, ккал и БЖУ сохранены для совместимости существующих журналов. Эти записи не представлены как данные USDA и не учитываются для достижения минимума 600 новых записей. Добавленные переводы и метаданные доступны по CC0; происхождение прежних численных ориентиров документально не подтверждено.",
+      "kk": "ID, орысша және ағылшынша атаулар, ккал мен макронутриенттер журнал үйлесімділігі үшін сақталған. USDA дерегі деп көрсетілмейді, 600 жаңа жазба санына кірмейді. Қосылған аударма мен метадеректер CC0 бойынша ашық; бұрынғы сандық бағалардың түпкі дереккөзі расталмаған.",
+      "en": "IDs, Russian/English names and all macro values are retained for existing-log compatibility. These are not attributed to USDA and are excluded from the 600-new-entry minimum. Added translations and metadata are CC0; documentary provenance of the pre-existing numerical estimates is unavailable."
+    }
   },
   {
-    "id":"ironcycle-recipe-models",
-    "title":{"ru":"IronCycle — расчётные рецептуры Казахстана и СНГ","kk":"IronCycle — Қазақстан мен ТМД рецептура үлгілері","en":"IronCycle — Kazakhstan and CIS ingredient models"},
-    "author":"IronCycle contributors, assisted by AI",
-    "url":"https://github.com/mikurqqw/gymprog/blob/main/scripts/build-food-catalog.py",
-    "license":"CC0-1.0",
-    "licenseUrl":"https://creativecommons.org/publicdomain/zero/1.0/",
-    "version":"2026-11-15",
-    "checkedOn":"2026-11-15",
-    "recordCount":51,
-    "estimated":true,
-    "attribution":{"ru":"Авторские модели IronCycle, CC0. Пищевая ценность рассчитана по указанным ингредиентам и выходу.","kk":"IronCycle авторлық үлгілері, CC0. Қоректік құндылық көрсетілген құрам мен шығымнан есептелген.","en":"Original IronCycle ingredient/yield models, CC0. Nutrition calculated from the recorded ingredients and final yield."},
-    "notes":{"ru":"Не лабораторные анализы, инструкции приготовления или стандарты традиционных рецептов. Для каждого блюда сохранены recipeIngredients и recipeYieldGrams. Расчёт: сумма значения ингредиента на 100 г × его масса / выход готового блюда. Потери нутриентов не моделируются. Например, сухие макароны используются как приближение лапши, а шубат — по составу молочного сырья без модели брожения.","kk":"Зертханалық талдау, пісіру нұсқаулығы не дәстүрлі рецепт стандарты емес. Әр тағамда recipeIngredients және recipeYieldGrams сақталады. Есеп: ингредиенттің 100 грамдағы мәні × оның массасы / дайын тағам шығымы, барлығы қосылады. Нутриент жоғалуы есептелмейді. Құрғақ макарон кеспеге жуықтау, шұбат ашытусыз сүт құрамы бойынша алынған.","en":"Not laboratory assays, cooking instructions or canonical traditional recipes. Each entry records recipeIngredients and recipeYieldGrams. Each macro per 100 g is the sum of ingredient macro per 100 g multiplied by ingredient grams divided by final yield grams. Nutrient losses are not modeled. Dry pasta approximates noodles; shubat uses a milk-composition proxy without a fermentation model."}
+    "id": "ironcycle-recipe-models",
+    "title": {
+      "ru": "IronCycle — расчётные рецептуры Казахстана и СНГ",
+      "kk": "IronCycle — Қазақстан мен ТМД рецептура үлгілері",
+      "en": "IronCycle — Kazakhstan and CIS ingredient models"
+    },
+    "author": "IronCycle contributors, assisted by AI",
+    "url": "https://github.com/mikurqqw/gymprog/blob/main/scripts/build-food-catalog.py",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "version": "2026-11-15",
+    "checkedOn": "2026-11-15",
+    "recordCount": 51,
+    "estimated": true,
+    "attribution": {
+      "ru": "Авторские модели IronCycle, CC0. Пищевая ценность рассчитана по указанным ингредиентам и выходу.",
+      "kk": "IronCycle авторлық үлгілері, CC0. Қоректік құндылық көрсетілген құрам мен шығымнан есептелген.",
+      "en": "Original IronCycle ingredient/yield models, CC0. Nutrition calculated from the recorded ingredients and final yield."
+    },
+    "notes": {
+      "ru": "Не лабораторные анализы, инструкции приготовления или стандарты традиционных рецептов. Для каждого блюда сохранены recipeIngredients и recipeYieldGrams. Расчёт: сумма значения ингредиента на 100 г × его масса / выход готового блюда. Потери нутриентов не моделируются. Например, сухие макароны используются как приближение лапши, а шубат — по составу молочного сырья без модели брожения.",
+      "kk": "Зертханалық талдау, пісіру нұсқаулығы не дәстүрлі рецепт стандарты емес. Әр тағамда recipeIngredients және recipeYieldGrams сақталады. Есеп: ингредиенттің 100 грамдағы мәні × оның массасы / дайын тағам шығымы, барлығы қосылады. Нутриент жоғалуы есептелмейді. Құрғақ макарон кеспеге жуықтау, шұбат ашытусыз сүт құрамы бойынша алынған.",
+      "en": "Not laboratory assays, cooking instructions or canonical traditional recipes. Each entry records recipeIngredients and recipeYieldGrams. Each macro per 100 g is the sum of ingredient macro per 100 g multiplied by ingredient grams divided by final yield grams. Nutrient losses are not modeled. Dry pasta approximates noodles; shubat uses a milk-composition proxy without a fermentation model."
+    }
   },
   {
-    "id":"ironcycle-regional-estimates",
-    "title":{"ru":"IronCycle — региональные ориентиры состава","kk":"IronCycle — өңірлік құрамның шамалары","en":"IronCycle — regional composition estimates"},
-    "author":"IronCycle contributors, assisted by AI",
-    "url":"https://github.com/mikurqqw/gymprog/blob/main/docs/FOOD_DATA.md",
-    "license":"CC0-1.0",
-    "licenseUrl":"https://creativecommons.org/publicdomain/zero/1.0/",
-    "version":"2026-11-15",
-    "checkedOn":"2026-11-15",
-    "recordCount":4,
-    "estimated":true,
-    "contextUrls":["https://www.mdpi.com/2624-862X/2/2/24","https://pmc.ncbi.nlm.nih.gov/articles/PMC10867071/"],
-    "attribution":{"ru":"Авторские ориентиры IronCycle, CC0; не записи USDA и не точные значения из исследовательской статьи.","kk":"IronCycle авторлық шамалары, CC0; USDA жазбасы да, мақаладан алынған дәл сан да емес.","en":"Original IronCycle estimates, CC0; neither USDA records nor exact figures extracted from a research paper."},
-    "notes":{"ru":"Четыре явно помеченные оценки: конский жир, верблюжье и кобылье молоко, кумыс. Обзоры по ссылкам дают контекст изменчивости, не источник этих точных чисел. Для кумыса энергетическая модель включает 1,2 г спирта на 100 г; реальная партия может заметно отличаться. Молочные продукты и ферментированные напитки имеют halal=verify. Проверяйте этикетку и сертификат; это не халяль-сертификация.","kk":"Төрт белгіленген баға: жылқы майы, түйе және бие сүті, қымыз. Шолулар құрам өзгергіштігін түсіндіреді, дәл осы сандардың көзі емес. Қымыз энергиясының үлгісі 100 грамға 1,2 г спиртті қамтиды; нақты өнім өзгеше болуы мүмкін. Сүт өнімдері мен ашытылған сусындарда halal=verify. Заттаңба мен сертификатты тексеріңіз; бұл халал сертификаты емес.","en":"Four explicitly estimated items: horse fat, camel milk, mare milk and kumys. Linked reviews contextualize variability and are not the source of these exact numbers. Kumys energy assumes 1.2 g alcohol per 100 g; real batches may differ substantially. Dairy and fermented drinks use halal=verify. Check the label and certification; these tags are not halal certification."}
+    "id": "ironcycle-regional-estimates",
+    "title": {
+      "ru": "IronCycle — региональные ориентиры состава",
+      "kk": "IronCycle — өңірлік құрамның шамалары",
+      "en": "IronCycle — regional composition estimates"
+    },
+    "author": "IronCycle contributors, assisted by AI",
+    "url": "https://github.com/mikurqqw/gymprog/blob/main/docs/FOOD_DATA.md",
+    "license": "CC0-1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "version": "2026-11-15",
+    "checkedOn": "2026-11-15",
+    "recordCount": 4,
+    "estimated": true,
+    "contextUrls": [
+      "https://www.mdpi.com/2624-862X/2/2/24",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC10867071/"
+    ],
+    "attribution": {
+      "ru": "Авторские ориентиры IronCycle, CC0; не записи USDA и не точные значения из исследовательской статьи.",
+      "kk": "IronCycle авторлық шамалары, CC0; USDA жазбасы да, мақаладан алынған дәл сан да емес.",
+      "en": "Original IronCycle estimates, CC0; neither USDA records nor exact figures extracted from a research paper."
+    },
+    "notes": {
+      "ru": "Четыре явно помеченные оценки: конский жир, верблюжье и кобылье молоко, кумыс. Обзоры по ссылкам дают контекст изменчивости, не источник этих точных чисел. Для кумыса энергетическая модель включает 1,2 г спирта на 100 г; реальная партия может заметно отличаться. Молочные продукты и ферментированные напитки имеют halal=verify. Проверяйте этикетку и сертификат; это не халяль-сертификация.",
+      "kk": "Төрт белгіленген баға: жылқы майы, түйе және бие сүті, қымыз. Шолулар құрам өзгергіштігін түсіндіреді, дәл осы сандардың көзі емес. Қымыз энергиясының үлгісі 100 грамға 1,2 г спиртті қамтиды; нақты өнім өзгеше болуы мүмкін. Сүт өнімдері мен ашытылған сусындарда halal=verify. Заттаңба мен сертификатты тексеріңіз; бұл халал сертификаты емес.",
+      "en": "Four explicitly estimated items: horse fat, camel milk, mare milk and kumys. Linked reviews contextualize variability and are not the source of these exact numbers. Kumys energy assumes 1.2 g alcohol per 100 g; real batches may differ substantially. Dairy and fermented drinks use halal=verify. Check the label and certification; these tags are not halal certification."
+    }
   }
 ]

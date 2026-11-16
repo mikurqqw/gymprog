@@ -1,14 +1,86 @@
 {
   "id": "sources",
-  "title": {"ru": "Источники, лицензии и атрибуция", "kk": "Дереккөздер, лицензиялар және авторларды көрсету", "en": "Sources, Licenses and Attribution"},
+  "title": {
+    "ru": "Источники, лицензии и атрибуция",
+    "kk": "Дереккөздер, лицензиялар және авторларды көрсету",
+    "en": "Sources, Licenses and Attribution"
+  },
   "requiresReview": true,
-  "sources": [{"title": "Dexie.js — Apache-2.0 license", "url": "https://github.com/dexie/Dexie.js/blob/master/LICENSE", "checkedOn": "2026-11-15"}],
+  "sources": [
+    {
+      "title": "Dexie.js — Apache-2.0 license",
+      "url": "https://github.com/dexie/Dexie.js/blob/master/LICENSE",
+      "checkedOn": "2026-11-15"
+    }
+  ],
   "sections": [
-    {"heading": {"ru": "Проверка перед публикацией", "kk": "Жариялау алдындағы тексеру", "en": "Review before publication"}, "body": {"ru": "Текст подготовлен с помощью ИИ и требует проверки квалифицированным юристом Республики Казахстан. Казахская версия дополнительно требует проверки носителем языка. До заполнения реквизитов, проверки переводов и подтверждения применимого права документ не предназначен для производственного запуска. Дата вступления в силу после проверки: {{effectiveDate}}.", "kk": "Мәтін ЖИ көмегімен әзірленді және оны Қазақстан Республикасының білікті заңгері тексеруі керек. Қазақша нұсқаны қосымша ана тілі қазақ тілі болып табылатын маман тексеруі керек. Деректемелер толтырылып, аудармалар мен қолданылатын құқық тексерілгенге дейін құжат өндірістік іске қосуға арналмаған. Тексеруден кейін күшіне енетін күні: {{effectiveDate}}.", "en": "This AI-assisted text requires review by a qualified Kazakhstan lawyer. The Kazakh version additionally requires native-speaker review. It is not ready for production release until operator details, translations and applicable-law decisions have been checked. Effective date after review: {{effectiveDate}}."}},
-    {"heading": {"ru": "1. Как читать происхождение материала", "kk": "1. Материалдың шығу тегін қалай оқу керек", "en": "1. Reading provenance"}, "body": {"ru": "Для данных и медиа указываются доступные источник, автор, лицензия и отметка оценочного значения. Ссылка подтверждает происхождение, но сама по себе не доказывает научную точность, медицинскую пригодность или право на любое повторное использование. Если обязательные сведения не проверены, материал не должен обозначаться проверенным или включаться как лицензированный по предположению. Сообщайте о неверной атрибуции на {{operator.legalEmail}}.", "kk": "Дерек пен медиа үшін қолжетімді дереккөз, автор, лицензия және жуық мән белгісі көрсетіледі. Сілтеме шығу тегін көрсетеді, бірақ өздігінен ғылыми дәлдікті, медициналық жарамдылықты не кез келген қайта пайдалану құқығын дәлелдемейді. Міндетті мәлімет тексерілмесе, материалды тексерілген деп белгілеуге не лицензиясын жорамалдап қосуға болмайды. Қате атрибуция туралы {{operator.legalEmail}} мекенжайына хабарлаңыз.", "en": "Data/media records identify available source, author, license and estimated status. A link establishes provenance, not scientific accuracy, clinical suitability or unrestricted reuse. Unverified required details must not be presented as verified or licensed by assumption. Report attribution errors to {{operator.legalEmail}}."}},
-    {"heading": {"ru": "2. Пищевая база", "kk": "2. Тағам базасы", "en": "2. Food database"}, "body": {"ru": "Пищевые значения относятся к указанной форме продукта и количеству на 100 г, если карточка не говорит иначе. Рецепт, жирность, приготовление и производитель меняют состав; порции и традиционные блюда могут быть оценочными. Источник и лицензия каждой записи должны сохраняться при расширении базы. Собственный продукт отмечается как пользовательский; его сохранение не подтверждает лабораторную точность, отсутствие аллергенов или халяль-сертификацию. Проверяйте упаковку и состав, особенно при аллергии.", "kk": "Карточкада өзгеше көрсетілмесе, тағам мәні көрсетілген өнім түрінің 100 грамына қатысты. Рецепт, майлылық, пісіру және өндіруші құрамды өзгертеді; порция мен дәстүрлі тағамдар жуық болуы мүмкін. База кеңейгенде әр жазбаның дереккөзі мен лицензиясы сақталуы тиіс. Жеке тағам пайдаланушыныкі деп белгіленеді; сақтау зертханалық дәлдікті, аллергеннің жоқтығын не халал сертификатын растамайды. Әсіресе аллергия кезінде қаптама мен құрамды тексеріңіз.", "en": "Unless a card says otherwise, nutrition values refer to its specified food form per 100 g. Recipe, fat content, cooking and manufacturer change composition; portions/traditional dishes may be estimates. Each record’s source/license must survive database expansion. Custom foods are user-provided; saving them does not certify laboratory accuracy, allergen absence or halal status. Check labels and ingredients, particularly for allergies."}},
-    {"heading": {"ru": "3. Исследования и программы", "kk": "3. Зерттеулер және бағдарламалар", "en": "3. Research and programs"}, "body": {"ru": "Блок доказательств должен показывать принцип, способ применения, тип исследования, ограничение и оценку силы свидетельств. Непроверенные ссылки отправляются на отдельную проверку, а не показываются установленным фактом. Поддержка общих принципов тренировки не доказывает оптимальность именно этой восьминедельной таблицы для вас. Приведённые результаты разных групп не являются обещанием индивидуального эффекта, а отсутствие исследования не следует скрывать уверенным текстом.", "kk": "Дәлелдер блогы қағиданы, қолдану тәсілін, зерттеу түрін, шектеуін және дәлел күшінің бағасын көрсетуі тиіс. Тексерілмеген сілтеме анықталған факт ретінде көрсетілмей, бөлек тексеруге жіберіледі. Жалпы жаттығу қағидаларын қолдау дәл осы сегіз апталық кестенің сіз үшін оңтайлы екенін дәлелдемейді. Әртүрлі топ нәтижелері жеке әсерге уәде емес, ал зерттеудің жоқтығын сенімді мәтінмен жасыруға болмайды.", "en": "Evidence blocks should identify principle, application, study type, limitation and evidence-strength assessment. Unverified references go to separate review, not into established-fact claims. Support for training principles does not establish this exact eight-week table as optimal for you. Group results do not promise an individual effect, and missing evidence must not be hidden by confident wording."}},
-    {"heading": {"ru": "4. Программные компоненты", "kk": "4. Бағдарламалық компоненттер", "en": "4. Software components"}, "body": {"ru": "Перечень конкретных версий и лицензий зависимостей должен формироваться из состава текущей сборки. В проверенной исходной версии React, React DOM, React Router, Tailwind, Vite, Zod, Recharts и react-markdown имели MIT; TypeScript и idb-keyval — Apache-2.0; lucide-react — ISC. Для Dexie официальный репозиторий содержит Apache-2.0. Это не заменяет полный реестр транзитивных зависимостей и требуемых уведомлений. Публичный репозиторий приложения сам по себе не предоставляет лицензию на любой его материал.", "kk": "Нақты нұсқалар мен тәуелділік лицензияларының тізімі ағымдағы жинақ құрамынан жасалуы тиіс. Тексерілген бастапқы нұсқада React, React DOM, React Router, Tailwind, Vite, Zod, Recharts және react-markdown — MIT; TypeScript пен idb-keyval — Apache-2.0; lucide-react — ISC болды. Dexie ресми репозиторийінде Apache-2.0 бар. Бұл жанама тәуелділіктер мен міндетті хабарламалардың толық тізілімін алмастырмайды. Қолданбаның ашық репозиторийі ондағы кез келген материалға өздігінен лицензия бермейді.", "en": "Exact dependency versions/licenses should be generated from the current build. In the checked starting version React, React DOM, React Router, Tailwind, Vite, Zod, Recharts and react-markdown were MIT; TypeScript/idb-keyval were Apache-2.0; lucide-react was ISC. Dexie’s official repository contains Apache-2.0. This does not replace the full transitive inventory/notices. A public app repository alone does not license every item it contains."}},
-    {"heading": {"ru": "5. Медиа, шрифты и собственные файлы", "kk": "5. Медиа, қаріптер және жеке файлдар", "en": "5. Media, fonts and personal files"}, "body": {"ru": "Локальное медиа публикуется только с правами на использование и указанием нужной атрибуции. Наличие картинки в поиске не даёт разрешения на копирование; случайные hotlink-изображения не используются. Схема вместо отсутствующего видео является намеренной заменой, а не доказательством правильности техники. Для шрифтов и иконок сохраняются их лицензии и уведомления. Ваше локальное видео не загружается оператору и не становится частью открытой медиатеки из-за добавления в журнал.", "kk": "Жергілікті медиа пайдалануға құқық және қажетті атрибуция болғанда ғана жарияланады. Суреттің іздеуде болуы көшіруге рұқсат бермейді; кездейсоқ сыртқы суреттерге hotlink жасалмайды. Бейне орнына схема беру — саналы ауыстыру, техниканың дұрыстығының дәлелі емес. Қаріп пен белгішелердің лицензиясы мен ескертулері сақталады. Жеке бейнені күнделікке қосу оны операторға жібермейді және ашық медиатеканың бөлігі етпейді.", "en": "Local media is published only with usage rights and required attribution. Finding an image online does not authorize copying; random image hotlinks are not used. A diagram replacing absent video is an intentional fallback, not proof of correct technique. Font/icon licenses and notices are preserved. Attaching your local clip neither uploads it to the operator nor makes it part of the public media library."}}
+    {
+      "heading": {
+        "ru": "Проверка перед публикацией",
+        "kk": "Жариялау алдындағы тексеру",
+        "en": "Review before publication"
+      },
+      "body": {
+        "ru": "Текст подготовлен с помощью ИИ и требует проверки квалифицированным юристом Республики Казахстан. Казахская версия дополнительно требует проверки носителем языка. До заполнения реквизитов, проверки переводов и подтверждения применимого права документ не предназначен для производственного запуска. Дата вступления в силу после проверки: {{effectiveDate}}.",
+        "kk": "Мәтін ЖИ көмегімен әзірленді және оны Қазақстан Республикасының білікті заңгері тексеруі керек. Қазақша нұсқаны қосымша ана тілі қазақ тілі болып табылатын маман тексеруі керек. Деректемелер толтырылып, аудармалар мен қолданылатын құқық тексерілгенге дейін құжат өндірістік іске қосуға арналмаған. Тексеруден кейін күшіне енетін күні: {{effectiveDate}}.",
+        "en": "This AI-assisted text requires review by a qualified Kazakhstan lawyer. The Kazakh version additionally requires native-speaker review. It is not ready for production release until operator details, translations and applicable-law decisions have been checked. Effective date after review: {{effectiveDate}}."
+      }
+    },
+    {
+      "heading": {
+        "ru": "1. Как читать происхождение материала",
+        "kk": "1. Материалдың шығу тегін қалай оқу керек",
+        "en": "1. Reading provenance"
+      },
+      "body": {
+        "ru": "Для данных и медиа указываются доступные источник, автор, лицензия и отметка оценочного значения. Ссылка подтверждает происхождение, но сама по себе не доказывает научную точность, медицинскую пригодность или право на любое повторное использование. Если обязательные сведения не проверены, материал не должен обозначаться проверенным или включаться как лицензированный по предположению. Сообщайте о неверной атрибуции на {{operator.legalEmail}}.",
+        "kk": "Дерек пен медиа үшін қолжетімді дереккөз, автор, лицензия және жуық мән белгісі көрсетіледі. Сілтеме шығу тегін көрсетеді, бірақ өздігінен ғылыми дәлдікті, медициналық жарамдылықты не кез келген қайта пайдалану құқығын дәлелдемейді. Міндетті мәлімет тексерілмесе, материалды тексерілген деп белгілеуге не лицензиясын жорамалдап қосуға болмайды. Қате атрибуция туралы {{operator.legalEmail}} мекенжайына хабарлаңыз.",
+        "en": "Data/media records identify available source, author, license and estimated status. A link establishes provenance, not scientific accuracy, clinical suitability or unrestricted reuse. Unverified required details must not be presented as verified or licensed by assumption. Report attribution errors to {{operator.legalEmail}}."
+      }
+    },
+    {
+      "heading": { "ru": "2. Пищевая база", "kk": "2. Тағам базасы", "en": "2. Food database" },
+      "body": {
+        "ru": "Пищевые значения относятся к указанной форме продукта и количеству на 100 г, если карточка не говорит иначе. Рецепт, жирность, приготовление и производитель меняют состав; порции и традиционные блюда могут быть оценочными. Источник и лицензия каждой записи должны сохраняться при расширении базы. Собственный продукт отмечается как пользовательский; его сохранение не подтверждает лабораторную точность, отсутствие аллергенов или халяль-сертификацию. Проверяйте упаковку и состав, особенно при аллергии.",
+        "kk": "Карточкада өзгеше көрсетілмесе, тағам мәні көрсетілген өнім түрінің 100 грамына қатысты. Рецепт, майлылық, пісіру және өндіруші құрамды өзгертеді; порция мен дәстүрлі тағамдар жуық болуы мүмкін. База кеңейгенде әр жазбаның дереккөзі мен лицензиясы сақталуы тиіс. Жеке тағам пайдаланушыныкі деп белгіленеді; сақтау зертханалық дәлдікті, аллергеннің жоқтығын не халал сертификатын растамайды. Әсіресе аллергия кезінде қаптама мен құрамды тексеріңіз.",
+        "en": "Unless a card says otherwise, nutrition values refer to its specified food form per 100 g. Recipe, fat content, cooking and manufacturer change composition; portions/traditional dishes may be estimates. Each record’s source/license must survive database expansion. Custom foods are user-provided; saving them does not certify laboratory accuracy, allergen absence or halal status. Check labels and ingredients, particularly for allergies."
+      }
+    },
+    {
+      "heading": {
+        "ru": "3. Исследования и программы",
+        "kk": "3. Зерттеулер және бағдарламалар",
+        "en": "3. Research and programs"
+      },
+      "body": {
+        "ru": "Блок доказательств должен показывать принцип, способ применения, тип исследования, ограничение и оценку силы свидетельств. Непроверенные ссылки отправляются на отдельную проверку, а не показываются установленным фактом. Поддержка общих принципов тренировки не доказывает оптимальность именно этой восьминедельной таблицы для вас. Приведённые результаты разных групп не являются обещанием индивидуального эффекта, а отсутствие исследования не следует скрывать уверенным текстом.",
+        "kk": "Дәлелдер блогы қағиданы, қолдану тәсілін, зерттеу түрін, шектеуін және дәлел күшінің бағасын көрсетуі тиіс. Тексерілмеген сілтеме анықталған факт ретінде көрсетілмей, бөлек тексеруге жіберіледі. Жалпы жаттығу қағидаларын қолдау дәл осы сегіз апталық кестенің сіз үшін оңтайлы екенін дәлелдемейді. Әртүрлі топ нәтижелері жеке әсерге уәде емес, ал зерттеудің жоқтығын сенімді мәтінмен жасыруға болмайды.",
+        "en": "Evidence blocks should identify principle, application, study type, limitation and evidence-strength assessment. Unverified references go to separate review, not into established-fact claims. Support for training principles does not establish this exact eight-week table as optimal for you. Group results do not promise an individual effect, and missing evidence must not be hidden by confident wording."
+      }
+    },
+    {
+      "heading": {
+        "ru": "4. Программные компоненты",
+        "kk": "4. Бағдарламалық компоненттер",
+        "en": "4. Software components"
+      },
+      "body": {
+        "ru": "Перечень конкретных версий и лицензий зависимостей должен формироваться из состава текущей сборки. В проверенной исходной версии React, React DOM, React Router, Tailwind, Vite, Zod, Recharts и react-markdown имели MIT; TypeScript и idb-keyval — Apache-2.0; lucide-react — ISC. Для Dexie официальный репозиторий содержит Apache-2.0. Это не заменяет полный реестр транзитивных зависимостей и требуемых уведомлений. Публичный репозиторий приложения сам по себе не предоставляет лицензию на любой его материал.",
+        "kk": "Нақты нұсқалар мен тәуелділік лицензияларының тізімі ағымдағы жинақ құрамынан жасалуы тиіс. Тексерілген бастапқы нұсқада React, React DOM, React Router, Tailwind, Vite, Zod, Recharts және react-markdown — MIT; TypeScript пен idb-keyval — Apache-2.0; lucide-react — ISC болды. Dexie ресми репозиторийінде Apache-2.0 бар. Бұл жанама тәуелділіктер мен міндетті хабарламалардың толық тізілімін алмастырмайды. Қолданбаның ашық репозиторийі ондағы кез келген материалға өздігінен лицензия бермейді.",
+        "en": "Exact dependency versions/licenses should be generated from the current build. In the checked starting version React, React DOM, React Router, Tailwind, Vite, Zod, Recharts and react-markdown were MIT; TypeScript/idb-keyval were Apache-2.0; lucide-react was ISC. Dexie’s official repository contains Apache-2.0. This does not replace the full transitive inventory/notices. A public app repository alone does not license every item it contains."
+      }
+    },
+    {
+      "heading": {
+        "ru": "5. Медиа, шрифты и собственные файлы",
+        "kk": "5. Медиа, қаріптер және жеке файлдар",
+        "en": "5. Media, fonts and personal files"
+      },
+      "body": {
+        "ru": "Локальное медиа публикуется только с правами на использование и указанием нужной атрибуции. Наличие картинки в поиске не даёт разрешения на копирование; случайные hotlink-изображения не используются. Схема вместо отсутствующего видео является намеренной заменой, а не доказательством правильности техники. Для шрифтов и иконок сохраняются их лицензии и уведомления. Ваше локальное видео не загружается оператору и не становится частью открытой медиатеки из-за добавления в журнал.",
+        "kk": "Жергілікті медиа пайдалануға құқық және қажетті атрибуция болғанда ғана жарияланады. Суреттің іздеуде болуы көшіруге рұқсат бермейді; кездейсоқ сыртқы суреттерге hotlink жасалмайды. Бейне орнына схема беру — саналы ауыстыру, техниканың дұрыстығының дәлелі емес. Қаріп пен белгішелердің лицензиясы мен ескертулері сақталады. Жеке бейнені күнделікке қосу оны операторға жібермейді және ашық медиатеканың бөлігі етпейді.",
+        "en": "Local media is published only with usage rights and required attribution. Finding an image online does not authorize copying; random image hotlinks are not used. A diagram replacing absent video is an intentional fallback, not proof of correct technique. Font/icon licenses and notices are preserved. Attaching your local clip neither uploads it to the operator nor makes it part of the public media library."
+      }
+    }
   ]
 }

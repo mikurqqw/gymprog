@@ -1,14 +1,84 @@
 {
   "id": "ai",
-  "title": {"ru": "Уведомление об использовании ИИ", "kk": "ЖИ пайдалану туралы хабарлама", "en": "AI Use Notice"},
+  "title": {
+    "ru": "Уведомление об использовании ИИ",
+    "kk": "ЖИ пайдалану туралы хабарлама",
+    "en": "AI Use Notice"
+  },
   "requiresReview": true,
   "sources": [],
   "sections": [
-    {"heading": {"ru": "Проверка перед публикацией", "kk": "Жариялау алдындағы тексеру", "en": "Review before publication"}, "body": {"ru": "Текст подготовлен с помощью ИИ и требует проверки квалифицированным юристом Республики Казахстан. Казахская версия дополнительно требует проверки носителем языка. До заполнения реквизитов, проверки переводов и подтверждения применимого права документ не предназначен для производственного запуска. Дата вступления в силу после проверки: {{effectiveDate}}.", "kk": "Мәтін ЖИ көмегімен әзірленді және оны Қазақстан Республикасының білікті заңгері тексеруі керек. Қазақша нұсқаны қосымша ана тілі қазақ тілі болып табылатын маман тексеруі керек. Деректемелер толтырылып, аудармалар мен қолданылатын құқық тексерілгенге дейін құжат өндірістік іске қосуға арналмаған. Тексеруден кейін күшіне енетін күні: {{effectiveDate}}.", "en": "This AI-assisted text requires review by a qualified Kazakhstan lawyer. The Kazakh version additionally requires native-speaker review. It is not ready for production release until operator details, translations and applicable-law decisions have been checked. Effective date after review: {{effectiveDate}}."}},
-    {"heading": {"ru": "1. Где применялась помощь ИИ", "kk": "1. ЖИ көмегі қайда қолданылды", "en": "1. Where AI assistance was used"}, "body": {"ru": "ИИ использовался при разработке программного кода, подготовке интерфейсных текстов, переводов, описаний упражнений, справки и проектов юридических документов. Это происхождение материала, а не гарантия его правильности. Тексты могли редактироваться человеком, но до подтверждённой проверки нельзя считать их проверенными тренером, врачом, диетологом, юристом или носителем казахского языка.", "kk": "ЖИ бағдарламалық кодты әзірлеуге, интерфейс мәтіндерін, аудармаларды, жаттығу сипаттамаларын, анықтаманы және заңдық құжат жобаларын дайындауға қолданылды. Бұл материалдың шығу тегін көрсетеді, оның дұрыстығына кепілдік емес. Мәтінді адам өңдеуі мүмкін, бірақ расталған тексеруге дейін оны жаттықтырушы, дәрігер, диетолог, заңгер не қазақ тілінің ана тілді маманы тексерді деп санауға болмайды.", "en": "AI assisted development of code, interface wording, translations, exercise descriptions, reference material and legal drafts. This describes origin, not guaranteed correctness. Human edits may occur, but absent confirmed review the material must not be represented as checked by a coach, physician, dietitian, lawyer or native Kazakh speaker."}},
-    {"heading": {"ru": "2. Как работают текущие рекомендации", "kk": "2. Ағымдағы ұсыныстар қалай жұмыс істейді", "en": "2. How current recommendations work"}, "body": {"ru": "Программы, расчётные веса, калории, готовность и прогноз в этой версии формируются детерминированными правилами и формулами в браузере. Приложение не ведёт чат с моделью и не отправляет ваши журналы в сервис ИИ для получения ответа. Метка «Алгоритмическая / AI-assisted» сообщает о правилах расчёта и AI-помощи при разработке; она не означает персональное заключение специалиста или работу врача в реальном времени.", "kk": "Бұл нұсқада жоспар, есептік салмақ, калория, дайындық және болжам браузердегі детерминді ережелер мен формулалар арқылы жасалады. Қолданба модельмен чат жүргізбейді және жауап алу үшін күнделіктеріңізді ЖИ сервисіне жібермейді. «Алгоритмдік / AI-assisted» белгісі есептеу ережелері мен әзірлеудегі ЖИ көмегін білдіреді; ол маманның жеке қорытындысы не дәрігердің нақты уақыттағы жұмысы емес.", "en": "Programs, loads, calories, readiness and forecasts use deterministic browser-side formulas/rules. This version does not chat with a model or send your journals to an AI service for answers. “Algorithmic / AI-assisted” labels describe calculation rules and development assistance, not a personal professional judgment or real-time clinical supervision."}},
-    {"heading": {"ru": "3. Ошибки и пределы", "kk": "3. Қателер және шектеулер", "en": "3. Errors and limits"}, "body": {"ru": "Ошибки возможны в коде, переводе, сведениях о пище, технике, ссылках и объяснениях. Модель прогноза не доказывает будущий результат; фильтр травм не доказывает безопасность движения. Проверяйте единицы, допущения, исходные записи и первоисточники. Не используйте расчёты как единственное основание для опасного решения, изменения лечения, экстремального питания или попытки максимального веса.", "kk": "Кодта, аудармада, тағам дерегінде, техникада, сілтеме мен түсіндіруде қате болуы мүмкін. Болжам моделі болашақ нәтижені дәлелдемейді; жарақат сүзгісі қозғалыстың қауіпсіздігін дәлелдемейді. Өлшемді, болжамды, бастапқы жазбаны және түпдеректі тексеріңіз. Есептеуді қауіпті шешімге, емді өзгертуге, шектен тыс диетаға немесе ең үлкен салмаққа әрекетке жалғыз негіз етпеңіз.", "en": "Code, translation, nutrition data, technique, references and explanations can be wrong. Forecasts do not establish future outcomes; injury filters do not establish movement safety. Check units, assumptions, records and primary sources. Do not use calculations as the sole basis for risky choices, treatment changes, extreme diets or maximal attempts."}},
-    {"heading": {"ru": "4. Объяснение и контроль", "kk": "4. Түсіндіру және бақылау", "en": "4. Explanation and control"}, "body": {"ru": "У рекомендации должны быть видимые исходные параметры и объяснение «почему я это вижу». Вы можете исправить записи, отказаться от предложенной прогрессии и выбрать отдых. Изменённые оператором правила должны документироваться, а существенно изменённая обработка — заново объясняться. Страница доказательств программы отделяет проверенные источники, ограничения и слабые сведения; количество ссылок не заменяет качество исследования.", "kk": "Ұсыныстың бастапқы параметрлері мен «мұны неге көріп тұрмын» түсіндірмесі көрінуі тиіс. Жазбаны түзетіп, ұсынылған ілгерілеуден бас тартып, демалысты таңдауға болады. Оператор өзгерткен ережелер құжатталуы, ал өңдеу елеулі өзгерсе қайта түсіндірілуі тиіс. Бағдарламаның дәлелдер беті тексерілген дереккөздерді, шектеулер мен әлсіз мәліметті бөледі; сілтеме саны зерттеу сапасын алмастырмайды.", "en": "Recommendations should expose their inputs and “why am I seeing this” explanation. You can correct records, decline progression and choose rest. Rule changes should be documented, and material processing changes explained again. Program evidence pages distinguish verified sources, limitations and weak information; reference count does not replace study quality."}},
-    {"heading": {"ru": "5. Как сообщить об ошибке", "kk": "5. Қатені қалай хабарлау керек", "en": "5. Reporting an error"}, "body": {"ru": "Сообщайте о неверном переводе, подозрительном источнике или опасной рекомендации на {{operator.legalEmail}}. Укажите раздел, язык, версию приложения, ожидаемое и фактическое поведение; по возможности приложите обезличенный пример. Не отправляйте дату рождения, видео, полный медицинский журнал или пароль. Экстренные симптомы требуют обращения за экстренной помощью, а не ожидания проверки ИИ-текста.", "kk": "Қате аударма, күмәнді дереккөз не қауіпті ұсыныс туралы {{operator.legalEmail}} мекенжайына хабарлаңыз. Бөлімді, тілді, қолданба нұсқасын, күтілген және нақты әрекетті көрсетіп, мүмкін болса тұлғасыздандырылған мысал қосыңыз. Туған күнді, бейнені, толық медициналық күнделікті немесе құпиясөзді жібермеңіз. Шұғыл белгі болса ЖИ мәтінінің тексерілуін күтпей, жедел көмекке жүгініңіз.", "en": "Report mistranslation, questionable sources or unsafe suggestions to {{operator.legalEmail}}. Include section, language, app version, expected/actual behavior and preferably a de-identified example. Do not send birth date, videos, full medical logs or passwords. Emergency symptoms need emergency help, not an AI-text review."}}
+    {
+      "heading": {
+        "ru": "Проверка перед публикацией",
+        "kk": "Жариялау алдындағы тексеру",
+        "en": "Review before publication"
+      },
+      "body": {
+        "ru": "Текст подготовлен с помощью ИИ и требует проверки квалифицированным юристом Республики Казахстан. Казахская версия дополнительно требует проверки носителем языка. До заполнения реквизитов, проверки переводов и подтверждения применимого права документ не предназначен для производственного запуска. Дата вступления в силу после проверки: {{effectiveDate}}.",
+        "kk": "Мәтін ЖИ көмегімен әзірленді және оны Қазақстан Республикасының білікті заңгері тексеруі керек. Қазақша нұсқаны қосымша ана тілі қазақ тілі болып табылатын маман тексеруі керек. Деректемелер толтырылып, аудармалар мен қолданылатын құқық тексерілгенге дейін құжат өндірістік іске қосуға арналмаған. Тексеруден кейін күшіне енетін күні: {{effectiveDate}}.",
+        "en": "This AI-assisted text requires review by a qualified Kazakhstan lawyer. The Kazakh version additionally requires native-speaker review. It is not ready for production release until operator details, translations and applicable-law decisions have been checked. Effective date after review: {{effectiveDate}}."
+      }
+    },
+    {
+      "heading": {
+        "ru": "1. Где применялась помощь ИИ",
+        "kk": "1. ЖИ көмегі қайда қолданылды",
+        "en": "1. Where AI assistance was used"
+      },
+      "body": {
+        "ru": "ИИ использовался при разработке программного кода, подготовке интерфейсных текстов, переводов, описаний упражнений, справки и проектов юридических документов. Это происхождение материала, а не гарантия его правильности. Тексты могли редактироваться человеком, но до подтверждённой проверки нельзя считать их проверенными тренером, врачом, диетологом, юристом или носителем казахского языка.",
+        "kk": "ЖИ бағдарламалық кодты әзірлеуге, интерфейс мәтіндерін, аудармаларды, жаттығу сипаттамаларын, анықтаманы және заңдық құжат жобаларын дайындауға қолданылды. Бұл материалдың шығу тегін көрсетеді, оның дұрыстығына кепілдік емес. Мәтінді адам өңдеуі мүмкін, бірақ расталған тексеруге дейін оны жаттықтырушы, дәрігер, диетолог, заңгер не қазақ тілінің ана тілді маманы тексерді деп санауға болмайды.",
+        "en": "AI assisted development of code, interface wording, translations, exercise descriptions, reference material and legal drafts. This describes origin, not guaranteed correctness. Human edits may occur, but absent confirmed review the material must not be represented as checked by a coach, physician, dietitian, lawyer or native Kazakh speaker."
+      }
+    },
+    {
+      "heading": {
+        "ru": "2. Как работают текущие рекомендации",
+        "kk": "2. Ағымдағы ұсыныстар қалай жұмыс істейді",
+        "en": "2. How current recommendations work"
+      },
+      "body": {
+        "ru": "Программы, расчётные веса, калории, готовность и прогноз в этой версии формируются детерминированными правилами и формулами в браузере. Приложение не ведёт чат с моделью и не отправляет ваши журналы в сервис ИИ для получения ответа. Метка «Алгоритмическая / AI-assisted» сообщает о правилах расчёта и AI-помощи при разработке; она не означает персональное заключение специалиста или работу врача в реальном времени.",
+        "kk": "Бұл нұсқада жоспар, есептік салмақ, калория, дайындық және болжам браузердегі детерминді ережелер мен формулалар арқылы жасалады. Қолданба модельмен чат жүргізбейді және жауап алу үшін күнделіктеріңізді ЖИ сервисіне жібермейді. «Алгоритмдік / AI-assisted» белгісі есептеу ережелері мен әзірлеудегі ЖИ көмегін білдіреді; ол маманның жеке қорытындысы не дәрігердің нақты уақыттағы жұмысы емес.",
+        "en": "Programs, loads, calories, readiness and forecasts use deterministic browser-side formulas/rules. This version does not chat with a model or send your journals to an AI service for answers. “Algorithmic / AI-assisted” labels describe calculation rules and development assistance, not a personal professional judgment or real-time clinical supervision."
+      }
+    },
+    {
+      "heading": {
+        "ru": "3. Ошибки и пределы",
+        "kk": "3. Қателер және шектеулер",
+        "en": "3. Errors and limits"
+      },
+      "body": {
+        "ru": "Ошибки возможны в коде, переводе, сведениях о пище, технике, ссылках и объяснениях. Модель прогноза не доказывает будущий результат; фильтр травм не доказывает безопасность движения. Проверяйте единицы, допущения, исходные записи и первоисточники. Не используйте расчёты как единственное основание для опасного решения, изменения лечения, экстремального питания или попытки максимального веса.",
+        "kk": "Кодта, аудармада, тағам дерегінде, техникада, сілтеме мен түсіндіруде қате болуы мүмкін. Болжам моделі болашақ нәтижені дәлелдемейді; жарақат сүзгісі қозғалыстың қауіпсіздігін дәлелдемейді. Өлшемді, болжамды, бастапқы жазбаны және түпдеректі тексеріңіз. Есептеуді қауіпті шешімге, емді өзгертуге, шектен тыс диетаға немесе ең үлкен салмаққа әрекетке жалғыз негіз етпеңіз.",
+        "en": "Code, translation, nutrition data, technique, references and explanations can be wrong. Forecasts do not establish future outcomes; injury filters do not establish movement safety. Check units, assumptions, records and primary sources. Do not use calculations as the sole basis for risky choices, treatment changes, extreme diets or maximal attempts."
+      }
+    },
+    {
+      "heading": {
+        "ru": "4. Объяснение и контроль",
+        "kk": "4. Түсіндіру және бақылау",
+        "en": "4. Explanation and control"
+      },
+      "body": {
+        "ru": "У рекомендации должны быть видимые исходные параметры и объяснение «почему я это вижу». Вы можете исправить записи, отказаться от предложенной прогрессии и выбрать отдых. Изменённые оператором правила должны документироваться, а существенно изменённая обработка — заново объясняться. Страница доказательств программы отделяет проверенные источники, ограничения и слабые сведения; количество ссылок не заменяет качество исследования.",
+        "kk": "Ұсыныстың бастапқы параметрлері мен «мұны неге көріп тұрмын» түсіндірмесі көрінуі тиіс. Жазбаны түзетіп, ұсынылған ілгерілеуден бас тартып, демалысты таңдауға болады. Оператор өзгерткен ережелер құжатталуы, ал өңдеу елеулі өзгерсе қайта түсіндірілуі тиіс. Бағдарламаның дәлелдер беті тексерілген дереккөздерді, шектеулер мен әлсіз мәліметті бөледі; сілтеме саны зерттеу сапасын алмастырмайды.",
+        "en": "Recommendations should expose their inputs and “why am I seeing this” explanation. You can correct records, decline progression and choose rest. Rule changes should be documented, and material processing changes explained again. Program evidence pages distinguish verified sources, limitations and weak information; reference count does not replace study quality."
+      }
+    },
+    {
+      "heading": {
+        "ru": "5. Как сообщить об ошибке",
+        "kk": "5. Қатені қалай хабарлау керек",
+        "en": "5. Reporting an error"
+      },
+      "body": {
+        "ru": "Сообщайте о неверном переводе, подозрительном источнике или опасной рекомендации на {{operator.legalEmail}}. Укажите раздел, язык, версию приложения, ожидаемое и фактическое поведение; по возможности приложите обезличенный пример. Не отправляйте дату рождения, видео, полный медицинский журнал или пароль. Экстренные симптомы требуют обращения за экстренной помощью, а не ожидания проверки ИИ-текста.",
+        "kk": "Қате аударма, күмәнді дереккөз не қауіпті ұсыныс туралы {{operator.legalEmail}} мекенжайына хабарлаңыз. Бөлімді, тілді, қолданба нұсқасын, күтілген және нақты әрекетті көрсетіп, мүмкін болса тұлғасыздандырылған мысал қосыңыз. Туған күнді, бейнені, толық медициналық күнделікті немесе құпиясөзді жібермеңіз. Шұғыл белгі болса ЖИ мәтінінің тексерілуін күтпей, жедел көмекке жүгініңіз.",
+        "en": "Report mistranslation, questionable sources or unsafe suggestions to {{operator.legalEmail}}. Include section, language, app version, expected/actual behavior and preferably a de-identified example. Do not send birth date, videos, full medical logs or passwords. Emergency symptoms need emergency help, not an AI-text review."
+      }
+    }
   ]
 }

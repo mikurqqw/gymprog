@@ -1,1 +1,63 @@
-export function BarbellArt(){return <svg className="barbell-art" viewBox="0 0 520 330" aria-hidden="true"><defs><linearGradient id="plate" x1="0" x2="1"><stop stopColor="#333c2d"/><stop offset=".48" stopColor="#1c2218"/><stop offset="1" stopColor="#080b07"/></linearGradient><linearGradient id="steel"><stop stopColor="#333d2b"/><stop offset=".5" stopColor="#bec9ae"/><stop offset="1" stopColor="#343e2d"/></linearGradient><radialGradient id="halo"><stop stopColor="#bedc91" stopOpacity=".2"/><stop offset="1" stopColor="#bedc91" stopOpacity="0"/></radialGradient></defs><ellipse cx="290" cy="180" rx="220" ry="160" fill="url(#halo)"/><g transform="translate(255 170) rotate(-31)"><rect x="-230" y="-9" width="460" height="18" rx="4" fill="url(#steel)"/>{[-1,1].map(side=><g key={side} transform={`scale(${side} 1)`}><rect x="108" y="-104" width="30" height="208" rx="10" fill="url(#plate)" stroke="#535d47"/><rect x="142" y="-89" width="25" height="178" rx="7" fill="url(#plate)" stroke="#535d47"/><rect x="171" y="-68" width="21" height="136" rx="6" fill="url(#plate)" stroke="#535d47"/><rect x="196" y="-22" width="10" height="44" rx="3" fill="#97a482"/><path d="M116-86v172m35-156v140m28-119v98" stroke="#a6ba88" strokeOpacity=".25"/></g>)}<path d="M-94-5h188M-94 5h188" stroke="#deedcc" strokeOpacity=".35" strokeDasharray="2 4"/></g><text x="440" y="287" fill="#bfcead" opacity=".4" fontSize="10" letterSpacing="4">20 KG</text></svg>;}
+export function BarbellArt() {
+  return (
+    <svg className="barbell-art" viewBox="0 0 520 330" aria-hidden="true">
+      <defs>
+        <linearGradient id="plate" x1="0" x2="1">
+          <stop stopColor="#333c2d" />
+          <stop offset=".48" stopColor="#1c2218" />
+          <stop offset="1" stopColor="#080b07" />
+        </linearGradient>
+        <linearGradient id="steel">
+          <stop stopColor="#333d2b" />
+          <stop offset=".5" stopColor="#bec9ae" />
+          <stop offset="1" stopColor="#343e2d" />
+        </linearGradient>
+        <radialGradient id="halo">
+          <stop stopColor="#bedc91" stopOpacity=".2" />
+          <stop offset="1" stopColor="#bedc91" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <ellipse cx="290" cy="180" rx="220" ry="160" fill="url(#halo)" />
+      <g transform="translate(255 170) rotate(-31)">
+        <rect x="-230" y="-9" width="460" height="18" rx="4" fill="url(#steel)" />
+        {[-1, 1].map((side) => (
+          <g key={side} transform={`scale(${side} 1)`}>
+            <rect
+              x="108"
+              y="-104"
+              width="30"
+              height="208"
+              rx="10"
+              fill="url(#plate)"
+              stroke="#535d47"
+            />
+            <rect
+              x="142"
+              y="-89"
+              width="25"
+              height="178"
+              rx="7"
+              fill="url(#plate)"
+              stroke="#535d47"
+            />
+            <rect
+              x="171"
+              y="-68"
+              width="21"
+              height="136"
+              rx="6"
+              fill="url(#plate)"
+              stroke="#535d47"
+            />
+            <rect x="196" y="-22" width="10" height="44" rx="3" fill="#97a482" />
+            <path d="M116-86v172m35-156v140m28-119v98" stroke="#a6ba88" strokeOpacity=".25" />
+          </g>
+        ))}
+        <path d="M-94-5h188M-94 5h188" stroke="#deedcc" strokeOpacity=".35" strokeDasharray="2 4" />
+      </g>
+      <text x="440" y="287" fill="#bfcead" opacity=".4" fontSize="10" letterSpacing="4">
+        20 KG
+      </text>
+    </svg>
+  );
+}

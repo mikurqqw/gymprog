@@ -1,14 +1,82 @@
 {
   "id": "accessibility",
-  "title": {"ru": "Заявление о доступности", "kk": "Қолжетімділік туралы мәлімдеме", "en": "Accessibility Statement"},
+  "title": {
+    "ru": "Заявление о доступности",
+    "kk": "Қолжетімділік туралы мәлімдеме",
+    "en": "Accessibility Statement"
+  },
   "requiresReview": true,
-  "sources": [{"title": "W3C — Web Content Accessibility Guidelines 2.2", "url": "https://www.w3.org/TR/WCAG22/", "checkedOn": "2026-11-15"}],
+  "sources": [
+    {
+      "title": "W3C — Web Content Accessibility Guidelines 2.2",
+      "url": "https://www.w3.org/TR/WCAG22/",
+      "checkedOn": "2026-11-15"
+    }
+  ],
   "sections": [
-    {"heading": {"ru": "Проверка перед публикацией", "kk": "Жариялау алдындағы тексеру", "en": "Review before publication"}, "body": {"ru": "Текст подготовлен с помощью ИИ и требует проверки квалифицированным юристом Республики Казахстан. Казахская версия дополнительно требует проверки носителем языка. До заполнения реквизитов, проверки переводов и подтверждения применимого права документ не предназначен для производственного запуска. Дата вступления в силу после проверки: {{effectiveDate}}.", "kk": "Мәтін ЖИ көмегімен әзірленді және оны Қазақстан Республикасының білікті заңгері тексеруі керек. Қазақша нұсқаны қосымша ана тілі қазақ тілі болып табылатын маман тексеруі керек. Деректемелер толтырылып, аудармалар мен қолданылатын құқық тексерілгенге дейін құжат өндірістік іске қосуға арналмаған. Тексеруден кейін күшіне енетін күні: {{effectiveDate}}.", "en": "This AI-assisted text requires review by a qualified Kazakhstan lawyer. The Kazakh version additionally requires native-speaker review. It is not ready for production release until operator details, translations and applicable-law decisions have been checked. Effective date after review: {{effectiveDate}}."}},
-    {"heading": {"ru": "1. Подход", "kk": "1. Тәсіл", "en": "1. Approach"}, "body": {"ru": "IronCycle разрабатывается с ориентиром на WCAG 2.2 уровня AA и использование с клавиатурой, сенсорным экраном и вспомогательными технологиями. Это заявление о подходе и доступных механизмах, а не независимый сертификат полного соответствия. Автоматический аудит не заменяет ручную проверку, особенно для сложного конструктора, графиков, переводов и стороннего медиаплеера. Подтверждённые результаты относятся только к указанной версии и среде в отчёте проверки.", "kk": "IronCycle WCAG 2.2 AA деңгейін және пернетақта, сенсорлық экран мен көмекші технологияларды пайдалану мүмкіндігін бағдарға алады. Бұл — тәсіл мен қолжетімді тетіктер туралы мәлімдеме, толық сәйкестіктің тәуелсіз сертификаты емес. Автоматты аудит әсіресе күрделі құрастырушы, график, аударма және сыртқы плеер үшін қолмен тексеруді алмастырмайды. Расталған нәтиже тек тексеру есебінде көрсетілген нұсқа мен ортаға қатысты.", "en": "IronCycle targets WCAG 2.2 AA and keyboard, touch and assistive-technology use. This describes the approach and available mechanisms, not independent certification of full conformance. Automated audits do not replace manual testing, particularly for the builder, charts, translations and third-party players. Verified results apply only to the version/environment named in the validation report."}},
-    {"heading": {"ru": "2. Навигация и ввод", "kk": "2. Навигация және енгізу", "en": "2. Navigation and input"}, "body": {"ru": "Используйте Tab и Shift+Tab для перехода, Enter или пробел для доступных кнопок и обычные клавиши управления полями. Видимый фокус должен сохраняться; действия не должны требовать только цвета, наведения или точного перетаскивания. Для изменения порядка в конструкторе предусмотрите кнопки как альтернативу жесту. Неверное значение должно сопровождаться объяснением, а удаление — понятным подтверждением. При недоступном элементе не нужно обходить блокировку безопасности.", "kk": "Өту үшін Tab және Shift+Tab, қолжетімді батырмаға Enter не бос орын, өрістерге әдеттегі басқару пернелерін пайдаланыңыз. Көрінетін фокус сақталуы тиіс; әрекет тек түске, меңзер апаруға не дәл сүйреуге тәуелді болмауы керек. Құрастырушыда ретті ауыстыруға қимылдан бөлек батырма баламасы қарастырылады. Қате мән түсіндіріліп, жою анық расталуы тиіс. Элемент қолжетімсіз болса қауіпсіздік бұғатын айналып өтудің қажеті жоқ.", "en": "Use Tab/Shift+Tab to navigate, Enter/Space for available buttons and normal form-control keys. Focus should remain visible; actions should not depend solely on color, hover or precise dragging. Builder reordering should offer buttons as a gesture alternative. Invalid values should have an explanation and deletion a clear confirmation. An unavailable element is not a reason to bypass safety gating."}},
-    {"heading": {"ru": "3. Отображение и альтернативы", "kk": "3. Көрсету және баламалар", "en": "3. Presentation and alternatives"}, "body": {"ru": "Доступны светлая и тёмная темы, адаптивная вёрстка и уменьшение движения с учётом настройки устройства. Масштаб браузера не следует блокировать. Техника упражнений описывается текстом независимо от наличия видео. Числа графиков должны иметь текстовое или табличное представление, а существенные предупреждения — понятный текст, не только иконку. Печатная версия дня тренировки не должна включать приватные сведения, которые вы не выбрали печатать.", "kk": "Ашық және күңгірт тақырып, бейімделетін беттеу және құрылғы параметріне сай қозғалысты азайту қолжетімді. Браузер масштабын бұғаттамау керек. Бейне бар-жоғына қарамастан жаттығу техникасы мәтінмен сипатталады. График сандары мәтін не кесте түрінде, ал маңызды ескерту тек белгішемен емес, түсінікті мәтінмен берілуі тиіс. Жаттығу күнінің баспа нұсқасына өзіңіз таңдамаған құпия мәлімет кірмеуі керек.", "en": "Light/dark themes, responsive layout and device reduced-motion preferences are supported. Browser zoom should not be blocked. Technique has text guidance whether or not video exists. Chart figures should have text/tabular alternatives and important warnings readable text, not icons alone. A workout-day print view must not include private information you did not choose to print."}},
-    {"heading": {"ru": "4. Известные ограничения", "kk": "4. Белгілі шектеулер", "en": "4. Known limitations"}, "body": {"ru": "Казахские медицинские и юридические переводы требуют проверки носителем языка и юристом. Качество субтитров и доступность выбранного внешнего YouTube-видео зависят от правообладателя и провайдера; при их отсутствии используйте текстовую технику. Поведение экранных дикторов, клавиатур, PWA и печати может различаться между браузерами. Не заявляется, что все комбинации устройств и вспомогательных технологий проверены; актуальная матрица и обнаруженные ограничения должны публиковаться в отчёте проверки.", "kk": "Қазақша медициналық және заңдық аудармаларды ана тілді маман мен заңгер тексеруі керек. Таңдалған сыртқы YouTube бейнесінің субтитрі мен қолжетімділігі құқық иесі мен жеткізушіге байланысты; олар болмаса мәтіндік техниканы пайдаланыңыз. Экран дикторы, пернетақта, PWA және баспа әрекеті браузерге қарай өзгеруі мүмкін. Құрылғы мен көмекші технологияның барлық үйлесімі тексерілді деп мәлімделмейді; ағымдағы матрица мен анықталған шектеулер тексеру есебінде берілуі тиіс.", "en": "Kazakh medical/legal translations need native-speaker and lawyer review. Captions/accessibility of chosen external YouTube media depend on its rights holder/provider; use text technique if unavailable. Screen readers, keyboards, PWA and printing may differ across browsers. Not every device/assistive-technology combination is claimed tested; the current matrix and known issues should be recorded in validation results."}},
-    {"heading": {"ru": "5. Обратная связь", "kk": "5. Кері байланыс", "en": "5. Feedback"}, "body": {"ru": "Если не удаётся прочитать информацию или выполнить действие, сообщите на {{operator.legalEmail}} язык, раздел, браузер, размер экрана и используемую вспомогательную технологию, если это удобно. Опишите цель и барьер; не отправляйте диагнозы и полный журнал ради технической заявки. Можно попросить понятную текстовую альтернативу. Этот канал не является экстренной медицинской помощью, а срок ответа не гарантируется до настройки реального контакта.", "kk": "Ақпаратты оқу не әрекетті орындау мүмкін болмаса, {{operator.legalEmail}} мекенжайына тілді, бөлімді, браузерді, экран өлшемін және ыңғайлы болса көмекші технологияны жазыңыз. Мақсат пен кедергіні сипаттаңыз; техникалық өтініш үшін диагноз бен толық күнделік жібермеңіз. Түсінікті мәтіндік балама сұрауға болады. Бұл арна шұғыл медициналық көмек емес, ал нақты байланыс бапталмайынша жауап мерзімі кепілдендірілмейді.", "en": "If information or an action is inaccessible, contact {{operator.legalEmail}} with language, section, browser, screen size and assistive technology if comfortable. Explain the goal/barrier without diagnoses or full logs for a technical ticket. You may request a clear text alternative. This is not emergency medical care; no response deadline is promised before a real contact is configured."}}
+    {
+      "heading": {
+        "ru": "Проверка перед публикацией",
+        "kk": "Жариялау алдындағы тексеру",
+        "en": "Review before publication"
+      },
+      "body": {
+        "ru": "Текст подготовлен с помощью ИИ и требует проверки квалифицированным юристом Республики Казахстан. Казахская версия дополнительно требует проверки носителем языка. До заполнения реквизитов, проверки переводов и подтверждения применимого права документ не предназначен для производственного запуска. Дата вступления в силу после проверки: {{effectiveDate}}.",
+        "kk": "Мәтін ЖИ көмегімен әзірленді және оны Қазақстан Республикасының білікті заңгері тексеруі керек. Қазақша нұсқаны қосымша ана тілі қазақ тілі болып табылатын маман тексеруі керек. Деректемелер толтырылып, аудармалар мен қолданылатын құқық тексерілгенге дейін құжат өндірістік іске қосуға арналмаған. Тексеруден кейін күшіне енетін күні: {{effectiveDate}}.",
+        "en": "This AI-assisted text requires review by a qualified Kazakhstan lawyer. The Kazakh version additionally requires native-speaker review. It is not ready for production release until operator details, translations and applicable-law decisions have been checked. Effective date after review: {{effectiveDate}}."
+      }
+    },
+    {
+      "heading": { "ru": "1. Подход", "kk": "1. Тәсіл", "en": "1. Approach" },
+      "body": {
+        "ru": "IronCycle разрабатывается с ориентиром на WCAG 2.2 уровня AA и использование с клавиатурой, сенсорным экраном и вспомогательными технологиями. Это заявление о подходе и доступных механизмах, а не независимый сертификат полного соответствия. Автоматический аудит не заменяет ручную проверку, особенно для сложного конструктора, графиков, переводов и стороннего медиаплеера. Подтверждённые результаты относятся только к указанной версии и среде в отчёте проверки.",
+        "kk": "IronCycle WCAG 2.2 AA деңгейін және пернетақта, сенсорлық экран мен көмекші технологияларды пайдалану мүмкіндігін бағдарға алады. Бұл — тәсіл мен қолжетімді тетіктер туралы мәлімдеме, толық сәйкестіктің тәуелсіз сертификаты емес. Автоматты аудит әсіресе күрделі құрастырушы, график, аударма және сыртқы плеер үшін қолмен тексеруді алмастырмайды. Расталған нәтиже тек тексеру есебінде көрсетілген нұсқа мен ортаға қатысты.",
+        "en": "IronCycle targets WCAG 2.2 AA and keyboard, touch and assistive-technology use. This describes the approach and available mechanisms, not independent certification of full conformance. Automated audits do not replace manual testing, particularly for the builder, charts, translations and third-party players. Verified results apply only to the version/environment named in the validation report."
+      }
+    },
+    {
+      "heading": {
+        "ru": "2. Навигация и ввод",
+        "kk": "2. Навигация және енгізу",
+        "en": "2. Navigation and input"
+      },
+      "body": {
+        "ru": "Используйте Tab и Shift+Tab для перехода, Enter или пробел для доступных кнопок и обычные клавиши управления полями. Видимый фокус должен сохраняться; действия не должны требовать только цвета, наведения или точного перетаскивания. Для изменения порядка в конструкторе предусмотрите кнопки как альтернативу жесту. Неверное значение должно сопровождаться объяснением, а удаление — понятным подтверждением. При недоступном элементе не нужно обходить блокировку безопасности.",
+        "kk": "Өту үшін Tab және Shift+Tab, қолжетімді батырмаға Enter не бос орын, өрістерге әдеттегі басқару пернелерін пайдаланыңыз. Көрінетін фокус сақталуы тиіс; әрекет тек түске, меңзер апаруға не дәл сүйреуге тәуелді болмауы керек. Құрастырушыда ретті ауыстыруға қимылдан бөлек батырма баламасы қарастырылады. Қате мән түсіндіріліп, жою анық расталуы тиіс. Элемент қолжетімсіз болса қауіпсіздік бұғатын айналып өтудің қажеті жоқ.",
+        "en": "Use Tab/Shift+Tab to navigate, Enter/Space for available buttons and normal form-control keys. Focus should remain visible; actions should not depend solely on color, hover or precise dragging. Builder reordering should offer buttons as a gesture alternative. Invalid values should have an explanation and deletion a clear confirmation. An unavailable element is not a reason to bypass safety gating."
+      }
+    },
+    {
+      "heading": {
+        "ru": "3. Отображение и альтернативы",
+        "kk": "3. Көрсету және баламалар",
+        "en": "3. Presentation and alternatives"
+      },
+      "body": {
+        "ru": "Доступны светлая и тёмная темы, адаптивная вёрстка и уменьшение движения с учётом настройки устройства. Масштаб браузера не следует блокировать. Техника упражнений описывается текстом независимо от наличия видео. Числа графиков должны иметь текстовое или табличное представление, а существенные предупреждения — понятный текст, не только иконку. Печатная версия дня тренировки не должна включать приватные сведения, которые вы не выбрали печатать.",
+        "kk": "Ашық және күңгірт тақырып, бейімделетін беттеу және құрылғы параметріне сай қозғалысты азайту қолжетімді. Браузер масштабын бұғаттамау керек. Бейне бар-жоғына қарамастан жаттығу техникасы мәтінмен сипатталады. График сандары мәтін не кесте түрінде, ал маңызды ескерту тек белгішемен емес, түсінікті мәтінмен берілуі тиіс. Жаттығу күнінің баспа нұсқасына өзіңіз таңдамаған құпия мәлімет кірмеуі керек.",
+        "en": "Light/dark themes, responsive layout and device reduced-motion preferences are supported. Browser zoom should not be blocked. Technique has text guidance whether or not video exists. Chart figures should have text/tabular alternatives and important warnings readable text, not icons alone. A workout-day print view must not include private information you did not choose to print."
+      }
+    },
+    {
+      "heading": {
+        "ru": "4. Известные ограничения",
+        "kk": "4. Белгілі шектеулер",
+        "en": "4. Known limitations"
+      },
+      "body": {
+        "ru": "Казахские медицинские и юридические переводы требуют проверки носителем языка и юристом. Качество субтитров и доступность выбранного внешнего YouTube-видео зависят от правообладателя и провайдера; при их отсутствии используйте текстовую технику. Поведение экранных дикторов, клавиатур, PWA и печати может различаться между браузерами. Не заявляется, что все комбинации устройств и вспомогательных технологий проверены; актуальная матрица и обнаруженные ограничения должны публиковаться в отчёте проверки.",
+        "kk": "Қазақша медициналық және заңдық аудармаларды ана тілді маман мен заңгер тексеруі керек. Таңдалған сыртқы YouTube бейнесінің субтитрі мен қолжетімділігі құқық иесі мен жеткізушіге байланысты; олар болмаса мәтіндік техниканы пайдаланыңыз. Экран дикторы, пернетақта, PWA және баспа әрекеті браузерге қарай өзгеруі мүмкін. Құрылғы мен көмекші технологияның барлық үйлесімі тексерілді деп мәлімделмейді; ағымдағы матрица мен анықталған шектеулер тексеру есебінде берілуі тиіс.",
+        "en": "Kazakh medical/legal translations need native-speaker and lawyer review. Captions/accessibility of chosen external YouTube media depend on its rights holder/provider; use text technique if unavailable. Screen readers, keyboards, PWA and printing may differ across browsers. Not every device/assistive-technology combination is claimed tested; the current matrix and known issues should be recorded in validation results."
+      }
+    },
+    {
+      "heading": { "ru": "5. Обратная связь", "kk": "5. Кері байланыс", "en": "5. Feedback" },
+      "body": {
+        "ru": "Если не удаётся прочитать информацию или выполнить действие, сообщите на {{operator.legalEmail}} язык, раздел, браузер, размер экрана и используемую вспомогательную технологию, если это удобно. Опишите цель и барьер; не отправляйте диагнозы и полный журнал ради технической заявки. Можно попросить понятную текстовую альтернативу. Этот канал не является экстренной медицинской помощью, а срок ответа не гарантируется до настройки реального контакта.",
+        "kk": "Ақпаратты оқу не әрекетті орындау мүмкін болмаса, {{operator.legalEmail}} мекенжайына тілді, бөлімді, браузерді, экран өлшемін және ыңғайлы болса көмекші технологияны жазыңыз. Мақсат пен кедергіні сипаттаңыз; техникалық өтініш үшін диагноз бен толық күнделік жібермеңіз. Түсінікті мәтіндік балама сұрауға болады. Бұл арна шұғыл медициналық көмек емес, ал нақты байланыс бапталмайынша жауап мерзімі кепілдендірілмейді.",
+        "en": "If information or an action is inaccessible, contact {{operator.legalEmail}} with language, section, browser, screen size and assistive technology if comfortable. Explain the goal/barrier without diagnoses or full logs for a technical ticket. You may request a clear text alternative. This is not emergency medical care; no response deadline is promised before a real contact is configured."
+      }
+    }
   ]
 }

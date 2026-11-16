@@ -1,13 +1,163 @@
 import type { Profile } from '../lib/schema';
-type Text={ru:string;kk:string;en:string};
-type Offer={goal:Profile['goal'];group:'general'|'specialist';description:Text;audience:Text;focus:Text};
-export const programOffers:Offer[]=[
- {goal:'fitness',group:'general',description:{ru:'Сделай занятия понятной частью недели.',kk:'Жаттығуды аптаның түсінікті бөлігіне айналдырыңыз.',en:'Make training a clear part of your week.'},audience:{ru:'Для взрослых, которым нужна структура общих силовых и аэробных занятий; техника осваивается отдельно.',kk:'Жалпы күш және аэробтық жаттығу құрылымы қажет ересектерге; техника бөлек үйретіледі.',en:'Adults who want structure for general strength and aerobic exercise; learn technique separately.'},focus:{ru:'Основные движения · умеренная аэробная работа',kk:'Негізгі қимылдар · орташа аэробтық жұмыс',en:'Main movement patterns · moderate aerobic work'}},
- {goal:'strength',group:'general',description:{ru:'Последовательная работа над базовыми движениями.',kk:'Негізгі қимылдармен жүйелі жұмыс.',en:'Consistent practice of the main lifts.'},audience:{ru:'Для тех, кто знаком с техникой базовых движений и хочет планировать силовую нагрузку.',kk:'Негізгі қимылдар техникасын білетін және күш жүктемесін жоспарлағысы келетіндерге.',en:'People familiar with basic lifting technique who want a structured strength plan.'},focus:{ru:'Присед · жим · тяга · вспомогательные упражнения',kk:'Отырып тұру · сығымдау · тарту · қосымша жаттығулар',en:'Squat · press · hinge · assistance'}},
- {goal:'bodybuilding',group:'general',description:{ru:'Мышечные группы, объём и восстановление — в одном цикле.',kk:'Бұлшықет топтары, көлем және қалпына келу — бір циклде.',en:'Muscle groups, volume and recovery in one cycle.'},audience:{ru:'Для знакомых с залом взрослых, которым нужен план работы над мышечной массой без обещаний фиксированного результата.',kk:'Залмен таныс, нақты нәтижеге уәдесіз бұлшықет көлемімен жұмыс жоспары қажет ересектерге.',en:'Adults familiar with the gym who want a muscle-building structure, without promises of fixed results.'},focus:{ru:'Объём по мышечным группам · контроль переносимости',kk:'Бұлшықет топтары бойынша көлем · жүктемені бақылау',en:'Volume by muscle group · tolerance tracking'}},
- {goal:'powerlifting',group:'general',description:{ru:'Восемь недель вокруг трёх соревновательных движений.',kk:'Үш жарыс қимылы негізіндегі сегіз апта.',en:'Eight weeks built around the three competition lifts.'},audience:{ru:'Для тренирующихся с опытом приседа, жима и тяги. Нужны известные текущие силовые показатели; программа не предназначена для первого знакомства со штангой.',kk:'Отырып тұру, сығымдау және тарту тәжірибесі барларға. Ағымдағы күш көрсеткіштері қажет; бағдарлама штангамен алғаш танысуға арналмаған.',en:'Lifters experienced in squat, bench and deadlift, with known current strength values. Not a first introduction to barbell training.'},focus:{ru:'3 тренировки в неделю · разгрузка · подводка',kk:'Аптасына 3 жаттығу · жеңілдету · дайындық',en:'3 sessions per week · deload · taper'}},
- {goal:'fatloss',group:'general',description:{ru:'Сохраняй структуру силовых при контроле массы тела.',kk:'Салмақты бақылау кезінде күш жаттығуларының құрылымын сақтаңыз.',en:'Keep strength training structured during weight management.'},audience:{ru:'Для взрослых, которым нужен план занятий при контроле массы тела. Питание и допустимость дефицита зависят от здоровья; снижение веса не гарантируется.',kk:'Салмақты бақылау кезінде жаттығу жоспары қажет ересектерге. Тамақтану мен тапшылыққа рұқсат денсаулыққа байланысты; салмақ азаюына кепілдік жоқ.',en:'Adults seeking a training structure during weight management. Diet and deficit suitability depend on health; weight loss is not guaranteed.'},focus:{ru:'Силовая работа · посильное кардио · дневник питания',kk:'Күш жұмысы · қолжетімді кардио · тағам күнделігі',en:'Resistance work · tolerable cardio · food log'}},
- {goal:'arms',group:'specialist',description:{ru:'Дополнительный акцент на руки внутри силового плана.',kk:'Күш жоспары ішінде қолға қосымша назар.',en:'An arm-training emphasis within a resistance plan.'},audience:{ru:'Для знакомых с техникой взрослых, которым нужен акцент на сгибатели и разгибатели локтя без отказа от остальных движений.',kk:'Техниканы білетін, басқа қимылдардан бас тартпай шынтақ бүккіштері мен жазғыштарына назар аударғысы келетін ересектерге.',en:'Adults familiar with technique who want an elbow-flexor and extensor emphasis alongside other movements.'},focus:{ru:'Бицепс · трицепс · баланс недельного объёма',kk:'Бицепс · трицепс · апталық көлем теңгерімі',en:'Biceps · triceps · weekly volume balance'}},
- {goal:'armwrestling',group:'specialist',description:{ru:'Специальные движения с особым вниманием к ограничениям.',kk:'Шектеулерге ерекше назар аударатын арнайы қимылдар.',en:'Specialist movements with explicit attention to restrictions.'},audience:{ru:'Для имеющих опыт армрестлинга. Не обучение борьбе и не реабилитация; специфические нагрузки требуют контроля квалифицированного тренера.',kk:'Қол күресі тәжірибесі барларға. Күресті үйрету не оңалту емес; арнайы жүктемелер білікті жаттықтырушы бақылауын қажет етеді.',en:'For people with arm-wrestling experience. Not combat instruction or rehabilitation; specialist loads need a qualified coach.'},focus:{ru:'Пронация · кисть · контроль RPE',kk:'Пронация · білек · RPE бақылауы',en:'Pronation · wrist work · RPE control'}},
- {goal:'custom',group:'specialist',description:{ru:'Собери свой цикл из сохранённых инструментов.',kk:'Сақталған құралдармен өз цикліңізді құрыңыз.',en:'Build your own cycle with the full editor.'},audience:{ru:'Для пользователей и тренеров, которые умеют самостоятельно оценивать объём, технику и ограничения нагрузки.',kk:'Көлемді, техниканы және жүктеме шектеулерін өздері бағалай алатын пайдаланушылар мен жаттықтырушыларға.',en:'Users and coaches who can independently assess training volume, technique and loading restrictions.'},focus:{ru:'Полный конструктор · импорт и экспорт JSON',kk:'Толық құрастырушы · JSON импорттау және экспорттау',en:'Full editor · JSON import and export'}},
+type Text = { ru: string; kk: string; en: string };
+type Offer = {
+  goal: Profile['goal'];
+  group: 'general' | 'specialist';
+  description: Text;
+  audience: Text;
+  focus: Text;
+};
+export const programOffers: Offer[] = [
+  {
+    goal: 'fitness',
+    group: 'general',
+    description: {
+      ru: 'Сделай занятия понятной частью недели.',
+      kk: 'Жаттығуды аптаның түсінікті бөлігіне айналдырыңыз.',
+      en: 'Make training a clear part of your week.',
+    },
+    audience: {
+      ru: 'Для взрослых, которым нужна структура общих силовых и аэробных занятий; техника осваивается отдельно.',
+      kk: 'Жалпы күш және аэробтық жаттығу құрылымы қажет ересектерге; техника бөлек үйретіледі.',
+      en: 'Adults who want structure for general strength and aerobic exercise; learn technique separately.',
+    },
+    focus: {
+      ru: 'Основные движения · умеренная аэробная работа',
+      kk: 'Негізгі қимылдар · орташа аэробтық жұмыс',
+      en: 'Main movement patterns · moderate aerobic work',
+    },
+  },
+  {
+    goal: 'strength',
+    group: 'general',
+    description: {
+      ru: 'Последовательная работа над базовыми движениями.',
+      kk: 'Негізгі қимылдармен жүйелі жұмыс.',
+      en: 'Consistent practice of the main lifts.',
+    },
+    audience: {
+      ru: 'Для тех, кто знаком с техникой базовых движений и хочет планировать силовую нагрузку.',
+      kk: 'Негізгі қимылдар техникасын білетін және күш жүктемесін жоспарлағысы келетіндерге.',
+      en: 'People familiar with basic lifting technique who want a structured strength plan.',
+    },
+    focus: {
+      ru: 'Присед · жим · тяга · вспомогательные упражнения',
+      kk: 'Отырып тұру · сығымдау · тарту · қосымша жаттығулар',
+      en: 'Squat · press · hinge · assistance',
+    },
+  },
+  {
+    goal: 'bodybuilding',
+    group: 'general',
+    description: {
+      ru: 'Мышечные группы, объём и восстановление — в одном цикле.',
+      kk: 'Бұлшықет топтары, көлем және қалпына келу — бір циклде.',
+      en: 'Muscle groups, volume and recovery in one cycle.',
+    },
+    audience: {
+      ru: 'Для знакомых с залом взрослых, которым нужен план работы над мышечной массой без обещаний фиксированного результата.',
+      kk: 'Залмен таныс, нақты нәтижеге уәдесіз бұлшықет көлемімен жұмыс жоспары қажет ересектерге.',
+      en: 'Adults familiar with the gym who want a muscle-building structure, without promises of fixed results.',
+    },
+    focus: {
+      ru: 'Объём по мышечным группам · контроль переносимости',
+      kk: 'Бұлшықет топтары бойынша көлем · жүктемені бақылау',
+      en: 'Volume by muscle group · tolerance tracking',
+    },
+  },
+  {
+    goal: 'powerlifting',
+    group: 'general',
+    description: {
+      ru: 'Восемь недель вокруг трёх соревновательных движений.',
+      kk: 'Үш жарыс қимылы негізіндегі сегіз апта.',
+      en: 'Eight weeks built around the three competition lifts.',
+    },
+    audience: {
+      ru: 'Для тренирующихся с опытом приседа, жима и тяги. Нужны известные текущие силовые показатели; программа не предназначена для первого знакомства со штангой.',
+      kk: 'Отырып тұру, сығымдау және тарту тәжірибесі барларға. Ағымдағы күш көрсеткіштері қажет; бағдарлама штангамен алғаш танысуға арналмаған.',
+      en: 'Lifters experienced in squat, bench and deadlift, with known current strength values. Not a first introduction to barbell training.',
+    },
+    focus: {
+      ru: '3 тренировки в неделю · разгрузка · подводка',
+      kk: 'Аптасына 3 жаттығу · жеңілдету · дайындық',
+      en: '3 sessions per week · deload · taper',
+    },
+  },
+  {
+    goal: 'fatloss',
+    group: 'general',
+    description: {
+      ru: 'Сохраняй структуру силовых при контроле массы тела.',
+      kk: 'Салмақты бақылау кезінде күш жаттығуларының құрылымын сақтаңыз.',
+      en: 'Keep strength training structured during weight management.',
+    },
+    audience: {
+      ru: 'Для взрослых, которым нужен план занятий при контроле массы тела. Питание и допустимость дефицита зависят от здоровья; снижение веса не гарантируется.',
+      kk: 'Салмақты бақылау кезінде жаттығу жоспары қажет ересектерге. Тамақтану мен тапшылыққа рұқсат денсаулыққа байланысты; салмақ азаюына кепілдік жоқ.',
+      en: 'Adults seeking a training structure during weight management. Diet and deficit suitability depend on health; weight loss is not guaranteed.',
+    },
+    focus: {
+      ru: 'Силовая работа · посильное кардио · дневник питания',
+      kk: 'Күш жұмысы · қолжетімді кардио · тағам күнделігі',
+      en: 'Resistance work · tolerable cardio · food log',
+    },
+  },
+  {
+    goal: 'arms',
+    group: 'specialist',
+    description: {
+      ru: 'Дополнительный акцент на руки внутри силового плана.',
+      kk: 'Күш жоспары ішінде қолға қосымша назар.',
+      en: 'An arm-training emphasis within a resistance plan.',
+    },
+    audience: {
+      ru: 'Для знакомых с техникой взрослых, которым нужен акцент на сгибатели и разгибатели локтя без отказа от остальных движений.',
+      kk: 'Техниканы білетін, басқа қимылдардан бас тартпай шынтақ бүккіштері мен жазғыштарына назар аударғысы келетін ересектерге.',
+      en: 'Adults familiar with technique who want an elbow-flexor and extensor emphasis alongside other movements.',
+    },
+    focus: {
+      ru: 'Бицепс · трицепс · баланс недельного объёма',
+      kk: 'Бицепс · трицепс · апталық көлем теңгерімі',
+      en: 'Biceps · triceps · weekly volume balance',
+    },
+  },
+  {
+    goal: 'armwrestling',
+    group: 'specialist',
+    description: {
+      ru: 'Специальные движения с особым вниманием к ограничениям.',
+      kk: 'Шектеулерге ерекше назар аударатын арнайы қимылдар.',
+      en: 'Specialist movements with explicit attention to restrictions.',
+    },
+    audience: {
+      ru: 'Для имеющих опыт армрестлинга. Не обучение борьбе и не реабилитация; специфические нагрузки требуют контроля квалифицированного тренера.',
+      kk: 'Қол күресі тәжірибесі барларға. Күресті үйрету не оңалту емес; арнайы жүктемелер білікті жаттықтырушы бақылауын қажет етеді.',
+      en: 'For people with arm-wrestling experience. Not combat instruction or rehabilitation; specialist loads need a qualified coach.',
+    },
+    focus: {
+      ru: 'Пронация · кисть · контроль RPE',
+      kk: 'Пронация · білек · RPE бақылауы',
+      en: 'Pronation · wrist work · RPE control',
+    },
+  },
+  {
+    goal: 'custom',
+    group: 'specialist',
+    description: {
+      ru: 'Собери свой цикл из сохранённых инструментов.',
+      kk: 'Сақталған құралдармен өз цикліңізді құрыңыз.',
+      en: 'Build your own cycle with the full editor.',
+    },
+    audience: {
+      ru: 'Для пользователей и тренеров, которые умеют самостоятельно оценивать объём, технику и ограничения нагрузки.',
+      kk: 'Көлемді, техниканы және жүктеме шектеулерін өздері бағалай алатын пайдаланушылар мен жаттықтырушыларға.',
+      en: 'Users and coaches who can independently assess training volume, technique and loading restrictions.',
+    },
+    focus: {
+      ru: 'Полный конструктор · импорт и экспорт JSON',
+      kk: 'Толық құрастырушы · JSON импорттау және экспорттау',
+      en: 'Full editor · JSON import and export',
+    },
+  },
 ];

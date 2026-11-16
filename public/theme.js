@@ -1,1 +1,1 @@
-document.documentElement.dataset.theme='dark';
+document.documentElement.dataset.theme = 'dark';

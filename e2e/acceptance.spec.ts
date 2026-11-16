@@ -1,18 +1,111 @@
 import { readFile } from 'node:fs/promises';
-import { test,expect } from './fixtures';
-test('IndexedDB catalog searches ru/kk/en, custom food favorites and undo work',async({page})=>{
- await page.goto('/#/nutrition');const search=page.getByRole('searchbox',{name:'Найти продукт'});await expect(page.getByRole('combobox',{name:'Найти продукт'})).toBeVisible();
- for(const query of ['бешбармак','beshbarmak','бауырсақ']){await search.fill(query);await expect(page.getByRole('combobox',{name:'Найти продукт'}).locator('option')).not.toHaveCount(0);}
- await page.getByText('Свой продукт',{exact:true}).click();await page.getByLabel('Название продукта',{exact:true}).fill('Test Custom Kefir');await page.locator('section[aria-label="Каталог продуктов"]').getByRole('button',{name:'Сохранить',exact:true}).click();await search.fill('Test Custom Kefir');await expect(page.getByRole('combobox',{name:'Найти продукт'})).toContainText('Test Custom Kefir');await page.getByRole('button',{name:'Избранное',exact:true}).click();await page.getByLabel('Только избранное').check();await expect(page.getByRole('combobox',{name:'Найти продукт'})).toContainText('Test Custom Kefir');
- await page.locator('section[aria-label="Каталог продуктов"]').getByRole('button',{name:'Удалить',exact:true}).click();await expect(page.getByRole('combobox',{name:'Найти продукт'})).not.toBeVisible();await page.getByRole('button',{name:'Отменить замену',exact:true}).click();await page.getByLabel('Только избранное').uncheck();await expect(page.getByRole('combobox',{name:'Найти продукт'})).toContainText('Test Custom Kefir');
- expect(await page.evaluate(async()=>{const db=await new Promise<IDBDatabase>((resolve,reject)=>{const request=indexedDB.open('IronCycle');request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(Error('open'));});return new Promise<number>(resolve=>{const request=db.transaction('foods').objectStore('foods').count();request.onsuccess=()=>{db.close();resolve(request.result);};});})).toBeGreaterThanOrEqual(600);
+import { test, expect } from './fixtures';
+test('IndexedDB catalog searches ru/kk/en, custom food favorites and undo work', async ({
+  page,
+}) => {
+  await page.goto('/#/nutrition');
+  const search = page.getByRole('searchbox', { name: 'Найти продукт' });
+  await expect(page.getByRole('combobox', { name: 'Найти продукт' })).toBeVisible();
+  for (const query of ['бешбармак', 'beshbarmak', 'бауырсақ']) {
+    await search.fill(query);
+    await expect(
+      page.getByRole('combobox', { name: 'Найти продукт' }).locator('option'),
+    ).not.toHaveCount(0);
+  }
+  await page.getByText('Свой продукт', { exact: true }).click();
+  await page.getByLabel('Название продукта', { exact: true }).fill('Test Custom Kefir');
+  await page
+    .locator('section[aria-label="Каталог продуктов"]')
+    .getByRole('button', { name: 'Сохранить', exact: true })
+    .click();
+  await search.fill('Test Custom Kefir');
+  await expect(page.getByRole('combobox', { name: 'Найти продукт' })).toContainText(
+    'Test Custom Kefir',
+  );
+  await page.getByRole('button', { name: 'Избранное', exact: true }).click();
+  await page.getByLabel('Только избранное').check();
+  await expect(page.getByRole('combobox', { name: 'Найти продукт' })).toContainText(
+    'Test Custom Kefir',
+  );
+  await page
+    .locator('section[aria-label="Каталог продуктов"]')
+    .getByRole('button', { name: 'Удалить', exact: true })
+    .click();
+  await expect(page.getByRole('combobox', { name: 'Найти продукт' })).not.toBeVisible();
+  await page.getByRole('button', { name: 'Отменить замену', exact: true }).click();
+  await page.getByLabel('Только избранное').uncheck();
+  await expect(page.getByRole('combobox', { name: 'Найти продукт' })).toContainText(
+    'Test Custom Kefir',
+  );
+  expect(
+    await page.evaluate(async () => {
+      const db = await new Promise<IDBDatabase>((resolve, reject) => {
+        const request = indexedDB.open('IronCycle');
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(Error('open'));
+      });
+      return new Promise<number>((resolve) => {
+        const request = db.transaction('foods').objectStore('foods').count();
+        request.onsuccess = () => {
+          db.close();
+          resolve(request.result);
+        };
+      });
+    }),
+  ).toBeGreaterThanOrEqual(600);
 });
-test('constructor export/import round-trips and invalid import preserves the draft',async({page})=>{
- await page.goto('/#/builder');await expect(page.getByRole('heading',{name:'Редактировать упражнения'})).toBeVisible();const editor=page.locator('.card').filter({has:page.getByRole('heading',{name:'Редактировать упражнения'})});await editor.getByLabel('Название программы').fill('Acceptance plan');const downloadPromise=page.waitForEvent('download');await editor.getByRole('button',{name:'Экспорт JSON',exact:true}).click();const download=await downloadPromise,raw=await readFile((await download.path())!,'utf8');expect(JSON.parse(raw).name.ru).toBe('Acceptance plan');await editor.getByLabel('Импорт JSON',{exact:true}).setInputFiles({name:'plan.json',mimeType:'application/json',buffer:Buffer.from(raw)});await expect(editor.getByLabel('Название программы')).toHaveValue('Acceptance plan');await editor.getByLabel('Импорт JSON',{exact:true}).setInputFiles({name:'bad.json',mimeType:'application/json',buffer:Buffer.from('{"__proto__":{}}')});await expect(editor.getByRole('status')).toContainText('Некорректная программа');await expect(editor.getByLabel('Название программы')).toHaveValue('Acceptance plan');
+test('constructor export/import round-trips and invalid import preserves the draft', async ({
+  page,
+}) => {
+  await page.goto('/#/builder');
+  await expect(page.getByRole('heading', { name: 'Редактировать упражнения' })).toBeVisible();
+  const editor = page
+    .locator('.card')
+    .filter({ has: page.getByRole('heading', { name: 'Редактировать упражнения' }) });
+  await editor.getByLabel('Название программы').fill('Acceptance plan');
+  const downloadPromise = page.waitForEvent('download');
+  await editor.getByRole('button', { name: 'Экспорт JSON', exact: true }).click();
+  const download = await downloadPromise,
+    raw = await readFile((await download.path())!, 'utf8');
+  expect(JSON.parse(raw).name.ru).toBe('Acceptance plan');
+  await editor
+    .getByLabel('Импорт JSON', { exact: true })
+    .setInputFiles({ name: 'plan.json', mimeType: 'application/json', buffer: Buffer.from(raw) });
+  await expect(editor.getByLabel('Название программы')).toHaveValue('Acceptance plan');
+  await editor.getByLabel('Импорт JSON', { exact: true }).setInputFiles({
+    name: 'bad.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from('{"__proto__":{}}'),
+  });
+  await expect(editor.getByRole('status')).toContainText('Некорректная программа');
+  await expect(editor.getByLabel('Название программы')).toHaveValue('Acceptance plan');
 });
-test('scoped replacement can be undone and restored',async({page})=>{
- await page.goto('/#/workout');const first=page.locator('.workout-line').first(),name=await first.locator('h2').innerText();await first.getByRole('button',{name:/Подробнее/}).click();await first.getByLabel('Применить к').selectOption('week');await first.getByLabel('Заменить',{exact:true}).selectOption({index:1});await expect(first.locator('h2')).not.toHaveText(name);await page.getByRole('button',{name:'Отменить замену',exact:true}).click();await expect(first.locator('h2')).toHaveText(name);
+test('scoped replacement can be undone and restored', async ({ page }) => {
+  await page.goto('/#/workout');
+  const first = page.locator('.workout-line').first(),
+    name = await first.locator('h2').innerText();
+  await first.getByRole('button', { name: /Подробнее/ }).click();
+  await first.getByLabel('Применить к').selectOption('week');
+  await first.getByLabel('Заменить', { exact: true }).selectOption({ index: 1 });
+  await expect(first.locator('h2')).not.toHaveText(name);
+  await page.getByRole('button', { name: 'Отменить замену', exact: true }).click();
+  await expect(first.locator('h2')).toHaveText(name);
 });
-test('erasure removes app localStorage, IndexedDB, caches and worker',async({page})=>{
- await page.goto('/#/nutrition');await expect(page.getByRole('combobox',{name:'Найти продукт'})).toBeVisible();await page.goto('/#/privacy-consent');page.on('dialog',dialog=>dialog.accept());await page.getByRole('button',{name:'Удалить все данные устройства'}).click();await expect(page.getByLabel('Дата рождения (не сохраняется)')).toBeVisible();expect(await page.evaluate(()=>Object.keys(localStorage).filter(key=>key.startsWith('ironcycle:')))).toEqual([]);expect(await page.evaluate(async()=>await indexedDB.databases())).toEqual([]);expect(await page.evaluate(async()=>await caches.keys())).toEqual([]);expect(await page.evaluate(async()=>await navigator.serviceWorker.getRegistrations())).toEqual([]);
+test('erasure removes app localStorage, IndexedDB, caches and worker', async ({ page }) => {
+  await page.goto('/#/nutrition');
+  await expect(page.getByRole('combobox', { name: 'Найти продукт' })).toBeVisible();
+  await page.goto('/#/privacy-consent');
+  page.on('dialog', (dialog) => dialog.accept());
+  await page.getByRole('button', { name: 'Удалить все данные устройства' }).click();
+  await expect(page.getByLabel('Дата рождения (не сохраняется)')).toBeVisible();
+  expect(
+    await page.evaluate(() =>
+      Object.keys(localStorage).filter((key) => key.startsWith('ironcycle:')),
+    ),
+  ).toEqual([]);
+  expect(await page.evaluate(async () => await indexedDB.databases())).toEqual([]);
+  expect(await page.evaluate(async () => await caches.keys())).toEqual([]);
+  expect(await page.evaluate(async () => await navigator.serviceWorker.getRegistrations())).toEqual(
+    [],
+  );
 });

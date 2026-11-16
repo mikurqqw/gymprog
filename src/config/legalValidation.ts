@@ -1,2 +1,11 @@
 import { legalConfig } from './legal.config.ts';
-export function legalReleaseIssues(config:typeof legalConfig=legalConfig){const issues:string[]=[];for(const [key,value] of Object.entries(config.operator)){if(!value.trim()||value.includes('__REQUIRED'))issues.push('operator.'+key);}if(!/^\d{4}-\d{2}-\d{2}$/.test(config.effectiveDate))issues.push('effectiveDate');if(!config.reviewedByKazakhstanLawyer)issues.push('Kazakhstan lawyer review');if(!config.reviewedByKazakhNativeSpeaker)issues.push('Kazakh native-speaker review');return issues;}
+export function legalReleaseIssues(config: typeof legalConfig = legalConfig) {
+  const issues: string[] = [];
+  for (const [key, value] of Object.entries(config.operator)) {
+    if (!value.trim() || value.includes('__REQUIRED')) issues.push('operator.' + key);
+  }
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(config.effectiveDate)) issues.push('effectiveDate');
+  if (!config.reviewedByKazakhstanLawyer) issues.push('Kazakhstan lawyer review');
+  if (!config.reviewedByKazakhNativeSpeaker) issues.push('Kazakh native-speaker review');
+  return issues;
+}

@@ -5,16 +5,184 @@ import { formatDate } from '../lib/formulas';
 import { Weight } from './ui';
 import { useEffect, useState } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
-import { Activity, BookOpen, CalendarDays, ChartNoAxesCombined, ChevronRight, Dumbbell, HeartPulse, LayoutDashboard, LibraryBig, Settings, SlidersHorizontal, Sun, Moon, Trophy, Utensils, UserRound, Menu, X } from 'lucide-react';
+import {
+  Activity,
+  BookOpen,
+  CalendarDays,
+  ChartNoAxesCombined,
+  ChevronRight,
+  Dumbbell,
+  HeartPulse,
+  LayoutDashboard,
+  LibraryBig,
+  Settings,
+  SlidersHorizontal,
+  Sun,
+  Moon,
+  Trophy,
+  Utensils,
+  UserRound,
+  Menu,
+  X,
+} from 'lucide-react';
 import { hasStorageError, hasUndo, undo, update, useStore } from '../lib/store';
 import { useI18n } from '../i18n';
 import { dateOffset } from '../lib/formulas';
 import { RestTimer } from './RestTimer';
-const navigation=[['','overview',LayoutDashboard],['workout','today',Dumbbell],['program','program',CalendarDays],['progress','progress',ChartNoAxesCombined],['checkin','checkin',HeartPulse],['nutrition','nutrition',Utensils],['test','test',Trophy],['library','library',LibraryBig],['reference','reference',BookOpen],['builder','builder',SlidersHorizontal],['injuries','injuryModule',HeartPulse]] as const;
-export function Layout(){
- const [menuOpen,setMenuOpen]=useState(false);const s=useStore(),{t,locale}=useI18n(),location=useLocation();
- useEffect(()=>{document.documentElement.dataset.theme=s.theme;document.documentElement.lang=s.language;},[s.theme,s.language]);
- useEffect(()=>{window.scrollTo(0,0);},[location.pathname]);
- const date=new Date(dateOffset(s.profile.start,(s.week-1)*7)+'T12:00:00');
- return <div className="app-shell"><aside className={"sidebar "+(menuOpen?"menu-open":"")}><NavLink to="/welcome" className="brand"><span className="brand-symbol"><Dumbbell size={23}/></span>IronCycle</NavLink><div className="sidebar-caption">STRENGTH. ON PURPOSE.</div><nav aria-label={t('trainingCycle')}>{navigation.map(([path,key,Icon])=><NavLink key={key} aria-label={t(key)} onClick={()=>setMenuOpen(false)} to={'/'+path} end={path===''}><Icon size={19}/><span>{t(key)}</span></NavLink>)}<NavLink className="mobile-settings" aria-label={t("settings")} onClick={()=>setMenuOpen(false)} to="/settings"><Settings size={19}/><span>{t("settings")}</span></NavLink></nav><div className="sidebar-bottom"><div className="mini-cycle"><Activity size={20}/><span>{t('week')} {s.week} / 8<small>{t('phase'+(s.week-1))}</small></span><span className="live-dot"/></div><NavLink to="/settings" className="sidebar-setting"><Settings size={19}/>{t('settings')}</NavLink><NavLink to="/profile" className="profile-link"><span className="avatar">IC</span><div>{t('profile')}<small>{s.profile.age} · <Weight value={s.profile.weight}/></small></div><ChevronRight size={16}/></NavLink></div></aside><div className="main-shell"><header className="topbar"><span className="breadcrumb">IronCycle <ChevronRight size={13}/> <b>{t(navigation.find(n=>'/'+n[0]===location.pathname)?.[1]??'profile')}</b></span><div className="top-actions"><button className="icon-button mobile-menu-toggle" aria-label={t("menu")} aria-expanded={menuOpen} onClick={()=>setMenuOpen(!menuOpen)}>{menuOpen?<X size={19}/>:<Menu size={19}/>}</button><span className="autosave"><span className="live-dot"/>{t('autoSaved')}</span><button className="icon-button" aria-label={t('theme')+' '+t(s.theme)} onClick={()=>update({theme:s.theme==='dark'?'light':'dark'})}>{s.theme==='dark'?<Sun size={19}/>:<Moon size={19}/>}</button><button className="language-button" aria-label={s.language.toUpperCase()+' '+t('language')} onClick={()=>update({language:s.language==='ru'?'kk':s.language==='kk'?'en':'ru'})}>{s.language.toUpperCase()}</button><NavLink to="/profile" className="icon-button" aria-label={t('profile')}><UserRound size={19}/></NavLink></div></header><main id="main-content" className={location.pathname==='/'?'dashboard-main-content':undefined}>{hasStorageError()&&<div className="notice danger" role="alert">{t('storageError')}</div>}{hasUndo()&&<div className="notice"><button className="text-button" onClick={undo}>{t('undo')}</button></div>}<div className="date-strip"><span>{t('trainingCycle')}</span><span>{formatDate(date,locale,{day:'numeric',month:'long',year:'numeric'})} <span className="date-dot">·</span> {t('week')} {s.week}/8</span></div><OfflineStatus/>{location.pathname!=='/'&&<GlobalSearch/>}<Outlet/>{location.pathname==='/'&&<GlobalSearch/>}</main><LegalFooter/><RestTimer/></div></div>;
+const navigation = [
+  ['', 'overview', LayoutDashboard],
+  ['workout', 'today', Dumbbell],
+  ['program', 'program', CalendarDays],
+  ['progress', 'progress', ChartNoAxesCombined],
+  ['checkin', 'checkin', HeartPulse],
+  ['nutrition', 'nutrition', Utensils],
+  ['test', 'test', Trophy],
+  ['library', 'library', LibraryBig],
+  ['reference', 'reference', BookOpen],
+  ['builder', 'builder', SlidersHorizontal],
+  ['injuries', 'injuryModule', HeartPulse],
+] as const;
+export function Layout() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const s = useStore(),
+    { t, locale } = useI18n(),
+    location = useLocation();
+  useEffect(() => {
+    document.documentElement.dataset.theme = s.theme;
+    document.documentElement.lang = s.language;
+  }, [s.theme, s.language]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+  const date = new Date(dateOffset(s.profile.start, (s.week - 1) * 7) + 'T12:00:00');
+  return (
+    <div className="app-shell">
+      <aside className={'sidebar ' + (menuOpen ? 'menu-open' : '')}>
+        <NavLink to="/welcome" className="brand">
+          <span className="brand-symbol">
+            <Dumbbell size={23} />
+          </span>
+          IronCycle
+        </NavLink>
+        <div className="sidebar-caption">STRENGTH. ON PURPOSE.</div>
+        <nav aria-label={t('trainingCycle')}>
+          {navigation.map(([path, key, Icon]) => (
+            <NavLink
+              key={key}
+              aria-label={t(key)}
+              onClick={() => setMenuOpen(false)}
+              to={'/' + path}
+              end={path === ''}
+            >
+              <Icon size={19} />
+              <span>{t(key)}</span>
+            </NavLink>
+          ))}
+          <NavLink
+            className="mobile-settings"
+            aria-label={t('settings')}
+            onClick={() => setMenuOpen(false)}
+            to="/settings"
+          >
+            <Settings size={19} />
+            <span>{t('settings')}</span>
+          </NavLink>
+        </nav>
+        <div className="sidebar-bottom">
+          <div className="mini-cycle">
+            <Activity size={20} />
+            <span>
+              {t('week')} {s.week} / 8<small>{t('phase' + (s.week - 1))}</small>
+            </span>
+            <span className="live-dot" />
+          </div>
+          <NavLink to="/settings" className="sidebar-setting">
+            <Settings size={19} />
+            {t('settings')}
+          </NavLink>
+          <NavLink to="/profile" className="profile-link">
+            <span className="avatar">IC</span>
+            <div>
+              {t('profile')}
+              <small>
+                {s.profile.age} · <Weight value={s.profile.weight} />
+              </small>
+            </div>
+            <ChevronRight size={16} />
+          </NavLink>
+        </div>
+      </aside>
+      <div className="main-shell">
+        <header className="topbar">
+          <span className="breadcrumb">
+            IronCycle <ChevronRight size={13} />{' '}
+            <b>{t(navigation.find((n) => '/' + n[0] === location.pathname)?.[1] ?? 'profile')}</b>
+          </span>
+          <div className="top-actions">
+            <button
+              className="icon-button mobile-menu-toggle"
+              aria-label={t('menu')}
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              {menuOpen ? <X size={19} /> : <Menu size={19} />}
+            </button>
+            <span className="autosave">
+              <span className="live-dot" />
+              {t('autoSaved')}
+            </span>
+            <button
+              className="icon-button"
+              aria-label={t('theme') + ' ' + t(s.theme)}
+              onClick={() => update({ theme: s.theme === 'dark' ? 'light' : 'dark' })}
+            >
+              {s.theme === 'dark' ? <Sun size={19} /> : <Moon size={19} />}
+            </button>
+            <button
+              className="language-button"
+              aria-label={s.language.toUpperCase() + ' ' + t('language')}
+              onClick={() =>
+                update({ language: s.language === 'ru' ? 'kk' : s.language === 'kk' ? 'en' : 'ru' })
+              }
+            >
+              {s.language.toUpperCase()}
+            </button>
+            <NavLink to="/profile" className="icon-button" aria-label={t('profile')}>
+              <UserRound size={19} />
+            </NavLink>
+          </div>
+        </header>
+        <main
+          id="main-content"
+          className={location.pathname === '/' ? 'dashboard-main-content' : undefined}
+        >
+          {hasStorageError() && (
+            <div className="notice danger" role="alert">
+              {t('storageError')}
+            </div>
+          )}
+          {hasUndo() && (
+            <div className="notice">
+              <button className="text-button" onClick={undo}>
+                {t('undo')}
+              </button>
+            </div>
+          )}
+          <div className="date-strip">
+            <span>{t('trainingCycle')}</span>
+            <span>
+              {formatDate(date, locale, { day: 'numeric', month: 'long', year: 'numeric' })}{' '}
+              <span className="date-dot">·</span> {t('week')} {s.week}/8
+            </span>
+          </div>
+          <OfflineStatus />
+          {location.pathname !== '/' && <GlobalSearch />}
+          <Outlet />
+          {location.pathname === '/' && <GlobalSearch />}
+        </main>
+        <LegalFooter />
+        <RestTimer />
+      </div>
+    </div>
+  );
 }

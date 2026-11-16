@@ -1,4 +1,48 @@
-import { Check,ArrowUpRight } from 'lucide-react';
+import { Check, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useI18n } from '../i18n';
-export function StorefrontPreview(){const {t}=useI18n();return <div className="sf-preview" aria-label={t('sfSample')}><div className="sf-preview-top"><span>IRONCYCLE / LIVE PREVIEW</span><span className="live-dot"/></div><div className="sf-preview-week"><span>01 <small>/ 08</small></span><span>{t('sfEightWeeks')}</span></div><h2>{t('sfSession')}</h2><p className="sf-preview-muted">{t('sfSample')}</p><div className="sf-preview-exercise"><div><span className="eyebrow">01 / {t('sfNextSet')}</span><h3>{t('sfExampleLift')}</h3><p>3 × 8 <span>·</span> RPE ≤ 7</p></div><span className="sf-preview-sets"><Check size={22}/><Check size={22}/><b>3</b></span></div><Link to="/demo" className="sf-preview-link">{t('sfDemo')}<ArrowUpRight size={20}/></Link><div className="sf-cycle-bars" aria-hidden="true">{[35,48,62,30,67,77,48,25].map((height,i)=><span key={i}><i style={{transform:`scaleY(${height/100})`}}/><small>0{i+1}</small></span>)}</div></div>;}
+export function StorefrontPreview() {
+  const { t } = useI18n();
+  return (
+    <div className="sf-preview" aria-label={t('sfSample')}>
+      <div className="sf-preview-top">
+        <span>IRONCYCLE / LIVE PREVIEW</span>
+        <span className="live-dot" />
+      </div>
+      <div className="sf-preview-week">
+        <span>
+          01 <small>/ 08</small>
+        </span>
+        <span>{t('sfEightWeeks')}</span>
+      </div>
+      <h2>{t('sfSession')}</h2>
+      <p className="sf-preview-muted">{t('sfSample')}</p>
+      <div className="sf-preview-exercise">
+        <div>
+          <span className="eyebrow">01 / {t('sfNextSet')}</span>
+          <h3>{t('sfExampleLift')}</h3>
+          <p>
+            3 × 8 <span>·</span> RPE ≤ 7
+          </p>
+        </div>
+        <span className="sf-preview-sets">
+          <Check size={22} />
+          <Check size={22} />
+          <b>3</b>
+        </span>
+      </div>
+      <Link to="/demo" className="sf-preview-link">
+        {t('sfDemo')}
+        <ArrowUpRight size={20} />
+      </Link>
+      <div className="sf-cycle-bars" aria-hidden="true">
+        {[35, 48, 62, 30, 67, 77, 48, 25].map((height, i) => (
+          <span key={i}>
+            <i style={{ transform: `scaleY(${height / 100})` }} />
+            <small>0{i + 1}</small>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}

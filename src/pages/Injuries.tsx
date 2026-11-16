@@ -1,7 +1,146 @@
 import { useState } from 'react';
-import { injurySchema,joints,type Injury } from '../lib/injuries';
-import { update,replaceWithUndo,useStore } from '../lib/store';
-import { healthKeys,requiresClearance } from '../lib/health';
+import { injurySchema, joints, type Injury } from '../lib/injuries';
+import { update, replaceWithUndo, useStore } from '../lib/store';
+import { healthKeys, requiresClearance } from '../lib/health';
 import { useI18n } from '../i18n';
-import { Card,Field,Num,PageTitle,Select } from '../components/ui';
-export default function Injuries(){const s=useStore(),{t}=useI18n(),[message,setMessage]=useState(''),[draft,setDraft]=useState<Injury>({id:crypto.randomUUID(),area:'elbow',side:'left',status:'postFracture',severity:2,cleared:false,notes:''});return <><PageTitle title={t('injuryModule')} description={t('medicalContext')}/><Card><h2>{t('healthScreen')}</h2><div className="check-grid">{healthKeys.map(key=><label className="checkbox-label" key={key}><input type="checkbox" checked={s.profile.health[key]} onChange={e=>update({profile:{...s.profile,health:{...s.profile.health,[key]:e.target.checked}}})}/>{t(key)}</label>)}</div>{requiresClearance(s.profile.health)&&<p className="notice warning">{t('consultFirst')}</p>}</Card><Card><form onSubmit={e=>{e.preventDefault();const parsed=injurySchema.safeParse(draft);if(!parsed.success){setMessage(t('invalid'));return;}update({profile:{...s.profile,injuryRecords:[...s.profile.injuryRecords,parsed.data]}});setDraft({...draft,id:crypto.randomUUID(),notes:''});setMessage(t('saved'));}}><div className="form-grid"><Select label={t('injuryArea')} value={draft.area} options={joints.map(value=>({value,label:t(value)}))} onChange={v=>setDraft({...draft,area:v as Injury['area']})}/><Select label={t('injurySide')} value={draft.side} options={['left','right','both'].map(value=>({value,label:t(value)}))} onChange={v=>setDraft({...draft,side:v as Injury['side']})}/><Select label={t('status')} value={draft.status} options={['acute','postFracture','postSurgery','overuse','chronic'].map(value=>({value,label:t(value)}))} onChange={v=>setDraft({...draft,status:v as Injury['status']})}/><Num label={t('severity')} value={draft.severity} min={1} max={3} onChange={v=>setDraft({...draft,severity:v})}/></div><label className="checkbox-label"><input type="checkbox" checked={draft.cleared} onChange={e=>setDraft({...draft,cleared:e.target.checked})}/>{t('cleared')}</label><Field label={t('note')}><textarea maxLength={1000} value={draft.notes} onChange={e=>setDraft({...draft,notes:e.target.value})}/></Field><button className="button" type="submit">{t('add')}</button></form>{message&&<p role="status">{message}</p>}</Card>{s.profile.injuryRecords.map(injury=><Card key={injury.id}><h2>{t(injury.area)} · {t(injury.side)}</h2><p>{t(injury.status)} · {injury.severity}/3</p><p className={'notice '+(injury.cleared?'':'warning')}>{t(injury.cleared?'injuryAdjustmentText':'noClearance')}</p>{injury.notes&&<p>{injury.notes}</p>}<button className="text-button" onClick={()=>{if(confirm(t('deleteConfirm')))replaceWithUndo({...s,profile:{...s.profile,injuryRecords:s.profile.injuryRecords.filter(i=>i.id!==injury.id)}});}}>{t('delete')}</button></Card>)}<p className="micro muted">{t('injuryScoresEstimate')}</p></>;}
+import { Card, Field, Num, PageTitle, Select } from '../components/ui';
+export default function Injuries() {
+  const s = useStore(),
+    { t } = useI18n(),
+    [message, setMessage] = useState(''),
+    [draft, setDraft] = useState<Injury>({
+      id: crypto.randomUUID(),
+      area: 'elbow',
+      side: 'left',
+      status: 'postFracture',
+      severity: 2,
+      cleared: false,
+      notes: '',
+    });
+  return (
+    <>
+      <PageTitle title={t('injuryModule')} description={t('medicalContext')} />
+      <Card>
+        <h2>{t('healthScreen')}</h2>
+        <div className="check-grid">
+          {healthKeys.map((key) => (
+            <label className="checkbox-label" key={key}>
+              <input
+                type="checkbox"
+                checked={s.profile.health[key]}
+                onChange={(e) =>
+                  update({
+                    profile: {
+                      ...s.profile,
+                      health: { ...s.profile.health, [key]: e.target.checked },
+                    },
+                  })
+                }
+              />
+              {t(key)}
+            </label>
+          ))}
+        </div>
+        {requiresClearance(s.profile.health) && (
+          <p className="notice warning">{t('consultFirst')}</p>
+        )}
+      </Card>
+      <Card>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            const parsed = injurySchema.safeParse(draft);
+            if (!parsed.success) {
+              setMessage(t('invalid'));
+              return;
+            }
+            update({
+              profile: { ...s.profile, injuryRecords: [...s.profile.injuryRecords, parsed.data] },
+            });
+            setDraft({ ...draft, id: crypto.randomUUID(), notes: '' });
+            setMessage(t('saved'));
+          }}
+        >
+          <div className="form-grid">
+            <Select
+              label={t('injuryArea')}
+              value={draft.area}
+              options={joints.map((value) => ({ value, label: t(value) }))}
+              onChange={(v) => setDraft({ ...draft, area: v as Injury['area'] })}
+            />
+            <Select
+              label={t('injurySide')}
+              value={draft.side}
+              options={['left', 'right', 'both'].map((value) => ({ value, label: t(value) }))}
+              onChange={(v) => setDraft({ ...draft, side: v as Injury['side'] })}
+            />
+            <Select
+              label={t('status')}
+              value={draft.status}
+              options={['acute', 'postFracture', 'postSurgery', 'overuse', 'chronic'].map(
+                (value) => ({ value, label: t(value) }),
+              )}
+              onChange={(v) => setDraft({ ...draft, status: v as Injury['status'] })}
+            />
+            <Num
+              label={t('severity')}
+              value={draft.severity}
+              min={1}
+              max={3}
+              onChange={(v) => setDraft({ ...draft, severity: v })}
+            />
+          </div>
+          <label className="checkbox-label">
+            <input
+              type="checkbox"
+              checked={draft.cleared}
+              onChange={(e) => setDraft({ ...draft, cleared: e.target.checked })}
+            />
+            {t('cleared')}
+          </label>
+          <Field label={t('note')}>
+            <textarea
+              maxLength={1000}
+              value={draft.notes}
+              onChange={(e) => setDraft({ ...draft, notes: e.target.value })}
+            />
+          </Field>
+          <button className="button" type="submit">
+            {t('add')}
+          </button>
+        </form>
+        {message && <p role="status">{message}</p>}
+      </Card>
+      {s.profile.injuryRecords.map((injury) => (
+        <Card key={injury.id}>
+          <h2>
+            {t(injury.area)} · {t(injury.side)}
+          </h2>
+          <p>
+            {t(injury.status)} · {injury.severity}/3
+          </p>
+          <p className={'notice ' + (injury.cleared ? '' : 'warning')}>
+            {t(injury.cleared ? 'injuryAdjustmentText' : 'noClearance')}
+          </p>
+          {injury.notes && <p>{injury.notes}</p>}
+          <button
+            className="text-button"
+            onClick={() => {
+              if (confirm(t('deleteConfirm')))
+                replaceWithUndo({
+                  ...s,
+                  profile: {
+                    ...s.profile,
+                    injuryRecords: s.profile.injuryRecords.filter((i) => i.id !== injury.id),
+                  },
+                });
+            }}
+          >
+            {t('delete')}
+          </button>
+        </Card>
+      ))}
+      <p className="micro muted">{t('injuryScoresEstimate')}</p>
+    </>
+  );
+}

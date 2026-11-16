@@ -1,4 +1,23 @@
-import { readdir,readFile } from 'node:fs/promises';
-const forbidden=[/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/,/\bgh[pousr]_[A-Za-z0-9]{30,}\b/,/\bAKIA[0-9A-Z]{16}\b/,/\bsk-[A-Za-z0-9]{32,}\b/];
-async function walk(path){for(const item of await readdir(path,{withFileTypes:true})){const file=path+'/'+item.name;if(item.isDirectory())await walk(file);else if(/\.(?:tsx?|json|ya?ml|md|html|js|css)$/.test(file)){const text=await readFile(file,'utf8');if(forbidden.some(pattern=>pattern.test(text)))throw Error('Potential secret in '+file);if(file.startsWith('src/')&&/\bVITE_\w*(?:SECRET|TOKEN|PASSWORD|API_KEY)\b/i.test(text))throw Error('Public secret variable in '+file);}}}
-await walk('src');await walk('.github');console.log('Source secret-pattern checks passed. This does not replace platform secret scanning.');
+import { readdir, readFile } from 'node:fs/promises';
+const forbidden = [
+  /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/,
+  /\bgh[pousr]_[A-Za-z0-9]{30,}\b/,
+  /\bAKIA[0-9A-Z]{16}\b/,
+  /\bsk-[A-Za-z0-9]{32,}\b/,
+];
+async function walk(path) {
+  for (const item of await readdir(path, { withFileTypes: true })) {
+    const file = path + '/' + item.name;
+    if (item.isDirectory()) await walk(file);
+    else if (/\.(?:tsx?|json|ya?ml|md|html|js|css)$/.test(file)) {
+      const text = await readFile(file, 'utf8');
+      if (forbidden.some((pattern) => pattern.test(text)))
+        throw Error('Potential secret in ' + file);
+      if (file.startsWith('src/') && /\bVITE_\w*(?:SECRET|TOKEN|PASSWORD|API_KEY)\b/i.test(text))
+        throw Error('Public secret variable in ' + file);
+    }
+  }
+}
+await walk('src');
+await walk('.github');
+console.log('Source secret-pattern checks passed. This does not replace platform secret scanning.');

@@ -1,0 +1,20 @@
+node_modules/
+dist/
+artifacts/
+test-results/
+playwright-report/
+.lighthouseci/
+public/fonts/
+# Protected calculation and program sources are intentionally byte-for-byte unchanged.
+src/data/programs/
+src/data/powerlifting.json
+src/data/templates.ts
+src/data/programRegistry.ts
+src/lib/program.ts
+src/lib/templateProgression.ts
+src/lib/autoregulation.ts
+src/lib/dailyReadiness.ts
+src/lib/nutrition.ts
+src/lib/formulas.ts
+src/lib/forecast.ts
+src/lib/injuries.ts

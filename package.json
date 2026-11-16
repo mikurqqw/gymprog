@@ -14,7 +14,9 @@
     "audit": "npm audit --audit-level=high",
     "build:preview": "node scripts/preview-build.mjs",
     "check:i18n": "node scripts/check-i18n.mjs",
-    "check:security": "node scripts/check-security.mjs && node scripts/check-licenses.mjs"
+    "check:security": "node scripts/check-security.mjs && node scripts/check-licenses.mjs",
+    "format": "prettier --write src e2e scripts public/sw.js public/theme.js --ignore-unknown",
+    "format:check": "prettier --check src e2e scripts public/sw.js public/theme.js --ignore-unknown"
   },
   "dependencies": {
     "@tailwindcss/vite": "4.3.5",
@@ -45,6 +47,7 @@
     "eslint-plugin-react-hooks": "7.1.1",
     "eslint-plugin-react-refresh": "0.5.7",
     "globals": "17.14.0",
+    "prettier": "3.10.1",
     "typescript-eslint": "8.72.2",
     "vitest": "5.1.0"
   },

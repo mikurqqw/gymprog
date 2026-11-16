@@ -5,4 +5,131 @@ import { profileSchema, type Profile } from '../lib/schema';
 import { update, useStore } from '../lib/store';
 import { useI18n } from '../i18n';
 import { Card, Field, Num, Select } from './ui';
-export function NutritionPreferences(){const s=useStore(),{t}=useI18n(),[p,setP]=useState(s.profile),[message,setMessage]=useState('');const change=<K extends keyof Profile>(key:K,value:Profile[K])=>setP({...p,[key]:value});return <Card><h2>{t('nutritionGoal')}</h2><form onSubmit={e=>{e.preventDefault();const result=profileSchema.safeParse(p);if(result.success){update({profile:{...s.profile,nutritionGoal:p.nutritionGoal,activity:p.activity,pace:p.pace,diet:p.diet,allergies:p.allergies,meals:p.meals,steps:p.steps,budget:p.budget,region:p.region,health:p.health}});setMessage(t('saved'));}else setMessage(t('invalid'));}}><div className="form-grid"><Select label={t('nutritionGoal')} value={p.nutritionGoal} options={['maintain','gain',...(calorieSafety(p).deficitAllowed?['loss','recomp']:[])].map(value=>({value,label:t(value)}))} onChange={v=>change('nutritionGoal',v as Profile['nutritionGoal'])}/><Select label={t('activity')} value={String(p.activity)} options={activityLevels.map(level=>({value:String(level.value),label:`${t(level.id)} · ${level.value}`}))} onChange={v=>change('activity',Number(v))}/><Select label={t('pace')} value={String(p.pace)} options={[.0025,.005].map(v=>({value:String(v),label:`${v*100}%`}))} onChange={v=>change('pace',Number(v))}/><Select label={t('diet')} value={p.diet} options={['omnivore','vegetarian','halal','lactoseFree'].map(value=>({value,label:t(value)}))} onChange={v=>change('diet',v as Profile['diet'])}/><Num label={t('meals')} value={p.meals} min={3} max={5} onChange={v=>change('meals',v)}/><Num label={t('steps')} value={p.steps} max={50000} step={100} onChange={v=>change('steps',v)}/><Select label={t('budget')} value={p.budget} options={['low','medium','high'].map(value=>({value,label:t(value)}))} onChange={v=>change('budget',v as Profile['budget'])}/><Select label={t('region')} value={p.region} options={['cis','international'].map(value=>({value,label:t(value)}))} onChange={v=>change('region',v as Profile['region'])}/></div><Field label={t('allergies')}><input value={p.allergies} maxLength={300} onChange={e=>change('allergies',e.target.value)}/></Field>{p.diet==='halal'&&<p className="micro muted">{t('halalNote')}</p>}<p className="micro muted">{t('activitySeparate')}</p><p className="micro">{t(activityLevels.find(l=>l.value===p.activity)?.id+'Hint')} · {activityLevels.find(l=>l.value===p.activity)?.steps} {t('steps')}</p><h3>{t('healthScreen')}</h3>{healthKeys.map(key=><label className="checkbox-label" key={key}><input type="checkbox" checked={p.health[key]} onChange={e=>change('health',{...p.health,[key]:e.target.checked})}/>{t(key)}</label>)}<button type="submit" className="button secondary">{t('save')}</button>{message&&<p role="status">{message}</p>}</form></Card>;}
+export function NutritionPreferences() {
+  const s = useStore(),
+    { t } = useI18n(),
+    [p, setP] = useState(s.profile),
+    [message, setMessage] = useState('');
+  const change = <K extends keyof Profile>(key: K, value: Profile[K]) =>
+    setP({ ...p, [key]: value });
+  return (
+    <Card>
+      <h2>{t('nutritionGoal')}</h2>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          const result = profileSchema.safeParse(p);
+          if (result.success) {
+            update({
+              profile: {
+                ...s.profile,
+                nutritionGoal: p.nutritionGoal,
+                activity: p.activity,
+                pace: p.pace,
+                diet: p.diet,
+                allergies: p.allergies,
+                meals: p.meals,
+                steps: p.steps,
+                budget: p.budget,
+                region: p.region,
+                health: p.health,
+              },
+            });
+            setMessage(t('saved'));
+          } else setMessage(t('invalid'));
+        }}
+      >
+        <div className="form-grid">
+          <Select
+            label={t('nutritionGoal')}
+            value={p.nutritionGoal}
+            options={[
+              'maintain',
+              'gain',
+              ...(calorieSafety(p).deficitAllowed ? ['loss', 'recomp'] : []),
+            ].map((value) => ({ value, label: t(value) }))}
+            onChange={(v) => change('nutritionGoal', v as Profile['nutritionGoal'])}
+          />
+          <Select
+            label={t('activity')}
+            value={String(p.activity)}
+            options={activityLevels.map((level) => ({
+              value: String(level.value),
+              label: `${t(level.id)} · ${level.value}`,
+            }))}
+            onChange={(v) => change('activity', Number(v))}
+          />
+          <Select
+            label={t('pace')}
+            value={String(p.pace)}
+            options={[0.0025, 0.005].map((v) => ({ value: String(v), label: `${v * 100}%` }))}
+            onChange={(v) => change('pace', Number(v))}
+          />
+          <Select
+            label={t('diet')}
+            value={p.diet}
+            options={['omnivore', 'vegetarian', 'halal', 'lactoseFree'].map((value) => ({
+              value,
+              label: t(value),
+            }))}
+            onChange={(v) => change('diet', v as Profile['diet'])}
+          />
+          <Num
+            label={t('meals')}
+            value={p.meals}
+            min={3}
+            max={5}
+            onChange={(v) => change('meals', v)}
+          />
+          <Num
+            label={t('steps')}
+            value={p.steps}
+            max={50000}
+            step={100}
+            onChange={(v) => change('steps', v)}
+          />
+          <Select
+            label={t('budget')}
+            value={p.budget}
+            options={['low', 'medium', 'high'].map((value) => ({ value, label: t(value) }))}
+            onChange={(v) => change('budget', v as Profile['budget'])}
+          />
+          <Select
+            label={t('region')}
+            value={p.region}
+            options={['cis', 'international'].map((value) => ({ value, label: t(value) }))}
+            onChange={(v) => change('region', v as Profile['region'])}
+          />
+        </div>
+        <Field label={t('allergies')}>
+          <input
+            value={p.allergies}
+            maxLength={300}
+            onChange={(e) => change('allergies', e.target.value)}
+          />
+        </Field>
+        {p.diet === 'halal' && <p className="micro muted">{t('halalNote')}</p>}
+        <p className="micro muted">{t('activitySeparate')}</p>
+        <p className="micro">
+          {t(activityLevels.find((l) => l.value === p.activity)?.id + 'Hint')} ·{' '}
+          {activityLevels.find((l) => l.value === p.activity)?.steps} {t('steps')}
+        </p>
+        <h3>{t('healthScreen')}</h3>
+        {healthKeys.map((key) => (
+          <label className="checkbox-label" key={key}>
+            <input
+              type="checkbox"
+              checked={p.health[key]}
+              onChange={(e) => change('health', { ...p.health, [key]: e.target.checked })}
+            />
+            {t(key)}
+          </label>
+        ))}
+        <button type="submit" className="button secondary">
+          {t('save')}
+        </button>
+        {message && <p role="status">{message}</p>}
+      </form>
+    </Card>
+  );
+}

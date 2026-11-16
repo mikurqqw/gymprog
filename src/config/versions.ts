@@ -1,1 +1,1 @@
-export const HEALTH_SCREEN_VERSION='1';
+export const HEALTH_SCREEN_VERSION = '1';

@@ -1,10 +1,60 @@
-import { test,expect } from './fixtures';
-test('partial workout resumes across reload and can be finished, reopened and undone',async({page})=>{
- await page.goto('/#/workout');await page.locator('.workout-line').first().getByRole('button',{name:'По плану',exact:true}).click();await expect(page.getByRole('heading',{name:'Итог тренировки'})).toBeVisible();await page.goto('/');await expect(page.getByRole('link',{name:'Продолжить тренировку'})).toBeVisible();await page.reload();await page.getByRole('link',{name:'Продолжить тренировку'}).click();await expect(page.locator('.workout-line').first().getByRole('button',{name:'Выполнено',exact:true})).toBeDisabled();page.on('dialog',dialog=>dialog.accept());await page.getByRole('button',{name:'Завершить и сохранить итог'}).click();await expect(page.getByRole('heading',{name:'Тренировка завершена'})).toBeVisible();await page.getByRole('button',{name:'Вернуться к этой тренировке'}).click();await expect(page.getByRole('heading',{name:'Итог тренировки'})).toBeVisible();await page.getByRole('button',{name:'Отменить замену',exact:true}).click();await expect(page.getByRole('heading',{name:'Тренировка завершена'})).toBeVisible();await page.getByRole('link',{name:'Следующая тренировка',exact:true}).click();expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('ironcycle:data')!).day)).toBe(1);
+import { test, expect } from './fixtures';
+test('partial workout resumes across reload and can be finished, reopened and undone', async ({
+  page,
+}) => {
+  await page.goto('/#/workout');
+  await page
+    .locator('.workout-line')
+    .first()
+    .getByRole('button', { name: 'По плану', exact: true })
+    .click();
+  await expect(page.getByRole('heading', { name: 'Итог тренировки' })).toBeVisible();
+  await page.goto('/');
+  await expect(page.getByRole('link', { name: 'Продолжить тренировку' })).toBeVisible();
+  await page.reload();
+  await page.getByRole('link', { name: 'Продолжить тренировку' }).click();
+  await expect(
+    page.locator('.workout-line').first().getByRole('button', { name: 'Выполнено', exact: true }),
+  ).toBeDisabled();
+  page.on('dialog', (dialog) => dialog.accept());
+  await page.getByRole('button', { name: 'Завершить и сохранить итог' }).click();
+  await expect(page.getByRole('heading', { name: 'Тренировка завершена' })).toBeVisible();
+  await page.getByRole('button', { name: 'Вернуться к этой тренировке' }).click();
+  await expect(page.getByRole('heading', { name: 'Итог тренировки' })).toBeVisible();
+  await page.getByRole('button', { name: 'Отменить замену', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Тренировка завершена' })).toBeVisible();
+  await page.getByRole('link', { name: 'Следующая тренировка', exact: true }).click();
+  expect(await page.evaluate(() => JSON.parse(localStorage.getItem('ironcycle:data')!).day)).toBe(
+    1,
+  );
 });
-test('recommendation explanation shows actual changes and limitations',async({page})=>{
- await page.goto('/#/workout');await page.locator('.recommendation-why').getByText('Почему такая нагрузка?',{exact:true}).click();await expect(page.getByText('Без отметки самочувствия',{exact:false})).toBeVisible();await expect(page.getByText('Ограничения оборудования и травм применяются отдельно.',{exact:false})).toBeVisible();
+test('recommendation explanation shows actual changes and limitations', async ({ page }) => {
+  await page.goto('/#/workout');
+  await page
+    .locator('.recommendation-why')
+    .getByText('Почему такая нагрузка?', { exact: true })
+    .click();
+  await expect(page.getByText('Без отметки самочувствия', { exact: false })).toBeVisible();
+  await expect(
+    page.getByText('Ограничения оборудования и травм применяются отдельно.', { exact: false }),
+  ).toBeVisible();
 });
-test('resume action stays within the first mobile screen',async({page})=>{
- await page.setViewportSize({width:375,height:812});await page.goto('/#/workout');await page.locator('.workout-line').first().getByRole('button',{name:'По плану',exact:true}).click();await page.goto('/');const action=page.getByRole('link',{name:'Продолжить тренировку'});await expect(action).toBeVisible();const bounds=await action.boundingBox();expect(bounds).not.toBeNull();expect(bounds!.y+bounds!.height).toBeLessThanOrEqual(812);await page.screenshot({path:'artifacts/screenshots/resume-first-screen-375.png',fullPage:true});
+test('resume action stays within the first mobile screen', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto('/#/workout');
+  await page
+    .locator('.workout-line')
+    .first()
+    .getByRole('button', { name: 'По плану', exact: true })
+    .click();
+  await page.goto('/');
+  const action = page.getByRole('link', { name: 'Продолжить тренировку' });
+  await expect(action).toBeVisible();
+  const bounds = await action.boundingBox();
+  expect(bounds).not.toBeNull();
+  expect(bounds!.y + bounds!.height).toBeLessThanOrEqual(812);
+  await page.screenshot({
+    path: 'artifacts/screenshots/resume-first-screen-375.png',
+    fullPage: true,
+  });
 });

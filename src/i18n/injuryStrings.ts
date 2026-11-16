@@ -1,3 +1,61 @@
-export const injuryStrings={
- injuryModule:{ru:'Травмы и ограничения',kk:'Жарақаттар мен шектеулер',en:'Injuries & limitations'},injuryArea:{ru:'Область',kk:'Дене аймағы',en:'Area'},injurySide:{ru:'Сторона',kk:'Жақ',en:'Side'},left:{ru:'Левая',kk:'Сол',en:'Left'},right:{ru:'Правая',kk:'Оң',en:'Right'},both:{ru:'Обе / по центру',kk:'Екі жақ / орта',en:'Both / central'},acute:{ru:'Острая травма',kk:'Жаңа жарақат',en:'Acute injury'},postFracture:{ru:'После перелома или гипса',kk:'Сынудан не гипстен кейін',en:'After fracture / cast'},postSurgery:{ru:'После операции',kk:'Операциядан кейін',en:'After surgery'},overuse:{ru:'Перегрузка',kk:'Артық жүктеме',en:'Overuse'},chronic:{ru:'Хроническое состояние',kk:'Созылмалы жағдай',en:'Chronic condition'},severity:{ru:'Выраженность: 1–3, субъективно',kk:'Айқындық: 1–3, субъективті',en:'Severity: 1–3, subjective'},cleared:{ru:'Врач разрешил нагрузку на эту область',kk:'Дәрігер осы аймаққа жүктеме беруге рұқсат етті',en:'Doctor cleared this area for loading'},noClearance:{ru:'Не нагружай эту область до разрешения врача. Приложение исключает затрагивающие её упражнения, но не составляет программу реабилитации.',kk:'Дәрігер рұқсат бергенше бұл аймаққа жүктеме бермеңіз. Қосымша оған әсер ететін жаттығуларды алып тастайды, оңалту бағдарламасын жасамайды.',en:'Do not load this area until a doctor clears you. The app excludes exercises that load it but does not prescribe rehabilitation.'},injuryAdjusted:{ru:'С учётом травмы',kk:'Жарақат ескерілді',en:'Adjusted for your injury'},injuryAdjustmentText:{ru:'Нагрузка и объём консервативно уменьшены после указанного разрешения врача. Это не оценка заживления и не индивидуальная реабилитация.',kk:'Дәрігер рұқсатынан кейін жүктеме мен көлем сақтықпен азайтылды. Бұл жазылуды бағалау не жеке оңалту емес.',en:'Load and volume are conservatively reduced after reported doctor clearance. This is not a healing assessment or individual rehabilitation.'},painScore:{ru:'Боль сейчас: 0–10',kk:'Қазіргі ауырсыну: 0–10',en:'Pain now: 0–10'},numbness:{ru:'Онемение',kk:'Ұю',en:'Numbness'},swelling:{ru:'Отёк',kk:'Ісіну',en:'Swelling'},ankle:{ru:'Голеностоп',kk:'Тобық',en:'Ankle'},neck:{ru:'Шея',kk:'Мойын',en:'Neck'},whyRecommendation:{ru:'Почему это показано',kk:'Бұл неге көрсетілді',en:'Why am I seeing this?'},injuryScoresEstimate:{ru:'Оценки нагрузки на суставы — консервативные эвристики 0–3, не измерения и не заключение врача. Неподтверждённую безопасность нельзя считать разрешением тренироваться.',kk:'Буын жүктемесінің 0–3 бағалары — сақтық эвристикасы, өлшем не дәрігер қорытындысы емес. Қауіпсіздігі расталмаған әрекет жаттығуға рұқсат бермейді.',en:'Joint-stress scores 0–3 are conservative heuristics, not measurements or clinical clearance. Unverified safety is not permission to train.'},
+export const injuryStrings = {
+  injuryModule: {
+    ru: 'Травмы и ограничения',
+    kk: 'Жарақаттар мен шектеулер',
+    en: 'Injuries & limitations',
+  },
+  injuryArea: { ru: 'Область', kk: 'Дене аймағы', en: 'Area' },
+  injurySide: { ru: 'Сторона', kk: 'Жақ', en: 'Side' },
+  left: { ru: 'Левая', kk: 'Сол', en: 'Left' },
+  right: { ru: 'Правая', kk: 'Оң', en: 'Right' },
+  both: { ru: 'Обе / по центру', kk: 'Екі жақ / орта', en: 'Both / central' },
+  acute: { ru: 'Острая травма', kk: 'Жаңа жарақат', en: 'Acute injury' },
+  postFracture: {
+    ru: 'После перелома или гипса',
+    kk: 'Сынудан не гипстен кейін',
+    en: 'After fracture / cast',
+  },
+  postSurgery: { ru: 'После операции', kk: 'Операциядан кейін', en: 'After surgery' },
+  overuse: { ru: 'Перегрузка', kk: 'Артық жүктеме', en: 'Overuse' },
+  chronic: { ru: 'Хроническое состояние', kk: 'Созылмалы жағдай', en: 'Chronic condition' },
+  severity: {
+    ru: 'Выраженность: 1–3, субъективно',
+    kk: 'Айқындық: 1–3, субъективті',
+    en: 'Severity: 1–3, subjective',
+  },
+  cleared: {
+    ru: 'Врач разрешил нагрузку на эту область',
+    kk: 'Дәрігер осы аймаққа жүктеме беруге рұқсат етті',
+    en: 'Doctor cleared this area for loading',
+  },
+  noClearance: {
+    ru: 'Не нагружай эту область до разрешения врача. Приложение исключает затрагивающие её упражнения, но не составляет программу реабилитации.',
+    kk: 'Дәрігер рұқсат бергенше бұл аймаққа жүктеме бермеңіз. Қосымша оған әсер ететін жаттығуларды алып тастайды, оңалту бағдарламасын жасамайды.',
+    en: 'Do not load this area until a doctor clears you. The app excludes exercises that load it but does not prescribe rehabilitation.',
+  },
+  injuryAdjusted: {
+    ru: 'С учётом травмы',
+    kk: 'Жарақат ескерілді',
+    en: 'Adjusted for your injury',
+  },
+  injuryAdjustmentText: {
+    ru: 'Нагрузка и объём консервативно уменьшены после указанного разрешения врача. Это не оценка заживления и не индивидуальная реабилитация.',
+    kk: 'Дәрігер рұқсатынан кейін жүктеме мен көлем сақтықпен азайтылды. Бұл жазылуды бағалау не жеке оңалту емес.',
+    en: 'Load and volume are conservatively reduced after reported doctor clearance. This is not a healing assessment or individual rehabilitation.',
+  },
+  painScore: { ru: 'Боль сейчас: 0–10', kk: 'Қазіргі ауырсыну: 0–10', en: 'Pain now: 0–10' },
+  numbness: { ru: 'Онемение', kk: 'Ұю', en: 'Numbness' },
+  swelling: { ru: 'Отёк', kk: 'Ісіну', en: 'Swelling' },
+  ankle: { ru: 'Голеностоп', kk: 'Тобық', en: 'Ankle' },
+  neck: { ru: 'Шея', kk: 'Мойын', en: 'Neck' },
+  whyRecommendation: {
+    ru: 'Почему это показано',
+    kk: 'Бұл неге көрсетілді',
+    en: 'Why am I seeing this?',
+  },
+  injuryScoresEstimate: {
+    ru: 'Оценки нагрузки на суставы — консервативные эвристики 0–3, не измерения и не заключение врача. Неподтверждённую безопасность нельзя считать разрешением тренироваться.',
+    kk: 'Буын жүктемесінің 0–3 бағалары — сақтық эвристикасы, өлшем не дәрігер қорытындысы емес. Қауіпсіздігі расталмаған әрекет жаттығуға рұқсат бермейді.',
+    en: 'Joint-stress scores 0–3 are conservative heuristics, not measurements or clinical clearance. Unverified safety is not permission to train.',
+  },
 };
