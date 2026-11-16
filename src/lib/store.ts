@@ -84,3 +84,9 @@ export function resetMemory() {
   state = { ...initialState, language: state.language };
   listeners.forEach((fn) => fn());
 }
+
+export function useProfileStore() {
+  const current = useStore();
+  if (!current.profile) throw Error('Profile setup required');
+  return { ...current, profile: current.profile };
+}

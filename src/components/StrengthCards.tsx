@@ -1,6 +1,6 @@
 import { ArrowUpRight } from 'lucide-react';
 import { liftIds } from '../lib/schema';
-import { useStore } from '../lib/store';
+import { useProfileStore as useStore } from '../lib/store';
 import { useI18n } from '../i18n';
 import { Weight } from './ui';
 export function StrengthCards() {

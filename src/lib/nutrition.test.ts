@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { defaultProfile as p } from './schema';
+import { fixtureProfile as p } from './schema';
 import { nutrition, mealPlan, allowedFood } from './nutrition';
 import foods from '../data/foods.json';
 it('reproduces Mifflin St Jeor and default protein range', () => {

@@ -1,6 +1,6 @@
 import type { Planned } from '../lib/schema';
 import { liftIds } from '../lib/schema';
-import { update, useStore } from '../lib/store';
+import { update, useProfileStore as useStore } from '../lib/store';
 import { useI18n } from '../i18n';
 import { dateOffset, today } from '../lib/formulas';
 import { weeklySuggestion, readiness } from '../lib/autoregulation';

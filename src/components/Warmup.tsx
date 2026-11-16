@@ -1,4 +1,4 @@
-import { useStore } from '../lib/store';
+import { useProfileStore as useStore } from '../lib/store';
 import { warmup } from '../lib/formulas';
 import type { Lift } from '../lib/schema';
 import { useI18n } from '../i18n';

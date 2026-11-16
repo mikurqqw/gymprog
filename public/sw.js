@@ -1,17 +1,28 @@
+const BUILD_ID = '__IRONCYCLE_BUILD_ID__';
+const CACHE = `ironcycle-${BUILD_ID}`;
+const PRECACHE = []; // @build-precache
 let disabled = false;
 const pending = new Set();
-const CACHE = 'ironcycle-v1';
+function track(task) {
+  pending.add(task);
+  task.then(
+    () => pending.delete(task),
+    () => pending.delete(task),
+  );
+  return task;
+}
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches
-      .open(CACHE)
-      .then((cache) =>
-        cache.addAll(['./', './index.html', './icon.svg', './manifest.webmanifest']),
-      ),
+    track(
+      caches.open(CACHE).then(async (cache) => {
+        if (!disabled) await cache.addAll(PRECACHE);
+      }),
+    ),
   );
 });
 self.addEventListener('message', (event) => {
   if (event.data?.type === 'ACTIVATE_UPDATE') self.skipWaiting();
+  if (event.data?.type === 'GET_BUILD_ID') event.ports[0]?.postMessage(BUILD_ID);
   if (event.data?.type === 'DISABLE_CACHE') {
     disabled = true;
     event.waitUntil(
@@ -27,13 +38,20 @@ self.addEventListener('activate', (event) => {
         Promise.all(
           keys
             .filter((key) => key.startsWith('ironcycle-') && key !== CACHE)
-            .slice(0, -1)
             .map((key) => caches.delete(key)),
         ),
       )
       .then(() => self.clients.claim()),
   );
 });
+async function fetchAndCache(request) {
+  const response = await fetch(request);
+  if (response.ok && !disabled) {
+    const cache = await caches.open(CACHE);
+    if (!disabled) await cache.put(request, response.clone());
+  }
+  return response;
+}
 self.addEventListener('fetch', (event) => {
   if (
     disabled ||
@@ -41,30 +59,26 @@ self.addEventListener('fetch', (event) => {
     new URL(event.request.url).origin !== self.location.origin
   )
     return;
-  const cached = () => caches.match(event.request, { ignoreVary: true });
-  const network = () =>
-    fetch(event.request)
-      .then(async (response) => {
-        if (response.ok) {
-          const copy = response.clone();
-          const task = caches.open(CACHE).then((cache) => {
-            if (!disabled) return cache.put(event.request, copy);
-          });
-          pending.add(task);
-          task.finally(() => pending.delete(task));
-          event.waitUntil(task);
-          return response;
-        }
-        return (await cached()) ?? response;
-      })
-      .catch(
-        async () =>
-          (await cached()) ||
-          (event.request.mode === 'navigate'
-            ? await caches.match('./index.html', { ignoreVary: true })
-            : Response.error()),
-      );
+  const cached = () =>
+    caches.open(CACHE).then((cache) => cache.match(event.request, { ignoreVary: true }));
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      track(fetchAndCache(event.request))
+        .then(async (response) => (response.ok ? response : ((await cached()) ?? response)))
+        .catch(
+          async () =>
+            (await cached()) ??
+            (await caches.match(new URL('./index.html', self.registration.scope))) ??
+            Response.error(),
+        ),
+    );
+    return;
+  }
+  const refresh = track(fetchAndCache(event.request));
+  event.waitUntil(refresh.catch(() => undefined));
   event.respondWith(
-    event.request.url.includes('/assets/') ? cached().then((hit) => hit ?? network()) : network(),
+    cached()
+      .then((hit) => hit ?? refresh)
+      .catch(() => Response.error()),
   );
 });

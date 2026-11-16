@@ -37,7 +37,9 @@ test('selected program survives adult consent and is handed to profile setup', a
   await page.getByRole('button', { name: 'Перейти к настройке' }).click();
   await expect(page).toHaveURL(/profile/);
   expect(
-    await page.evaluate(() => JSON.parse(localStorage.getItem('ironcycle:data')!).profile.goal),
+    await page.evaluate(
+      () => JSON.parse(localStorage.getItem('ironcycle:data')!).draftProfile.goal,
+    ),
   ).toBe('fitness');
 });
 for (const width of [320, 375, 768, 1280, 1920])

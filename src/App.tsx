@@ -1,3 +1,4 @@
+import { ProfileReadyGate } from './components/ProfileReadyGate';
 import NotFound from './pages/NotFound';
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
@@ -23,7 +24,14 @@ export default function App() {
     <ErrorBoundary>
       <Routes>
         <Route element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route
+            index
+            element={
+              <ProfileReadyGate>
+                <Home />
+              </ProfileReadyGate>
+            }
+          />
           <Route
             path="profile"
             element={
@@ -52,7 +60,14 @@ export default function App() {
               path={path as string}
               element={
                 <Suspense fallback={<div className="skeleton" aria-busy="true" />}>
-                  {typeof Page !== 'string' && <Page />}
+                  {typeof Page !== 'string' &&
+                    (['start', 'privacy-consent', 'reference'].includes(path as string) ? (
+                      <Page />
+                    ) : (
+                      <ProfileReadyGate>
+                        <Page />
+                      </ProfileReadyGate>
+                    ))}
                 </Suspense>
               }
             />

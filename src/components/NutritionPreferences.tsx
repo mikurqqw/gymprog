@@ -2,7 +2,7 @@ import { activityLevels, calorieSafety } from '../lib/calorieSafety';
 import { healthKeys } from '../lib/health';
 import { useState } from 'react';
 import { profileSchema, type Profile } from '../lib/schema';
-import { update, useStore } from '../lib/store';
+import { update, useProfileStore as useStore } from '../lib/store';
 import { useI18n } from '../i18n';
 import { Card, Field, Num, Select } from './ui';
 export function NutritionPreferences() {

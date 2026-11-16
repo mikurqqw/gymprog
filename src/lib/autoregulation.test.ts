@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { defaultProfile as p, type Checkin, type Log } from './schema';
+import { fixtureProfile as p, type Checkin, type Log } from './schema';
 import { immediateAdjustment, readiness, regulate, weeklySuggestion } from './autoregulation';
 import { dateOffset } from './formulas';
 import { generate } from './program';

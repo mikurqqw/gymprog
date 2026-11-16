@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import { initialState } from './storage';
-import { defaultProfile } from './schema';
+import { fixtureProfile } from './schema';
 import { generate } from './program';
 import { parseProgram, programDocumentSchema } from './programDocument';
 import { moveRow, duplicateDay, duplicateWeek } from './programEditing';
 import { rankedAlternatives, replaceExercise } from './replacements';
-const profile = { ...defaultProfile, goal: 'strength' as const };
+const profile = { ...fixtureProfile, goal: 'strength' as const };
 const document = () =>
   programDocumentSchema.parse({
     schemaVersion: 1,
@@ -23,7 +23,7 @@ describe('program documents', () => {
         schemaVersion: 1,
         id: 'pl',
         name: { ru: 'План', kk: 'Жоспар', en: 'Plan' },
-        rows: generate(defaultProfile).map((row) => ({ ...row, rpe: Math.min(9, row.rpe) })),
+        rows: generate(fixtureProfile).map((row) => ({ ...row, rpe: Math.min(9, row.rpe) })),
       }),
     ).not.toThrow();
   });

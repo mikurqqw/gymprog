@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { injurySchema, joints, type Injury } from '../lib/injuries';
-import { update, replaceWithUndo, useStore } from '../lib/store';
+import { update, replaceWithUndo, useProfileStore as useStore } from '../lib/store';
 import { healthKeys, requiresClearance } from '../lib/health';
 import { useI18n } from '../i18n';
 import { Card, Field, Num, PageTitle, Select } from '../components/ui';

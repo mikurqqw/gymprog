@@ -2,7 +2,7 @@ import { useSearchParams } from 'react-router-dom';
 import { ProgramEditor } from '../components/ProgramEditor';
 import { useState } from 'react';
 import { Check, ArrowRight, Dumbbell } from 'lucide-react';
-import { useStore, update } from '../lib/store';
+import { useProfileStore as useStore, update } from '../lib/store';
 import { programRegistry } from '../data/programRegistry';
 import { generate, exerciseById } from '../lib/program';
 import type { Profile } from '../lib/schema';

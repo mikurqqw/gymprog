@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest';
 import { activityLevels, calibrateEnergy } from './calorieSafety';
 import { nutrition } from './nutrition';
-import { defaultProfile as p } from './schema';
+import { fixtureProfile as p } from './schema';
 import { dateOffset } from './formulas';
 it.each(activityLevels)('activity $id uses its specified multiplier', (level) => {
   const n = nutrition({ ...p, activity: level.value });

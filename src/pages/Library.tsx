@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ArrowUpRight, Search } from 'lucide-react';
 import { exercises, exerciseById, alternatives } from '../lib/program';
-import { useStore } from '../lib/store';
+import { useProfileStore as useStore } from '../lib/store';
 import { useI18n } from '../i18n';
 import { Card, Empty, PageTitle, Select } from '../components/ui';
 import { ExerciseMedia } from '../components/ExerciseMedia';

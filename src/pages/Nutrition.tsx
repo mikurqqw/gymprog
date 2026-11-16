@@ -6,7 +6,7 @@ import { Download, RefreshCw, Trash2 } from 'lucide-react';
 import foodsRaw from '../data/foods.json';
 import { mealPlan, nutrition, totals, weightTrend, type Portion } from '../lib/nutrition';
 import { type Food } from '../lib/schema';
-import { replaceWithUndo, update, useStore } from '../lib/store';
+import { replaceWithUndo, update, useProfileStore as useStore } from '../lib/store';
 import { dateOffset, today } from '../lib/formulas';
 import { download } from '../lib/storage';
 import { useI18n } from '../i18n';

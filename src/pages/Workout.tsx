@@ -7,7 +7,7 @@ import { sessionMinutes } from '../lib/templateProgression';
 import { dailyReadiness } from '../lib/dailyReadiness';
 import { Link } from 'react-router-dom';
 import { ArrowRight, HeartPulse } from 'lucide-react';
-import { useStore, update } from '../lib/store';
+import { useProfileStore as useStore, update } from '../lib/store';
 import { generate } from '../lib/program';
 import { regulate } from '../lib/autoregulation';
 import { useI18n } from '../i18n';

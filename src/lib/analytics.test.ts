@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest';
 import { dailyAnalytics, weeklyTonnage } from './analytics';
-import { defaultProfile as p, type Checkin } from './schema';
+import { fixtureProfile as p, type Checkin } from './schema';
 import { withFoodHistory, dailyReadiness } from './dailyReadiness';
 import { generate, exerciseById } from './program';
 import { initialState, parseBackup } from './storage';

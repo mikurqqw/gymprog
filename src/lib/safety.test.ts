@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest';
 import { nextAttempt } from './testAttempts';
-import { defaultProfile } from './schema';
+import { fixtureProfile } from './schema';
 import { initialState, parseBackup } from './storage';
 import { forecast } from './forecast';
 it('opening and second attempts reproduce acceptance cases', () => {
@@ -32,19 +32,19 @@ it('rejects invalid backups without accepting arbitrary types', () => {
   expect(parseBackup(JSON.stringify(initialState))).toEqual(initialState);
   expect(() => parseBackup('{"version":999}')).toThrow();
   expect(() =>
-    parseBackup(JSON.stringify({ ...initialState, profile: { ...defaultProfile, weight: -5 } })),
+    parseBackup(JSON.stringify({ ...initialState, profile: { ...fixtureProfile, weight: -5 } })),
   ).toThrow();
   expect(() => parseBackup('not json')).toThrow();
 });
 it('forecast retains scenario ordering and returning PR goal', () => {
-  const f = forecast(defaultProfile, []);
+  const f = forecast(fixtureProfile, []);
   expect(f.lifts.every((l) => l.low <= l.realistic && l.realistic <= l.high)).toBe(true);
   expect(f.lifts.find((l) => l.lift === 'deadlift')?.pr).toBe(155);
-  expect(forecast({ ...defaultProfile, sleep: 5 }, []).total).toBeLessThan(f.total);
+  expect(forecast({ ...fixtureProfile, sleep: 5 }, []).total).toBeLessThan(f.total);
 });
 it('migrates a compatible version-zero backup', () => {
   const legacy = { ...initialState, version: 0 };
-  expect(parseBackup(JSON.stringify(legacy)).version).toBe(1);
+  expect(parseBackup(JSON.stringify(legacy)).version).toBe(2);
 });
 it('coarse plate steps never turn a third-attempt suggestion into a jump above 5 kg', () => {
   const attempts = [

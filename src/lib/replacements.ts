@@ -30,12 +30,11 @@ export function replaceExercise(
   replacement: string | null,
   scope: ReplacementScope,
 ): AppState {
-  if (
-    replacement &&
-    !rankedAlternatives(row.exercise, state.profile).some((ex) => ex.id === replacement)
-  )
+  const profile = state.profile;
+  if (!profile) throw Error('Profile setup required');
+  if (replacement && !rankedAlternatives(row.exercise, profile).some((ex) => ex.id === replacement))
     throw Error('Unsafe replacement');
-  const source = generate(state.profile, state.adjustments, state.shifts, {}, state.customProgram),
+  const source = generate(profile, state.adjustments, state.shifts, {}, state.customProgram),
     original = source.find((item) => item.id === row.id);
   if (!original) throw Error('Missing prescription');
   const affected = source.filter(

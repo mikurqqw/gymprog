@@ -26,14 +26,16 @@ export function HealthScreen({ onComplete }: { onComplete: () => void }) {
           e.preventDefault();
           if (!complete) return;
           const health = { ...clearHealth, ...answers };
-          update({
-            profile: {
-              ...s.profile,
-              health,
-              healthScreenVersion: HEALTH_SCREEN_VERSION,
-              healthScreenedAt: new Date().toISOString(),
-            },
-          });
+          const values = {
+            health,
+            healthScreenVersion: HEALTH_SCREEN_VERSION,
+            healthScreenedAt: new Date().toISOString(),
+          };
+          update(
+            s.profile
+              ? { profile: { ...s.profile, ...values } }
+              : { draftProfile: { ...s.draftProfile, ...values } },
+          );
           onComplete();
         }}
       >

@@ -2,7 +2,7 @@ import { maxTestingAllowed } from '../lib/injuries';
 import { Warmup } from '../components/Warmup';
 import { dailyReadiness } from '../lib/dailyReadiness';
 import { useState } from 'react';
-import { useStore, update, replaceWithUndo, startRest } from '../lib/store';
+import { useProfileStore as useStore, update, replaceWithUndo, startRest } from '../lib/store';
 import { liftIds } from '../lib/schema';
 import { nextAttempt, type Attempt } from '../lib/testAttempts';
 import { dateOffset, displayWeight, fromWeight, nextMonday } from '../lib/formulas';

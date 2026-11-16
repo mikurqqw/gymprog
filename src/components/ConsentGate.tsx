@@ -19,7 +19,7 @@ export function ConsentGate({ children }: { children: ReactNode }) {
     location = useLocation(),
     [phase, setPhase] = useState<'age' | 'consent' | 'ready' | 'blocked' | 'screening'>(() =>
       dataAllowed()
-        ? s.profile.healthScreenVersion === HEALTH_SCREEN_VERSION
+        ? (s.profile ?? s.draftProfile).healthScreenVersion === HEALTH_SCREEN_VERSION
           ? 'ready'
           : 'screening'
         : readConsent()?.adult
@@ -143,7 +143,10 @@ export function ConsentGate({ children }: { children: ReactNode }) {
                   saveConsent(s.language, optional);
                   const loaded = activateStorage();
                   setBirth('');
-                  if (loaded?.profile.healthScreenVersion === HEALTH_SCREEN_VERSION) {
+                  if (
+                    (loaded?.profile ?? loaded?.draftProfile)?.healthScreenVersion ===
+                    HEALTH_SCREEN_VERSION
+                  ) {
                     void startOffline();
                     setPhase('ready');
                   } else setPhase('screening');

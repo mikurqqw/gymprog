@@ -3,7 +3,7 @@ import { Warmup } from './Warmup';
 import { useEffect, useState } from 'react';
 import { Check, ChevronDown, Minus, Plus, Timer, Video } from 'lucide-react';
 import { useI18n } from '../i18n';
-import { update, useStore, startRest } from '../lib/store';
+import { update, useProfileStore as useStore, startRest } from '../lib/store';
 import { compatible, exerciseById } from '../lib/program';
 import { displayWeight, e1rm, fromWeight, plates, roundTo } from '../lib/formulas';
 import { immediateAdjustment } from '../lib/autoregulation';

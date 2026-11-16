@@ -54,7 +54,10 @@ export function Layout() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
-  const date = new Date(dateOffset(s.profile.start, (s.week - 1) * 7) + 'T12:00:00');
+  const date = new Date(
+    dateOffset(s.profile?.start ?? new Date().toISOString().slice(0, 10), (s.week - 1) * 7) +
+      'T12:00:00',
+  );
   return (
     <div className="app-shell">
       <aside className={'sidebar ' + (menuOpen ? 'menu-open' : '')}>
@@ -105,7 +108,7 @@ export function Layout() {
             <div>
               {t('profile')}
               <small>
-                {s.profile.age} · <Weight value={s.profile.weight} />
+                {s.profile?.age ?? '—'} · <Weight value={s.profile?.weight ?? 0} />
               </small>
             </div>
             <ChevronRight size={16} />

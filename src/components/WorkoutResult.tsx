@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
-import { useStore, replaceWithUndo, update } from '../lib/store';
+import { useProfileStore as useStore, replaceWithUndo, update } from '../lib/store';
 import {
   finishSession,
   sessionKey,

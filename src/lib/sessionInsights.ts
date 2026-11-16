@@ -5,7 +5,7 @@ export function sessionKey(
   week: number,
   day: number,
 ) {
-  return `${state.profile.goal}:${state.customProgram?.id ?? 'builtin'}:${state.profile.start}:${week}:${day}`;
+  return `${state.profile?.goal ?? 'unconfigured'}:${state.customProgram?.id ?? 'builtin'}:${state.profile?.start ?? 'unset'}:${week}:${day}`;
 }
 export function sessionStats(rows: Planned[], logs: Log[]) {
   const matched = rows.flatMap((row) => {

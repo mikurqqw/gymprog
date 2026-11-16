@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useStore } from '../lib/store';
+import { useProfileStore as useStore } from '../lib/store';
 import { useI18n } from '../i18n';
 import { calibrateEnergy } from '../lib/calorieSafety';
 import { nutrition } from '../lib/nutrition';

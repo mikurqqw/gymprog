@@ -1,11 +1,12 @@
+import { onboardingDraftSchema, newUserProfile } from './onboardingDraft';
 import { programDocumentSchema } from './programDocument';
 import { z } from 'zod';
 import { parseSafeJson } from './safeJson';
 import exerciseIds from '../data/exercise-ids.json' with { type: 'json' };
-import { checkinSchema, defaultProfile, logSchema, profileSchema } from './schema';
+import { checkinSchema, logSchema, profileSchema } from './schema';
 export const stateSchema = z.lazy(() =>
   z.object({
-    version: z.literal(1),
+    version: z.literal(2),
     activeSession: z
       .object({
         week: z.number().int().min(1).max(8),
@@ -22,7 +23,8 @@ export const stateSchema = z.lazy(() =>
       .refine((value) => Object.keys(value).length <= 1000)
       .default({}),
     customProgram: programDocumentSchema.nullable().default(null),
-    profile: profileSchema,
+    profile: profileSchema.nullable(),
+    draftProfile: onboardingDraftSchema.default(newUserProfile),
     onboarded: z.boolean(),
     language: z.enum(['ru', 'kk', 'en']),
     theme: z.enum(['dark', 'light']),
@@ -65,11 +67,12 @@ export const stateSchema = z.lazy(() =>
 );
 export type AppState = z.infer<typeof stateSchema>;
 export const initialState: AppState = {
-  version: 1,
+  version: 2,
   activeSession: null,
   sessionCompletions: {},
   customProgram: null,
-  profile: defaultProfile,
+  profile: null,
+  draftProfile: newUserProfile,
   onboarded: false,
   language: 'ru',
   theme: 'dark',
@@ -116,8 +119,8 @@ export function download(name: string, data: string, type = 'application/json') 
 }
 
 export function migrateState(value: unknown): unknown {
-  if (typeof value === 'object' && value !== null && 'version' in value && value.version === 0) {
-    return { ...initialState, ...value, version: 1 };
-  }
+  if (typeof value !== 'object' || value === null || !('version' in value)) return value;
+  if (value.version === 0 || value.version === 1)
+    return { ...initialState, ...value, version: 2, draftProfile: newUserProfile };
   return value;
 }

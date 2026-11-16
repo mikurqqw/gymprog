@@ -1,3 +1,4 @@
+import { launchStrings } from './launchStrings';
 import { storefrontStrings } from './storefrontStrings';
 import { sessionStrings } from './sessionStrings';
 import { uxStrings } from './uxStrings';
@@ -7,6 +8,7 @@ import { dataStrings } from './dataStrings';
 import { privacyStrings } from './privacyStrings';
 import { injuryStrings } from './injuryStrings';
 export const featureStrings: Record<string, { ru: string; kk: string; en: string }> = {
+  ...launchStrings,
   ...injuryStrings,
   ...privacyStrings,
   ...dataStrings,

@@ -1,6 +1,6 @@
 import { ArrowRight, CalendarDays, HeartPulse, Utensils } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useStore, update } from '../lib/store';
+import { useProfileStore as useStore, update } from '../lib/store';
 import { generate, exerciseById } from '../lib/program';
 import { dailyReadiness } from '../lib/dailyReadiness';
 import { regulate } from '../lib/autoregulation';

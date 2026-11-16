@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { Lift } from '../lib/schema';
 import { useI18n } from '../i18n';
-import { update, useStore } from '../lib/store';
+import { update, useProfileStore as useStore } from '../lib/store';
 import { Num } from './ui';
 export function WeeklyAdjustment({ lift, suggestion }: { lift: Lift; suggestion: number }) {
   const s = useStore(),

@@ -11,7 +11,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import { useStore, replaceWithUndo } from '../lib/store';
+import { useProfileStore as useStore, replaceWithUndo } from '../lib/store';
 import { demoData } from '../lib/demo';
 import { forecast } from '../lib/forecast';
 import { dateOffset, displayWeight } from '../lib/formulas';

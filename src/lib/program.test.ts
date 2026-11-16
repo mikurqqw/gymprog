@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { generate, exercises, compatible } from './program';
-import { defaultProfile as p } from './schema';
+import { fixtureProfile as p } from './schema';
 import {
   dateOffset,
   e1rm,

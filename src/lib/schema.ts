@@ -1,3 +1,4 @@
+export { newUserProfile } from './onboardingDraft';
 import { injurySchema } from './injuries';
 import { healthSchema, clearHealth } from './health';
 import { z } from 'zod';
@@ -59,7 +60,7 @@ export const profileSchema = z.lazy(() =>
   }),
 );
 export type Profile = z.infer<typeof profileSchema>;
-export const defaultProfile: Profile = {
+export const fixtureProfile: Profile = {
   age: 18,
   height: 183,
   weight: 77,

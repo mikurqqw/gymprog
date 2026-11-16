@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { generate } from './program';
 import { initialState, parseBackup } from './storage';
-import { defaultProfile, type Log } from './schema';
+import { fixtureProfile, type Log } from './schema';
 import {
   sessionStats,
   resumeSession,
@@ -10,7 +10,7 @@ import {
   sessionKey,
   previousExerciseLog,
 } from './sessionInsights';
-const rows = generate(defaultProfile),
+const rows = generate(fixtureProfile),
   session = rows.filter((row) => row.week === 1 && row.day === 0);
 const log = (patch: Partial<Log> = {}): Log => ({
   id: session[0].id,

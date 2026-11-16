@@ -2,7 +2,7 @@ import { ProgramEvidence } from '../components/ProgramEvidence';
 import { formatDate } from '../lib/formulas';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CircleHelp } from 'lucide-react';
-import { update, useStore } from '../lib/store';
+import { update, useProfileStore as useStore } from '../lib/store';
 import { generate, exerciseById } from '../lib/program';
 import { useI18n } from '../i18n';
 import { Card, PageTitle, Weight } from '../components/ui';

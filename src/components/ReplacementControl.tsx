@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useI18n } from '../i18n';
-import { useStore, replaceWithUndo } from '../lib/store';
+import { useProfileStore as useStore, replaceWithUndo } from '../lib/store';
 import { rankedAlternatives, replaceExercise, type ReplacementScope } from '../lib/replacements';
 import type { Planned } from '../lib/schema';
 import { exerciseById } from '../lib/program';

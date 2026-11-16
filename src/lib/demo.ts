@@ -3,8 +3,10 @@ import { generate } from './program';
 import { dateOffset } from './formulas';
 import { nutrition } from './nutrition';
 export function demoData(s: AppState): Partial<AppState> {
-  const rows = generate(s.profile).filter((r) => r.week <= 3);
-  const target = nutrition(s.profile);
+  if (!s.profile) throw Error('Profile setup required');
+  const profile = s.profile;
+  const rows = generate(profile).filter((r) => r.week <= 3);
+  const target = nutrition(profile);
   const logs = rows.map((r, i) => ({
     id: r.id,
     session: `${r.week}-${r.day}`,
@@ -24,7 +26,7 @@ export function demoData(s: AppState): Partial<AppState> {
     mode: r.mode,
   }));
   const checkins = Array.from({ length: 21 }, (_, i) => ({
-    date: dateOffset(s.profile.start, i),
+    date: dateOffset(profile.start, i),
     sleep: 6.5 + (i % 4) * 0.4,
     quality: 4,
     recovery: 4,
@@ -34,7 +36,7 @@ export function demoData(s: AppState): Partial<AppState> {
     calories: target.kcal + ((i % 3) - 1) * 100,
     protein: target.protein + ((i % 3) - 1) * 10,
     water: 2.7,
-    weight: s.profile.weight + Math.sin(i) * 0.3,
+    weight: profile.weight + Math.sin(i) * 0.3,
     meal: true,
     pain: 'none' as const,
     location: '',

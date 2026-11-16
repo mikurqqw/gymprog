@@ -1,10 +1,10 @@
 import { generate, exerciseById } from '../lib/program';
-import { defaultProfile } from '../lib/schema';
+import { fixtureProfile } from '../lib/schema';
 import type { Profile } from '../lib/schema';
 import { useI18n } from '../i18n';
 export function ProgramSample({ goal }: { goal: Profile['goal'] }) {
   const { t, local } = useI18n(),
-    rows = generate({ ...defaultProfile, goal }).filter((row) => row.week === 1);
+    rows = generate({ ...fixtureProfile, goal }).filter((row) => row.week === 1);
   return (
     <div className="sf-sample-week">
       <p className="sf-small">{t('sfWeekExampleNotice')}</p>

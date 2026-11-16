@@ -14,7 +14,7 @@ export default function StartProgram() {
     <>
       <PageTitle title={t('sfSetupTitle')} description={t('sfSetupText')} />
       <Card>
-        <h2>{t(offer?.goal ?? state.profile.goal)}</h2>
+        <h2>{t(offer?.goal ?? (state.profile ?? state.draftProfile).goal)}</h2>
         <p>{t('sfRequirementsText')}</p>
         {state.onboarded ? (
           <Link className="button" to={offer ? '/builder?program=' + offer.goal : '/builder'}>
@@ -26,11 +26,11 @@ export default function StartProgram() {
             onClick={() => {
               if (offer)
                 update({
-                  profile: {
-                    ...state.profile,
+                  draftProfile: {
+                    ...state.draftProfile,
                     goal: offer.goal,
                     start: nextMonday(today()),
-                    days: offer.goal === 'powerlifting' ? 3 : state.profile.days,
+                    days: offer.goal === 'powerlifting' ? 3 : state.draftProfile.days,
                   },
                   customProgram: null,
                 });

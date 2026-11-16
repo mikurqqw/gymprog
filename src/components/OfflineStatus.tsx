@@ -11,6 +11,13 @@ export function OfflineStatus() {
       off = () => setOnline(false),
       update = () => setWaiting(true),
       failed = () => setError(true);
+    if ('serviceWorker' in navigator)
+      void navigator.serviceWorker
+        .getRegistration('./')
+        .then((registration) => {
+          if (registration?.waiting) update();
+        })
+        .catch(failed);
     window.addEventListener('online', on);
     window.addEventListener('offline', off);
     window.addEventListener('ironcycle:update-ready', update);
@@ -31,7 +38,7 @@ export function OfflineStatus() {
       )}
       {error && <p className="notice warning">{t('offlineUnavailable')}</p>}
       {waiting && (
-        <div className="notice">
+        <div className="notice offline-status">
           <span>{t('updateAvailable')}</span>
           <button
             className="button secondary"

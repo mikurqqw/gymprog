@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { defaultProfile as p, type Checkin } from './schema';
+import { fixtureProfile as p, type Checkin } from './schema';
 import { generate, exerciseById } from './program';
 import {
   injuryEffect,

@@ -2,7 +2,7 @@ import { BackupSecurity } from '../components/BackupSecurity';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { Download, Upload, RotateCcw } from 'lucide-react';
-import { useStore, update, replaceWithUndo } from '../lib/store';
+import { useProfileStore as useStore, update, replaceWithUndo } from '../lib/store';
 import { download, initialState, parseBackup } from '../lib/storage';
 import { demoData } from '../lib/demo';
 import { useI18n } from '../i18n';

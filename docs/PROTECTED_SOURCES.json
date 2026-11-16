@@ -1,0 +1,2270 @@
+{
+  "files": {
+    "src/data/powerlifting.json": "5977a0afc52e0f6dff8a89605568784574d5d24fb5fde06864488d3ee9e13308",
+    "src/data/templates.ts": "f5087deada7f431e2370a86bffe5f011ca5ce7abbffdf788dd3097a419c30bbc",
+    "src/data/programRegistry.ts": "c67f9c12b3aaf5c28563a44258f10936415a6ee92f376b1a1a046500ffdd8197",
+    "src/lib/program.ts": "7650698edf08a0acb12b5629a197a050e0aa11b3e9d9f52d44d2a4623ba4c904",
+    "src/lib/templateProgression.ts": "5d078b58b60082c8929bcb3d390318a7f75e79b2c575483276f8bf2ea2fb4897",
+    "src/lib/autoregulation.ts": "d37b7d5079777e932b867e5f8d15952c302e24631d02610942ca4af3fbca05d3",
+    "src/lib/dailyReadiness.ts": "006aabc7edd79f55d4b3277265622c1c5ece5947b1fa2baad4b5aee463c84382",
+    "src/lib/nutrition.ts": "95e6b038eca5d8a2b1b05b56f4dba9c7f69b278e6eab5c20ecfb4b1ff441b59d",
+    "src/lib/formulas.ts": "d132a24c7085aeca4ad1164f04e4c34458dcfff08a1aa6c4e6ccc712a9123c15",
+    "src/lib/forecast.ts": "c8a21fa642d405f696010d2d228a7854636a4e81df14a9792113e2da2fa579df",
+    "src/lib/injuries.ts": "2d13209c569a8609b1c0758bbbf60d81c986972d88281935ad299c16a7102036",
+    "src/data/programs/arms.json": "3aea5f4d3914d83195f7cc9a510fda2a524f30bebe4d60a9de0fb6a69863fdfb",
+    "src/data/programs/armwrestling.json": "5352c09de46f4cba1cdee859e89b2eaf7e450b83e1ff2f3f3aabf0c270b04f2b",
+    "src/data/programs/bodybuilding.json": "3bacd1123010218be0e625037fd0aced4a1f2fef680eabaef5865a62d5402d53",
+    "src/data/programs/custom.json": "9e37e0a3aacd696998f148f59ef03913d3719652cfbdfd99cd3f0e6e182fc491",
+    "src/data/programs/fatloss.json": "0b4e007f745395469066ed41c58f6379a5e256ad492fe16ef16735cd69ffca94",
+    "src/data/programs/fitness.json": "3f384f3985e86590ebef85721c4769abd20ac31f66e2292c693ef41097f24540",
+    "src/data/programs/powerlifting.json": "d760c17243c042115c3cf88e7c9b24999b2fba4a45711b76ec8e4eb62781d1bb",
+    "src/data/programs/strength.json": "8db2541d42faa932e183cdd601a2c59e22c7fd24aaaa076f70471d3caf1e143f"
+  },
+  "fields": [
+    "id",
+    "jointStress",
+    "substitutions",
+    "loadingSide",
+    "injuries",
+    "requiresClinicalReview"
+  ],
+  "exercises": [
+    {
+      "id": "ex-0",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 1,
+        "wrist": 1,
+        "lowerBack": 2,
+        "knee": 3,
+        "hip": 3
+      },
+      "substitutions": [
+        "ex-3",
+        "ex-11",
+        "ex-18",
+        "ex-21",
+        "ex-22",
+        "ex-23",
+        "ex-24",
+        "ex-25",
+        "ex-26",
+        "ex-27",
+        "ex-28"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "knee",
+        "hip"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-1",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-6",
+        "ex-10",
+        "ex-19",
+        "ex-38",
+        "ex-39",
+        "ex-40",
+        "ex-41",
+        "ex-42",
+        "ex-43",
+        "ex-44",
+        "ex-45",
+        "ex-46",
+        "ex-65"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "shoulder",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-2",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 2,
+        "knee": 1,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-14",
+        "ex-47",
+        "ex-48",
+        "ex-49",
+        "ex-50",
+        "ex-56",
+        "ex-57"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-3",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 2,
+        "wrist": 3,
+        "lowerBack": 2,
+        "knee": 3,
+        "hip": 3
+      },
+      "substitutions": [
+        "ex-0",
+        "ex-11",
+        "ex-18",
+        "ex-21",
+        "ex-22",
+        "ex-23",
+        "ex-24",
+        "ex-25",
+        "ex-26",
+        "ex-27",
+        "ex-28"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "knee",
+        "hip"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-4",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 2,
+        "wrist": 2,
+        "lowerBack": 2,
+        "knee": 1,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-9",
+        "ex-15",
+        "ex-69",
+        "ex-70",
+        "ex-71",
+        "ex-73"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-5",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 2,
+        "wrist": 3,
+        "lowerBack": 3,
+        "knee": 1,
+        "hip": 3
+      },
+      "substitutions": [
+        "ex-12",
+        "ex-20",
+        "ex-30",
+        "ex-31",
+        "ex-32",
+        "ex-33",
+        "ex-34",
+        "ex-35"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "lowerBack"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-6",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-1",
+        "ex-10",
+        "ex-19",
+        "ex-38",
+        "ex-39",
+        "ex-40",
+        "ex-41",
+        "ex-42",
+        "ex-43",
+        "ex-44",
+        "ex-45",
+        "ex-46",
+        "ex-65"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "shoulder",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-7",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-51",
+        "ex-52",
+        "ex-53",
+        "ex-54"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-8",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 1,
+        "wrist": 1,
+        "lowerBack": 1,
+        "knee": 2,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-29",
+        "ex-36",
+        "ex-37"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-9",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 1,
+        "wrist": 0,
+        "lowerBack": 1,
+        "knee": 1,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-4",
+        "ex-15",
+        "ex-69",
+        "ex-70",
+        "ex-71",
+        "ex-73"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-10",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-1",
+        "ex-6",
+        "ex-19",
+        "ex-38",
+        "ex-39",
+        "ex-40",
+        "ex-41",
+        "ex-42",
+        "ex-43",
+        "ex-44",
+        "ex-45",
+        "ex-46",
+        "ex-65"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "shoulder",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-11",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 1,
+        "wrist": 1,
+        "lowerBack": 2,
+        "knee": 3,
+        "hip": 3
+      },
+      "substitutions": [
+        "ex-0",
+        "ex-3",
+        "ex-18",
+        "ex-21",
+        "ex-22",
+        "ex-23",
+        "ex-24",
+        "ex-25",
+        "ex-26",
+        "ex-27",
+        "ex-28"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "knee",
+        "hip"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-12",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 2,
+        "wrist": 3,
+        "lowerBack": 3,
+        "knee": 1,
+        "hip": 3
+      },
+      "substitutions": [
+        "ex-5",
+        "ex-20",
+        "ex-30",
+        "ex-31",
+        "ex-32",
+        "ex-33",
+        "ex-34",
+        "ex-35"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "lowerBack"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-13",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 3,
+        "wrist": 2,
+        "lowerBack": 0,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-64",
+        "ex-66"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-14",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 2,
+        "knee": 1,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-2",
+        "ex-47",
+        "ex-48",
+        "ex-49",
+        "ex-50",
+        "ex-56",
+        "ex-57"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-15",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 3,
+        "wrist": 2,
+        "lowerBack": 2,
+        "knee": 0,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-4",
+        "ex-9",
+        "ex-69",
+        "ex-70",
+        "ex-71",
+        "ex-73"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-16",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 1,
+        "wrist": 1,
+        "lowerBack": 1,
+        "knee": 1,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-87",
+        "ex-88",
+        "ex-89"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-17",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 1,
+        "wrist": 1,
+        "lowerBack": 1,
+        "knee": 1,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-90",
+        "ex-91",
+        "ex-92"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-18",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 1,
+        "wrist": 1,
+        "lowerBack": 2,
+        "knee": 3,
+        "hip": 3
+      },
+      "substitutions": [
+        "ex-0",
+        "ex-3",
+        "ex-11",
+        "ex-21",
+        "ex-22",
+        "ex-23",
+        "ex-24",
+        "ex-25",
+        "ex-26",
+        "ex-27",
+        "ex-28"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "knee",
+        "hip"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-19",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-1",
+        "ex-6",
+        "ex-10",
+        "ex-38",
+        "ex-39",
+        "ex-40",
+        "ex-41",
+        "ex-42",
+        "ex-43",
+        "ex-44",
+        "ex-45",
+        "ex-46",
+        "ex-65"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "shoulder",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-20",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 2,
+        "wrist": 3,
+        "lowerBack": 3,
+        "knee": 1,
+        "hip": 3
+      },
+      "substitutions": [
+        "ex-5",
+        "ex-12",
+        "ex-30",
+        "ex-31",
+        "ex-32",
+        "ex-33",
+        "ex-34",
+        "ex-35"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "lowerBack"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-21",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 1,
+        "wrist": 1,
+        "lowerBack": 2,
+        "knee": 3,
+        "hip": 3
+      },
+      "substitutions": [
+        "ex-0",
+        "ex-3",
+        "ex-11",
+        "ex-18",
+        "ex-22",
+        "ex-23",
+        "ex-24",
+        "ex-25",
+        "ex-26",
+        "ex-27",
+        "ex-28"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "knee",
+        "hip"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-22",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 2,
+        "wrist": 3,
+        "lowerBack": 2,
+        "knee": 3,
+        "hip": 3
+      },
+      "substitutions": [
+        "ex-0",
+        "ex-3",
+        "ex-11",
+        "ex-18",
+        "ex-21",
+        "ex-23",
+        "ex-24",
+        "ex-25",
+        "ex-26",
+        "ex-27",
+        "ex-28"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "knee",
+        "hip"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-23",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 1,
+        "wrist": 1,
+        "lowerBack": 2,
+        "knee": 3,
+        "hip": 3
+      },
+      "substitutions": [
+        "ex-0",
+        "ex-3",
+        "ex-11",
+        "ex-18",
+        "ex-21",
+        "ex-22",
+        "ex-24",
+        "ex-25",
+        "ex-26",
+        "ex-27",
+        "ex-28"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "knee",
+        "hip"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-24",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 1,
+        "wrist": 1,
+        "lowerBack": 2,
+        "knee": 3,
+        "hip": 3
+      },
+      "substitutions": [
+        "ex-0",
+        "ex-3",
+        "ex-11",
+        "ex-18",
+        "ex-21",
+        "ex-22",
+        "ex-23",
+        "ex-25",
+        "ex-26",
+        "ex-27",
+        "ex-28"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "knee",
+        "hip"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-25",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 2,
+        "wrist": 3,
+        "lowerBack": 2,
+        "knee": 3,
+        "hip": 3
+      },
+      "substitutions": [
+        "ex-0",
+        "ex-3",
+        "ex-11",
+        "ex-18",
+        "ex-21",
+        "ex-22",
+        "ex-23",
+        "ex-24",
+        "ex-26",
+        "ex-27",
+        "ex-28"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "knee",
+        "hip"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-26",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 2,
+        "wrist": 3,
+        "lowerBack": 2,
+        "knee": 3,
+        "hip": 3
+      },
+      "substitutions": [
+        "ex-0",
+        "ex-3",
+        "ex-11",
+        "ex-18",
+        "ex-21",
+        "ex-22",
+        "ex-23",
+        "ex-24",
+        "ex-25",
+        "ex-27",
+        "ex-28"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "knee",
+        "hip"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-27",
+      "jointStress": {
+        "shoulder": 0,
+        "elbow": 0,
+        "wrist": 0,
+        "lowerBack": 1,
+        "knee": 2,
+        "hip": 2
+      },
+      "substitutions": [
+        "ex-0",
+        "ex-3",
+        "ex-11",
+        "ex-18",
+        "ex-21",
+        "ex-22",
+        "ex-23",
+        "ex-24",
+        "ex-25",
+        "ex-26",
+        "ex-28"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "knee",
+        "hip"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-28",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 1,
+        "wrist": 1,
+        "lowerBack": 2,
+        "knee": 3,
+        "hip": 3
+      },
+      "substitutions": [
+        "ex-0",
+        "ex-3",
+        "ex-11",
+        "ex-18",
+        "ex-21",
+        "ex-22",
+        "ex-23",
+        "ex-24",
+        "ex-25",
+        "ex-26",
+        "ex-27"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "knee",
+        "hip"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-29",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 1,
+        "wrist": 1,
+        "lowerBack": 1,
+        "knee": 2,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-8",
+        "ex-36",
+        "ex-37"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-30",
+      "jointStress": {
+        "shoulder": 0,
+        "elbow": 0,
+        "wrist": 0,
+        "lowerBack": 1,
+        "knee": 1,
+        "hip": 2
+      },
+      "substitutions": [
+        "ex-5",
+        "ex-12",
+        "ex-20",
+        "ex-31",
+        "ex-32",
+        "ex-33",
+        "ex-34",
+        "ex-35"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "lowerBack"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-31",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 2,
+        "wrist": 3,
+        "lowerBack": 3,
+        "knee": 1,
+        "hip": 3
+      },
+      "substitutions": [
+        "ex-5",
+        "ex-12",
+        "ex-20",
+        "ex-30",
+        "ex-32",
+        "ex-33",
+        "ex-34",
+        "ex-35"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "lowerBack"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-32",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 2,
+        "wrist": 3,
+        "lowerBack": 3,
+        "knee": 1,
+        "hip": 3
+      },
+      "substitutions": [
+        "ex-5",
+        "ex-12",
+        "ex-20",
+        "ex-30",
+        "ex-31",
+        "ex-33",
+        "ex-34",
+        "ex-35"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "lowerBack"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-33",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 2,
+        "wrist": 3,
+        "lowerBack": 3,
+        "knee": 1,
+        "hip": 3
+      },
+      "substitutions": [
+        "ex-5",
+        "ex-12",
+        "ex-20",
+        "ex-30",
+        "ex-31",
+        "ex-32",
+        "ex-34",
+        "ex-35"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "lowerBack"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-34",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 2,
+        "wrist": 3,
+        "lowerBack": 3,
+        "knee": 1,
+        "hip": 3
+      },
+      "substitutions": [
+        "ex-5",
+        "ex-12",
+        "ex-20",
+        "ex-30",
+        "ex-31",
+        "ex-32",
+        "ex-33",
+        "ex-35"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "lowerBack"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-35",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 2,
+        "wrist": 3,
+        "lowerBack": 3,
+        "knee": 1,
+        "hip": 3
+      },
+      "substitutions": [
+        "ex-5",
+        "ex-12",
+        "ex-20",
+        "ex-30",
+        "ex-31",
+        "ex-32",
+        "ex-33",
+        "ex-34"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "lowerBack"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-36",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 1,
+        "wrist": 1,
+        "lowerBack": 1,
+        "knee": 2,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-8",
+        "ex-29",
+        "ex-37"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-37",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 1,
+        "wrist": 1,
+        "lowerBack": 1,
+        "knee": 2,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-8",
+        "ex-29",
+        "ex-36"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-38",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-1",
+        "ex-6",
+        "ex-10",
+        "ex-19",
+        "ex-39",
+        "ex-40",
+        "ex-41",
+        "ex-42",
+        "ex-43",
+        "ex-44",
+        "ex-45",
+        "ex-46",
+        "ex-65"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "shoulder",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-39",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-1",
+        "ex-6",
+        "ex-10",
+        "ex-19",
+        "ex-38",
+        "ex-40",
+        "ex-41",
+        "ex-42",
+        "ex-43",
+        "ex-44",
+        "ex-45",
+        "ex-46",
+        "ex-65"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "shoulder",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-40",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-1",
+        "ex-6",
+        "ex-10",
+        "ex-19",
+        "ex-38",
+        "ex-39",
+        "ex-41",
+        "ex-42",
+        "ex-43",
+        "ex-44",
+        "ex-45",
+        "ex-46",
+        "ex-65"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "shoulder",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-41",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-1",
+        "ex-6",
+        "ex-10",
+        "ex-19",
+        "ex-38",
+        "ex-39",
+        "ex-40",
+        "ex-42",
+        "ex-43",
+        "ex-44",
+        "ex-45",
+        "ex-46",
+        "ex-65"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "shoulder",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-42",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-1",
+        "ex-6",
+        "ex-10",
+        "ex-19",
+        "ex-38",
+        "ex-39",
+        "ex-40",
+        "ex-41",
+        "ex-43",
+        "ex-44",
+        "ex-45",
+        "ex-46",
+        "ex-65"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "shoulder",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-43",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-1",
+        "ex-6",
+        "ex-10",
+        "ex-19",
+        "ex-38",
+        "ex-39",
+        "ex-40",
+        "ex-41",
+        "ex-42",
+        "ex-44",
+        "ex-45",
+        "ex-46",
+        "ex-65"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "shoulder",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-44",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-1",
+        "ex-6",
+        "ex-10",
+        "ex-19",
+        "ex-38",
+        "ex-39",
+        "ex-40",
+        "ex-41",
+        "ex-42",
+        "ex-43",
+        "ex-45",
+        "ex-46",
+        "ex-65"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "shoulder",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-45",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-1",
+        "ex-6",
+        "ex-10",
+        "ex-19",
+        "ex-38",
+        "ex-39",
+        "ex-40",
+        "ex-41",
+        "ex-42",
+        "ex-43",
+        "ex-44",
+        "ex-46",
+        "ex-65"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "shoulder",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-46",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-1",
+        "ex-6",
+        "ex-10",
+        "ex-19",
+        "ex-38",
+        "ex-39",
+        "ex-40",
+        "ex-41",
+        "ex-42",
+        "ex-43",
+        "ex-44",
+        "ex-45",
+        "ex-65"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "shoulder",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-47",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 2,
+        "knee": 1,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-2",
+        "ex-14",
+        "ex-48",
+        "ex-49",
+        "ex-50",
+        "ex-56",
+        "ex-57"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-48",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 2,
+        "knee": 1,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-2",
+        "ex-14",
+        "ex-47",
+        "ex-49",
+        "ex-50",
+        "ex-56",
+        "ex-57"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-49",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 2,
+        "knee": 1,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-2",
+        "ex-14",
+        "ex-47",
+        "ex-48",
+        "ex-50",
+        "ex-56",
+        "ex-57"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-50",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 2,
+        "knee": 1,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-2",
+        "ex-14",
+        "ex-47",
+        "ex-48",
+        "ex-49",
+        "ex-56",
+        "ex-57"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-51",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-7",
+        "ex-52",
+        "ex-53",
+        "ex-54"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-52",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-7",
+        "ex-51",
+        "ex-53",
+        "ex-54"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-53",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-7",
+        "ex-51",
+        "ex-52",
+        "ex-54"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-54",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-7",
+        "ex-51",
+        "ex-52",
+        "ex-53"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-55",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 2,
+        "wrist": 2,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-86"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-56",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 2,
+        "knee": 1,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-2",
+        "ex-14",
+        "ex-47",
+        "ex-48",
+        "ex-49",
+        "ex-50",
+        "ex-57"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-57",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 2,
+        "knee": 1,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-2",
+        "ex-14",
+        "ex-47",
+        "ex-48",
+        "ex-49",
+        "ex-50",
+        "ex-56"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-58",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 3,
+        "wrist": 2,
+        "lowerBack": 0,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-59",
+        "ex-60",
+        "ex-61",
+        "ex-62",
+        "ex-63",
+        "ex-79"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "elbow",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-59",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 3,
+        "wrist": 2,
+        "lowerBack": 0,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-58",
+        "ex-60",
+        "ex-61",
+        "ex-62",
+        "ex-63",
+        "ex-79"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "elbow",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-60",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 3,
+        "wrist": 2,
+        "lowerBack": 0,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-58",
+        "ex-59",
+        "ex-61",
+        "ex-62",
+        "ex-63",
+        "ex-79"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "elbow",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-61",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 3,
+        "wrist": 2,
+        "lowerBack": 0,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-58",
+        "ex-59",
+        "ex-60",
+        "ex-62",
+        "ex-63",
+        "ex-79"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "elbow",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-62",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 3,
+        "wrist": 2,
+        "lowerBack": 0,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-58",
+        "ex-59",
+        "ex-60",
+        "ex-61",
+        "ex-63",
+        "ex-79"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "elbow",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-63",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 3,
+        "wrist": 2,
+        "lowerBack": 0,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-58",
+        "ex-59",
+        "ex-60",
+        "ex-61",
+        "ex-62",
+        "ex-79"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "elbow",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-64",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 3,
+        "wrist": 2,
+        "lowerBack": 0,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-13",
+        "ex-66"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-65",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-1",
+        "ex-6",
+        "ex-10",
+        "ex-19",
+        "ex-38",
+        "ex-39",
+        "ex-40",
+        "ex-41",
+        "ex-42",
+        "ex-43",
+        "ex-44",
+        "ex-45",
+        "ex-46"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "shoulder",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-66",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 3,
+        "wrist": 2,
+        "lowerBack": 0,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-13",
+        "ex-64"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-67",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 1,
+        "wrist": 1,
+        "lowerBack": 1,
+        "knee": 2,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-68"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-68",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 1,
+        "wrist": 1,
+        "lowerBack": 1,
+        "knee": 2,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-67"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-69",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 3,
+        "wrist": 2,
+        "lowerBack": 2,
+        "knee": 0,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-4",
+        "ex-9",
+        "ex-15",
+        "ex-70",
+        "ex-71",
+        "ex-73"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-70",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 2,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 2,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-4",
+        "ex-9",
+        "ex-15",
+        "ex-69",
+        "ex-71",
+        "ex-73"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-71",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 2,
+        "wrist": 2,
+        "lowerBack": 2,
+        "knee": 1,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-4",
+        "ex-9",
+        "ex-15",
+        "ex-69",
+        "ex-70",
+        "ex-73"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-72",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 2,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-74",
+        "ex-75",
+        "ex-82"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-73",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 2,
+        "wrist": 2,
+        "lowerBack": 2,
+        "knee": 1,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-4",
+        "ex-9",
+        "ex-15",
+        "ex-69",
+        "ex-70",
+        "ex-71"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-74",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 2,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-72",
+        "ex-75",
+        "ex-82"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-75",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 2,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-72",
+        "ex-74",
+        "ex-82"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-76",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 0,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-84"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "elbow",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-77",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 0,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-85"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "elbow",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-78",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 0,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "elbow",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-79",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 3,
+        "wrist": 2,
+        "lowerBack": 0,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-58",
+        "ex-59",
+        "ex-60",
+        "ex-61",
+        "ex-62",
+        "ex-63"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "elbow",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-80",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 0,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "elbow",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-81",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 0,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-83"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "elbow",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-82",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 2,
+        "wrist": 3,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-72",
+        "ex-74",
+        "ex-75"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-83",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 0,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-81"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "elbow",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-84",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 0,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-76"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "elbow",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-85",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 3,
+        "wrist": 3,
+        "lowerBack": 0,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-77"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [
+        "elbow",
+        "wrist"
+      ],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-86",
+      "jointStress": {
+        "shoulder": 3,
+        "elbow": 2,
+        "wrist": 2,
+        "lowerBack": 1,
+        "knee": 0,
+        "hip": 0
+      },
+      "substitutions": [
+        "ex-55"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-87",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 1,
+        "wrist": 1,
+        "lowerBack": 1,
+        "knee": 1,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-16",
+        "ex-88",
+        "ex-89"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-88",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 1,
+        "wrist": 1,
+        "lowerBack": 1,
+        "knee": 1,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-16",
+        "ex-87",
+        "ex-89"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-89",
+      "jointStress": {
+        "shoulder": 2,
+        "elbow": 2,
+        "wrist": 1,
+        "lowerBack": 1,
+        "knee": 2,
+        "hip": 2
+      },
+      "substitutions": [
+        "ex-16",
+        "ex-87",
+        "ex-88"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-90",
+      "jointStress": {
+        "shoulder": 0,
+        "elbow": 0,
+        "wrist": 0,
+        "lowerBack": 0,
+        "knee": 1,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-17",
+        "ex-91",
+        "ex-92"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-91",
+      "jointStress": {
+        "shoulder": 1,
+        "elbow": 1,
+        "wrist": 1,
+        "lowerBack": 1,
+        "knee": 1,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-17",
+        "ex-90",
+        "ex-92"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    },
+    {
+      "id": "ex-92",
+      "jointStress": {
+        "shoulder": 0,
+        "elbow": 0,
+        "wrist": 0,
+        "lowerBack": 0,
+        "knee": 1,
+        "hip": 1
+      },
+      "substitutions": [
+        "ex-17",
+        "ex-90",
+        "ex-91"
+      ],
+      "loadingSide": "bilateral",
+      "injuries": [],
+      "requiresClinicalReview": true
+    }
+  ]
+}

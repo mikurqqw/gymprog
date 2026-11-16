@@ -1,7 +1,7 @@
 import { dailyReadiness } from '../lib/dailyReadiness';
 import { useState } from 'react';
 import { HeartPulse, Check } from 'lucide-react';
-import { update, useStore } from '../lib/store';
+import { update, useProfileStore as useStore } from '../lib/store';
 import { checkinSchema, type Checkin as CheckinType } from '../lib/schema';
 import { dateOffset, today, displayWeight, fromWeight } from '../lib/formulas';
 import { useI18n } from '../i18n';
