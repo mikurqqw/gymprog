@@ -3,17 +3,23 @@ import { Link } from 'react-router-dom';
 import { useI18n } from '../i18n';
 import { exercises } from '../lib/program';
 import { articles } from '../data/articles';
-export function GlobalSearch() {
+export function GlobalSearch({
+  expanded = false,
+  onNavigate,
+}: {
+  expanded?: boolean;
+  onNavigate?: () => void;
+}) {
   const { t, local } = useI18n(),
     [query, setQuery] = useState('');
   const needle = query.normalize('NFKC').trim().toLocaleLowerCase(),
     matches = needle.length > 1;
-  return (
-    <details className="global-search">
-      <summary>{t('globalSearch')}</summary>
+  const content = (
+    <>
       <label className="search-field">
         <input
           type="search"
+          autoFocus={expanded}
           aria-label={t('globalSearch')}
           placeholder={t('searchHint')}
           value={query}
@@ -28,7 +34,7 @@ export function GlobalSearch() {
             )
             .slice(0, 5)
             .map((ex) => (
-              <Link key={ex.id} to={'/library?exercise=' + ex.id}>
+              <Link onClick={onNavigate} key={ex.id} to={'/library?exercise=' + ex.id}>
                 {local(ex.name)}
               </Link>
             ))}
@@ -40,15 +46,30 @@ export function GlobalSearch() {
             )
             .slice(0, 3)
             .map((article) => (
-              <Link key={article.id} to={'/reference?q=' + encodeURIComponent(query)}>
+              <Link
+                onClick={onNavigate}
+                key={article.id}
+                to={'/reference?q=' + encodeURIComponent(query)}
+              >
                 {local(article.title)}
               </Link>
             ))}
-          <Link to={'/nutrition?q=' + encodeURIComponent(query)}>
+          <Link onClick={onNavigate} to={'/nutrition?q=' + encodeURIComponent(query)}>
             {t('searchFood')}: {query}
           </Link>
         </div>
       )}
+    </>
+  );
+  return expanded ? (
+    <section className="global-search expanded">
+      {content}
+      {!matches && <p className="muted">{t('searchPrompt')}</p>}
+    </section>
+  ) : (
+    <details className="global-search">
+      <summary>{t('globalSearch')}</summary>
+      {content}
     </details>
   );
 }

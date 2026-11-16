@@ -35,9 +35,12 @@ for (const width of [375, 768, 1280, 1920])
       }
       if (width === 375) {
         await page.goto('/');
-        await page.getByRole('button', { name: 'Все разделы' }).click();
-        await expect(page.locator('.sidebar.menu-open')).toBeVisible();
-        await page.locator('.mobile-settings').click();
+        await page.getByRole('button', { name: 'Ещё' }).click();
+        await expect(page.locator('.more-sheet[open]')).toBeVisible();
+        await page
+          .locator('.more-sheet')
+          .getByRole('link', { name: 'Настройки', exact: true })
+          .click();
         await expect(page.locator('h1')).toHaveText('Настройки');
         const results = await new AxeBuilder({ page }).analyze();
         expect(

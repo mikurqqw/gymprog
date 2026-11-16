@@ -1,4 +1,5 @@
-import { ArrowRight, CalendarDays, HeartPulse, Utensils } from 'lucide-react';
+import { HomeSupportingCards } from '../components/HomeSupportingCards';
+import { ArrowRight, CalendarDays, HeartPulse } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useProfileStore as useStore, update } from '../lib/store';
 import { generate, exerciseById } from '../lib/program';
@@ -12,7 +13,6 @@ import {
   sessionKey,
 } from '../lib/sessionInsights';
 import { formatDate } from '../lib/formulas';
-import { nutrition } from '../lib/nutrition';
 import { useI18n } from '../i18n';
 import { Card, PageTitle, ProgressBar } from '../components/ui';
 import { StrengthCards } from '../components/StrengthCards';
@@ -42,8 +42,7 @@ export function Home() {
       : null,
     adjusted = readiness ? regulate(session, readiness, state.profile) : session,
     stats = sessionStats(session, state.logs),
-    weekGroups = sessionGroups(rows.filter((row) => row.week === state.week)),
-    food = nutrition(state.profile);
+    weekGroups = sessionGroups(rows.filter((row) => row.week === state.week));
   return (
     <>
       <PageTitle
@@ -169,34 +168,7 @@ export function Home() {
           })}
         </div>
       </Card>
-      <div className="home-tool-strip">
-        <Link to="/nutrition">
-          <Utensils size={20} />
-          <div>
-            <strong>{t('nutrition')}</strong>
-            <span>
-              {state.onboarded && food.automaticAllowed
-                ? `${food.kcal} ${t('kcal')} · ${t('calorieEstimateShort')}`
-                : t('foodLog')}
-            </span>
-          </div>
-          <ArrowRight size={17} />
-        </Link>
-        <Link to="/progress">
-          <div>
-            <strong>{t('progress')}</strong>
-            <span>{t('sfStep3Text')}</span>
-          </div>
-          <ArrowRight size={17} />
-        </Link>
-        <Link to="/builder">
-          <div>
-            <strong>{t('builder')}</strong>
-            <span>{t('sfFaq3Text')}</span>
-          </div>
-          <ArrowRight size={17} />
-        </Link>
-      </div>
+      <HomeSupportingCards rows={rows} />
       <details className="home-extra">
         <summary>{t('sfMoreMetrics')}</summary>
         <StrengthCards />
