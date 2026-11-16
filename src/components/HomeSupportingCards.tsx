@@ -1,3 +1,4 @@
+import { logRowId } from '../lib/workoutLogs';
 import { Link } from 'react-router-dom';
 import { useProfileStore } from '../lib/store';
 import { useI18n } from '../i18n';
@@ -25,7 +26,9 @@ export function HomeSupportingCards({ rows }: { rows: Planned[] }) {
       b.completedAt.localeCompare(a.completedAt),
     )[0],
     logs = last
-      ? state.logs.filter((log) => last.rowIds.includes(log.id) && log.status !== 'skipped')
+      ? state.logs.filter(
+          (log) => last.rowIds.includes(logRowId(log.id)) && log.status !== 'skipped',
+        )
       : [],
     sets = logs.reduce((sum, log) => sum + log.sets.filter(Boolean).length, 0),
     volume = logs.reduce(

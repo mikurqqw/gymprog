@@ -6,7 +6,8 @@ import exerciseIds from '../data/exercise-ids.json' with { type: 'json' };
 import { checkinSchema, logSchema, profileSchema } from './schema';
 export const stateSchema = z.lazy(() =>
   z.object({
-    version: z.literal(2),
+    version: z.literal(3),
+    workoutView: z.enum(['focus', 'overview']).nullable().default(null),
     activeSession: z
       .object({
         week: z.number().int().min(1).max(8),
@@ -67,7 +68,8 @@ export const stateSchema = z.lazy(() =>
 );
 export type AppState = z.infer<typeof stateSchema>;
 export const initialState: AppState = {
-  version: 2,
+  version: 3,
+  workoutView: null,
   activeSession: null,
   sessionCompletions: {},
   customProgram: null,
@@ -121,6 +123,13 @@ export function download(name: string, data: string, type = 'application/json') 
 export function migrateState(value: unknown): unknown {
   if (typeof value !== 'object' || value === null || !('version' in value)) return value;
   if (value.version === 0 || value.version === 1)
-    return { ...initialState, ...value, version: 2, draftProfile: newUserProfile };
+    return {
+      ...initialState,
+      ...value,
+      version: 3,
+      workoutView: null,
+      draftProfile: newUserProfile,
+    };
+  if (value.version === 2) return { ...value, version: 3, workoutView: null };
   return value;
 }

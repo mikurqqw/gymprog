@@ -1,3 +1,4 @@
+import { setLogs, logRowId } from './workoutLogs';
 import type { AppState } from './storage';
 import type { Log, Planned } from './schema';
 export function sessionKey(
@@ -9,16 +10,10 @@ export function sessionKey(
 }
 export function sessionStats(rows: Planned[], logs: Log[]) {
   const matched = rows.flatMap((row) => {
-    const log = logs.find(
-      (item) =>
-        item.id === row.id &&
-        item.exercise === row.exercise &&
-        item.date === row.date &&
-        item.status !== 'skipped',
-    );
-    if (!log) return [];
-    const sets = Math.min(row.sets, log.sets.filter(Boolean).length);
-    return sets ? [{ row, log, sets }] : [];
+    return setLogs(row, logs).flatMap((log) => {
+      const sets = log.status !== 'skipped' && log.sets[0] ? 1 : 0;
+      return sets ? [{ row, log, sets }] : [];
+    });
   });
   const planned = rows.reduce((sum, row) => sum + row.sets, 0),
     done = matched.reduce((sum, item) => sum + item.sets, 0);
@@ -49,7 +44,7 @@ export function resumeSession(state: AppState, rows: Planned[]) {
       group[0].week === state.activeSession?.week &&
       group[0].day === state.activeSession.day &&
       state.logs.some((log) =>
-        group.some((row) => row.id === log.id && row.exercise === log.exercise),
+        group.some((row) => row.id === logRowId(log.id) && row.exercise === log.exercise),
       ),
   );
   const selected =

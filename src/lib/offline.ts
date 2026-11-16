@@ -6,7 +6,8 @@ export async function startOffline() {
   try {
     const registration = await navigator.serviceWorker.register('./sw.js');
     const notify = () => {
-      if (registration.waiting) window.dispatchEvent(new Event('ironcycle:update-ready'));
+      if (registration.waiting && navigator.serviceWorker.controller)
+        window.dispatchEvent(new Event('ironcycle:update-ready'));
     };
     notify();
     registration.addEventListener('updatefound', () =>

@@ -13,6 +13,7 @@ test('partial workout resumes across reload and can be finished, reopened and un
   await expect(page.getByRole('link', { name: 'Продолжить тренировку' })).toBeVisible();
   await page.reload();
   await page.getByRole('link', { name: 'Продолжить тренировку' }).click();
+  await page.getByRole('button', { name: 'Обзор', exact: true }).click();
   await expect(
     page.locator('.workout-line').first().getByRole('button', { name: 'Выполнено', exact: true }),
   ).toBeDisabled();

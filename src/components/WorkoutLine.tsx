@@ -1,70 +1,46 @@
+import { FocusSets } from './FocusSets';
+import { FocusTechnique } from './FocusTechnique';
+import { useWorkoutLog } from '../lib/useWorkoutLog';
 import { ReplacementControl } from './ReplacementControl';
 import { Warmup } from './Warmup';
 import { useEffect, useState } from 'react';
 import { Check, ChevronDown, Minus, Plus, Timer, Video } from 'lucide-react';
 import { useI18n } from '../i18n';
-import { update, useProfileStore as useStore, startRest } from '../lib/store';
+import { useProfileStore as useStore } from '../lib/store';
 import { compatible, exerciseById } from '../lib/program';
 import { displayWeight, e1rm, fromWeight, plates, roundTo } from '../lib/formulas';
 import { immediateAdjustment } from '../lib/autoregulation';
 import { getVideo, saveVideo } from '../lib/video';
-import { logSchema, type Log, type Planned } from '../lib/schema';
+import { type Planned } from '../lib/schema';
 import { Card, Field, Num, Weight } from './ui';
-export function WorkoutLine({ row, index }: { row: Planned; index: number }) {
+export function WorkoutLine({
+  row,
+  index,
+  focus = false,
+}: {
+  row: Planned;
+  index: number;
+  focus?: boolean;
+}) {
   const s = useStore(),
     { t, local, units, weightUnit } = useI18n(),
     ex = exerciseById(row.exercise),
-    saved = s.logs.find((l) => l.id === row.id),
+    { log, sets: setRecords, write, error } = useWorkoutLog(row),
     [expanded, setExpanded] = useState(false),
     [videoUrl, setVideoUrl] = useState(''),
     [message, setMessage] = useState('');
-  const base: Log = {
-    id: row.id,
-    session: `${row.week}-${row.day}`,
-    exercise: row.exercise,
-    lift: row.lift,
-    date: row.date,
-    weight: row.weight ?? 0,
-    reps: row.reps,
-    sets: Array.from({ length: row.sets }, () => false),
-    rpe: row.rpe,
-    targetRpe: row.rpe,
-    planned: row.weight,
-    status: 'planned',
-    note: '',
-    video: '',
-    technique: true,
-    mode: row.mode,
-  };
   const previous = s.logs
     .filter(
       (item) => item.exercise === row.exercise && item.date < row.date && item.sets.some(Boolean),
     )
     .sort((a, b) => b.date.localeCompare(a.date))[0];
-  const log = saved ?? base,
-    complete = log.sets.every(Boolean),
+  const complete = log.sets.every(Boolean),
     estimated = log.lift && log.sets.some(Boolean) ? e1rm(log.weight, log.reps, log.rpe) : null;
-  const write = (patch: Partial<Log>, timer = false) => {
-    const candidate = { ...log, ...patch };
-    candidate.status =
-      patch.status ??
-      (candidate.sets.every(Boolean)
-        ? candidate.weight === row.weight && candidate.reps === row.reps
-          ? 'done'
-          : 'modified'
-        : 'planned');
-    const parsed = logSchema.safeParse(candidate);
-    if (!parsed.success) {
-      setMessage(t('invalid'));
-      return;
-    }
-    update({
-      logs: [...s.logs.filter((l) => l.id !== row.id), parsed.data],
-      activeSession: { week: row.week, day: row.day, touchedAt: new Date().toISOString() },
-    });
-    if (timer) startRest(row.rest);
-  };
-  const reduction = immediateAdjustment(log.rpe, row.rpe, log.technique),
+  const reduction = immediateAdjustment(
+      Math.max(...setRecords.map((record) => record.rpe)),
+      row.rpe,
+      setRecords.every((record) => record.technique),
+    ),
     plate = plates(log.weight, s.bar, s.plateSizes),
     conflict = !compatible(ex, s.profile);
   useEffect(
@@ -111,6 +87,7 @@ export function WorkoutLine({ row, index }: { row: Planned; index: number }) {
           </b>
         </span>
         <span>{row.weight === null ? t('manualLoad') : <Weight value={row.weight} />}</span>
+        {row.percent !== null && <span>{Math.round(row.percent * 1000) / 10}%</span>}
         <span>RPE ≤ {row.rpe}</span>
         <span>
           <Timer size={14} />
@@ -127,72 +104,80 @@ export function WorkoutLine({ row, index }: { row: Planned; index: number }) {
           </span>
         )}
       </div>
-      <div className="workout-controls">
-        <div className="weight-stepper">
-          <button
-            className="icon-button"
-            disabled={conflict || log.weight <= 0}
-            aria-label={t('weight') + ' −'}
-            onClick={() => write({ weight: Math.max(0, log.weight - s.profile.step) })}
-          >
-            <Minus size={19} />
-          </button>
-          <label>
-            <span className="sr-only">
-              {t('actual')} {t('weight')}
-            </span>
-            <input
-              type="number"
-              min={0}
-              max={units === 'metric' ? 800 : 1764}
-              step="any"
-              value={displayWeight(log.weight, units)}
-              onChange={(e) => write({ weight: fromWeight(Number(e.target.value), units) })}
-            />
-            <small>{weightUnit}</small>
-          </label>
-          <button
-            className="icon-button"
-            disabled={conflict}
-            aria-label={t('weight') + ' +'}
-            onClick={() => write({ weight: log.weight + s.profile.step })}
-          >
-            <Plus size={19} />
-          </button>
-        </div>
-        <div className="set-checkboxes">
-          {log.sets.map((checked, i) => (
+      {focus && <FocusTechnique exercise={ex} />}
+      {focus ? (
+        <FocusSets row={row} />
+      ) : (
+        <div className="workout-controls">
+          <div className="weight-stepper">
             <button
-              disabled={conflict}
-              className={checked ? 'checked' : ''}
-              key={i}
-              aria-label={t('sets') + ' ' + (i + 1) + ' ' + local(ex.name)}
-              aria-pressed={checked}
-              onClick={() => write({ sets: log.sets.map((n, j) => (i === j ? !n : n)) }, !checked)}
+              className="icon-button"
+              disabled={conflict || log.weight <= 0}
+              aria-label={t('weight') + ' −'}
+              onClick={() => write({ weight: Math.max(0, log.weight - s.profile.step) })}
             >
-              {checked ? <Check size={19} /> : i + 1}
+              <Minus size={19} />
             </button>
-          ))}
+            <label>
+              <span className="sr-only">
+                {t('actual')} {t('weight')}
+              </span>
+              <input
+                type="number"
+                min={0}
+                max={units === 'metric' ? 800 : 1764}
+                step="any"
+                value={displayWeight(log.weight, units)}
+                onChange={(e) => write({ weight: fromWeight(Number(e.target.value), units) })}
+              />
+              <small>{weightUnit}</small>
+            </label>
+            <button
+              className="icon-button"
+              disabled={conflict}
+              aria-label={t('weight') + ' +'}
+              onClick={() => write({ weight: log.weight + s.profile.step })}
+            >
+              <Plus size={19} />
+            </button>
+          </div>
+          <div className="set-checkboxes">
+            {log.sets.map((checked, i) => (
+              <button
+                disabled={conflict}
+                className={checked ? 'checked' : ''}
+                key={i}
+                aria-label={t('sets') + ' ' + (i + 1) + ' ' + local(ex.name)}
+                aria-pressed={checked}
+                onClick={() =>
+                  write({ sets: log.sets.map((n, j) => (i === j ? !n : n)) }, !checked)
+                }
+              >
+                {checked ? <Check size={19} /> : i + 1}
+              </button>
+            ))}
+          </div>
+          <button
+            className="button secondary complete-button"
+            disabled={
+              conflict || complete || (row.weight === null && row.lift !== null && log.weight === 0)
+            }
+            onClick={() =>
+              write(
+                {
+                  sets: log.sets.map(() => true),
+                  status: log.weight === row.weight && log.reps === row.reps ? 'done' : 'modified',
+                },
+                true,
+              )
+            }
+          >
+            <Check size={17} />
+            {t(complete ? 'done' : 'complete')}
+          </button>
         </div>
-        <button
-          className="button secondary complete-button"
-          disabled={
-            conflict || complete || (row.weight === null && row.lift !== null && log.weight === 0)
-          }
-          onClick={() =>
-            write(
-              {
-                sets: log.sets.map(() => true),
-                status: log.weight === row.weight && log.reps === row.reps ? 'done' : 'modified',
-              },
-              true,
-            )
-          }
-        >
-          <Check size={17} />
-          {t(complete ? 'done' : 'complete')}
-        </button>
-      </div>
+      )}
+
       {reduction < 0 && log.sets.some(Boolean) && (
         <div className="notice warning">
           {t('immediateReduce')}{' '}
@@ -203,6 +188,15 @@ export function WorkoutLine({ row, index }: { row: Planned; index: number }) {
             −5%
           </button>
         </div>
+      )}
+      {focus && (
+        <button
+          className="button secondary focus-options-button"
+          aria-expanded={expanded}
+          onClick={() => setExpanded(!expanded)}
+        >
+          {t('focusExerciseOptions')}
+        </button>
       )}
       {expanded && (
         <div className="workout-detail">
@@ -328,6 +322,7 @@ export function WorkoutLine({ row, index }: { row: Planned; index: number }) {
           </button>
         </div>
       )}
+      {error && <p role="alert">{error}</p>}
       {message && (
         <p role="status" className="micro">
           {message}

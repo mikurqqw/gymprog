@@ -15,7 +15,7 @@ export function OfflineStatus() {
       void navigator.serviceWorker
         .getRegistration('./')
         .then((registration) => {
-          if (registration?.waiting) update();
+          if (registration?.waiting && navigator.serviceWorker.controller) update();
         })
         .catch(failed);
     window.addEventListener('online', on);

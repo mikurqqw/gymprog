@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { useI18n } from '../i18n';
-export function WorkoutTools() {
+export function WorkoutTools({ active = false }: { active?: boolean }) {
   const { t } = useI18n(),
-    [enabled, setEnabled] = useState(false),
+    [enabled, setEnabled] = useState<boolean | null>(null),
     [message, setMessage] = useState(''),
     lock = useRef<WakeLockSentinel | null>(null);
   useEffect(() => {
+    const awake = enabled ?? active;
     let disposed = false;
     const request = async () => {
-      if (!enabled || document.visibilityState !== 'visible') return;
+      if (!awake || document.visibilityState !== 'visible') return;
       try {
         if (!('wakeLock' in navigator)) throw Error('Unavailable');
         const active = await navigator.wakeLock.request('screen');
@@ -26,13 +27,13 @@ export function WorkoutTools() {
       void lock.current?.release();
       lock.current = null;
     };
-  }, [enabled, t]);
+  }, [enabled, active, t]);
   return (
     <div className="workout-tools">
       <label className="checkbox-label">
         <input
           type="checkbox"
-          checked={enabled}
+          checked={enabled ?? active}
           onChange={(e) => {
             setMessage('');
             setEnabled(e.target.checked);

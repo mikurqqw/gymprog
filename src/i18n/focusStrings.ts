@@ -1,0 +1,30 @@
+export const focusStrings: Record<string, { ru: string; kk: string; en: string }> = {
+  focusSessionOptions: {
+    ru: 'Расписание и настройки',
+    kk: 'Кесте және баптаулар',
+    en: 'Schedule and settings',
+  },
+  focusExerciseOptions: {
+    ru: 'Замена, разминка и запись',
+    kk: 'Ауыстыру, қыздыру және жазба',
+    en: 'Replacement, warm-up and notes',
+  },
+  focusView: { ru: 'Фокус', kk: 'Назар', en: 'Focus' },
+  focusOverview: { ru: 'Обзор', kk: 'Шолу', en: 'Overview' },
+  focusSet: { ru: 'Подход', kk: 'Сет', en: 'Set' },
+  focusSetDone: { ru: 'Подход выполнен', kk: 'Сет орындалды', en: 'Set done' },
+  focusUndoSet: {
+    ru: 'Отменить отметку подхода',
+    kk: 'Сет белгісін қайтару',
+    en: 'Undo set completion',
+  },
+  focusEffort: { ru: 'Ощущение усилия', kk: 'Күш салу сезімі', en: 'Perceived effort' },
+  focusRpe6: { ru: 'Ещё 4+', kk: 'Тағы 4+', en: '4+ left' },
+  focusRpe7: { ru: 'Ещё 3', kk: 'Тағы 3', en: '3 left' },
+  focusRpe8: { ru: 'Ещё 2', kk: 'Тағы 2', en: '2 left' },
+  focusRpe9: { ru: 'Ещё 1', kk: 'Тағы 1', en: '1 left' },
+  focusRpe10: { ru: 'Предел', kk: 'Шегі', en: 'No reps left' },
+  focusExercise: { ru: 'Упражнение', kk: 'Жаттығу', en: 'Exercise' },
+  focusHowTo: { ru: 'Как выполнять', kk: 'Қалай орындау керек', en: 'How to' },
+  focusAddRest: { ru: '+30 секунд', kk: '+30 секунд', en: '+30 seconds' },
+};

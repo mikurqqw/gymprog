@@ -100,7 +100,12 @@ export function Home() {
                 className="button"
                 to="/workout"
                 onClick={() => {
-                  if (target) update({ week: target.week, day: target.day });
+                  if (target)
+                    update({
+                      week: target.week,
+                      day: target.day,
+                      workoutView: state.workoutView ?? 'focus',
+                    });
                 }}
               >
                 {t(resume ? 'sfContinue' : 'startWorkout')}

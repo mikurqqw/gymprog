@@ -1,0 +1,134 @@
+.focus-stepper {
+  min-width: 0;
+}
+.focus-stepper > span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.focus-stepper > div {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  min-height: 56px;
+}
+.focus-stepper label {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.focus-stepper input {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 24px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  padding: 2px;
+  appearance: textfield;
+}
+.focus-stepper input::-webkit-inner-spin-button {
+  appearance: none;
+}
+.focus-stepper small {
+  color: var(--muted);
+  font-size: 10px;
+}
+.focus-rpe {
+  border: 0;
+  padding: 0;
+  margin: 16px 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 4px;
+}
+.focus-rpe legend {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.focus-rpe button {
+  min-height: 52px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  border-radius: 8px;
+  font-size: 16px;
+}
+.focus-rpe small {
+  display: block;
+  font-size: 9px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.focus-rpe [aria-pressed='true'] {
+  background: var(--surface2);
+  border-color: var(--accent);
+  box-shadow: inset 0 -2px var(--accent);
+}
+.focus-set > .button {
+  width: 100%;
+  min-height: 52px;
+}
+.focus-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-block: 20px;
+}
+.focus-navigation > * {
+  flex: 1;
+}
+.focus-finish {
+  display: block;
+  min-height: 44px;
+  text-align: center;
+}
+.focus-technique {
+  border-block: 1px solid var(--border);
+  margin-block: 20px;
+  padding-block: 8px;
+}
+.focus-technique summary {
+  cursor: pointer;
+}
+.focus-technique .exercise-media {
+  max-height: 300px;
+  object-fit: contain;
+}
+.workout-focus .workout-plan {
+  font-variant-numeric: tabular-nums;
+}
+.workout-focus .workout-detail {
+  margin-top: 16px;
+}
+.rest-timer {
+  flex-wrap: wrap;
+}
+.rest-timer .rest-actions {
+  display: flex;
+  gap: 4px;
+}
+@media (max-width: 420px) {
+  .focus-numbers {
+    gap: 8px;
+  }
+  .focus-stepper input {
+    font-size: 20px;
+  }
+  .focus-navigation .button {
+    padding-inline: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .focus-numbers {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

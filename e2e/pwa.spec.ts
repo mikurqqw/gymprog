@@ -12,6 +12,7 @@ test('build A to B waits for user approval, loads new entry, removes every old c
     await page.evaluate(() => navigator.serviceWorker.ready);
     await page.waitForFunction(() => !!navigator.serviceWorker.controller);
     expect(await page.evaluate(() => Reflect.get(window, '__IRONCYCLE_TEST_BUILD__'))).toBe('A');
+    await expect(page.locator('.offline-status')).not.toBeVisible();
     await page.evaluate(() => caches.open('ironcycle-extra-stale'));
     server.publishB();
     await page.evaluate(async () => {

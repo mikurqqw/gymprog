@@ -1,3 +1,5 @@
+import { useSearchParams } from 'react-router-dom';
+import { z } from 'zod';
 import { dailyReadiness } from '../lib/dailyReadiness';
 import { useState } from 'react';
 import { HeartPulse, Check } from 'lucide-react';
@@ -7,9 +9,11 @@ import { dateOffset, today, displayWeight, fromWeight } from '../lib/formulas';
 import { useI18n } from '../i18n';
 import { Card, Field, Num, PageTitle, Select } from '../components/ui';
 export default function Checkin() {
+  const [params] = useSearchParams();
+  const requestedDate = z.iso.date().safeParse(params.get('date'));
   const s = useStore(),
     { t, units, weightUnit } = useI18n(),
-    [date, setDate] = useState(today()),
+    [date, setDate] = useState(requestedDate.success ? requestedDate.data : today()),
     [saved, setSaved] = useState(false),
     [error, setError] = useState('');
   const previous = s.foodLogs.filter((f) => f.date === dateOffset(date, -1));

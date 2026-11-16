@@ -36,7 +36,7 @@ Human coach/clinician/native review remains pending.
 
 ## Remaining sections, in request order
 
-3 Focus workout; 4 fast onboarding and gate presentation;
+4 fast onboarding and gate presentation;
 5 contextual disclaimers/footer; 6 landing/SEO; 7 design system/install/state polish;
 8 exercise text/illustrations/content gate; 9 launch config/feedback/legal checks;
 10 hosts/security/multi-engine/performance CI; 11 journeys; 12 final evidence report.
@@ -55,3 +55,21 @@ No server, payment, account, subscription, advertising or default analytics is a
   (CSSOM View https://drafts.csswg.org/cssom-view/); route changes no longer trigger invalid cleanup.
 - Initial JS159.0 KiB gzip; protected hashes unchanged.
 - Security review: native modal focus handling, existing consent-controlled storage, no new remote requests.
+
+## Section 3 — complete
+
+- Start workout defaults to Focus unless a presentation was explicitly selected; choice persists.
+- One exercise, specific technique expander, per-set weight/reps steppers with hold repeat,
+  RPE6–10 descriptions, completion, automatic timestamp timer, +30s/skip, warm-up, plates,
+  previous result, scoped replacement and pain/date handoff remain available.
+- Previous/Next, exercise progress and existing saved result; wake lock while active,
+  optional supported vibration and reduced-motion handling. Compact readiness/why expander.
+- Shared Zod-validated log writer retains the existing Log fields; individual sets use reserved
+  ::set:N IDs and one boolean, while legacy exercise logs stay readable and expand on editing.
+  Schema v3 adds only the nullable presentation preference; v0/v1/v2 migration is tested.
+- Updated summaries, replacement archiving, resume and exercise adherence handle both formats.
+- Browser regression fixed a first-install waiting-worker notification being mistaken for an update.
+- Full checks pass:132 unit +47 browser scenarios; full-session Focus/Overview stored logs identical.
+- Focus screenshots320/375/768/1280 in both themes, two visual iterations; serious/critical axe0.
+- Initial JS159.4 KiB gzip. Protected-source hashes unchanged; no added remote request/dependency.
+- Wake lock and vibration remain platform-dependent progressive enhancements.

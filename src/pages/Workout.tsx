@@ -1,7 +1,8 @@
+import { WorkoutFocus } from '../components/WorkoutFocus';
 import { sessionStats } from '../lib/sessionInsights';
 import { RecommendationWhy } from '../components/RecommendationWhy';
 import { WorkoutResult } from '../components/WorkoutResult';
-import { WorkoutTools } from '../components/WorkoutTools';
+import { WorkoutScheduleTools } from '../components/WorkoutScheduleTools';
 import { formatDate } from '../lib/formulas';
 import { sessionMinutes } from '../lib/templateProgression';
 import { dailyReadiness } from '../lib/dailyReadiness';
@@ -13,7 +14,6 @@ import { regulate } from '../lib/autoregulation';
 import { useI18n } from '../i18n';
 import { Card, Empty, PageTitle, Weight } from '../components/ui';
 import { WorkoutLine } from '../components/WorkoutLine';
-import { WeekSelector } from '../components/WeekSelector';
 export default function Workout() {
   const s = useStore(),
     { t, locale } = useI18n(),
@@ -55,34 +55,31 @@ export default function Workout() {
             : ''
         }
       />
-      <WorkoutTools />
-      <WeekSelector />
-      <div className="tabs">
-        {days.map((day) => (
+      <WorkoutScheduleTools days={days} />
+      <div className={'compact-readiness readiness-notice ' + (r?.level ?? '')}>
+        <HeartPulse size={20} />
+        <strong>{r ? `${r.score}/100 · ${t(r.level)}` : t('noCheckin')}</strong>
+        <Link to={'/checkin?date=' + date} className="text-link">
+          {t('checkin')}
+        </Link>
+        <RecommendationWhy before={session} after={lines} readiness={r} />
+        {r?.level === 'red' && (
+          <p className="notice danger">
+            {t('stopPain')} {t('emergencyHelp')}
+          </p>
+        )}
+      </div>
+      <div className="workout-view-toggle" role="group" aria-label={t('today')}>
+        {(['focus', 'overview'] as const).map((view) => (
           <button
-            key={day}
-            className={s.day === day ? 'active' : ''}
-            onClick={() => update({ day })}
+            key={view}
+            aria-pressed={(s.workoutView ?? 'overview') === view}
+            onClick={() => update({ workoutView: view })}
           >
-            {t('session')} {day + 1}
+            {t(view === 'focus' ? 'focusView' : 'focusOverview')}
           </button>
         ))}
       </div>
-      <div className={'notice readiness-notice ' + (r?.level ?? '')}>
-        <HeartPulse size={22} />
-        <div>
-          <strong>{r ? `${r.score}/100 · ${t(r.level)}` : t('noCheckin')}</strong>
-          <p>{r ? t(r.level + 'Text') : t('checkinText')}</p>
-          {r?.reasons.map((reason) => (
-            <p key={reason}>{t(reason)}</p>
-          ))}
-        </div>
-        <Link to="/checkin" className="text-link">
-          {t('checkin')}
-          <ArrowRight size={17} />
-        </Link>
-      </div>
-      <RecommendationWhy before={session} after={lines} readiness={r} />
       {s.profile.goal === 'powerlifting' && s.week === 8 && s.day === 2 ? (
         <Card>
           <p>{t('testSafety')}</p>
@@ -93,7 +90,7 @@ export default function Workout() {
         </Card>
       ) : (
         <>
-          {lines.some((l) => l.lift) && (
+          {s.workoutView !== 'focus' && lines.some((l) => l.lift) && (
             <p className="warmup-notice">
               {t('warmupText')} <b>{t('ceiling')}</b>
             </p>
@@ -117,9 +114,13 @@ export default function Workout() {
                   {t('sessionLimit')} ~{sessionMinutes(lines)} {t('min')}
                 </p>
               )}
-              {lines.map((row, index) => (
-                <WorkoutLine key={row.id + '-' + row.exercise} row={row} index={index} />
-              ))}
+              {s.workoutView === 'focus' ? (
+                <WorkoutFocus key={s.week + '-' + s.day} rows={lines} />
+              ) : (
+                lines.map((row, index) => (
+                  <WorkoutLine key={row.id + '-' + row.exercise} row={row} index={index} />
+                ))
+              )}
             </div>
           )}
         </>

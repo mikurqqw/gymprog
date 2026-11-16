@@ -1,3 +1,4 @@
+import { logRowId } from './workoutLogs';
 import type { AppState } from './storage';
 import type { Planned, Profile } from './schema';
 import { exercises, exerciseById, compatible, generate } from './program';
@@ -54,7 +55,7 @@ export function replaceExercise(
   }
   // Preserve previous results as history; a new movement starts with a clean log.
   const logs = state.logs.map((log) =>
-    ids.has(log.id) ? { ...log, id: log.id + '-history-' + crypto.randomUUID() } : log,
+    ids.has(logRowId(log.id)) ? { ...log, id: log.id + '-history-' + crypto.randomUUID() } : log,
   );
   return { ...state, swaps, logs };
 }

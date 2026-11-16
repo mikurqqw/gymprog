@@ -1,3 +1,4 @@
+import { focusStrings } from './focusStrings';
 import { navigationStrings } from './navigationStrings';
 import { launchStrings } from './launchStrings';
 import { storefrontStrings } from './storefrontStrings';
@@ -10,6 +11,7 @@ import { privacyStrings } from './privacyStrings';
 import { injuryStrings } from './injuryStrings';
 export const featureStrings: Record<string, { ru: string; kk: string; en: string }> = {
   ...navigationStrings,
+  ...focusStrings,
   ...launchStrings,
   ...injuryStrings,
   ...privacyStrings,

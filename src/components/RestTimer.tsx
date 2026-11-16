@@ -22,13 +22,25 @@ export function RestTimer() {
           {Math.floor(seconds / 60)}:{String(seconds % 60).padStart(2, '0')}
         </strong>
       </div>
-      <button
-        className="icon-button"
-        aria-label={t('stopTimer')}
-        onClick={() => update({ timer: null })}
-      >
-        <X size={20} />
-      </button>
+      <div className="rest-actions">
+        <button
+          className="button secondary"
+          onClick={() =>
+            update((current) => ({
+              timer: Math.max(Date.now(), current.timer ?? Date.now()) + 30000,
+            }))
+          }
+        >
+          {t('focusAddRest')}
+        </button>
+        <button
+          className="icon-button"
+          aria-label={t('stopTimer')}
+          onClick={() => update({ timer: null })}
+        >
+          <X size={20} />
+        </button>
+      </div>
     </div>
   );
 }

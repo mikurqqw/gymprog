@@ -1,3 +1,4 @@
+import { completedExerciseCount } from '../lib/workoutLogs';
 import { useState } from 'react';
 import {
   Area,
@@ -31,7 +32,7 @@ export default function Progress() {
     adherence = logs.length
       ? Math.min(
           1,
-          logs.length /
+          completedExerciseCount(logs) /
             Math.max(
               1,
               rows.filter(

@@ -1,3 +1,4 @@
+import { logRowId } from '../lib/workoutLogs';
 import type { Planned } from '../lib/schema';
 import { liftIds } from '../lib/schema';
 import { update, useProfileStore as useStore } from '../lib/store';
@@ -9,7 +10,7 @@ import { WeeklyAdjustment } from './WeeklyAdjustment';
 export function WeeklyReview({ rows }: { rows: Planned[] }) {
   const s = useStore(),
     { t } = useI18n(),
-    logs = s.logs.filter((l) => rows.some((r) => r.id === l.id) && l.sets.some(Boolean)),
+    logs = s.logs.filter((l) => rows.some((r) => r.id === logRowId(l.id)) && l.sets.some(Boolean)),
     start = dateOffset(s.profile.start, (s.week - 1) * 7),
     checks = s.checkins.filter((c) => c.date >= start && c.date <= dateOffset(start, 6));
   const avg = (values: number[]) =>

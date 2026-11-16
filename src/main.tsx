@@ -24,3 +24,7 @@ createRoot(document.getElementById('root')!).render(
     <ApplicationRoot />
   </StrictMode>,
 );
+
+import './focus.css';
+
+import './focusControls.css';
