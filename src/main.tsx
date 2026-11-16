@@ -9,5 +9,7 @@ import './fonts.css';
 import './styles.css';
 import './privacy.css';
 import './device.css';
+import './dashboard.css';
+import './storefront.css';
 if(dataAllowed()&&!hasAppLock()){activateStorage();void startOffline();}
 createRoot(document.getElementById('root')!).render(<StrictMode><ApplicationRoot/></StrictMode>);

@@ -59,3 +59,7 @@ INCIDENT_RESPONSE.md for scope and sources. No backend, account or tracker added
 All 25 Chromium browser scenarios passed, including axe checks and layouts in both themes at 375/768/1280/1920 px. After splitting database loading, six privacy/acceptance scenarios passed again. Lighthouse mobile: {'performance': 96, 'accessibility': 100, 'best-practices': 96, 'seo': 100}. LCP 2748 ms (target 2500 ms remains missed); CLS 0. Category scores pass 90, but the separate LCP gate intentionally remains red. No threshold was lowered. Cross-engine matrix remains pending.
 
 The user subsequently authorized GitHub Pages publication of this explicit preview. Manual Pages dispatch with `preview=true` enables the banner without disabling the default production guard.
+
+## Program storefront update (2026-11-16)
+
+Public product pages and an anonymous in-memory demo now precede personal-data consent. The age/consent/health gates still protect training data. All tools remain. See STOREFRONT.md for verification, commercial limits and rollback. Final public-entry Lighthouse: {'performance': 100, 'accessibility': 100, 'best-practices': 96, 'seo': 100}; LCP 910 ms; all configured assertions passed. This supersedes the previous entry-page performance result, not the pending cross-engine review.

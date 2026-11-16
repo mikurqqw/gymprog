@@ -82,3 +82,7 @@ Vite 8.3.8, React 19.3.1, TypeScript 6.0.3, Tailwind 4.3.5, React Router 7.18.5,
 ## Safety and privacy update
 
 Development uses an explicit preview banner. `npm run build` intentionally fails until operator details and legal/native-language reviews are complete. Use `npm run build:preview` for local testing. See [compliance status](docs/COMPLIANCE.md), [program schema](docs/PROGRAM_SCHEMA.md) and [food provenance](docs/FOOD_DATA.md). Explicit preview publication uses the Pages manual workflow with `preview=true`; normal production builds remain blocked.
+
+## Program storefront
+
+Open `/#/welcome` to review the public program presentation, `/#/catalog` for all directions and `/#/demo` for the in-memory demo. Returning users keep their dashboard and all existing tools. Training summaries and resumable sessions are documented in [STOREFRONT.md](docs/STOREFRONT.md). Payments are not connected.

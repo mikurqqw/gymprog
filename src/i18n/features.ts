@@ -1,3 +1,5 @@
+import { storefrontStrings } from './storefrontStrings';
+import { sessionStrings } from './sessionStrings';
 import { uxStrings } from './uxStrings';
 import { securityStrings } from './securityStrings';
 import { programStrings } from './programStrings';
@@ -5,7 +7,7 @@ import { dataStrings } from './dataStrings';
 import { privacyStrings } from './privacyStrings';
 import { injuryStrings } from './injuryStrings';
 export const featureStrings:Record<string,{ru:string;kk:string;en:string}>={
- ...injuryStrings,...privacyStrings,...dataStrings,...programStrings,...securityStrings,...uxStrings,
+ ...injuryStrings,...privacyStrings,...dataStrings,...programStrings,...securityStrings,...uxStrings,...storefrontStrings,...sessionStrings,
  calorieEstimate:{ru:'Это приблизительные расчёты, а не рекомендации врача или диетолога. Они не учитывают индивидуальный обмен веществ, гормоны, лекарства, состав тела и ошибки учёта. Реальные потребности могут отличаться на 10–20% и более.',kk:'Бұл — дәрігер не диетолог кеңесі емес, шамамен есептеу. Жеке зат алмасу, гормондар, дәрілер, дене құрамы және есеп қателері ескерілмейді. Нақты қажеттілік 10–20% немесе одан да көп өзгеше болуы мүмкін.',en:'These figures are estimates, not medical or dietitian advice. Individual metabolism, hormones, medications, body composition and tracking errors are not accounted for. Real needs can differ by 10–20% or more.'},
  medicalDietBlocked:{ru:'Автоматические рекомендации по питанию отключены. Обсуди питание с врачом или диетологом; дневник можно вести без целевых значений.',kk:'Автоматты тамақтану кеңестері өшірілді. Тамақтануды дәрігермен не диетологпен талқылаңыз; күнделікті мақсатсыз жүргізуге болады.',en:'Automatic dietary advice is disabled. Discuss nutrition with a clinician or dietitian; you can still log food without targets.'},
  underweightNotice:{ru:'ИМТ ниже 18,5: дефицит и снижение веса недоступны. ИМТ — ориентир, не диагноз.',kk:'ДСИ 18,5-тен төмен: тапшылық пен салмақ азайту қолжетімсіз. ДСИ — бағдар, диагноз емес.',en:'BMI below 18.5: deficit and weight-loss options are unavailable. BMI is a screening indicator, not a diagnosis.'},
