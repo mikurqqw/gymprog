@@ -160,7 +160,9 @@ export function WorkoutLine({
           <button
             className="button secondary complete-button"
             disabled={
-              conflict || complete || (row.weight === null && row.lift !== null && log.weight === 0)
+              conflict ||
+              complete ||
+              (row.weight === null && row.lift !== null && log.weight === 0 && !row.loadUnassessed)
             }
             onClick={() =>
               write(
@@ -259,7 +261,9 @@ export function WorkoutLine({
               </b>
             </p>
           )}
-          {row.lift && <Warmup lift={row.lift} ceiling={row.weight ?? undefined} />}
+          {row.lift && s.profile.strengthAssessment[row.lift] !== 'unknown' && (
+            <Warmup lift={row.lift} ceiling={row.weight ?? undefined} />
+          )}
           <details>
             <summary>{t('plates')}</summary>
             <p>

@@ -28,3 +28,5 @@ createRoot(document.getElementById('root')!).render(
 import './focus.css';
 
 import './focusControls.css';
+
+import './onboarding.css';

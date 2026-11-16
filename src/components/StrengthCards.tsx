@@ -1,3 +1,4 @@
+import { UnassessedStrength } from './UnassessedStrength';
 import { ArrowUpRight } from 'lucide-react';
 import { liftIds } from '../lib/schema';
 import { useProfileStore as useStore } from '../lib/store';
@@ -6,6 +7,7 @@ import { Weight } from './ui';
 export function StrengthCards() {
   const { profile: p } = useStore(),
     { t } = useI18n();
+  if (Object.values(p.strengthAssessment).includes('unknown')) return <UnassessedStrength />;
   return (
     <div className="strength-grid">
       {liftIds.map((lift, i) => (

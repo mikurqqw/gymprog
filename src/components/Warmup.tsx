@@ -6,6 +6,7 @@ import { Weight } from './ui';
 export function Warmup({ lift, ceiling }: { lift: Lift; ceiling?: number }) {
   const { profile: p } = useStore(),
     { t } = useI18n();
+  if (p.strengthAssessment[lift] === 'unknown') return <p className="notice">{t('setupManual')}</p>;
   return (
     <details>
       <summary>{t('warmup')}</summary>

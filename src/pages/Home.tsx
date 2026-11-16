@@ -2,7 +2,8 @@ import { HomeSupportingCards } from '../components/HomeSupportingCards';
 import { ArrowRight, CalendarDays, HeartPulse } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useProfileStore as useStore, update } from '../lib/store';
-import { generate, exerciseById } from '../lib/program';
+import { generate } from '../lib/plannedProgram';
+import { exerciseById } from '../lib/program';
 import { dailyReadiness } from '../lib/dailyReadiness';
 import { regulate } from '../lib/autoregulation';
 import {

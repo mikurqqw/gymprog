@@ -73,3 +73,20 @@ No server, payment, account, subscription, advertising or default analytics is a
 - Focus screenshots320/375/768/1280 in both themes, two visual iterations; serious/critical axe0.
 - Initial JS159.4 KiB gzip. Protected-source hashes unchanged; no added remote request/dependency.
 - Wake lock and vibration remain platform-dependent progressive enhancements.
+
+## Section 4 — complete, publication checkpoint
+
+- Fast three-step setup: eight goals/body; known/recent-set/explicitly unknown strength;
+  equipment/days, existing injury-schema entries, date and summary. Draft autosaves.
+- Age/consent/health gates retain their behavior and now have a visible1/3–3/3 indicator.
+- Known profiles retain exact numeric values. Version4 stores assessment provenance, with
+  tested v0–v3 migrations. Unknown1RM never becomes an automatic numeric workout load;
+  its internal compatibility floor is suppressed at the presentation boundary, in warm-up,
+  strength totals, max testing and forecast display. See FINDINGS.md for review requirements.
+- New KK copy is machine-assisted; onboardingTranslationReview.kkNativeSpeaker=false.
+- All checks pass:136 unit and50 browser scenarios, including both strength-entry paths,
+  persistence, full Focus/Overview parity, PWA update/offline and erasure.
+- Onboarding screenshot/axe checks at320/375/768/1280 in both themes; no serious/critical violations.
+- Initial JS161.0 KiB gzip /507.3 KiB raw, under170 KiB gzip budget.
+- User requested a deployment/checkpoint instead of continuing the remaining expansion.
+  Resume at section5. No section5 code has been integrated.

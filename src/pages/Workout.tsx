@@ -9,7 +9,7 @@ import { dailyReadiness } from '../lib/dailyReadiness';
 import { Link } from 'react-router-dom';
 import { ArrowRight, HeartPulse } from 'lucide-react';
 import { useProfileStore as useStore, update } from '../lib/store';
-import { generate } from '../lib/program';
+import { generate } from '../lib/plannedProgram';
 import { regulate } from '../lib/autoregulation';
 import { useI18n } from '../i18n';
 import { Card, Empty, PageTitle, Weight } from '../components/ui';

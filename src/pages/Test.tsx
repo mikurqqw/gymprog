@@ -1,3 +1,4 @@
+import { UnassessedStrength } from '../components/UnassessedStrength';
 import { maxTestingAllowed } from '../lib/injuries';
 import { Warmup } from '../components/Warmup';
 import { dailyReadiness } from '../lib/dailyReadiness';
@@ -23,6 +24,13 @@ export default function Test() {
     update({ attempts: { ...s.attempts, [lift]: attempts } });
   const best = (lift: string) =>
     Math.max(0, ...(s.attempts[lift] ?? []).filter((a) => a.success).map((a) => a.weight));
+  if (Object.values(s.profile.strengthAssessment).includes('unknown'))
+    return (
+      <>
+        <PageTitle title={t('test')} />
+        <UnassessedStrength />
+      </>
+    );
   return (
     <>
       <PageTitle title={t('test')} description={t('testSpacing')} />

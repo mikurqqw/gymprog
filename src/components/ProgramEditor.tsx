@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useI18n } from '../i18n';
 import { useProfileStore as useStore, replaceWithUndo } from '../lib/store';
-import { generate, exercises, exerciseById } from '../lib/program';
+import { generate } from '../lib/plannedProgram';
+import { exercises, exerciseById } from '../lib/program';
 import { parseProgram, programDocumentSchema, type ProgramDocument } from '../lib/programDocument';
 import { duplicateDay, duplicateWeek, moveRow, programWarnings } from '../lib/programEditing';
 import { download } from '../lib/storage';

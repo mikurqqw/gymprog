@@ -1,4 +1,5 @@
-import { generate, exerciseById } from '../lib/program';
+import { generate } from '../lib/plannedProgram';
+import { exerciseById } from '../lib/program';
 import { fixtureProfile } from '../lib/schema';
 import type { Profile } from '../lib/schema';
 import { useI18n } from '../i18n';

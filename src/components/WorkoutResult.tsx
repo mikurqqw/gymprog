@@ -8,7 +8,8 @@ import {
   previousExerciseLog,
   nextOpenSession,
 } from '../lib/sessionInsights';
-import { generate, exerciseById } from '../lib/program';
+import { generate } from '../lib/plannedProgram';
+import { exerciseById } from '../lib/program';
 import type { Planned } from '../lib/schema';
 import { useI18n } from '../i18n';
 import { Card, Weight } from './ui';

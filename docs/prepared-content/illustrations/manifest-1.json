@@ -1,0 +1,102 @@
+[
+  {
+    "exerciseId": "ex-0",
+    "file": "ex-0.svg",
+    "author": "IronCycle",
+    "license": "CC0-1.0",
+    "original": true,
+    "reviewedByCoach": false,
+    "kind": "educational schematic, not biomechanical validation",
+    "sha256": "3f211f8f57454b89f60f83472ab59a365917a1c59b324fec3b368a831f13f29c"
+  },
+  {
+    "exerciseId": "ex-1",
+    "file": "ex-1.svg",
+    "author": "IronCycle",
+    "license": "CC0-1.0",
+    "original": true,
+    "reviewedByCoach": false,
+    "kind": "educational schematic, not biomechanical validation",
+    "sha256": "138841e1300cf07ce55a695994b8a28e265b9bc98e49ba13f9169eb680c7f006"
+  },
+  {
+    "exerciseId": "ex-2",
+    "file": "ex-2.svg",
+    "author": "IronCycle",
+    "license": "CC0-1.0",
+    "original": true,
+    "reviewedByCoach": false,
+    "kind": "educational schematic, not biomechanical validation",
+    "sha256": "6bce6b9c8de1b861c981397be521b1ae578428a8f6bb95e399317a1a3b1cfc57"
+  },
+  {
+    "exerciseId": "ex-3",
+    "file": "ex-3.svg",
+    "author": "IronCycle",
+    "license": "CC0-1.0",
+    "original": true,
+    "reviewedByCoach": false,
+    "kind": "educational schematic, not biomechanical validation",
+    "sha256": "2f70a4fbc7646703408e1ca42a12d697ff504a5f6720690054d723e6f9a4433e"
+  },
+  {
+    "exerciseId": "ex-4",
+    "file": "ex-4.svg",
+    "author": "IronCycle",
+    "license": "CC0-1.0",
+    "original": true,
+    "reviewedByCoach": false,
+    "kind": "educational schematic, not biomechanical validation",
+    "sha256": "2c9ffadd83c9eb790b5f50ca46ff8c14707843d6e4242577213d9af0ab17fe95"
+  },
+  {
+    "exerciseId": "ex-5",
+    "file": "ex-5.svg",
+    "author": "IronCycle",
+    "license": "CC0-1.0",
+    "original": true,
+    "reviewedByCoach": false,
+    "kind": "educational schematic, not biomechanical validation",
+    "sha256": "d2e93f34fc4c42f7d4629004fd9b7b0575c741e5cc5270508ec79b5e2e45be9a"
+  },
+  {
+    "exerciseId": "ex-7",
+    "file": "ex-7.svg",
+    "author": "IronCycle",
+    "license": "CC0-1.0",
+    "original": true,
+    "reviewedByCoach": false,
+    "kind": "educational schematic, not biomechanical validation",
+    "sha256": "bdd24f9fa931067dccdf8e2450e44a81be5be106290f29c82b59a6560b100d16"
+  },
+  {
+    "exerciseId": "ex-8",
+    "file": "ex-8.svg",
+    "author": "IronCycle",
+    "license": "CC0-1.0",
+    "original": true,
+    "reviewedByCoach": false,
+    "kind": "educational schematic, not biomechanical validation",
+    "sha256": "653c9bbd79860228e3ff92ddbd2cfbcff74a34309c8dd91325f65a41b889dd1a"
+  },
+  {
+    "exerciseId": "ex-9",
+    "file": "ex-9.svg",
+    "author": "IronCycle",
+    "license": "CC0-1.0",
+    "original": true,
+    "reviewedByCoach": false,
+    "kind": "educational schematic, not biomechanical validation",
+    "sha256": "f43b857361562c4a8a925095863bc344eee795219f6ef1f949ca8989ec480063"
+  },
+  {
+    "exerciseId": "ex-12",
+    "file": "ex-12.svg",
+    "author": "IronCycle",
+    "license": "CC0-1.0",
+    "original": true,
+    "reviewedByCoach": false,
+    "kind": "educational schematic, not biomechanical validation",
+    "sha256": "05e08e6b03ed5b69bfbc9e022f3fa79fd927852060cf23e291e820314922ce5f"
+  }
+]

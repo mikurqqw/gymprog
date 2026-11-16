@@ -38,6 +38,7 @@ export function NewProfileFields({
       />
       <Field label={t('sex')}>
         <select
+          aria-label={t('sex')}
           required
           value={draft.sex ?? ''}
           onChange={(event) => edit({ sex: event.target.value as 'male' | 'female' })}

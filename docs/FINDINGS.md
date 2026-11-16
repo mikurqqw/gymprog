@@ -30,3 +30,14 @@ distinguish provisional loading from measured strength, with no max-test inferen
 Legal, clinical and native-language approval cannot be established by automated
 tests or AI-authored flags. Required operator details and human review markers
 remain unset until the owner provides actual verification.
+
+## Unassessed strength boundary (section4)
+
+The protected generator requires numeric1RM inputs. The new explicitly unknown path
+uses a numeric compatibility floor internally, tagged unknown in version4 profile
+metadata; it is not a strength measurement. The unprotected plannedProgram boundary
+suppresses numeric load/percent on every unknown lift. Strength totals, max testing,
+warm-up calculations and forecasts are hidden while input remains unknown. The UI
+asks for unloaded/lightest-implement technique practice and manual recording.
+Protected generator/formulas/programs were not edited. A qualified coach should review
+this initial load-selection explanation before public launch.

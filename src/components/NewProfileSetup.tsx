@@ -1,3 +1,7 @@
+import { OnboardingGoals } from './OnboardingGoals';
+import { LiftStrengthEntry } from './LiftStrengthEntry';
+import { OnboardingSchedule } from './OnboardingSchedule';
+import { assessedStrength } from '../lib/strengthSetup';
 import { NewProfileFields } from './NewProfileFields';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -5,10 +9,8 @@ import { useStore, update } from '../lib/store';
 import type { OnboardingDraft } from '../lib/onboardingDraft';
 import { completeDraft } from '../lib/completeDraft';
 import { liftIds } from '../lib/schema';
-import { nextMonday, today } from '../lib/formulas';
 import { useI18n } from '../i18n';
-import { DraftNumber } from './DraftNumber';
-import { Card, Field, PageTitle, Select, Num } from './ui';
+import { Card, PageTitle } from './ui';
 export function NewProfileSetup() {
   const state = useStore(),
     { t, units } = useI18n(),
@@ -17,11 +19,9 @@ export function NewProfileSetup() {
     [error, setError] = useState('');
   const draft = state.draftProfile,
     edit = (patch: Partial<OnboardingDraft>) => update({ draftProfile: { ...draft, ...patch } });
-  const lift = (key: (typeof liftIds)[number], value: number | null) =>
-    edit({ lifts: { ...draft.lifts, [key]: { ...draft.lifts[key], current: value, pr: value } } });
   return (
     <>
-      <PageTitle title={t('onboarding')} description={t('emptyProfileNotice')} />
+      <PageTitle title={t('onboarding')} description={t('setupFast')} />
       <div className="wizard-steps">
         {[0, 1, 2].map((index) => (
           <button
@@ -38,11 +38,15 @@ export function NewProfileSetup() {
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          if (step < 2) {
-            setStep(step + 1);
-            return;
-          }
           try {
+            if (step === 1)
+              for (const lift of liftIds)
+                assessedStrength(draft.lifts[lift].current, draft.strengthInputs[lift]);
+            if (step < 2) {
+              setError('');
+              setStep(step + 1);
+              return;
+            }
             update({ profile: completeDraft(draft), onboarded: true });
             navigate('/');
           } catch {
@@ -52,51 +56,18 @@ export function NewProfileSetup() {
       >
         <Card>
           {step === 0 ? (
-            <NewProfileFields draft={draft} edit={edit} />
+            <>
+              <OnboardingGoals goal={draft.goal} onChange={(goal) => edit({ goal })} />
+              <NewProfileFields draft={draft} edit={edit} />
+            </>
           ) : step === 1 ? (
             <>
-              <p>{t('knownStrengthOnly')}</p>
-              <div className="form-grid">
-                {liftIds.map((key, index) => (
-                  <DraftNumber
-                    key={key}
-                    label={t(key) + ' (kg)'}
-                    value={draft.lifts[key].current}
-                    min={1}
-                    max={600}
-                    example={[60, 40, 80][index]}
-                    onChange={(value) => lift(key, value)}
-                  />
-                ))}
-              </div>
+              {liftIds.map((lift) => (
+                <LiftStrengthEntry key={lift} lift={lift} draft={draft} edit={edit} />
+              ))}
             </>
           ) : (
-            <>
-              <div className="form-grid">
-                <Select
-                  label={t('equipment')}
-                  value={draft.equipment}
-                  options={['gym', 'limited', 'home'].map((value) => ({ value, label: t(value) }))}
-                  onChange={(value) => edit({ equipment: value as OnboardingDraft['equipment'] })}
-                />
-                <Num
-                  label={t('days')}
-                  min={2}
-                  max={5}
-                  value={draft.days}
-                  onChange={(days) => edit({ days })}
-                />
-                <Field label={t('startDate')}>
-                  <input
-                    type="date"
-                    required
-                    value={draft.start ?? nextMonday(today())}
-                    onChange={(event) => edit({ start: event.target.value })}
-                  />
-                </Field>
-              </div>
-              <p className="notice">{t('sfRequirementsText')}</p>
-            </>
+            <OnboardingSchedule draft={draft} edit={edit} />
           )}
         </Card>
         {units === 'imperial' && <p className="micro muted">{t('onboardingMetricNotice')}</p>}

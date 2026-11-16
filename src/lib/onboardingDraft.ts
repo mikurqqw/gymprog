@@ -1,3 +1,4 @@
+import { strengthInputsSchema, legacyStrengthInputs } from './strengthSetup';
 import { z } from 'zod';
 import { healthSchema, clearHealth } from './health';
 import { injurySchema } from './injuries';
@@ -12,6 +13,7 @@ export const onboardingDraftSchema = z.object({
   height: optionalMetric(120, 230),
   weight: optionalMetric(35, 250),
   sex: z.enum(['male', 'female']).nullable(),
+  strengthInputs: strengthInputsSchema.default(legacyStrengthInputs),
   lifts: z.object({ squat: draftLift, bench: draftLift, deadlift: draftLift }),
   start: z.iso.date().nullable(),
   goal: z.enum([
@@ -39,6 +41,11 @@ export const onboardingDraftSchema = z.object({
 });
 export type OnboardingDraft = z.infer<typeof onboardingDraftSchema>;
 export const newUserProfile: OnboardingDraft = {
+  strengthInputs: {
+    squat: { method: 'unknown', weight: null, reps: 5, rpe: 8 },
+    bench: { method: 'unknown', weight: null, reps: 5, rpe: 8 },
+    deadlift: { method: 'unknown', weight: null, reps: 5, rpe: 8 },
+  },
   age: null,
   height: null,
   weight: null,

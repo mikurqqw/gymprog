@@ -9,6 +9,8 @@ export function WeeklyAdjustment({ lift, suggestion }: { lift: Lift; suggestion:
     key = `${s.week + 1}-${lift}`,
     [value, setValue] = useState((s.adjustments[key] ?? suggestion) * 100),
     [saved, setSaved] = useState(false);
+  if (s.profile.strengthAssessment[lift] === 'unknown')
+    return <p className="micro muted">{t('setupUnknownNotice')}</p>;
   return (
     <div>
       <Num

@@ -1,4 +1,4 @@
-import { logRowId } from '../lib/workoutLogs';
+import { logRowId, completedExerciseCount } from '../lib/workoutLogs';
 import type { Planned } from '../lib/schema';
 import { liftIds } from '../lib/schema';
 import { update, useProfileStore as useStore } from '../lib/store';
@@ -15,7 +15,7 @@ export function WeeklyReview({ rows }: { rows: Planned[] }) {
     checks = s.checkins.filter((c) => c.date >= start && c.date <= dateOffset(start, 6));
   const avg = (values: number[]) =>
     values.length ? values.reduce((a, b) => a + b, 0) / values.length : 0;
-  const adherence = logs.length / Math.max(1, rows.length),
+  const adherence = completedExerciseCount(logs) / Math.max(1, rows.length),
     sleep = avg(checks.map((c) => c.sleep));
   return (
     <Card>

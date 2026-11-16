@@ -61,7 +61,11 @@ export function FocusSets({ row }: { row: Planned }) {
             className={'button ' + (log.sets[0] ? 'secondary' : '')}
             disabled={
               blocked ||
-              (!log.sets[0] && row.weight === null && row.lift !== null && log.weight === 0)
+              (!log.sets[0] &&
+                row.weight === null &&
+                row.lift !== null &&
+                log.weight === 0 &&
+                !row.loadUnassessed)
             }
             aria-pressed={log.sets[0]}
             onClick={() => write({ sets: [!log.sets[0]] }, !log.sets[0], index)}

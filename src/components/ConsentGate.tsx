@@ -1,3 +1,4 @@
+import { GateProgress } from './GateProgress';
 import { HealthScreen } from './HealthScreen';
 import { HEALTH_SCREEN_VERSION } from '../config/versions';
 import { StoragePreferences } from './StoragePreferences';
@@ -90,6 +91,7 @@ export function ConsentGate({ children }: { children: ReactNode }) {
             onChange={(v) => update({ language: v as typeof s.language })}
           />
         </div>
+        <GateProgress step={phase === 'screening' ? 2 : phase === 'consent' ? 1 : 0} />
         {phase === 'screening' ? (
           <HealthScreen
             onComplete={() => {

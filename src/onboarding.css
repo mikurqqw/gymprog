@@ -1,0 +1,113 @@
+.onboarding-goals {
+  border: 0;
+  padding: 0;
+  margin: 0 0 28px;
+}
+.onboarding-goals legend {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.onboarding-goals > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.onboarding-goals label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.onboarding-goals label.selected {
+  border-color: var(--accent);
+  background: var(--surface2);
+}
+.onboarding-goals input {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  margin-top: 4px;
+}
+.onboarding-goals strong {
+  display: block;
+  font-size: 14px;
+}
+.onboarding-goals small {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 6px;
+}
+.strength-entry {
+  padding-block: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.strength-entry:first-child {
+  padding-top: 0;
+}
+.strength-entry h2 {
+  margin-top: 0;
+}
+.onboarding-injuries {
+  padding-block: 20px;
+  border-block: 1px solid var(--border);
+  margin-block: 20px;
+}
+.onboarding-injuries summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.onboarding-summary {
+  padding-top: 16px;
+}
+.gate-page {
+  max-width: 840px;
+  margin-inline: auto;
+  min-height: 80dvh;
+}
+.gate-heading {
+  margin-bottom: 24px;
+}
+.gate-progress {
+  margin-block: 24px;
+}
+.gate-progress ol {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+.gate-progress li {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border-bottom: 2px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+}
+.gate-progress [aria-current='step'] {
+  border-color: var(--accent);
+  color: var(--text);
+  font-weight: 700;
+}
+.gate-progress span {
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 420px) {
+  .onboarding-goals > div {
+    grid-template-columns: 1fr;
+  }
+  .gate-progress li {
+    padding-inline: 4px;
+    font-size: 12px;
+  }
+}

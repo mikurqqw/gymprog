@@ -1,14 +1,33 @@
+import { assessedStrength } from './strengthSetup';
+import { liftIds } from './schema';
 import { profileSchema, type Profile } from './schema';
 import { nextMonday, today } from './formulas';
 import type { OnboardingDraft } from './onboardingDraft';
 export function completeDraft(draft: OnboardingDraft): Profile {
+  const assessed = Object.fromEntries(
+    liftIds.map((lift) => [
+      lift,
+      assessedStrength(draft.lifts[lift].current, draft.strengthInputs[lift]),
+    ]),
+  );
   return profileSchema.parse({
     ...draft,
+    days: draft.goal === 'powerlifting' ? 3 : draft.days,
     start: draft.start ?? nextMonday(today()),
+    strengthAssessment: Object.fromEntries(
+      liftIds.map((lift) => [lift, assessed[lift].assessment]),
+    ),
     lifts: Object.fromEntries(
-      Object.entries(draft.lifts).map(([key, lift]) => [
-        key,
-        { ...lift, pr: lift.pr ?? lift.current },
+      liftIds.map((lift) => [
+        lift,
+        {
+          current: assessed[lift].value,
+          pr:
+            assessed[lift].assessment === 'unknown'
+              ? 1
+              : (draft.lifts[lift].pr ?? assessed[lift].value),
+          form: draft.lifts[lift].form,
+        },
       ]),
     ),
     priorities: ['squat', 'bench', 'deadlift'],

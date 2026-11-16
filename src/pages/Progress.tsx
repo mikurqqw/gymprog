@@ -1,3 +1,4 @@
+import { UnassessedStrength } from '../components/UnassessedStrength';
 import { completedExerciseCount } from '../lib/workoutLogs';
 import { useState } from 'react';
 import {
@@ -16,7 +17,7 @@ import { useProfileStore as useStore, replaceWithUndo } from '../lib/store';
 import { demoData } from '../lib/demo';
 import { forecast } from '../lib/forecast';
 import { dateOffset, displayWeight } from '../lib/formulas';
-import { generate } from '../lib/program';
+import { generate } from '../lib/plannedProgram';
 import { dailyAnalytics, weeklyTonnage, plateauCauses } from '../lib/analytics';
 import { liftIds } from '../lib/schema';
 import { useI18n } from '../i18n';
@@ -47,7 +48,11 @@ export default function Progress() {
         )
       : 1,
     f = forecast(s.profile, logs, adherence, s.checkins);
-  const data = dailyAnalytics(s.profile, logs, s.checkins, s.foodLogs, units),
+  const assessed = !Object.values(s.profile.strengthAssessment).includes('unknown');
+  const data = dailyAnalytics(s.profile, logs, s.checkins, s.foodLogs, units).map((entry) => ({
+      ...entry,
+      total: assessed ? entry.total : null,
+    })),
     weekly = weeklyTonnage(s.profile, logs, units),
     causes = plateauCauses(s.profile, logs, s.checkins);
   const metrics: Record<string, string[]> = {
@@ -172,100 +177,105 @@ export default function Progress() {
           </div>
         </details>
       </Card>
-      <Card>
-        <div className="section-heading">
-          <h2>{t('forecast')}</h2>
-          <span className="pill">{dateOffset(s.profile.start, 53)}</span>
-        </div>
-        <div className="chart" role="img" aria-label={t('forecast')}>
-          <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={forecastData}>
-              <CartesianGrid stroke="var(--border)" vertical={false} />
-              <XAxis dataKey="week" tick={{ fill: 'var(--muted)', fontSize: 11 }} />
-              <YAxis width={45} tick={{ fill: 'var(--muted)', fontSize: 11 }} />
-              <Tooltip
-                contentStyle={{ background: 'var(--surface)', border: '1px solid var(--border)' }}
-              />
-              {liftIds.flatMap((lift, i) => [
-                <Area
-                  key={lift + 'Range'}
-                  dataKey={lift + 'Range'}
-                  name={t(lift) + ' ±'}
-                  fill={colors[i]}
-                  fillOpacity={0.09}
-                  stroke="none"
-                  isAnimationActive={false}
-                />,
-                <Area
-                  key={lift}
-                  dataKey={lift}
-                  name={t(lift)}
-                  fill="transparent"
-                  stroke={colors[i]}
-                  strokeWidth={2}
-                  isAnimationActive={false}
-                />,
-              ])}
-            </AreaChart>
-          </ResponsiveContainer>
-        </div>
-        <div className="table-scroll">
-          <table>
-            <thead>
-              <tr>
-                <th>{t('library')}</th>
-                <th>{t('current')}</th>
-                <th>{t('conservative')}</th>
-                <th>{t('realistic')}</th>
-                <th>{t('optimistic')}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {f.lifts.map((l) => (
-                <tr key={l.lift}>
-                  <td>{t(l.lift)}</td>
-                  {[l.current, l.low, l.realistic, l.high].map((v, i) => (
-                    <td key={i}>
-                      <Weight value={v} />
-                    </td>
-                  ))}
+      {assessed ? (
+        <Card>
+          <div className="section-heading">
+            <h2>{t('forecast')}</h2>
+            <span className="pill">{dateOffset(s.profile.start, 53)}</span>
+          </div>
+          <div className="chart" role="img" aria-label={t('forecast')}>
+            <ResponsiveContainer width="100%" height="100%">
+              <AreaChart data={forecastData}>
+                <CartesianGrid stroke="var(--border)" vertical={false} />
+                <XAxis dataKey="week" tick={{ fill: 'var(--muted)', fontSize: 11 }} />
+                <YAxis width={45} tick={{ fill: 'var(--muted)', fontSize: 11 }} />
+                <Tooltip
+                  contentStyle={{ background: 'var(--surface)', border: '1px solid var(--border)' }}
+                />
+                {liftIds.flatMap((lift, i) => [
+                  <Area
+                    key={lift + 'Range'}
+                    dataKey={lift + 'Range'}
+                    name={t(lift) + ' ±'}
+                    fill={colors[i]}
+                    fillOpacity={0.09}
+                    stroke="none"
+                    isAnimationActive={false}
+                  />,
+                  <Area
+                    key={lift}
+                    dataKey={lift}
+                    name={t(lift)}
+                    fill="transparent"
+                    stroke={colors[i]}
+                    strokeWidth={2}
+                    isAnimationActive={false}
+                  />,
+                ])}
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
+          <div className="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>{t('library')}</th>
+                  <th>{t('current')}</th>
+                  <th>{t('conservative')}</th>
+                  <th>{t('realistic')}</th>
+                  <th>{t('optimistic')}</th>
                 </tr>
-              ))}
-              <tr>
-                <td>{t('total')}</td>
-                <td>
-                  <Weight value={f.lifts.reduce((n, l) => n + l.current, 0)} />
-                </td>
-                <td>
-                  <Weight value={f.lifts.reduce((n, l) => n + l.low, 0)} />
-                </td>
-                <td>
-                  <Weight value={f.total} />
-                </td>
-                <td>
-                  <Weight value={f.lifts.reduce((n, l) => n + l.high, 0)} />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p>
-          {t('bodyweight')}: <Weight value={f.bodyweight} /> (
-          {f.bodyRange.map((n) => displayWeight(n, units)).join('–')})
-        </p>
-        <details>
-          <summary>{t('assumptions')}</summary>
+              </thead>
+              <tbody>
+                {f.lifts.map((l) => (
+                  <tr key={l.lift}>
+                    <td>{t(l.lift)}</td>
+                    {[l.current, l.low, l.realistic, l.high].map((v, i) => (
+                      <td key={i}>
+                        <Weight value={v} />
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+                <tr>
+                  <td>{t('total')}</td>
+                  <td>
+                    <Weight value={f.lifts.reduce((n, l) => n + l.current, 0)} />
+                  </td>
+                  <td>
+                    <Weight value={f.lifts.reduce((n, l) => n + l.low, 0)} />
+                  </td>
+                  <td>
+                    <Weight value={f.total} />
+                  </td>
+                  <td>
+                    <Weight value={f.lifts.reduce((n, l) => n + l.high, 0)} />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <p>
-            {t('monthly')}: {(f.monthly * 100).toFixed(2)}% · {t('sleep')}: {s.profile.sleep} ·{' '}
-            {t('adherence')}: {Math.round(f.adherence * 100)}%
+            {t('bodyweight')}: <Weight value={f.bodyweight} /> (
+            {f.bodyRange.map((n) => displayWeight(n, units)).join('–')})
           </p>
-          <p>{t('forecastDisclaimer')}</p>
-        </details>
-      </Card>
+          <details>
+            <summary>{t('assumptions')}</summary>
+            <p>
+              {t('monthly')}: {(f.monthly * 100).toFixed(2)}% · {t('sleep')}: {s.profile.sleep} ·{' '}
+              {t('adherence')}: {Math.round(f.adherence * 100)}%
+            </p>
+            <p>{t('forecastDisclaimer')}</p>
+          </details>
+        </Card>
+      ) : (
+        <UnassessedStrength />
+      )}
       <div className="two-columns">
         <Card>
           <h2>{t('nearestGoal')}</h2>
           {f.lifts
+            .filter((l) => s.profile.strengthAssessment[l.lift] !== 'unknown')
             .filter((l) => l.pr > l.current)
             .map((l) => (
               <p key={l.lift}>

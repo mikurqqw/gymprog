@@ -1,3 +1,4 @@
+import { assessmentSchema, knownAssessments } from './strengthSetup';
 export { newUserProfile } from './onboardingDraft';
 import { injurySchema } from './injuries';
 import { healthSchema, clearHealth } from './health';
@@ -31,6 +32,7 @@ export const profileSchema = z.lazy(() =>
     health: healthSchema.default(clearHealth),
     healthScreenVersion: z.string().max(100).default(''),
     healthScreenedAt: z.string().max(100).default(''),
+    strengthAssessment: assessmentSchema.default(knownAssessments),
     lifts: z.object({ squat: liftSchema, bench: liftSchema, deadlift: liftSchema }),
     goal: z.enum([
       'powerlifting',
@@ -61,6 +63,7 @@ export const profileSchema = z.lazy(() =>
 );
 export type Profile = z.infer<typeof profileSchema>;
 export const fixtureProfile: Profile = {
+  strengthAssessment: knownAssessments,
   age: 18,
   height: 183,
   weight: 77,
@@ -170,6 +173,7 @@ export type Planned = Prescription & {
   injuryAdjusted?: boolean;
   adjustmentReasons?: string[];
   startingWeight?: number;
+  loadUnassessed?: boolean;
 };
 export type Exercise = {
   id: string;

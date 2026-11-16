@@ -17,7 +17,7 @@ it('starts with no personal profile and truly empty draft measurements', () => {
 it('migrates the current v1 backup without altering existing profile, logs or dates', () => {
   const legacy = { ...initialState, version: 1, profile: fixtureProfile, onboarded: true };
   const result = parseBackup(JSON.stringify(legacy));
-  expect(result.version).toBe(3);
+  expect(result.version).toBe(4);
   expect(result.profile).toEqual(fixtureProfile);
   expect(result.logs).toEqual(legacy.logs);
   expect(result.onboarded).toBe(true);
