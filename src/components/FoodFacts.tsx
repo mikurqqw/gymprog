@@ -3,7 +3,19 @@ import sources from '../data/food-sources.json';
 import { useI18n } from '../i18n';
 export function FoodFacts({ food }: { food: FoodRecord }) {
   const { t, local } = useI18n(),
-    source = sources.find((item) => item.id === food.sourceId);
+    source = sources.find((item) => item.id === food.sourceId),
+    external =
+      food.sourceId === 'open-food-facts'
+        ? {
+            name: 'Open Food Facts',
+            url: 'https://world.openfoodfacts.org/product/' + food.id.replace('off-', ''),
+          }
+        : food.sourceId === 'usda-live'
+          ? {
+              name: 'USDA FoodData Central',
+              url: 'https://fdc.nal.usda.gov/food-details/' + food.fdcId + '/nutrients',
+            }
+          : null;
   const allergenLabel = (allergen: string) => {
     const key =
       'foodAllergen' +
@@ -24,7 +36,11 @@ export function FoodFacts({ food }: { food: FoodRecord }) {
       {food.nutritionNote && <p className="micro">{local(food.nutritionNote)}</p>}
       <p className="micro">
         {t('foodSource')}:{' '}
-        {source ? (
+        {external ? (
+          <a target="_blank" rel="noopener noreferrer" href={external.url}>
+            {external.name}
+          </a>
+        ) : source ? (
           <a target="_blank" rel="noopener noreferrer" href={source.url}>
             {local(source.title)}
           </a>

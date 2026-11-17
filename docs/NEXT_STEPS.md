@@ -1,3 +1,11 @@
+# Recovery and food diary — 2026-11-18
+
+Recovery ratings and safety fields are visible on Checkin. Exact sleep hours and pain score remain available in disclosures. New records use profile weight and the selected day's previous food entries. The food diary records all available macros, preserves unknown values in older entries, and migrates state version 5 to 6.
+
+Online search runs on demand. Open Food Facts is the primary source, with USDA demo access as a preview fallback. The local catalog and nutrition-label entry remain usable during outages. Both privacy documents have been updated, and users renew their consent without deleting their entries. The production release still requires legal details and human review.
+
+The full Playwright run covered 113 scenarios before the final small search changes. Cold mobile Lighthouse measured 83 for Nutrition, with an LCP of 4.53 seconds against a 2.5-second target. See DIARY_PERFORMANCE.json. The existing checks and protected training sources remain in place.
+
 # Dependency repair checkpoint
 
 2026-11-18: codex/fix-glob-security contains a genuine parser security backport, not a publication exception. Read DEPENDENCY_REPAIR.md and vendor/README.md. Registry audit0; upstream advisory surveillance, source hashes and exploit regressions remain mandatory.151 application tests,1983 upstream tests,6 tooling tests and106 consolidated browser scenarios pass. Clean npm ci passes. Frontend output and build ID are unchanged apart from generated security.txt expiry. Do not restore unpatched registry picomatch or remove the added gates. No Pages deployment claimed.

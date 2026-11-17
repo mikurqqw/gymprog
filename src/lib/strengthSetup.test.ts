@@ -42,7 +42,7 @@ it('preserves exact known strengths and legacy numeric program loads', () => {
 it('migrates v3 backups without losing known profiles, prior logs or chosen workout view', () => {
   const legacy = { ...initialState, version: 3, profile: fixtureProfile, workoutView: 'focus' };
   const migrated = parseBackup(JSON.stringify(legacy));
-  expect(migrated.version).toBe(5);
+  expect(migrated.version).toBe(6);
   expect(migrated.profile).toEqual(fixtureProfile);
   expect(migrated.workoutView).toBe('focus');
 });

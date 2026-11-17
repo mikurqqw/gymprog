@@ -69,6 +69,12 @@ test('short sleep updates recommendations and sharp pain removes all heavy work'
 }) => {
   await page.goto('/#/checkin');
   await page.getByLabel('День', { exact: true }).fill('2026-11-16');
+  await page
+    .locator('details')
+    .filter({ has: page.getByLabel('Сон (ч)', { exact: true }) })
+    .locator('summary')
+    .first()
+    .click();
   await page.getByLabel('Сон (ч)', { exact: true }).fill('4');
   await page
     .locator('#checkin-form')

@@ -114,6 +114,18 @@
         "kk": "Жергілікті жазбалардың мерзімі уәде етілген серверлік мерзімге емес, өз жоюыңыз бен браузер ережелеріне байланысты. Қажетті қойманы жою не одан бас тарту күнделікке, таңдаулыларға, PIN мен офлайн режимге қолжетімділікті тоқтатуы мүмкін. Сақтағыңыз келгенді алдымен экспорттап, бейнелерді бөлек тексеріңіз. Қолданбаны жою басқа адамдарға жіберілген файл көшірмелерін қайтармайды және хостинг журналдарын тазаламайды. Саясат жөніндегі сұрақтар: {{operator.privacyEmail}}.",
         "en": "Local retention depends on your deletion and browser policies, not a promised server retention period. Deleting/refusing necessary storage can remove access to logs, favorites, PIN and offline mode. Export anything you want to keep first and check videos separately. Removing the app does not recall files already sent to others or erase host logs. Policy questions: {{operator.privacyEmail}}."
       }
+    },
+    {
+      "heading": {
+        "ru": "Кеш поиска продуктов",
+        "kk": "Өнім іздеу кэші",
+        "en": "Food-search cache"
+      },
+      "body": {
+        "ru": "Онлайн-результаты хранятся только в памяти сеанса до 10 минут и не объединяются с общим локальным каталогом. Добавленная порция сохраняет КБЖУ и атрибуцию источника в вашем журнале. Отзыв согласия останавливает запросы и очищает временный кеш; удаление всех данных удаляет журнал. Источники, кроме указанной вами строки поиска и технических данных соединения, не получают содержимое локального хранилища.",
+        "kk": "Онлайн нәтижелер сеанс жадында 10 минутқа дейін ғана болады және жергілікті каталогпен біріктірілмейді. Қосылған порция қоректік мәні мен дереккөзін күнделікте сақтайды. Келісімді қайтару сұрауды тоқтатып, уақытша кэшті тазартады; барлық деректерді жою күнделікті өшіреді. Дереккөздер іздеу мәтіні мен байланыс мәліметінен басқа жергілікті қойма мазмұнын алмайды.",
+        "en": "Online results remain in session memory for up to10 minutes and are not merged into the shared local catalog. Added servings retain macros and attribution in your diary. Withdrawal stops requests and clears temporary cache; Delete all removes the diary. Providers receive the query and connection metadata, not local storage contents."
+      }
     }
   ]
 }

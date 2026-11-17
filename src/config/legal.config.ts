@@ -15,8 +15,8 @@ export const legalConfig = {
   effectiveDate: '__REQUIRED_EFFECTIVE_DATE__',
   documentVersions: {
     terms: 'preview-1',
-    privacy: 'preview-2',
-    storage: 'preview-2',
+    privacy: 'preview-3',
+    storage: 'preview-3',
     medical: 'preview-1',
     calories: 'preview-1',
   },

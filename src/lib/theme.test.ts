@@ -11,7 +11,7 @@ it('preserves older manual theme, logs and profiles while adding dismissible ins
   const old = { ...initialState, version: 4, theme: 'light' };
   delete (old as Partial<typeof old>).themePreference;
   const migrated = parseBackup(JSON.stringify(old));
-  expect(migrated.version).toBe(5);
+  expect(migrated.version).toBe(6);
   expect(migrated.themePreference).toBe('light');
   expect(migrated.installHintDismissed).toBe(false);
   expect(migrated.logs).toEqual(old.logs);

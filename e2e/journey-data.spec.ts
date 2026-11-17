@@ -71,7 +71,7 @@ for (const language of ['ru', 'kk', 'en'] as const) {
     await page.reload();
     const state = await page.evaluate(() => JSON.parse(localStorage.getItem('ironcycle:data')!));
     expect(state.profile).toEqual(original.profile);
-    expect(state.version).toBe(5);
+    expect(state.version).toBe(6);
     await expect(page.locator('html')).toHaveAttribute('lang', legacy.language);
     await page
       .getByRole('combobox', { name: journeyMessages(legacy.language)('language'), exact: true })

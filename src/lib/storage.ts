@@ -1,3 +1,4 @@
+import { foodLogSchema } from './foodLog';
 import { onboardingDraftSchema, newUserProfile } from './onboardingDraft';
 import { programDocumentSchema } from './programDocument';
 import { z } from 'zod';
@@ -6,7 +7,7 @@ import exerciseIds from '../data/exercise-ids.json' with { type: 'json' };
 import { checkinSchema, logSchema, profileSchema } from './schema';
 export const stateSchema = z.lazy(() =>
   z.object({
-    version: z.literal(5),
+    version: z.literal(6),
     themePreference: z.enum(['dark', 'light', 'system']).default('dark'),
     installHintDismissed: z.boolean().default(false),
     workoutView: z.enum(['focus', 'overview']).nullable().default(null),
@@ -40,18 +41,7 @@ export const stateSchema = z.lazy(() =>
     shifts: z.record(z.string(), z.iso.date()),
     swaps: z.record(z.string(), z.string()),
     timer: z.number().nullable(),
-    foodLogs: z
-      .array(
-        z.object({
-          id: z.string(),
-          date: z.iso.date(),
-          name: z.string().max(200),
-          grams: z.number().min(0).max(10000),
-          kcal: z.number().min(0).max(12000),
-          protein: z.number().min(0).max(600),
-        }),
-      )
-      .max(50000),
+    foodLogs: z.array(foodLogSchema).max(50000),
     attempts: z.record(
       z.string(),
       z
@@ -70,7 +60,7 @@ export const stateSchema = z.lazy(() =>
 );
 export type AppState = z.infer<typeof stateSchema>;
 export const initialState: AppState = {
-  version: 5,
+  version: 6,
   themePreference: 'dark',
   installHintDismissed: false,
   workoutView: null,
@@ -126,11 +116,12 @@ export function download(name: string, data: string, type = 'application/json') 
 
 export function migrateState(value: unknown): unknown {
   if (typeof value !== 'object' || value === null || !('version' in value)) return value;
+  if (value.version === 5) return { ...value, version: 6 };
   if (typeof value.version === 'number' && [0, 1, 2, 3, 4].includes(value.version))
     return {
       ...initialState,
       ...value,
-      version: 5,
+      version: 6,
       themePreference:
         'theme' in value && (value.theme === 'dark' || value.theme === 'light')
           ? value.theme

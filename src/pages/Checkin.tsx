@@ -1,3 +1,7 @@
+import { checkinDraft } from '../lib/checkinDraft';
+import { CheckinRecoveryFields } from '../components/CheckinRecoveryFields';
+import { CheckinSafetyFields } from '../components/CheckinSafetyFields';
+import { CheckinMeasurements } from '../components/CheckinMeasurements';
 import { Disclosure } from '../components/Disclosure';
 import { AlgorithmChip } from '../components/ContextNotice';
 import { useSearchParams } from 'react-router-dom';
@@ -7,35 +11,21 @@ import { useState } from 'react';
 import { HeartPulse, Check } from 'lucide-react';
 import { update, useProfileStore as useStore } from '../lib/store';
 import { checkinSchema, type Checkin as CheckinType } from '../lib/schema';
-import { dateOffset, today, displayWeight, fromWeight } from '../lib/formulas';
-import { useI18n } from '../i18n';
-import { Card, Field, Num, PageTitle, Select } from '../components/ui';
+import { today } from '../lib/formulas';
+import { useDiaryI18n as useI18n } from '../i18n/useDiaryI18n';
+import { Card, Field, Num, PageTitle } from '../components/ui';
 export default function Checkin() {
   const [params] = useSearchParams();
   const requestedDate = z.iso.date().safeParse(params.get('date'));
   const s = useStore(),
-    { t, units, weightUnit } = useI18n(),
+    { t } = useI18n(),
     [date, setDate] = useState(requestedDate.success ? requestedDate.data : today()),
     [saved, setSaved] = useState(false),
     [error, setError] = useState('');
-  const previous = s.foodLogs.filter((f) => f.date === dateOffset(date, -1));
-  const defaults: CheckinType = {
-    date,
-    sleep: s.profile.sleep,
-    pain: 'none',
-    location: '',
-    speed: 'normal',
-    dizziness: false,
-    weakness: false,
-    worsening: false,
-    ...(previous.length
-      ? {
-          calories: previous.reduce((n, f) => n + f.kcal, 0),
-          protein: previous.reduce((n, f) => n + f.protein, 0),
-        }
-      : {}),
-  };
-  const [c, setC] = useState<CheckinType>(s.checkins.find((x) => x.date === date) ?? defaults);
+  const defaults = (day: string) => checkinDraft(day, s.profile, s.foodLogs);
+  const [c, setC] = useState<CheckinType>(
+    s.checkins.find((x) => x.date === date) ?? defaults(date),
+  );
   const change = <K extends keyof CheckinType>(key: K, value: CheckinType[K]) => {
     setC({ ...c, [key]: typeof value === 'number' && Number.isNaN(value) ? undefined : value });
     setSaved(false);
@@ -82,11 +72,14 @@ export default function Checkin() {
                     const d = e.target.value;
                     if (!d) return;
                     setDate(d);
-                    setC(s.checkins.find((x) => x.date === d) ?? { ...defaults, date: d });
+                    setC(s.checkins.find((x) => x.date === d) ?? defaults(d));
                     setSaved(false);
                   }}
                 />
               </Field>
+            </div>
+            <CheckinRecoveryFields value={c} change={change} />
+            <Disclosure label="recoveryHours" title={t('recoveryHours')}>
               <Num
                 label={t('sleep') + ' (' + t('hours') + ')'}
                 value={c.sleep}
@@ -95,115 +88,18 @@ export default function Checkin() {
                 step={0.25}
                 onChange={(v) => change('sleep', v)}
               />
-            </div>
-            <Num
-              label={t('painScore')}
-              value={c.painScore ?? 0}
-              min={0}
-              max={10}
-              onChange={(v) => change('painScore', v)}
-            />
-            <Disclosure label="compactRecovery">
-              <div className="rating-fields">
-                {(['quality', 'recovery', 'soreness', 'stress', 'mood'] as const).map((key) => (
-                  <fieldset key={key}>
-                    <legend>{t(key === 'recovery' ? 'subjective' : key)}</legend>
-                    <div className="rating-buttons">
-                      {[1, 2, 3, 4, 5].map((n) => (
-                        <button
-                          type="button"
-                          key={n}
-                          aria-pressed={c[key] === n}
-                          className={c[key] === n ? 'active' : ''}
-                          onClick={() => change(key, c[key] === n ? undefined : n)}
-                        >
-                          {n}
-                        </button>
-                      ))}
-                    </div>
-                  </fieldset>
-                ))}
-              </div>
             </Disclosure>
-            <div className="form-grid">
-              <Disclosure label="compactMeasurements">
-                {(['calories', 'protein', 'carbs', 'water', 'weight'] as const).map((key) => (
-                  <Num
-                    key={key}
-                    required={false}
-                    label={
-                      t(
-                        key === 'calories'
-                          ? 'caloriesYesterday'
-                          : key === 'protein'
-                            ? 'proteinYesterday'
-                            : key === 'weight'
-                              ? 'bodyweight'
-                              : key,
-                      ) + (key === 'weight' ? ' (' + weightUnit + ')' : '')
-                    }
-                    value={
-                      key === 'weight' && c.weight !== undefined
-                        ? displayWeight(c.weight, units)
-                        : c[key]
-                    }
-                    min={key === 'weight' ? (units === 'metric' ? 35 : 77) : 0}
-                    max={
-                      {
-                        calories: 12000,
-                        protein: 600,
-                        carbs: 1500,
-                        water: 12,
-                        weight: units === 'metric' ? 250 : 551,
-                      }[key]
-                    }
-                    step={key === 'water' || key === 'weight' ? 0.1 : 1}
-                    onChange={(v) => change(key, key === 'weight' ? fromWeight(v, units) : v)}
-                  />
-                ))}
-              </Disclosure>
-              <Select
-                label={t('pain')}
-                value={c.pain}
-                options={['none', 'mild', 'sharp'].map((value) => ({ value, label: t(value) }))}
-                onChange={(v) => change('pain', v as CheckinType['pain'])}
+            <CheckinSafetyFields value={c} change={change} />
+            <Disclosure label="recoveryExact" title={t('recoveryExact')}>
+              <Num
+                label={t('painScore')}
+                value={c.painScore ?? 0}
+                min={0}
+                max={10}
+                onChange={(v) => change('painScore', v)}
               />
-              <Select
-                label={t('speed')}
-                value={c.speed}
-                options={['fast', 'normal', 'slow'].map((value) => ({ value, label: t(value) }))}
-                onChange={(v) => change('speed', v as CheckinType['speed'])}
-              />
-              <Field label={t('location')}>
-                <input
-                  maxLength={200}
-                  value={c.location}
-                  onChange={(e) => change('location', e.target.value)}
-                />
-              </Field>
-            </div>
-            <div className="check-grid">
-              {(
-                [
-                  'meal',
-                  'dizziness',
-                  'weakness',
-                  'worsening',
-                  'numbness',
-                  'swelling',
-                  'chestPain',
-                ] as const
-              ).map((key) => (
-                <label className="checkbox-label" key={key}>
-                  <input
-                    type="checkbox"
-                    checked={c[key] ?? false}
-                    onChange={(e) => change(key, e.target.checked)}
-                  />
-                  {t(key)}
-                </label>
-              ))}
-            </div>
+            </Disclosure>
+            <CheckinMeasurements value={c} change={change} />
             {error && (
               <p role="alert" className="danger">
                 {error}

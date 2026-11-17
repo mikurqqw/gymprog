@@ -45,6 +45,6 @@ test('adult consent is separate, unchecked, versioned; health screening follows 
   ).toBeVisible();
   const record = await page.evaluate(() => JSON.parse(localStorage.getItem('ironcycle:consent')!));
   expect(record).toMatchObject({ adult: true, health: true, privacy: true, terms: true });
-  expect(record.versions.privacy).toBe('preview-2');
+  expect(record.versions.privacy).toBe('preview-3');
   expect(JSON.stringify(record)).not.toContain('2000-01-01');
 });

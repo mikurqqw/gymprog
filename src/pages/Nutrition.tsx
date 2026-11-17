@@ -1,3 +1,5 @@
+import { foodServing, diaryTotals } from '../lib/foodLog';
+import { CuttingGuide } from '../components/CuttingGuide';
 import { Disclosure } from '../components/Disclosure';
 import { FoodCatalog } from '../components/FoodCatalog';
 import { CalorieNotice } from '../components/CalorieNotice';
@@ -11,13 +13,14 @@ import { type Food } from '../lib/schema';
 import { replaceWithUndo, update, useProfileStore as useStore } from '../lib/store';
 import { dateOffset, today } from '../lib/formulas';
 import { download } from '../lib/storage';
-import { useI18n } from '../i18n';
+import { useDiaryI18n as useI18n } from '../i18n/useDiaryI18n';
 import { Card, Empty, Field, Num, PageTitle, Weight } from '../components/ui';
 import { NutritionPreferences } from '../components/NutritionPreferences';
 const foods = foodsRaw as Food[];
 export default function Nutrition() {
   const s = useStore(),
     { t, local } = useI18n(),
+    [foodError, setFoodError] = useState(''),
     [dayType, setDayType] = useState<'heavy' | 'medium' | 'rest'>('medium'),
     [date, setDate] = useState(today()),
     [quickKcal, setQuickKcal] = useState(300),
@@ -27,10 +30,7 @@ export default function Nutrition() {
     [swapped, setSwapped] = useState<Record<string, Portion[]>>({});
   const target = nutrition(s.profile, dayType),
     logged = s.foodLogs.filter((f) => f.date === date),
-    current = {
-      kcal: logged.reduce((n, f) => n + f.kcal, 0),
-      protein: logged.reduce((n, f) => n + f.protein, 0),
-    };
+    current = diaryTotals(logged);
   const { menu, pending, failed, retry } = useMealPlan(s.profile, seed, dayType);
   const meals = menu?.[menuDay].meals.map((meal, i) => swapped[`${menuDay}-${i}`] ?? meal) ?? [],
     sum = totals(meals.flat()),
@@ -105,6 +105,7 @@ export default function Nutrition() {
         ))}
       </div>
       <CalorieNotice />
+      {(s.profile.goal === 'fatloss' || s.profile.nutritionGoal === 'loss') && <CuttingGuide />}
       {target.automaticAllowed && (
         <>
           <div className="nutrition-stats">
@@ -154,23 +155,33 @@ export default function Nutrition() {
               ))}
             </div>
           )}
+          <div className="diary-macros" aria-label={t('foodLog')}>
+            {(['kcal', 'protein', 'fat', 'carbs'] as const).map((key) => (
+              <div key={key}>
+                <span>{t(key)}</span>
+                <strong>
+                  {current[key] === null ? '—' : Math.round(current[key])}
+                  <small> {t(key === 'kcal' ? 'kcal' : 'grams')}</small>
+                </strong>
+              </div>
+            ))}
+          </div>
+          {(current.fat === null || current.carbs === null) && (
+            <p className="micro muted">{t('macrosIncomplete')}</p>
+          )}
           <FoodCatalog
-            onAdd={(food, grams) =>
-              update({
-                foodLogs: [
-                  ...s.foodLogs,
-                  {
-                    id: crypto.randomUUID(),
-                    date,
-                    name: local(food.name),
-                    grams,
-                    kcal: (food.kcal * grams) / 100,
-                    protein: (food.p * grams) / 100,
-                  },
-                ],
-              })
-            }
+            onAdd={(food, grams) => {
+              try {
+                const entry = foodServing(food, grams, date, local(food.name));
+                update({ foodLogs: [...s.foodLogs, entry] });
+                setFoodError('');
+              } catch {
+                setFoodError(t('foodPortionError'));
+              }
+            }}
           />
+          {foodError && <p role="alert">{foodError}</p>}
+
           <details>
             <summary>{t('quickAdd')}</summary>
             <div className="form-grid">
@@ -188,8 +199,21 @@ export default function Nutrition() {
                   <b>{f.name}</b>
                   <small>
                     {Math.round(f.kcal)} {t('kcal')} · {Math.round(f.protein)} {t('grams')}{' '}
-                    {t('protein').toLowerCase()}
+                    {t('protein').toLowerCase()} · {t('fat')}{' '}
+                    {f.fat === undefined ? '—' : Math.round(f.fat)} · {t('carbs')}{' '}
+                    {f.carbs === undefined ? '—' : Math.round(f.carbs)}
                   </small>
+                  {f.sourceUrl && (
+                    <a
+                      className="text-link micro"
+                      href={f.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {f.sourceId === 'open-food-facts' ? 'Open Food Facts' : 'USDA'} ·{' '}
+                      {f.sourceLicense}
+                    </a>
+                  )}
                 </div>
                 <button
                   className="icon-button"

@@ -4,9 +4,10 @@ import { useLiveQuery } from 'dexie-react-hooks';
 import { foodRepository, initializeFoodCatalog } from '../lib/foodRepository';
 import type { FoodRecord } from '../lib/foodSchema';
 import { FoodFacts } from './FoodFacts';
-import { useI18n } from '../i18n';
+import { useDiaryI18n as useI18n } from '../i18n/useDiaryI18n';
 import { CustomFood } from './CustomFood';
 import { Field, Num, Select } from './ui';
+import { OnlineFoodSearch } from './OnlineFoodSearch';
 export function FoodCatalog({ onAdd }: { onAdd: (food: FoodRecord, grams: number) => void }) {
   const { t, local } = useI18n(),
     [params] = useSearchParams(),
@@ -58,6 +59,8 @@ export function FoodCatalog({ onAdd }: { onAdd: (food: FoodRecord, grams: number
       <Field label={t('searchFood')}>
         <input type="search" value={query} onChange={(e) => setQuery(e.target.value)} />
       </Field>
+      <OnlineFoodSearch key={query} query={query} onAdd={onAdd} />
+      <p className="micro muted">{t('localFoodSources')}</p>
       <label className="checkbox-label">
         <input
           type="checkbox"

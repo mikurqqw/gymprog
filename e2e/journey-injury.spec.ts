@@ -19,6 +19,12 @@ for (const language of ['ru', 'kk', 'en'] as const)
       expect(exercise!.jointStress.elbow === 0 || exercise!.loadingSide === 'right').toBe(true);
     }
     await page.goto('/?lang=' + language + '#/checkin');
+    await page
+      .locator('details')
+      .filter({ has: page.getByLabel(t('painScore'), { exact: true }) })
+      .locator('summary')
+      .first()
+      .click();
     await page.getByLabel(t('painScore'), { exact: true }).fill('4');
     await expect(page.locator('.score.red')).toBeVisible();
     await expect(page.getByText(t('redText'), { exact: true })).toBeVisible();
