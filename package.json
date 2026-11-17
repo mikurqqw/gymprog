@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/media.mjs && vite --host 127.0.0.1",
-    "build": "node scripts/check-legal.mjs && node scripts/media.mjs && tsc -b && vite build && node scripts/finalize.mjs && node scripts/check-build.mjs && node scripts/check-bundle.mjs",
+    "build": "node scripts/check-legal.mjs && node scripts/media.mjs && tsc -b && vite build && node scripts/seo.mjs && node scripts/finalize.mjs && node scripts/check-build.mjs && node scripts/check-seo.mjs && node scripts/check-bundle.mjs",
     "preview": "vite preview --host 127.0.0.1",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
@@ -17,7 +17,8 @@
     "check:security": "node scripts/check-security.mjs && node scripts/check-licenses.mjs && node scripts/check-protected.mjs",
     "format": "prettier --write src e2e scripts public/sw.js public/theme.js --ignore-unknown",
     "format:check": "prettier --check src e2e scripts public/sw.js public/theme.js --ignore-unknown",
-    "check:bundle": "node scripts/check-bundle.mjs"
+    "check:bundle": "node scripts/check-bundle.mjs",
+    "media:capture": "playwright test --config scripts/capture.config.ts"
   },
   "dependencies": {
     "@tailwindcss/vite": "4.3.5",

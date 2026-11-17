@@ -1,3 +1,4 @@
+import { landingStrings } from './landingStrings';
 import { noticeStrings } from './noticeStrings';
 import { onboardingStrings } from './onboardingStrings';
 import { focusStrings } from './focusStrings';
@@ -16,6 +17,7 @@ export const featureStrings: Record<string, { ru: string; kk: string; en: string
   ...focusStrings,
   ...onboardingStrings,
   ...noticeStrings,
+  ...landingStrings,
   ...launchStrings,
   ...injuryStrings,
   ...privacyStrings,

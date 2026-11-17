@@ -1,0 +1,128 @@
+.landing-features > div {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  margin-top: 32px;
+}
+.landing-features article {
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+.landing-features h3 {
+  margin-block: 16px 8px;
+  font-size: 20px;
+}
+.landing-features p {
+  color: var(--muted);
+  font-size: 14px;
+}
+.landing-safety {
+  margin-top: 32px;
+  padding-block: 20px;
+  border-block: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--muted);
+}
+.product-screens {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 48px;
+  align-items: center;
+}
+.product-screens h2 {
+  font-size: clamp(28px, 3vw, 44px);
+  max-width: 20ch;
+}
+.product-screens p {
+  color: var(--muted);
+  max-width: 45ch;
+}
+.product-device-pair {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+}
+.product-device {
+  flex: 1;
+  min-width: 0;
+  max-width: 260px;
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  padding: 10px;
+  position: relative;
+  background: #0b1020;
+}
+.product-device.light {
+  margin-top: 48px;
+  background: #f3f6ff;
+}
+.product-device img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 375/812;
+  object-fit: cover;
+  display: block;
+  border-radius: 20px;
+}
+.product-device figcaption {
+  font-size: 11px;
+  text-align: center;
+  padding: 12px;
+  color: #a5b3cc;
+}
+.product-device.light figcaption {
+  color: #52627c;
+}
+.device-sensor {
+  position: absolute;
+  top: 16px;
+  left: 38%;
+  width: 24%;
+  height: 8px;
+  border-radius: 10px;
+  background: #0b1020;
+  z-index: 1;
+}
+@media (max-width: 900px) {
+  .landing-features > div {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .product-screens {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .landing-features > div {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .product-device-pair {
+    gap: 10px;
+  }
+  .product-device {
+    padding: 6px;
+    border-radius: 20px;
+  }
+  .product-device img {
+    border-radius: 14px;
+  }
+}
+
+.sf-offer-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.sf-offer-list > a {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+@media (max-width: 700px) {
+  .sf-offer-list {
+    grid-template-columns: 1fr;
+  }
+}

@@ -41,3 +41,12 @@ warm-up calculations and forecasts are hidden while input remains unknown. The U
 asks for unloaded/lightest-implement technique practice and manual recording.
 Protected generator/formulas/programs were not edited. A qualified coach should review
 this initial load-selection explanation before public launch.
+
+## Hash-routing SEO limit
+
+Existing hash routes are preserved for Pages compatibility and user links. The build
+generates real root/localized-query landing URLs in sitemap.xml, never fragment URLs.
+Catalog and personal hash screens are not claimed as separately indexable pages.
+A future static/History-API public catalog is needed for per-program organic search.
+Primary guidance: https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics
+React19 metadata behavior: https://react.dev/reference/react-dom/components/title

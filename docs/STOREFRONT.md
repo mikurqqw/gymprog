@@ -72,3 +72,14 @@ presentation. Existing logs remain; older builds do not use new completion metad
 Do not reset or force-push shared main history.
 
 Final mobile Lighthouse on the public entry page: {'performance': 100, 'accessibility': 100, 'best-practices': 96, 'seo': 100}. LCP 910 ms; CLS 0. All existing Lighthouse assertions passed without threshold changes. This is a local lab measurement, not field data.
+
+## Royal Blue launch revision
+
+Welcome now shows Start free/demo,3 steps, all8 directions,6 capability sections,
+8 honest trilingual FAQs, safety strip and actual Focus screenshots captured with
+isolated fixture data by npm run media:capture. Public pages never receive personal
+profile data. Images have fixed intrinsic dimensions and lazy loading.
+
+VITE_SITE_URL controls canonical, OG1200x630, language alternates, sitemap and robots.
+Only the root and localized query-language landing URLs appear in the sitemap.
+The existing hash catalog stays compatible but is not separately indexable; see FINDINGS.md.

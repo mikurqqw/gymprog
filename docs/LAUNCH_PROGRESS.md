@@ -109,3 +109,19 @@ colors match. Tokens and the visual choice are documented in DESIGN_SYSTEM.md.
   existing route accessibility and new notice/theme behavior checks pass.
 - Initial static JS161.7 KiB gzip (170 budget).
 - No dependency, server, tracking or external request added.
+
+## Section6 — complete with explicit hash-routing SEO limit
+
+- Landing: Start free/demo,3 steps,8 directions,6 capability sections,8 honest RU/KK/EN
+  FAQs, safety strip, final CTA and compact sources teaser. Food count729 verified.
+- Actual fixture-data Focus WebP screens in both themes, fixed dimensions and lazy loading;
+  npm run media:capture regenerates them, manifest shots and original1200x630 OG.
+- Static fallback/noscript, localized canonical/alternates, unrated SoftwareApplication
+  JSON-LD, sitemap/robots derive from validated VITE_SITE_URL. Route titles/lang update.
+- URL language is validated and manual switching keeps the URL/reload consistent.
+- Hash routes preserved; only real localized landing URLs go into sitemap. Separate
+  per-program search indexing needs future public static/History-API routes (FINDINGS.md).
+- Full chain:137 unit +54 browser tests pass; protected hashes unchanged.
+- Two visual passes in dark/light; screenshot capture now actually loads lazy images
+  before taking full-page review shots. Default public routes make no third-party requests.
+- Initial static JS162.9 KiB gzip /511.8 KiB raw. No new dependency or stored-data change.

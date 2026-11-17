@@ -1,3 +1,5 @@
+import { LandingFeatures, LandingFAQ } from '../components/LandingDetails';
+import { ProductScreenshots } from '../components/ProductScreenshots';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { useI18n } from '../i18n';
@@ -13,8 +15,8 @@ export default function Landing() {
           <h1>{t('sfTitle')}</h1>
           <p className="sf-lead">{t('sfIntro')}</p>
           <div className="sf-actions">
-            <Link className="button" to="/catalog">
-              {t('sfChoose')}
+            <Link className="button" to="/start">
+              {t('landingStart')}
               <ArrowRight size={19} />
             </Link>
             <Link className="button secondary" to="/demo">
@@ -56,7 +58,7 @@ export default function Landing() {
             </Link>
           </div>
           <div className="sf-offer-list">
-            {programOffers.slice(0, 3).map((offer, i) => (
+            {programOffers.map((offer, i) => (
               <Link to={'/catalog/' + offer.goal} key={offer.goal}>
                 <span className="sf-index">0{i + 1}</span>
                 <div>
@@ -67,7 +69,7 @@ export default function Landing() {
               </Link>
             ))}
           </div>
-          <p className="sf-small">{t('sfPreviewTerms')}</p>
+          <p className="landing-safety">{t('landingSafety')}</p>
         </div>
       </section>
       <section className="sf-section sf-container sf-evidence">
@@ -75,37 +77,20 @@ export default function Landing() {
         <div>
           <h2>{t('sfEvidenceTitle')}</h2>
           <p>{t('sfEvidenceText')}</p>
-          <Link className="text-link" to="/catalog/strength">
-            {t('sfView')}
+          <Link className="text-link" to="/reference">
+            {t('reference')}
             <ArrowUpRight size={16} />
           </Link>
         </div>
       </section>
-      <section className="sf-section sf-container sf-tools">
-        <h2>{t('sfFullTools')}</h2>
-        <p>{t('sfFullToolsText')}</p>
-        <div className="chip-list">
-          {['nutrition', 'library', 'builder', 'progress', 'injuryModule'].map((key) => (
-            <span className="chip" key={key}>
-              {t(key)}
-            </span>
-          ))}
-        </div>
-      </section>
-      <section className="sf-section sf-container sf-faq">
-        <h2>{t('sfFaq')}</h2>
-        {[1, 2, 3].map((i) => (
-          <details key={i}>
-            <summary>{t('sfFaq' + i)}</summary>
-            <p>{t('sfFaq' + i + 'Text')}</p>
-          </details>
-        ))}
-      </section>
+      <ProductScreenshots />
+      <LandingFeatures />
+      <LandingFAQ />
       <section className="sf-final sf-container">
-        <span className="sf-kicker">YOUR NEXT CHAPTER</span>
+        <span className="sf-kicker">{t('landingNext')}</span>
         <h2>{t('sfFinalTitle')}</h2>
-        <Link className="button" to="/catalog">
-          {t('sfChoose')}
+        <Link className="button" to="/start">
+          {t('landingStart')}
           <ArrowRight size={19} />
         </Link>
         <p className="sf-small">{t('sfLanguages')}</p>

@@ -33,3 +33,5 @@ import './onboarding.css';
 
 import './notices.css';
 import './royalBlue.css';
+
+import './landing.css';

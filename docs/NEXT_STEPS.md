@@ -16,7 +16,7 @@ lint, typecheck,136 unit tests, check:i18n, check:security, build:preview,50 Pla
 Bundle161.0 KiB gzip (budget170). Protected hashes unchanged.
 No account/server/payment/subscription/advertising/default tracking added.
 
-## Resume here: section6 of ga.txt
+## Resume here: section7 of ga.txt
 
 5. Complete: contextual notices, algorithm chip, compact footer. Royal Blue owner reference
    supersedes lime; see DESIGN_SYSTEM.md and LAUNCH_PROGRESS.md.

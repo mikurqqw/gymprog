@@ -1,0 +1,50 @@
+[
+  {
+    "title": "program",
+    "text": {
+      "ru": "Восемь направлений с упражнениями, подходами и отдыхом. Посмотри содержание программы до старта.",
+      "kk": "Жаттығулар, сеттер және демалысы бар сегіз бағыт. Бастамай тұрып бағдарламаның мазмұнын көріңіз.",
+      "en": "Eight directions with exercises, sets and rest. Inspect the program before starting."
+    }
+  },
+  {
+    "title": "readiness",
+    "text": {
+      "ru": "Отметь сон и самочувствие. Алгоритм объяснит, почему предлагает сохранить или уменьшить нагрузку.",
+      "kk": "Ұйқы мен хал-жағдайды белгілеңіз. Алгоритм жүктемені сақтауды не азайтуды неге ұсынатынын түсіндіреді.",
+      "en": "Log sleep and how you feel. See why the algorithm suggests keeping or reducing load."
+    }
+  },
+  {
+    "title": "injuryModule",
+    "text": {
+      "ru": "Запиши ограничения и сторону травмы. Они участвуют в отборе упражнений; допуск специалиста остаётся необходимым.",
+      "kk": "Шектеулер мен жарақат жағын жазыңыз. Олар жаттығуды іріктеуге қатысады; маманның рұқсаты қажет болып қалады.",
+      "en": "Record limitations and the affected side. They guide exercise filtering; professional clearance remains necessary."
+    }
+  },
+  {
+    "title": "nutrition",
+    "text": {
+      "ru": "Дневник и 729 продуктов, включая блюда Казахстана и СНГ. Калории и макросы — оценки, а не гарантированные потребности.",
+      "kk": "Күнделік және Қазақстан мен ТМД тағамдары бар 729 өнім. Калориялар мен макростар — нақты қажеттілікке кепілдік емес, бағалар.",
+      "en": "A diary and 729 foods, including Kazakh and CIS dishes. Calories and macros are estimates, not guaranteed needs."
+    }
+  },
+  {
+    "title": "progress",
+    "text": {
+      "ru": "Сохраняй подходы, сравнивай занятия и следи за объёмом. Тест 1ПМ доступен при выполнении условий безопасности.",
+      "kk": "Сеттерді сақтап, жаттығулар мен көлемді салыстырыңыз. Қауіпсіздік шарттары орындалса, 1ҚМ сынағы қолжетімді.",
+      "en": "Save sets, compare sessions and track volume. The 1RM test is available when safety conditions are met."
+    }
+  },
+  {
+    "title": "localOnly",
+    "text": {
+      "ru": "Без аккаунта и облачного журнала. Данные остаются на устройстве, резервные копии экспортируешь ты сам.",
+      "kk": "Тіркелгісіз және бұлттық күнделіксіз. Деректер құрылғыда қалады, сақтық көшірмелерді өзіңіз экспорттайсыз.",
+      "en": "No account or cloud diary. Data stays on your device; you export your own backups."
+    }
+  }
+]

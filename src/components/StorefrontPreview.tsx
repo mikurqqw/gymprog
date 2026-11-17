@@ -6,7 +6,7 @@ export function StorefrontPreview() {
   return (
     <div className="sf-preview" aria-label={t('sfSample')}>
       <div className="sf-preview-top">
-        <span>IRONCYCLE / LIVE PREVIEW</span>
+        <span>IRONCYCLE / FOCUS</span>
         <span className="live-dot" />
       </div>
       <div className="sf-preview-week">

@@ -1,0 +1,114 @@
+[
+  {
+    "ru": {
+      "question": "Это бесплатно?",
+      "answer": "Текущая версия бесплатна. Регистрация и оплата не требуются."
+    },
+    "kk": {
+      "question": "Бұл тегін бе?",
+      "answer": "Қазіргі нұсқа тегін. Тіркелу мен төлем қажет емес."
+    },
+    "en": {
+      "question": "Is it free?",
+      "answer": "The current version is free. No account or payment is required."
+    }
+  },
+  {
+    "ru": {
+      "question": "Где хранятся мои данные?",
+      "answer": "В браузере на твоём устройстве. Облачной синхронизации нет; для переноса используй экспорт резервной копии."
+    },
+    "kk": {
+      "question": "Деректерім қайда сақталады?",
+      "answer": "Құрылғыңыздағы браузерде. Бұлтпен синхрондау жоқ; көшіру үшін сақтық көшірмені экспорттаңыз."
+    },
+    "en": {
+      "question": "Where is my data stored?",
+      "answer": "In the browser on your device. There is no cloud sync; export a backup to move your data."
+    }
+  },
+  {
+    "ru": {
+      "question": "Можно заниматься без интернета?",
+      "answer": "После первой загрузки основные экраны работают офлайн. Каталог питания сначала открой с интернетом. Внешние видео требуют подключения."
+    },
+    "kk": {
+      "question": "Интернетсіз жаттығуға бола ма?",
+      "answer": "Алғашқы жүктеуден кейін негізгі экрандар офлайн жұмыс істейді. Тамақ каталогын алдымен интернетпен ашыңыз. Сыртқы видеоларға байланыс қажет."
+    },
+    "en": {
+      "question": "Does it work offline?",
+      "answer": "Core screens work offline after loading. Open the food catalog online first. External videos need a connection."
+    }
+  },
+  {
+    "ru": {
+      "question": "Подойдёт новичку?",
+      "answer": "Можно начать без известного максимума: автоматические веса будут отключены. Приложение даёт структуру, а обучение технике остаётся отдельной задачей."
+    },
+    "kk": {
+      "question": "Жаңадан бастағанға жарай ма?",
+      "answer": "Максимумды білмей бастауға болады: автоматты салмақтар өшіріледі. Қолданба құрылым береді, ал техниканы үйрену бөлек міндет болып қалады."
+    },
+    "en": {
+      "question": "Is it for beginners?",
+      "answer": "You can start without knowing your maximum; automatic loads stay disabled. The app provides structure, while learning technique remains a separate task."
+    }
+  },
+  {
+    "ru": {
+      "question": "Что делать при травме?",
+      "answer": "Укажи ограничения до старта. Фильтр упражнений не заменяет медицинский допуск; приложение не предназначено для диагностики или реабилитации."
+    },
+    "kk": {
+      "question": "Жарақат болса не істеу керек?",
+      "answer": "Бастамас бұрын шектеулерді көрсетіңіз. Жаттығу сүзгісі медициналық рұқсатты алмастырмайды; қолданба диагностика не оңалтуға арналмаған."
+    },
+    "en": {
+      "question": "What if I have an injury?",
+      "answer": "Enter limitations before starting. Exercise filters do not replace medical clearance; the app is not for diagnosis or rehabilitation."
+    }
+  },
+  {
+    "ru": {
+      "question": "Насколько точны калории?",
+      "answer": "Это расчётная оценка, которая не учитывает индивидуальный обмен веществ. Веди дневник и оценивай изменения со временем; при медицинских ограничениях автоматические цели отключаются."
+    },
+    "kk": {
+      "question": "Калория есебі қаншалықты дәл?",
+      "answer": "Бұл жеке зат алмасуды ескермейтін есептік баға. Күнделік жүргізіп, уақыт өте өзгерістерді бағалаңыз; медициналық шектеулерде автоматты мақсаттар өшіріледі."
+    },
+    "en": {
+      "question": "How accurate are calories?",
+      "answer": "They are estimates that do not account for individual metabolism. Log your intake and observe changes over time; medical limitations disable automatic targets."
+    }
+  },
+  {
+    "ru": {
+      "question": "Какие языки доступны?",
+      "answer": "Русский, қазақша и English. Переключение языка сохраняет тренировочный план. Казахские тексты подготовлены с машинной помощью; независимая языковая проверка ещё нужна."
+    },
+    "kk": {
+      "question": "Қандай тілдер бар?",
+      "answer": "Русский, қазақша және English. Тілді ауыстырғанда жаттығу жоспары сақталады. Қазақша мәтіндер машиналық көмекпен дайындалған; тәуелсіз тілдік тексеру әлі қажет."
+    },
+    "en": {
+      "question": "Which languages are available?",
+      "answer": "Russian, Kazakh and English. Switching language keeps your training plan. Kazakh copy is machine-assisted and still needs independent language review."
+    }
+  },
+  {
+    "ru": {
+      "question": "Как удалить данные?",
+      "answer": "Открой «Ещё → Приватность и согласия → Удалить все данные устройства». Будут удалены записи приложения, локальные видео и офлайн-кеш на этом устройстве."
+    },
+    "kk": {
+      "question": "Деректерді қалай жоямын?",
+      "answer": "«Тағы → Құпиялылық және келісімдер → Құрылғыдағы барлық деректі жою» бөлімін ашыңыз. Осы құрылғыдағы қолданба жазбалары, жергілікті видео және офлайн кеш жойылады."
+    },
+    "en": {
+      "question": "How do I delete my data?",
+      "answer": "Open More → Privacy and consent → Delete all device data. This removes app records, local videos and offline caches on this device."
+    }
+  }
+]

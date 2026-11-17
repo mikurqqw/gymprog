@@ -60,9 +60,19 @@ for (const width of [320, 375, 768, 1280, 1920])
             route,
           )
           .toBe(true);
+        if (route === 'welcome') {
+          for (const picture of await page.locator('.product-device img').all()) {
+            await picture.scrollIntoViewIfNeeded();
+            await picture.evaluate((element) => (element as HTMLImageElement).decode());
+          }
+          await page.evaluate(() => {
+            window.scrollTo({ top: 0, behavior: 'instant' });
+          });
+        }
         await page.screenshot({
           path: `artifacts/screenshots/storefront-${route.replace('/', '-')}-${width}-${theme}.png`,
           fullPage: true,
+          animations: 'disabled',
         });
       }
       const result = await new AxeBuilder({ page }).analyze();

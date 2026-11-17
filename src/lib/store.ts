@@ -1,9 +1,13 @@
+import { languageFromSearch, syncLanguageUrl } from './languageUrl';
 import { dataAllowed, readConsent, readPreferences, PREFERENCES_KEY } from './consent';
 import { detectLanguage } from './language';
 import { createContext, useContext, useSyncExternalStore } from 'react';
 import { readStorage, STORAGE_KEY, initialState, type AppState } from './storage';
 let active = false;
-let state = { ...initialState, language: detectLanguage(navigator.languages) };
+let state = {
+  ...initialState,
+  language: languageFromSearch(location.search) ?? detectLanguage(navigator.languages),
+};
 let storageError = false;
 let undoState: AppState | null = null;
 const listeners = new Set<() => void>();
@@ -23,6 +27,7 @@ export function update(patch: Partial<AppState> | ((old: AppState) => Partial<Ap
         JSON.stringify({ ...preferences, language: next.language }),
       );
   }
+  if (next.language !== state.language) syncLanguageUrl(next.language);
   state = next;
   listeners.forEach((fn) => fn());
 }
@@ -69,7 +74,11 @@ export function activateStorage() {
   const consent = readConsent();
   state = {
     ...loaded.data,
-    language: readPreferences()?.language ?? consent?.language ?? loaded.data.language,
+    language:
+      languageFromSearch(location.search) ??
+      readPreferences()?.language ??
+      consent?.language ??
+      loaded.data.language,
   };
   storageError = loaded.error;
   active = true;
