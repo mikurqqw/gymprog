@@ -55,6 +55,7 @@ test('logs persist, timer uses timestamps, backup export is valid', async ({ pag
 });
 test('profile saves new current strength and regenerates the entire plan', async ({ page }) => {
   await page.goto('/#/profile');
+  await page.getByRole('link', { name: 'Дополнительные настройки', exact: true }).click();
   await page.getByRole('button', { name: 'Текущая сила', exact: false }).click();
   const input = page.getByLabel('Сейчас (кг)').first();
   await input.fill('160');

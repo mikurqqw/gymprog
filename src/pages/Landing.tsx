@@ -1,100 +1,44 @@
-import { LandingFeatures, LandingFAQ } from '../components/LandingDetails';
-import { ProductScreenshots } from '../components/ProductScreenshots';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useI18n } from '../i18n';
 import { StorefrontPreview } from '../components/StorefrontPreview';
-import { programOffers } from '../data/programOffers';
 export default function Landing() {
-  const { t, local } = useI18n();
+  const { t } = useI18n();
   return (
     <>
-      <section className="sf-hero sf-container">
+      <section className="sf-hero sf-container compact-hero">
         <div className="sf-hero-copy">
-          <p className="sf-kicker">{t('sfEyebrow')}</p>
+          <p className="sf-kicker">IronCycle · 18+</p>
           <h1>{t('sfTitle')}</h1>
-          <p className="sf-lead">{t('sfIntro')}</p>
+          <p className="sf-lead">{t('compactHomeLead')}</p>
           <div className="sf-actions">
             <Link className="button" to="/start">
               {t('landingStart')}
-              <ArrowRight size={19} />
+              <ArrowRight size={18} />
             </Link>
             <Link className="button secondary" to="/demo">
               {t('sfDemo')}
-              <ArrowUpRight size={17} />
             </Link>
           </div>
           <ul className="sf-trust">
             <li>{t('sfEightWeeks')}</li>
             <li>{t('sfOffline')}</li>
-            <li>18+</li>
+            <li>RU · ҚАЗ · EN</li>
           </ul>
         </div>
         <StorefrontPreview />
       </section>
-      <section className="sf-section sf-container">
-        <div className="sf-section-title">
-          <span className="sf-index">01 / IRONCYCLE</span>
-          <h2>{t('sfHowTitle')}</h2>
-        </div>
-        <div className="sf-process">
-          {[1, 2, 3].map((step) => (
-            <article key={step}>
-              <span>0{step}</span>
-              <h3>{t('sfStep' + step)}</h3>
-              <p>{t('sfStep' + step + 'Text')}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-      <section className="sf-section sf-program-section">
-        <div className="sf-container">
-          <div className="sf-section-title">
-            <span className="sf-index">02 / {t('sfPrograms')}</span>
-            <h2>{t('sfCatalogTitle')}</h2>
-            <Link className="text-link" to="/catalog">
-              {t('sfAll')}
-              <ArrowUpRight size={17} />
-            </Link>
-          </div>
-          <div className="sf-offer-list">
-            {programOffers.map((offer, i) => (
-              <Link to={'/catalog/' + offer.goal} key={offer.goal}>
-                <span className="sf-index">0{i + 1}</span>
-                <div>
-                  <h3>{t(offer.goal)}</h3>
-                  <p>{local(offer.description)}</p>
-                </div>
-                <ArrowUpRight size={23} />
-              </Link>
-            ))}
-          </div>
-          <p className="landing-safety">{t('landingSafety')}</p>
-        </div>
-      </section>
-      <section className="sf-section sf-container sf-evidence">
-        <span className="sf-index">03 / {t('science')}</span>
-        <div>
-          <h2>{t('sfEvidenceTitle')}</h2>
-          <p>{t('sfEvidenceText')}</p>
-          <Link className="text-link" to="/reference">
-            {t('reference')}
-            <ArrowUpRight size={16} />
-          </Link>
-        </div>
-      </section>
-      <ProductScreenshots />
-      <LandingFeatures />
-      <LandingFAQ />
-      <section className="sf-final sf-container">
-        <span className="sf-kicker">{t('landingNext')}</span>
-        <h2>{t('sfFinalTitle')}</h2>
-        <Link className="button" to="/start">
-          {t('landingStart')}
-          <ArrowRight size={19} />
+      <section className="compact-entry-links sf-container">
+        <Link to="/catalog">
+          <strong>{t('sfPrograms')}</strong>
+          <span>{t('setupGoal')} →</span>
         </Link>
-        <p className="sf-small">{t('sfLanguages')}</p>
+        <Link to="/about">
+          <strong>{t('compactAbout')}</strong>
+          <span>{t('compactHelp')} →</span>
+        </Link>
       </section>
+      <p className="landing-safety sf-container">{t('landingSafety')}</p>
     </>
   );
 }

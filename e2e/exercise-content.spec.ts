@@ -12,6 +12,9 @@ test('specific exercise instruction, localized schematics and pending human revi
       await page.goto('/#/library?exercise=ex-0');
       await expect(page.locator('.technique-illustration svg')).toBeVisible();
       await expect(page.locator('.exercise-review')).toBeVisible();
+      const instruction = page.locator('details').filter({ has: page.locator('ol') });
+      await expect(instruction).not.toHaveAttribute('open');
+      await instruction.locator('summary').first().click();
       const steps = await page.locator('.exercise-detail ol li').count();
       expect(steps).toBeGreaterThanOrEqual(3);
       expect(steps).toBeLessThanOrEqual(5);

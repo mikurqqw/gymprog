@@ -4,6 +4,7 @@ import { useI18n } from '../i18n';
 import { useStore } from '../lib/store';
 const titles: Record<string, string> = {
   welcome: 'sfTitle',
+  about: 'compactAbout',
   catalog: 'sfPrograms',
   demo: 'sfDemo',
   start: 'onboarding',

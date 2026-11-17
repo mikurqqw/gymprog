@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { StorefrontShell } from '../components/StorefrontShell';
 import Landing from './Landing';
+const About = lazy(() => import('./About'));
 const Catalog = lazy(() => import('./Catalog'));
 const ProgramOffer = lazy(() => import('./ProgramOffer'));
 const ProductDemo = lazy(() => import('./ProductDemo'));
@@ -12,6 +13,7 @@ export default function Storefront() {
         <Routes>
           <Route index element={<Landing />} />
           <Route path="welcome" element={<Landing />} />
+          <Route path="about" element={<About />} />
           <Route path="catalog" element={<Catalog />} />
           <Route path="catalog/:id" element={<ProgramOffer />} />
           <Route path="demo" element={<ProductDemo />} />

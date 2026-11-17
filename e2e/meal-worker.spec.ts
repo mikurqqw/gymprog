@@ -17,6 +17,7 @@ test('meal calculation failure offers a working retry without changing targets',
     Object.defineProperty(window, 'Worker', { value: UnavailableOnce });
   });
   await page.goto('/#/nutrition');
+  await page.locator('summary').filter({ hasText: 'Готовое меню на неделю' }).click();
   await expect(page.getByRole('alert')).toContainText('Не удалось запустить расчёт меню');
   await expect(page.locator('.nutrition-stats')).toContainText('2835');
   await page.getByRole('button', { name: 'Повторить', exact: true }).click();

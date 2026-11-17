@@ -1,3 +1,4 @@
+import { Disclosure } from '../components/Disclosure';
 import { ExerciseReview } from '../components/ExerciseReview';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -24,6 +25,7 @@ export default function Library() {
   return (
     <>
       <PageTitle
+        compact
         title={t('library')}
         description={`${exercises.length} · ${t('technique')}, ${t('safety').toLowerCase()}`}
       />
@@ -67,73 +69,82 @@ export default function Library() {
                 {t(selected.difficulty)}
               </p>
               {selected.summary && <p>{local(selected.summary)}</p>}
-              <h3>{t('setupSteps')}</h3>
-              {selected.setup && <p>{local(selected.setup)}</p>}
-              <ol>
-                {selected.steps?.map((step, i) => (
-                  <li key={i}>{local(step)}</li>
-                ))}
-              </ol>
-              {selected.breathing && (
-                <p>
-                  <b>{t('breathing')}: </b>
-                  {local(selected.breathing)}
-                </p>
-              )}
+              <Disclosure label="compactTechnique">
+                <h3>{t('setupSteps')}</h3>
+                {selected.setup && <p>{local(selected.setup)}</p>}
+                <ol>
+                  {selected.steps?.map((step, i) => (
+                    <li key={i}>{local(step)}</li>
+                  ))}
+                </ol>
+                {selected.breathing && (
+                  <p>
+                    <b>{t('breathing')}: </b>
+                    {local(selected.breathing)}
+                  </p>
+                )}
+              </Disclosure>{' '}
             </div>
           </div>
-          <div className="three-columns">
-            {[
-              ['mistakes', selected.mistakes],
-              ['safety', selected.safety],
-              ['videoCheck', selected.videoCheck],
-            ].map(([key, value]) => (
-              <div key={String(key)}>
-                <h3>{t(String(key))}</h3>
-                <p className="muted">{typeof value !== 'string' && local(value)}</p>
-              </div>
-            ))}
+          <div className="exercise-safety">
+            <h3>{t('safety')}</h3>
+            <p>{local(selected.safety)}</p>
           </div>
-          <ExerciseReview exercise={selected} />
-          <p className="micro muted">{t('stressEstimate')}</p>
-          <div className="chip-list">
-            {Object.entries(selected.jointStress ?? {}).map(([joint, score]) => (
-              <span className="chip" key={joint}>
-                {t(joint)}: {score}/3
-              </span>
-            ))}
-          </div>
-          {(['easier', 'harder'] as const).map((level) => {
-            const variants = (selected.variations?.[level] ?? [])
-              .map(exerciseById)
-              .filter((ex) =>
-                alternatives(selected.id, s.profile).some((allowed) => allowed.id === ex.id),
-              );
-            return variants.length > 0 ? (
-              <div key={level}>
-                <h3>{t(level === 'easier' ? 'exerciseEasier' : 'exerciseHarder')}</h3>
-                <div className="chip-list">
-                  {variants.map((ex) => (
-                    <button
-                      className="chip"
-                      key={ex.id}
-                      onClick={() => setParams({ exercise: ex.id })}
-                    >
-                      {local(ex.name)}
-                    </button>
-                  ))}
+          <Disclosure label="compactAdvanced">
+            <div className="three-columns">
+              {[
+                ['mistakes', selected.mistakes],
+                ['videoCheck', selected.videoCheck],
+              ].map(([key, value]) => (
+                <div key={String(key)}>
+                  <h3>{t(String(key))}</h3>
+                  <p className="muted">{typeof value !== 'string' && local(value)}</p>
                 </div>
-              </div>
-            ) : null;
-          })}
-          <h3>{t('chooseAlternative')}</h3>
-          <div className="chip-list">
-            {alternatives(selected.id, s.profile).map((e) => (
-              <button className="chip" key={e.id} onClick={() => setParams({ exercise: e.id })}>
-                {local(e.name)}
-              </button>
-            ))}
-          </div>
+              ))}
+            </div>
+          </Disclosure>
+          <ExerciseReview exercise={selected} />
+          <Disclosure label="compactStress">
+            <p className="micro muted">{t('stressEstimate')}</p>
+            <div className="chip-list">
+              {Object.entries(selected.jointStress ?? {}).map(([joint, score]) => (
+                <span className="chip" key={joint}>
+                  {t(joint)}: {score}/3
+                </span>
+              ))}
+            </div>
+            {(['easier', 'harder'] as const).map((level) => {
+              const variants = (selected.variations?.[level] ?? [])
+                .map(exerciseById)
+                .filter((ex) =>
+                  alternatives(selected.id, s.profile).some((allowed) => allowed.id === ex.id),
+                );
+              return variants.length > 0 ? (
+                <div key={level}>
+                  <h3>{t(level === 'easier' ? 'exerciseEasier' : 'exerciseHarder')}</h3>
+                  <div className="chip-list">
+                    {variants.map((ex) => (
+                      <button
+                        className="chip"
+                        key={ex.id}
+                        onClick={() => setParams({ exercise: ex.id })}
+                      >
+                        {local(ex.name)}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ) : null;
+            })}
+            <h3>{t('chooseAlternative')}</h3>
+            <div className="chip-list">
+              {alternatives(selected.id, s.profile).map((e) => (
+                <button className="chip" key={e.id} onClick={() => setParams({ exercise: e.id })}>
+                  {local(e.name)}
+                </button>
+              ))}
+            </div>
+          </Disclosure>{' '}
         </Card>
       ) : filtered.length ? (
         <div className="exercise-grid">

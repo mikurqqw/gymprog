@@ -7,6 +7,7 @@ export function LegalFooter() {
   return (
     <footer className="legal-footer compact-legal-footer">
       <b>IronCycle · 18+</b>
+      <Link to="/about">{t('compactAbout')}</Link>
       <nav aria-label={t('legalTerms')}>
         {['terms', 'privacy', 'storage'].map((id) => (
           <Link key={id} to={'/legal/' + id}>

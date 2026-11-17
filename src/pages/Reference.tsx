@@ -1,3 +1,4 @@
+import { Disclosure } from '../components/Disclosure';
 import { useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
@@ -18,7 +19,7 @@ export default function Reference() {
   );
   return (
     <>
-      <PageTitle title={t('reference')} description={t('scienceNote')} />
+      <PageTitle compact title={t('reference')} description={t('scienceNote')} />
       <label className="search-field">
         <Search size={18} />
         <input
@@ -56,7 +57,9 @@ export default function Reference() {
         ))}
       </div>
       {!found.length && <Empty title={t('emptySearch')} />}
-      <ProgramEvidence all />
+      <Disclosure label="compactSources">
+        <ProgramEvidence all />
+      </Disclosure>
     </>
   );
 }

@@ -1,3 +1,4 @@
+import { compactStrings } from './compactStrings';
 import { foodStatusStrings } from './foodStatusStrings';
 import { feedbackStrings } from './feedbackStrings';
 import { exerciseStrings } from './exerciseStrings';
@@ -26,6 +27,7 @@ export const featureStrings: Record<string, { ru: string; kk: string; en: string
   ...exerciseStrings,
   ...feedbackStrings,
   ...foodStatusStrings,
+  ...compactStrings,
   ...launchStrings,
   ...injuryStrings,
   ...privacyStrings,

@@ -58,10 +58,20 @@ test('constructor export/import round-trips and invalid import preserves the dra
   page,
 }) => {
   await page.goto('/#/builder');
-  await expect(page.getByRole('heading', { name: 'Редактировать упражнения' })).toBeVisible();
-  const editor = page
-    .locator('.card')
-    .filter({ has: page.getByRole('heading', { name: 'Редактировать упражнения' }) });
+  await page
+    .locator('details.compact-disclosure')
+    .filter({
+      has: page.getByRole('heading', { name: 'Редактировать упражнения', includeHidden: true }),
+    })
+    .locator('summary')
+    .first()
+    .click();
+  await expect(
+    page.getByRole('heading', { name: 'Редактировать упражнения', includeHidden: true }),
+  ).toBeVisible();
+  const editor = page.locator('.card').filter({
+    has: page.getByRole('heading', { name: 'Редактировать упражнения', includeHidden: true }),
+  });
   await editor.getByLabel('Название программы').fill('Acceptance plan');
   const downloadPromise = page.waitForEvent('download');
   await editor.getByRole('button', { name: 'Экспорт JSON', exact: true }).click();

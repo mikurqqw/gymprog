@@ -17,6 +17,7 @@ const routes = [
   'privacy-consent',
   'start',
   'welcome',
+  'about',
   'catalog',
   'catalog/powerlifting',
   'demo',

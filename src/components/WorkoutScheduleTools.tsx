@@ -28,14 +28,12 @@ export function WorkoutScheduleTools({ days }: { days: number[] }) {
       </div>
     </>
   );
-  return state.workoutView === 'focus' ? (
+  return (
     <details className="focus-schedule">
       <summary>
         {t('week')} {state.week} · {t('session')} {state.day + 1} · {t('focusSessionOptions')}
       </summary>
       {content}
     </details>
-  ) : (
-    content
   );
 }

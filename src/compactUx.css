@@ -1,0 +1,137 @@
+/* Progressive disclosure keeps primary work visible and optional tools close by. */
+.compact-disclosure {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-medium);
+  background: var(--surface);
+  margin-block: 16px;
+}
+.compact-disclosure > summary,
+.sidebar-tools > summary {
+  min-height: 48px;
+  padding: 14px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text);
+}
+.compact-disclosure[open] > summary {
+  border-bottom: 1px solid var(--border);
+}
+.disclosure-body {
+  padding: 16px;
+}
+.disclosure-body > .card {
+  border: 0;
+  margin: 0 0 16px;
+  padding: 0;
+  background: transparent;
+}
+.disclosure-body > .card:last-child {
+  margin-bottom: 0;
+}
+.form-grid > .compact-disclosure {
+  grid-column: 1/-1;
+  margin: 4px 0;
+}
+.page-help {
+  margin-top: 8px;
+  font-size: 12px;
+}
+.page-help > summary,
+.experience-field > details > summary {
+  min-height: 44px;
+  display: list-item;
+  align-content: center;
+  color: var(--muted);
+  cursor: pointer;
+}
+.page-help p {
+  max-width: 65ch;
+}
+.experience-field {
+  min-width: 0;
+}
+.experience-field .field {
+  margin: 0;
+}
+.experience-field > details {
+  font-size: 12px;
+}
+.compact-sidebar .nav-primary {
+  border-bottom: 0;
+  padding-bottom: 12px;
+}
+.compact-sidebar .sidebar-tools {
+  border-block: 1px solid var(--border);
+  margin-block: 12px;
+}
+.compact-sidebar .sidebar-tools > summary {
+  font-size: 13px;
+  color: var(--muted);
+}
+.sidebar-account {
+  padding-block: 12px;
+}
+.compact-sidebar .nav-group {
+  margin-top: 12px;
+}
+.compact-sidebar .nav-group h2 {
+  font-size: 10px;
+}
+.compact-sidebar .nav-item {
+  min-height: 46px;
+  border-radius: 8px;
+}
+.compact-sidebar .nav-item[aria-current='page'] {
+  border-left: 3px solid var(--accent);
+  background: var(--surface2);
+  color: var(--text);
+}
+.compact-entry-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding-block: 24px;
+}
+.compact-entry-links > a {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-medium);
+  background: var(--surface);
+}
+.compact-entry-links strong,
+.compact-entry-links span {
+  display: block;
+}
+.compact-entry-links span {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+.compact-hero {
+  min-height: 0;
+  padding-block: 48px;
+}
+.home-focus-grid {
+  margin-block: 16px;
+}
+.home-readiness {
+  padding: 20px;
+}
+.home-readiness > p {
+  font-size: 13px;
+}
+.compact-legal-footer {
+  margin-top: 24px;
+  padding-block: 20px;
+  gap: 16px;
+}
+.exercise-safety {
+  margin-block: 16px;
+  padding: 16px;
+  border-left: 3px solid var(--warning);
+  background: var(--surface2);
+}
+
+.experience-field {
+  grid-column: 1/-1;
+}

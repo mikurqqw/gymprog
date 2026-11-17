@@ -1,3 +1,4 @@
+import { Disclosure } from '../components/Disclosure';
 import { BackupSecurity } from '../components/BackupSecurity';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
@@ -44,42 +45,44 @@ export default function Settings() {
               options={['metric', 'imperial'].map((value) => ({ value, label: t(value) }))}
               onChange={(v) => update({ units: v as 'metric' | 'imperial' })}
             />
-            <Num
-              label={t('rounding')}
-              value={s.profile.step}
-              min={0.25}
-              max={10}
-              step={0.25}
-              onChange={(v) => {
-                if (v >= 0.25 && v <= 10) update({ profile: { ...s.profile, step: v } });
-              }}
-            />
-            <Num
-              label={t('bar') + ' (' + t('kg') + ')'}
-              value={s.bar}
-              max={30}
-              step={0.5}
-              onChange={(v) => {
-                if (v >= 0 && v <= 30) update({ bar: v });
-              }}
-            />
-            <Field label={t('plates') + ' (' + t('kg') + ')'}>
-              <input
-                value={plateText}
-                onChange={(e) => setPlateText(e.target.value)}
-                onBlur={() => {
-                  const plates = plateText.split(',').map((v) => Number(v.trim()));
-                  if (
-                    plates.length &&
-                    plates.length <= 20 &&
-                    plates.every((v) => v >= 0.25 && v <= 50)
-                  ) {
-                    update({ plateSizes: [...new Set(plates)] });
-                    setMessage(t('saved'));
-                  } else setMessage(t('invalid'));
+            <Disclosure label="compactEquipment">
+              <Num
+                label={t('rounding')}
+                value={s.profile.step}
+                min={0.25}
+                max={10}
+                step={0.25}
+                onChange={(v) => {
+                  if (v >= 0.25 && v <= 10) update({ profile: { ...s.profile, step: v } });
                 }}
               />
-            </Field>
+              <Num
+                label={t('bar') + ' (' + t('kg') + ')'}
+                value={s.bar}
+                max={30}
+                step={0.5}
+                onChange={(v) => {
+                  if (v >= 0 && v <= 30) update({ bar: v });
+                }}
+              />
+              <Field label={t('plates') + ' (' + t('kg') + ')'}>
+                <input
+                  value={plateText}
+                  onChange={(e) => setPlateText(e.target.value)}
+                  onBlur={() => {
+                    const plates = plateText.split(',').map((v) => Number(v.trim()));
+                    if (
+                      plates.length &&
+                      plates.length <= 20 &&
+                      plates.every((v) => v >= 0.25 && v <= 50)
+                    ) {
+                      update({ plateSizes: [...new Set(plates)] });
+                      setMessage(t('saved'));
+                    } else setMessage(t('invalid'));
+                  }}
+                />
+              </Field>
+            </Disclosure>
           </div>
         </Card>
         <Card>
@@ -118,25 +121,27 @@ export default function Settings() {
             </label>
           </div>
           <p className="micro muted">{t('videoLocal')}</p>
-          <button
-            className="text-button"
-            onClick={() => {
-              if (confirm(t('demoConfirm'))) replaceWithUndo({ ...s, ...demoData(s) });
-            }}
-          >
-            {t('loadDemo')}
-          </button>
-          <hr />
-          <button
-            className="button danger-button"
-            onClick={() => {
-              if (confirm(t('resetConfirm')))
-                replaceWithUndo({ ...initialState, language: s.language, theme: s.theme });
-            }}
-          >
-            <RotateCcw size={16} />
-            {t('reset')}
-          </button>
+          <Disclosure label="compactAdvanced">
+            <button
+              className="text-button"
+              onClick={() => {
+                if (confirm(t('demoConfirm'))) replaceWithUndo({ ...s, ...demoData(s) });
+              }}
+            >
+              {t('loadDemo')}
+            </button>
+            <hr />
+            <button
+              className="button danger-button"
+              onClick={() => {
+                if (confirm(t('resetConfirm')))
+                  replaceWithUndo({ ...initialState, language: s.language, theme: s.theme });
+              }}
+            >
+              <RotateCcw size={16} />
+              {t('reset')}
+            </button>
+          </Disclosure>
         </Card>
       </div>
       {message && (
@@ -144,19 +149,20 @@ export default function Settings() {
           {message}
         </p>
       )}
-      <BackupSecurity />
+      <Disclosure label="backup">
+        <BackupSecurity />
+      </Disclosure>
       <Card>
         <Link className="button secondary" to="/privacy-consent">
           {t('privacyConsent')}
         </Link>
       </Card>
-      <Card>
-        <h2>{t('install')}</h2>
-        <p>{t('installHint')}</p>
-      </Card>
-      <Card>
-        <h2>{t('safety')}</h2>
-      </Card>
+      <Disclosure label="install">
+        <Card>
+          <h2>{t('install')}</h2>
+          <p>{t('installHint')}</p>
+        </Card>
+      </Disclosure>
     </>
   );
 }

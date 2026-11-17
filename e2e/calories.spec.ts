@@ -4,7 +4,19 @@ test('five activity levels update TDEE independently from workouts and medical f
 }) => {
   await page.goto('/#/nutrition');
   await page
-    .getByRole('combobox', { name: 'Коэффициент активности', exact: true })
+    .locator('details')
+    .filter({
+      has: page.getByRole('combobox', {
+        name: 'Коэффициент активности',
+        includeHidden: true,
+        exact: true,
+      }),
+    })
+    .locator('summary')
+    .first()
+    .click();
+  await page
+    .getByRole('combobox', { name: 'Коэффициент активности', includeHidden: true, exact: true })
     .selectOption('1.9');
   await page.getByRole('button', { name: 'Сохранить', exact: true }).click();
   await expect(page.locator('.nutrition-stats')).toContainText('3475');

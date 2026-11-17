@@ -7,18 +7,29 @@ export function PageTitle({
   title,
   description,
   action,
+  compact = false,
 }: {
   eyebrow?: string;
   title: string;
   description?: string;
   action?: ReactNode;
+  compact?: boolean;
 }) {
+  const { t } = useI18n();
   return (
     <div className="page-title">
       <div>
         {eyebrow && <p className="eyebrow">{eyebrow}</p>}
         <h1>{title}</h1>
-        {description && <p className="muted">{description}</p>}
+        {description &&
+          (compact ? (
+            <details className="page-help">
+              <summary>{t('compactHelp')}</summary>
+              <p className="muted">{description}</p>
+            </details>
+          ) : (
+            <p className="muted">{description}</p>
+          ))}
       </div>
       {action}
     </div>

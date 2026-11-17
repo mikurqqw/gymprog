@@ -1,3 +1,4 @@
+import { Disclosure } from '../components/Disclosure';
 import { ContextNotice } from '../components/ContextNotice';
 import { ProgramEvidence } from '../components/ProgramEvidence';
 import { formatDate } from '../lib/formulas';
@@ -19,6 +20,7 @@ export default function Program() {
   return (
     <>
       <PageTitle
+        compact
         title={t('program')}
         description={t('ceiling')}
         action={
@@ -134,8 +136,10 @@ export default function Program() {
           );
         })}
       </div>
-      <WeeklyReview rows={rows} />
-      <ProgramEvidence goal={s.profile.goal} />
+      <Disclosure label="compactSources">
+        <WeeklyReview rows={rows} />
+        <ProgramEvidence goal={s.profile.goal} />
+      </Disclosure>
     </>
   );
 }

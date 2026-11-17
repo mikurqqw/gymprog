@@ -1,3 +1,4 @@
+import { Disclosure } from '../components/Disclosure';
 import { AlgorithmChip } from '../components/ContextNotice';
 import { HomeSupportingCards } from '../components/HomeSupportingCards';
 import { ArrowRight, CalendarDays, HeartPulse } from 'lucide-react';
@@ -49,7 +50,7 @@ export function Home() {
     <>
       <PageTitle
         title={t('sfDashboardTitle')}
-        description={t('sfTodayText')}
+        description={t('compactHomeLead')}
         action={
           <Link className="button secondary" to="/catalog">
             {t('sfPrograms')}
@@ -139,43 +140,47 @@ export function Home() {
           <AlgorithmChip />
         </Card>
       </div>
-      <Card className="home-week">
-        <div className="section-heading">
-          <h2>{t('weekOverview')}</h2>
-          <Link className="text-link" to="/program">
-            {t('viewPlan')} →
-          </Link>
-        </div>
-        <div className="home-week-grid">
-          {weekGroups.map((group) => {
-            const first = group[0],
-              summary = sessionStats(group, state.logs),
-              finished = !!state.sessionCompletions[sessionKey(state, first.week, first.day)];
-            return (
-              <Link
-                className="home-week-session"
-                to="/workout"
-                key={first.day}
-                onClick={() => update({ day: first.day })}
-              >
-                <span className="eyebrow">
-                  {formatDate(first.date, locale, {
-                    weekday: 'short',
-                    day: 'numeric',
-                    month: 'short',
-                  })}
-                </span>
-                <h3>{local(exerciseById(first.exercise).name)}</h3>
-                <span className="micro muted">
-                  {finished ? t('sfFinished') : `${summary.done}/${summary.planned} ${t('sets')}`}
-                </span>
-                <ArrowRight size={18} />
-              </Link>
-            );
-          })}
-        </div>
-      </Card>
-      <HomeSupportingCards rows={rows} />
+      <Disclosure label="compactWeek">
+        <Card className="home-week">
+          <div className="section-heading">
+            <h2>{t('weekOverview')}</h2>
+            <Link className="text-link" to="/program">
+              {t('viewPlan')} →
+            </Link>
+          </div>
+          <div className="home-week-grid">
+            {weekGroups.map((group) => {
+              const first = group[0],
+                summary = sessionStats(group, state.logs),
+                finished = !!state.sessionCompletions[sessionKey(state, first.week, first.day)];
+              return (
+                <Link
+                  className="home-week-session"
+                  to="/workout"
+                  key={first.day}
+                  onClick={() => update({ day: first.day })}
+                >
+                  <span className="eyebrow">
+                    {formatDate(first.date, locale, {
+                      weekday: 'short',
+                      day: 'numeric',
+                      month: 'short',
+                    })}
+                  </span>
+                  <h3>{local(exerciseById(first.exercise).name)}</h3>
+                  <span className="micro muted">
+                    {finished ? t('sfFinished') : `${summary.done}/${summary.planned} ${t('sets')}`}
+                  </span>
+                  <ArrowRight size={18} />
+                </Link>
+              );
+            })}
+          </div>
+        </Card>
+      </Disclosure>
+      <Disclosure label="compactMetrics">
+        <HomeSupportingCards rows={rows} />
+      </Disclosure>
       <details className="home-extra">
         <summary>{t('sfMoreMetrics')}</summary>
         <StrengthCards />

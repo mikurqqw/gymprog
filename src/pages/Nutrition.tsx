@@ -1,3 +1,4 @@
+import { Disclosure } from '../components/Disclosure';
 import { FoodCatalog } from '../components/FoodCatalog';
 import { CalorieNotice } from '../components/CalorieNotice';
 import { ProgressRing } from '../components/ProgressRing';
@@ -88,7 +89,7 @@ export default function Nutrition() {
   };
   return (
     <>
-      <PageTitle title={t('nutrition')} description={t('nutritionTiming')} />
+      <PageTitle compact title={t('nutrition')} description={t('nutritionTiming')} />
       <div className="tabs">
         {(['heavy', 'medium', 'rest'] as const).map((key) => (
           <button
@@ -206,118 +207,124 @@ export default function Nutrition() {
             <Empty title={t('emptyLogs')} text={t('foodLog')} />
           )}
         </Card>
-        <NutritionPreferences />
+        <Disclosure label="compactAdvanced">
+          <NutritionPreferences />
+        </Disclosure>
       </div>
-      {target.automaticAllowed && (
-        <Card>
-          <div className="section-heading">
-            <h2>{t('mealPlan')}</h2>
-            <div className="inline">
-              <button
-                className="icon-button"
-                aria-label={t('swap')}
-                onClick={() => {
-                  setSeed(seed + 7);
-                  setSwapped({});
-                }}
-              >
-                <RefreshCw size={18} />
-              </button>
-              <button className="button secondary" disabled={!menu} onClick={shopping}>
-                <Download size={16} />
-                {t('shoppingList')}
-              </button>
-            </div>
-          </div>
-          <div className="tabs">
-            {Array.from({ length: 7 }, (_, i) => (
-              <button
-                className={i === menuDay ? 'active' : ''}
-                onClick={() => setMenuDay(i)}
-                key={i}
-              >
-                {t('day')} {i + 1}
-              </button>
-            ))}
-          </div>
-          {menu ? (
-            <>
-              <div className="meal-grid">
-                {meals.map((meal, i) => (
-                  <div className="meal-card" key={i}>
-                    <div className="section-heading">
-                      <h3>
-                        {t('meals')} {i + 1}
-                      </h3>
-                      <button
-                        className="icon-button"
-                        aria-label={t('swap') + ' ' + (i + 1)}
-                        onClick={() => {
-                          try {
-                            const next = mealPlan(
-                              s.profile,
-                              foods,
-                              seed + menuDay + Math.floor(Math.random() * 100) + 1,
-                              dayType,
-                            ).meals[i];
-                            setSwapped({ ...swapped, [`${menuDay}-${i}`]: next });
-                          } catch {
-                            setSwapped({});
-                          }
-                        }}
-                      >
-                        <RefreshCw size={16} />
-                      </button>
-                    </div>
-                    {meal.map((p) => (
-                      <div className="meal-portion" key={p.food.id}>
-                        <span>{local(p.food.name)}</span>
-                        <b>
-                          {Math.round(p.grams)} {t('grams')}
-                        </b>
-                      </div>
-                    ))}
-                    <div className="micro muted">
-                      {Math.round(totals(meal).kcal)} {t('kcal')} ·{' '}
-                      {Math.round(totals(meal).protein)} {t('grams')} {t('protein').toLowerCase()}
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <p className="muted">
-                Σ {Math.round(sum.kcal)} {t('kcal')} · {t('protein')} {Math.round(sum.protein)} ·{' '}
-                {t('fat')} {Math.round(sum.fat)} · {t('carbs')} {Math.round(sum.carbs)}
-              </p>
-            </>
-          ) : pending ? (
-            <p role="status" aria-busy="true">
-              {t('loading')}
-            </p>
-          ) : (
-            <div role="alert">
-              <p className="notice warning">
-                {t(failed ? 'mealPlanLoadError' : 'dietUnavailable')}
-              </p>
-              <button className="button secondary" onClick={retry}>
-                {t('retry')}
-              </button>
-            </div>
-          )}
-          <p className="micro muted">{t('foodApprox')}</p>
-        </Card>
-      )}
-      <Card>
-        <h2>
-          {t('bodyTrend')}: <Weight value={trend.mean} />
-        </h2>
+      <Disclosure label="compactMenu">
         {target.automaticAllowed && (
-          <p className="muted">{t(trend.pace === 'fast' ? 'fastTrend' : 'slowTrend')}</p>
+          <Card>
+            <div className="section-heading">
+              <h2>{t('mealPlan')}</h2>
+              <div className="inline">
+                <button
+                  className="icon-button"
+                  aria-label={t('swap')}
+                  onClick={() => {
+                    setSeed(seed + 7);
+                    setSwapped({});
+                  }}
+                >
+                  <RefreshCw size={18} />
+                </button>
+                <button className="button secondary" disabled={!menu} onClick={shopping}>
+                  <Download size={16} />
+                  {t('shoppingList')}
+                </button>
+              </div>
+            </div>
+            <div className="tabs">
+              {Array.from({ length: 7 }, (_, i) => (
+                <button
+                  className={i === menuDay ? 'active' : ''}
+                  onClick={() => setMenuDay(i)}
+                  key={i}
+                >
+                  {t('day')} {i + 1}
+                </button>
+              ))}
+            </div>
+            {menu ? (
+              <>
+                <div className="meal-grid">
+                  {meals.map((meal, i) => (
+                    <div className="meal-card" key={i}>
+                      <div className="section-heading">
+                        <h3>
+                          {t('meals')} {i + 1}
+                        </h3>
+                        <button
+                          className="icon-button"
+                          aria-label={t('swap') + ' ' + (i + 1)}
+                          onClick={() => {
+                            try {
+                              const next = mealPlan(
+                                s.profile,
+                                foods,
+                                seed + menuDay + Math.floor(Math.random() * 100) + 1,
+                                dayType,
+                              ).meals[i];
+                              setSwapped({ ...swapped, [`${menuDay}-${i}`]: next });
+                            } catch {
+                              setSwapped({});
+                            }
+                          }}
+                        >
+                          <RefreshCw size={16} />
+                        </button>
+                      </div>
+                      {meal.map((p) => (
+                        <div className="meal-portion" key={p.food.id}>
+                          <span>{local(p.food.name)}</span>
+                          <b>
+                            {Math.round(p.grams)} {t('grams')}
+                          </b>
+                        </div>
+                      ))}
+                      <div className="micro muted">
+                        {Math.round(totals(meal).kcal)} {t('kcal')} ·{' '}
+                        {Math.round(totals(meal).protein)} {t('grams')} {t('protein').toLowerCase()}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <p className="muted">
+                  Σ {Math.round(sum.kcal)} {t('kcal')} · {t('protein')} {Math.round(sum.protein)} ·{' '}
+                  {t('fat')} {Math.round(sum.fat)} · {t('carbs')} {Math.round(sum.carbs)}
+                </p>
+              </>
+            ) : pending ? (
+              <p role="status" aria-busy="true">
+                {t('loading')}
+              </p>
+            ) : (
+              <div role="alert">
+                <p className="notice warning">
+                  {t(failed ? 'mealPlanLoadError' : 'dietUnavailable')}
+                </p>
+                <button className="button secondary" onClick={retry}>
+                  {t('retry')}
+                </button>
+              </div>
+            )}
+            <p className="micro muted">{t('foodApprox')}</p>
+          </Card>
         )}
-        <p className="micro muted">
-          BMR {target.bmr} · TDEE {target.tdee} {t('kcal')} · {dateOffset(date, -7)}—{date}
-        </p>
-        <p>{t('calorieSafety')}</p>
-      </Card>
+      </Disclosure>
+      <Disclosure label="compactMeasurements">
+        <Card>
+          <h2>
+            {t('bodyTrend')}: <Weight value={trend.mean} />
+          </h2>
+          {target.automaticAllowed && (
+            <p className="muted">{t(trend.pace === 'fast' ? 'fastTrend' : 'slowTrend')}</p>
+          )}
+          <p className="micro muted">
+            BMR {target.bmr} · TDEE {target.tdee} {t('kcal')} · {dateOffset(date, -7)}—{date}
+          </p>
+          <p>{t('calorieSafety')}</p>
+        </Card>
+      </Disclosure>
     </>
   );
 }

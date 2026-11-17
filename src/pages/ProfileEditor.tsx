@@ -1,3 +1,4 @@
+import { ExperienceField } from '../components/ExperienceField';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Check, Info } from 'lucide-react';
@@ -18,7 +19,7 @@ export default function Profile() {
     { t, units, weightUnit } = useI18n(),
     navigate = useNavigate();
   const [p, setP] = useState(s.profile),
-    [step, setStep] = useState(s.onboarded ? 2 : 0),
+    [step, setStep] = useState(0),
     [error, setError] = useState(''),
     [estimate, setEstimate] = useState<Lift | null>(null),
     [setWeight, setSetWeight] = useState(60),
@@ -47,6 +48,7 @@ export default function Profile() {
   return (
     <>
       <PageTitle
+        compact
         title={t(s.onboarded ? 'profile' : 'onboarding')}
         description={t('onboardingText')}
       />
@@ -107,13 +109,7 @@ export default function Profile() {
                   step={0.5}
                   onChange={(v) => change('sleep', v)}
                 />
-                <Num
-                  label={t('experience')}
-                  value={p.experience}
-                  max={60}
-                  step={0.5}
-                  onChange={(v) => change('experience', v)}
-                />
+                <ExperienceField value={p.experience} onChange={(v) => change('experience', v)} />
                 <Field label={t('startDate')}>
                   <input
                     type="date"
@@ -337,6 +333,11 @@ export default function Profile() {
           </p>
         )}
         <div className="form-actions">
+          {s.onboarded && (
+            <button type="button" className="button" onClick={save}>
+              {t('save')}
+            </button>
+          )}
           {!s.onboarded && (
             <button type="button" className="text-button" onClick={() => navigate('/')}>
               {t('skipLater')}

@@ -1,3 +1,4 @@
+import { update } from '../lib/store';
 import { useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -12,7 +13,14 @@ export function MobileNavigation() {
     <>
       <nav className="mobile-tabs" aria-label={t('navMain')}>
         {primaryNavigation.map(({ path, label, icon: Icon }) => (
-          <NavLink key={path} to={path}>
+          <NavLink
+            key={path}
+            to={path}
+            onClick={() => {
+              if (path === '/workout')
+                update((state) => ({ workoutView: state.workoutView ?? 'focus' }));
+            }}
+          >
             <Icon size={20} />
             <span>{t(label)}</span>
           </NavLink>

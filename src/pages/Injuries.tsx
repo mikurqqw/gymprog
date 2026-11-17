@@ -1,3 +1,4 @@
+import { Disclosure } from '../components/Disclosure';
 import { ContextNotice } from '../components/ContextNotice';
 import { useState } from 'react';
 import { injurySchema, joints, type Injury } from '../lib/injuries';
@@ -22,31 +23,32 @@ export default function Injuries() {
     <>
       <PageTitle title={t('injuryModule')} />
       <ContextNotice kind="injury" />
-      <Card>
-        <h2>{t('healthScreen')}</h2>
-        <div className="check-grid">
-          {healthKeys.map((key) => (
-            <label className="checkbox-label" key={key}>
-              <input
-                type="checkbox"
-                checked={s.profile.health[key]}
-                onChange={(e) =>
-                  update({
-                    profile: {
-                      ...s.profile,
-                      health: { ...s.profile.health, [key]: e.target.checked },
-                    },
-                  })
-                }
-              />
-              {t(key)}
-            </label>
-          ))}
-        </div>
-        {requiresClearance(s.profile.health) && (
-          <p className="notice warning">{t('consultFirst')}</p>
-        )}
-      </Card>
+      <Disclosure label="healthScreen">
+        <Card>
+          <h2>{t('healthScreen')}</h2>
+          <div className="check-grid">
+            {healthKeys.map((key) => (
+              <label className="checkbox-label" key={key}>
+                <input
+                  type="checkbox"
+                  checked={s.profile.health[key]}
+                  onChange={(e) =>
+                    update({
+                      profile: {
+                        ...s.profile,
+                        health: { ...s.profile.health, [key]: e.target.checked },
+                      },
+                    })
+                  }
+                />
+                {t(key)}
+              </label>
+            ))}
+          </div>
+        </Card>
+      </Disclosure>
+      {requiresClearance(s.profile.health) && <p className="notice warning">{t('consultFirst')}</p>}
+
       <Card>
         <form
           onSubmit={(e) => {

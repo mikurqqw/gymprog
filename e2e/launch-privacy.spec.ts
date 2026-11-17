@@ -23,8 +23,16 @@ test('feedback diagnostics expose only three technical fields', async ({ page })
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto('/#/workout');
   await page.getByRole('button', { name: 'Ещё', exact: true }).click();
+  await page
+    .locator('.more-sheet details')
+    .filter({
+      has: page.getByRole('button', { name: 'Скопировать диагностику', includeHidden: true }),
+    })
+    .locator('summary')
+    .first()
+    .click();
   await expect(page.getByRole('button', { name: 'Сообщить о проблеме' })).toBeDisabled();
-  await page.getByRole('button', { name: 'Скопировать диагностику' }).click();
+  await page.getByRole('button', { name: 'Скопировать диагностику', includeHidden: true }).click();
   const textarea = page.locator('.diagnostics-preview');
   await expect(textarea).toBeVisible();
   const value = JSON.parse(await textarea.inputValue());

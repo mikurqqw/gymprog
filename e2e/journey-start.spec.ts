@@ -55,7 +55,13 @@ for (const language of ['ru', 'kk', 'en'] as const)
     await expect(page.getByRole('heading', { name: t('sfFinished'), exact: true })).toBeVisible();
     await page.goto('/?lang=' + language + '#/progress');
     await expect(page.locator('h1')).toBeVisible();
-    await page.locator('details').first().locator('summary').click();
+    await page
+      .locator('main details')
+      .filter({ has: page.locator('table') })
+      .first()
+      .locator('summary')
+      .first()
+      .click();
     await expect(page.locator('table tbody tr').first()).toBeVisible();
     const state = await page.evaluate(() => JSON.parse(localStorage.getItem('ironcycle:data')!));
     expect(Object.keys(state.sessionCompletions)).toHaveLength(1);

@@ -39,3 +39,7 @@ import './landing.css';
 import './polish.css';
 
 import './exerciseContent.css';
+
+import './compactUx.css';
+
+import './compactResponsive.css';

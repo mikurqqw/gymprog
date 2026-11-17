@@ -1,3 +1,4 @@
+import { Disclosure } from '../components/Disclosure';
 import { AlgorithmChip } from '../components/ContextNotice';
 import { useSearchParams } from 'react-router-dom';
 import { z } from 'zod';
@@ -102,61 +103,65 @@ export default function Checkin() {
               max={10}
               onChange={(v) => change('painScore', v)}
             />
-            <div className="rating-fields">
-              {(['quality', 'recovery', 'soreness', 'stress', 'mood'] as const).map((key) => (
-                <fieldset key={key}>
-                  <legend>{t(key === 'recovery' ? 'subjective' : key)}</legend>
-                  <div className="rating-buttons">
-                    {[1, 2, 3, 4, 5].map((n) => (
-                      <button
-                        type="button"
-                        key={n}
-                        aria-pressed={c[key] === n}
-                        className={c[key] === n ? 'active' : ''}
-                        onClick={() => change(key, c[key] === n ? undefined : n)}
-                      >
-                        {n}
-                      </button>
-                    ))}
-                  </div>
-                </fieldset>
-              ))}
-            </div>
+            <Disclosure label="compactRecovery">
+              <div className="rating-fields">
+                {(['quality', 'recovery', 'soreness', 'stress', 'mood'] as const).map((key) => (
+                  <fieldset key={key}>
+                    <legend>{t(key === 'recovery' ? 'subjective' : key)}</legend>
+                    <div className="rating-buttons">
+                      {[1, 2, 3, 4, 5].map((n) => (
+                        <button
+                          type="button"
+                          key={n}
+                          aria-pressed={c[key] === n}
+                          className={c[key] === n ? 'active' : ''}
+                          onClick={() => change(key, c[key] === n ? undefined : n)}
+                        >
+                          {n}
+                        </button>
+                      ))}
+                    </div>
+                  </fieldset>
+                ))}
+              </div>
+            </Disclosure>
             <div className="form-grid">
-              {(['calories', 'protein', 'carbs', 'water', 'weight'] as const).map((key) => (
-                <Num
-                  key={key}
-                  required={false}
-                  label={
-                    t(
-                      key === 'calories'
-                        ? 'caloriesYesterday'
-                        : key === 'protein'
-                          ? 'proteinYesterday'
-                          : key === 'weight'
-                            ? 'bodyweight'
-                            : key,
-                    ) + (key === 'weight' ? ' (' + weightUnit + ')' : '')
-                  }
-                  value={
-                    key === 'weight' && c.weight !== undefined
-                      ? displayWeight(c.weight, units)
-                      : c[key]
-                  }
-                  min={key === 'weight' ? (units === 'metric' ? 35 : 77) : 0}
-                  max={
-                    {
-                      calories: 12000,
-                      protein: 600,
-                      carbs: 1500,
-                      water: 12,
-                      weight: units === 'metric' ? 250 : 551,
-                    }[key]
-                  }
-                  step={key === 'water' || key === 'weight' ? 0.1 : 1}
-                  onChange={(v) => change(key, key === 'weight' ? fromWeight(v, units) : v)}
-                />
-              ))}
+              <Disclosure label="compactMeasurements">
+                {(['calories', 'protein', 'carbs', 'water', 'weight'] as const).map((key) => (
+                  <Num
+                    key={key}
+                    required={false}
+                    label={
+                      t(
+                        key === 'calories'
+                          ? 'caloriesYesterday'
+                          : key === 'protein'
+                            ? 'proteinYesterday'
+                            : key === 'weight'
+                              ? 'bodyweight'
+                              : key,
+                      ) + (key === 'weight' ? ' (' + weightUnit + ')' : '')
+                    }
+                    value={
+                      key === 'weight' && c.weight !== undefined
+                        ? displayWeight(c.weight, units)
+                        : c[key]
+                    }
+                    min={key === 'weight' ? (units === 'metric' ? 35 : 77) : 0}
+                    max={
+                      {
+                        calories: 12000,
+                        protein: 600,
+                        carbs: 1500,
+                        water: 12,
+                        weight: units === 'metric' ? 250 : 551,
+                      }[key]
+                    }
+                    step={key === 'water' || key === 'weight' ? 0.1 : 1}
+                    onChange={(v) => change(key, key === 'weight' ? fromWeight(v, units) : v)}
+                  />
+                ))}
+              </Disclosure>
               <Select
                 label={t('pain')}
                 value={c.pain}

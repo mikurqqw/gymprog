@@ -1,3 +1,4 @@
+import { ExperienceField } from './ExperienceField';
 import type { OnboardingDraft } from '../lib/onboardingDraft';
 import { useI18n } from '../i18n';
 import { Field } from './ui';
@@ -36,6 +37,7 @@ export function NewProfileFields({
         example={70}
         onChange={(weight) => edit({ weight })}
       />
+      <ExperienceField value={draft.experience} onChange={(experience) => edit({ experience })} />
       <Field label={t('sex')}>
         <select
           aria-label={t('sex')}

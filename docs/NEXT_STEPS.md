@@ -1,3 +1,11 @@
+# Latest user constraint and UX revision
+
+2026-11-17: training programs are FROZEN until the owner sends replacement files and authorizes changes. Do not alter program contents/generators/sets/reps/loads/progression/selection/injury rules, now or on continuation. UI-only work is authorized. Read root AGENTS.md and COMPACT_UX.md first. All existing src/data files are unchanged in this revision; current lib-only diff recognizes /about.
+
+Verified current revision:148 unit tests/99 browser scenarios;24 visual review screenshots and the trilingual route/theme matrix. See COMPACT_UX.md and COMPACT_PERFORMANCE.json for exact evidence and remaining cold-start limits.
+
+Compact redesign: short public welcome + /about details, reduced sidebar, native disclosures across screens, visible editable saved profile, experience selector using the existing years field. Body-profile save preserves every unrelated program/profile field and record. Existing routes, old advanced editor and safety/consent functionality remain.
+
 # Continuation checkpoint — Royal Blue preview
 
 Date2026-11-17. Repository https://github.com/mikurqqw/gymprog; preview https://mikurqqw.github.io/gymprog/.

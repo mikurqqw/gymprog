@@ -1,3 +1,4 @@
+import { Disclosure } from '../components/Disclosure';
 import { ContextNotice } from '../components/ContextNotice';
 import { WorkoutFocus } from '../components/WorkoutFocus';
 import { sessionStats } from '../lib/sessionInsights';
@@ -128,27 +129,29 @@ export default function Workout() {
         </>
       )}
       <WorkoutResult rows={lines} />
-      <Card>
-        <h2>{t('session')}</h2>
-        <div className="stat-grid">
-          <div>
-            {t('tonnage')}
-            <strong>
-              <Weight value={stats.tonnage} />
-            </strong>
+      <Disclosure label="sfSummary">
+        <Card>
+          <h2>{t('session')}</h2>
+          <div className="stat-grid">
+            <div>
+              {t('tonnage')}
+              <strong>
+                <Weight value={stats.tonnage} />
+              </strong>
+            </div>
+            <div>
+              {t('averageRpe')}
+              <strong>{stats.averageRpe?.toFixed(1) ?? '—'}</strong>
+            </div>
+            <div>
+              {t('completion')}
+              <strong>
+                {Math.min(100, Math.round((stats.done / Math.max(1, stats.planned)) * 100))}%
+              </strong>
+            </div>
           </div>
-          <div>
-            {t('averageRpe')}
-            <strong>{stats.averageRpe?.toFixed(1) ?? '—'}</strong>
-          </div>
-          <div>
-            {t('completion')}
-            <strong>
-              {Math.min(100, Math.round((stats.done / Math.max(1, stats.planned)) * 100))}%
-            </strong>
-          </div>
-        </div>
-      </Card>
+        </Card>
+      </Disclosure>
     </>
   );
 }

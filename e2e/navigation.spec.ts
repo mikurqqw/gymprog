@@ -39,5 +39,15 @@ test('desktop sidebar has visible labels and slash opens search', async ({ page 
   await expect(page.locator('.search-sheet[open]')).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(page.locator('.search-sheet')).not.toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Последняя тренировка' })).toBeVisible();
+  await page
+    .locator('details.compact-disclosure')
+    .filter({
+      has: page.getByRole('heading', { name: 'Последняя тренировка', includeHidden: true }),
+    })
+    .locator('summary')
+    .first()
+    .click();
+  await expect(
+    page.getByRole('heading', { name: 'Последняя тренировка', includeHidden: true }),
+  ).toBeVisible();
 });

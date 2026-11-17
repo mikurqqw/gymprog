@@ -24,7 +24,17 @@ for (const language of ['ru', 'kk', 'en'] as const) {
   test(`nutrition input, activity and notice ${language}`, async ({ page }) => {
     const t = journeyMessages(language);
     await page.goto('/?lang=' + language + '#/nutrition');
-    await page.getByRole('combobox', { name: t('activity'), exact: true }).selectOption('1.9');
+    await page
+      .locator('details')
+      .filter({
+        has: page.getByRole('combobox', { name: t('activity'), includeHidden: true, exact: true }),
+      })
+      .locator('summary')
+      .first()
+      .click();
+    await page
+      .getByRole('combobox', { name: t('activity'), includeHidden: true, exact: true })
+      .selectOption('1.9');
     await page.getByRole('button', { name: t('save'), exact: true }).click();
     await expect(page.locator('.nutrition-stats')).toContainText('3475');
     const food = page.getByRole('combobox', { name: t('searchFood'), exact: true });

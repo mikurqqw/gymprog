@@ -1,3 +1,4 @@
+import { Disclosure } from '../components/Disclosure';
 import { useSearchParams } from 'react-router-dom';
 import { ProgramEditor } from '../components/ProgramEditor';
 import { useState } from 'react';
@@ -33,7 +34,7 @@ export default function Builder() {
   );
   return (
     <>
-      <PageTitle title={t('builder')} description={t('builderText')} />
+      <PageTitle compact title={t('builder')} description={t('compactGoal')} />
       <div className="goal-grid">
         {programRegistry.map((entry, i) => (
           <button
@@ -64,33 +65,35 @@ export default function Builder() {
             onChange={(v) => setDays(Math.max(2, Math.min(5, Math.round(v))))}
           />
         )}
-        <h3>{t('priorities')}</h3>
-        <div className="check-grid">
-          {['squat', 'bench', 'deadlift', 'biceps', 'pronation', 'cup', 'rising'].map((key) => (
-            <label key={key} className="checkbox-label">
-              <input
-                type="checkbox"
-                checked={priorities.includes(key)}
-                onChange={(e) =>
-                  setPriorities(
-                    e.target.checked ? [...priorities, key] : priorities.filter((k) => k !== key),
-                  )
-                }
-              />
-              {t(key)}
-            </label>
-          ))}
-        </div>
         {goal === 'armwrestling' && <p className="notice warning">{t('armSafety')}</p>}
-        <h3>{t('weeklySets')}</h3>
-        <div className="chip-list">
-          {Object.entries(volume).map(([muscle, sets]) => (
-            <span className="chip" key={muscle}>
-              {t(muscle === 'back' ? 'backMuscle' : muscle)} <b>{sets}</b>
-            </span>
-          ))}
-        </div>
-        <p className="muted">{t('manualMetrics')}</p>
+        <Disclosure label="compactAdvanced">
+          <h3>{t('priorities')}</h3>
+          <div className="check-grid">
+            {['squat', 'bench', 'deadlift', 'biceps', 'pronation', 'cup', 'rising'].map((key) => (
+              <label key={key} className="checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={priorities.includes(key)}
+                  onChange={(e) =>
+                    setPriorities(
+                      e.target.checked ? [...priorities, key] : priorities.filter((k) => k !== key),
+                    )
+                  }
+                />
+                {t(key)}
+              </label>
+            ))}
+          </div>
+          <h3>{t('weeklySets')}</h3>
+          <div className="chip-list">
+            {Object.entries(volume).map(([muscle, sets]) => (
+              <span className="chip" key={muscle}>
+                {t(muscle === 'back' ? 'backMuscle' : muscle)} <b>{sets}</b>
+              </span>
+            ))}
+          </div>
+          <p className="muted">{t('manualMetrics')}</p>
+        </Disclosure>
         <button
           className="button"
           onClick={() => {
@@ -109,7 +112,9 @@ export default function Builder() {
           <ArrowRight size={17} />
         </button>
       </Card>
-      <ProgramEditor />
+      <Disclosure label="builder">
+        <ProgramEditor />
+      </Disclosure>
     </>
   );
 }
