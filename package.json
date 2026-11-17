@@ -11,10 +11,10 @@
     "lint": "eslint .",
     "test": "vitest run",
     "e2e": "playwright test",
-    "audit": "npm audit --audit-level=high",
+    "audit": "node --test scripts/glob-security.test.mjs scripts/glob-advisories.test.mjs && npm audit --audit-level=high && node scripts/audit-glob-upstream.mjs",
     "build:preview": "node scripts/preview-build.mjs",
     "check:i18n": "node scripts/check-i18n.mjs",
-    "check:security": "node scripts/check-security.mjs && node scripts/check-licenses.mjs && node scripts/check-protected.mjs",
+    "check:security": "node scripts/check-security.mjs && node scripts/check-licenses.mjs && node scripts/check-protected.mjs && node --test scripts/glob-security.test.mjs scripts/glob-advisories.test.mjs",
     "format": "prettier --write src e2e scripts public/sw.js public/theme.js --ignore-unknown",
     "format:check": "prettier --check src e2e scripts public/sw.js public/theme.js --ignore-unknown",
     "check:bundle": "node scripts/check-bundle.mjs",
@@ -58,6 +58,7 @@
     "vitest": "5.1.0"
   },
   "overrides": {
+    "picomatch": "https://raw.githubusercontent.com/mikurqqw/gymprog/d8b81a8c1cc1f32fbbacf75c62bcf0f7fd366415/vendor/ironcycle-picomatch-hardened-4.0.7+ironcycle.1.tgz",
     "minimatch": "^11.0.1",
     "basic-ftp": "^6.2.4"
   }

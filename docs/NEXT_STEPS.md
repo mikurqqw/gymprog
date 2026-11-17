@@ -1,3 +1,9 @@
+# Dependency repair checkpoint
+
+2026-11-18: codex/fix-glob-security contains a genuine parser security backport, not a publication exception. Read DEPENDENCY_REPAIR.md and vendor/README.md. Registry audit0; upstream advisory surveillance, source hashes and exploit regressions remain mandatory.151 application tests,1983 upstream tests,6 tooling tests and106 consolidated browser scenarios pass. Clean npm ci passes. Frontend output and build ID are unchanged apart from generated security.txt expiry. Do not restore unpatched registry picomatch or remove the added gates. No Pages deployment claimed.
+
+Current follow-up: owner requests Checkin recovery ratings/safety/muscles visible first, convenient profile-backed body weight/nutrition measurements and selectable pain locations; food diary with branded online product search and fallback sources. Open Food Facts approved; owner prefers multiple sources when a product is absent. Programs, readiness/selection rules and nutrition-target formulas remain frozen. Keep this application follow-up separate from the dependency-only repair.
+
 # Latest compact onboarding refinement
 
 2026-11-17: latest branch is codex/compact-onboarding-ux. Read SIMPLE_UX.md and SIMPLE_PERFORMANCE.json. Personal details first, custom birth-date modal, consent-only age transfer, compact navigation/home and optional result details.151 unit tests,103 consolidated browser scenarios and3 final stop-warning cases pass. Protected programs and all existing src/data and src/lib files are unchanged.
