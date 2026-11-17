@@ -318,7 +318,7 @@ export default function Profile() {
           {step === 2 && (
             <>
               <h2>{t('safety')}</h2>
-              <p className="reading">{t('disclaimer')}</p>
+
               <p className="notice">
                 {t('localOnly')} · {t('autoSaved')}
               </p>

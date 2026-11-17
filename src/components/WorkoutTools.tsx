@@ -45,10 +45,6 @@ export function WorkoutTools({ active = false }: { active?: boolean }) {
         {t('printWorkout')}
       </button>
       {message && <p role="status">{message}</p>}
-      <details>
-        <summary>{t('medicalContext')}</summary>
-        <p>{t('emergencyHelp')}</p>
-      </details>
     </div>
   );
 }

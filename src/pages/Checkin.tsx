@@ -1,3 +1,4 @@
+import { AlgorithmChip } from '../components/ContextNotice';
 import { useSearchParams } from 'react-router-dom';
 import { z } from 'zod';
 import { dailyReadiness } from '../lib/dailyReadiness';
@@ -51,6 +52,7 @@ export default function Checkin() {
           </button>
         }
       />
+      <p className="notice warning">{t('emergencyHelp')}</p>
       <div className="checkin-layout">
         <form
           id="checkin-form"
@@ -234,7 +236,7 @@ export default function Checkin() {
                 </details>
               </>
             )}
-            <p className="micro muted">{t('disclaimer')}</p>
+            <AlgorithmChip />
           </Card>
         </div>
       </div>

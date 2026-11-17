@@ -1,19 +1,19 @@
 @import 'tailwindcss';
 @theme {
-  --color-lime: #c5f36b;
+  --color-royal: #4f8cff;
 }
 :root {
   font-family: 'Noto Sans', 'Segoe UI', Arial, sans-serif;
   color-scheme: dark;
-  --bg: #10120f;
-  --surface: #191c17;
-  --surface2: #20241e;
-  --text: #f2f4ed;
-  --muted: #a2aa98;
-  --border: #30362a;
-  --accent: #c5f36b;
-  --accentText: #162008;
-  --radius: 16px;
+  --bg: #0b1020;
+  --surface: #131b2d;
+  --surface2: #1c2740;
+  --text: #eef3ff;
+  --muted: #a5b3cc;
+  --border: #303b53;
+  --accent: #4f8cff;
+  --accentText: #081225;
+  --radius: 12px;
   --shadow: 0 8px 28px #0000000a;
   background: var(--bg);
   color: var(--text);
@@ -22,15 +22,15 @@
 }
 :root[data-theme='light'] {
   color-scheme: light;
-  --bg: #f4f5ef;
+  --bg: #f3f6ff;
   --surface: #fff;
-  --surface2: #eaf0e2;
-  --text: #1b2117;
-  --muted: #5e6855;
-  --border: #d9dfd1;
-  --accent: #41640c;
+  --surface2: #e8efff;
+  --text: #101d36;
+  --muted: #52627c;
+  --border: #d5deed;
+  --accent: #2563eb;
   --accentText: #fff;
-  --shadow: 0 8px 25px #29391208;
+  --shadow: 0 4px 20px #12357706;
 }
 * {
   box-sizing: border-box;
@@ -524,7 +524,7 @@ hr {
   border-radius: 50%;
 }
 .lift-0 {
-  background: #c5f36b;
+  background: var(--accent);
 }
 .lift-1 {
   background: #93bde8;
@@ -595,7 +595,7 @@ hr {
   border-radius: 16px;
   border: 1px solid #3a4430;
   min-height: 310px;
-  background: linear-gradient(110deg, #20291a, #1a2115 65%, #252f1c);
+  background: var(--surface);
   padding: 31px;
   color: #f2f4ed;
 }
@@ -605,7 +605,7 @@ hr {
   max-width: 60%;
 }
 .hero .pill {
-  color: #c5f36b;
+  color: var(--accent);
   border-color: #526337;
   background: #2c371e7a;
   margin-bottom: 27px;
@@ -636,7 +636,7 @@ hr {
   color: #6f7e60;
 }
 .hero .button {
-  background: #c5f36b;
+  background: var(--accent);
   color: #162008;
   min-width: 177px;
 }
@@ -648,7 +648,7 @@ hr {
   line-height: 1;
   font-weight: 650;
   letter-spacing: -9px;
-  color: #c5f36b;
+  color: var(--accent);
   opacity: 0.06;
 }
 .barbell-art {
@@ -1476,8 +1476,8 @@ details > p {
   position: fixed;
   bottom: 24px;
   right: 28px;
-  border: 1px solid #c5f36b;
-  background: #c5f36b;
+  border: 1px solid var(--accent);
+  background: var(--accent);
   box-shadow: 0 8px 40px #0006;
   border-radius: 14px;
   display: flex;

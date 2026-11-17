@@ -1,3 +1,4 @@
+import { ContextNotice } from '../components/ContextNotice';
 import { UnassessedStrength } from '../components/UnassessedStrength';
 import { maxTestingAllowed } from '../lib/injuries';
 import { Warmup } from '../components/Warmup';
@@ -35,7 +36,7 @@ export default function Test() {
     <>
       <PageTitle title={t('test')} description={t('testSpacing')} />
       <Card>
-        <p>{t('testSafety')}</p>
+        <ContextNotice kind="maxTest" />
         <label className="checkbox-label">
           <input type="checkbox" checked={safe} onChange={(e) => setSafe(e.target.checked)} />
           {t('safety')}

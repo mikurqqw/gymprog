@@ -1,3 +1,4 @@
+import { ContextNotice } from '../components/ContextNotice';
 import { WorkoutFocus } from '../components/WorkoutFocus';
 import { sessionStats } from '../lib/sessionInsights';
 import { RecommendationWhy } from '../components/RecommendationWhy';
@@ -55,6 +56,7 @@ export default function Workout() {
             : ''
         }
       />
+      <ContextNotice kind="workout" />
       <WorkoutScheduleTools days={days} />
       <div className={'compact-readiness readiness-notice ' + (r?.level ?? '')}>
         <HeartPulse size={20} />

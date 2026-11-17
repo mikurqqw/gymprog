@@ -1,3 +1,4 @@
+import { ContextNotice, AlgorithmChip } from './ContextNotice';
 import { useState } from 'react';
 import { useProfileStore as useStore } from '../lib/store';
 import { useI18n } from '../i18n';
@@ -20,7 +21,7 @@ export function CalorieNotice() {
   return (
     <section className="notice calorie-notice">
       <div>
-        <p>{t('calorieEstimate')}</p>
+        <ContextNotice kind="calories" />
         {n.underweight && <p className="warning">{t('underweightNotice')}</p>}
         {!n.automaticAllowed && <p className="warning">{t('medicalDietBlocked')}</p>}
         <details>
@@ -60,7 +61,7 @@ export function CalorieNotice() {
             )}
           </>
         )}
-        <small>{t('algorithmLabel')}</small>
+        <AlgorithmChip />
       </div>
     </section>
   );

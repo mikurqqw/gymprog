@@ -30,3 +30,6 @@ import './focus.css';
 import './focusControls.css';
 
 import './onboarding.css';
+
+import './notices.css';
+import './royalBlue.css';

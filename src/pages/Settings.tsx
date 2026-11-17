@@ -153,7 +153,6 @@ export default function Settings() {
       </Card>
       <Card>
         <h2>{t('safety')}</h2>
-        <p className="reading">{t('disclaimer')}</p>
       </Card>
     </>
   );

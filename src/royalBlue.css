@@ -1,0 +1,77 @@
+:root {
+  --control-border: #617393;
+  --success: #8bdbac;
+  --warning: #f5cb78;
+  --danger: #ff9b9b;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --radius-small: 6px;
+  --radius-medium: 10px;
+  --elevation-dialog: 0 16px 64px #0005;
+  --motion-fast: 150ms;
+  --motion-normal: 240ms;
+}
+:root[data-theme='light'] {
+  --control-border: #7b8ca8;
+  --success: #246a43;
+  --warning: #835300;
+  --danger: #b32636;
+}
+.card {
+  box-shadow: none;
+}
+.home-next::before {
+  display: none;
+}
+.home-next {
+  padding: 24px;
+}
+.home-next > .eyebrow {
+  margin-block: 20px 10px;
+}
+.home-next > h2 {
+  font-size: clamp(24px, 2.4vw, 32px);
+}
+.button {
+  border-radius: var(--radius-small);
+}
+.button.secondary,
+.icon-button {
+  border-color: var(--control-border);
+}
+.field input,
+.field select,
+.field textarea,
+.focus-stepper > div {
+  border-color: var(--control-border);
+}
+.green {
+  color: var(--success);
+}
+.text-link,
+.text-button {
+  text-underline-offset: 3px;
+}
+.text-link:hover,
+.text-button:hover {
+  text-decoration: underline;
+}
+.weight,
+.strength-value,
+.stat-grid strong,
+.focus-stepper input {
+  font-variant-numeric: tabular-nums;
+}
+.compact-readiness .recommendation-why {
+  border: 0;
+  padding-top: 0;
+}
+@media (max-width: 767px) {
+  .home-next {
+    padding: 20px;
+  }
+}

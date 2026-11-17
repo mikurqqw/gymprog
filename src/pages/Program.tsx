@@ -1,3 +1,4 @@
+import { ContextNotice } from '../components/ContextNotice';
 import { ProgramEvidence } from '../components/ProgramEvidence';
 import { formatDate } from '../lib/formulas';
 import { Link } from 'react-router-dom';
@@ -26,6 +27,7 @@ export default function Program() {
           </Link>
         }
       />
+      <ContextNotice kind="program" />
       <WeekSelector />
       <div className="section-heading">
         <h2>

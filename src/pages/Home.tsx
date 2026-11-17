@@ -1,3 +1,4 @@
+import { AlgorithmChip } from '../components/ContextNotice';
 import { HomeSupportingCards } from '../components/HomeSupportingCards';
 import { ArrowRight, CalendarDays, HeartPulse } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -135,7 +136,7 @@ export function Home() {
             {t('checkin')}
             <ArrowRight size={16} />
           </Link>
-          <p className="micro muted">{t('algorithmLabel')}</p>
+          <AlgorithmChip />
         </Card>
       </div>
       <Card className="home-week">

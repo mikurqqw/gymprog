@@ -90,3 +90,22 @@ No server, payment, account, subscription, advertising or default analytics is a
 - Initial JS161.0 KiB gzip /507.3 KiB raw, under170 KiB gzip budget.
 - User requested a deployment/checkpoint instead of continuing the remaining expansion.
   Resume at section5. No section5 code has been integrated.
+
+## Section5 and Royal Blue owner reference — complete
+
+Owner's2026-11-17 reference replaces lime with #4F8CFF dark / #2563EB light.
+Royal Blue surfaces/cards/buttons/links are applied across the existing application,
+with independent semantic success/warning/danger roles. SVG/PNG PWA icons and manifest
+colors match. Tokens and the visual choice are documented in DESIGN_SYSTEM.md.
+
+- Contextual expandable notices on program, calories, injuries, workout and1RM test.
+- Calorie summary explicitly retains individual-metabolism limitation; max-test warning
+  starts expanded; symptom/pain stop instructions stay prominent. Consent logic unchanged.
+- Consistent algorithm chip replaces repeated full AI labels on recommendation cards.
+- Footer has3 primary legal links + More legal, language and18+; all documents retained.
+- Preview banner remains build-flag gated; no data schema/calculation change.
+- Full chain passes:136 unit +52 browser scenarios; protected hashes unchanged.
+- Screenshots in both themes at375/768/1280/1920 plus320 storefront/onboarding;
+  existing route accessibility and new notice/theme behavior checks pass.
+- Initial static JS161.7 KiB gzip (170 budget).
+- No dependency, server, tracking or external request added.

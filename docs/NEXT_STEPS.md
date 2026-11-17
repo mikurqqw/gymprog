@@ -16,10 +16,10 @@ lint, typecheck,136 unit tests, check:i18n, check:security, build:preview,50 Pla
 Bundle161.0 KiB gzip (budget170). Protected hashes unchanged.
 No account/server/payment/subscription/advertising/default tracking added.
 
-## Resume here: section5 of ga.txt
+## Resume here: section6 of ga.txt
 
-5. Contextual disclaimers, one algorithm chip per generated card, compact4-item footer.
-   Draft components are still local only in ignored artifacts/stage5/.
+5. Complete: contextual notices, algorithm chip, compact footer. Royal Blue owner reference
+   supersedes lime; see DESIGN_SYSTEM.md and LAUNCH_PROGRESS.md.
 6. Landing: all8 directions,6 feature sections,8–10 FAQs, actual product WebP screens,
    canonical/OG1200x630/static fallback/sitemap/robots/route titles via VITE_SITE_URL.
 7. Documented design tokens and consistent controls/states; accessible set controls,

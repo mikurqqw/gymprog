@@ -1,3 +1,4 @@
+import { AlgorithmChip } from './ContextNotice';
 import { Link } from 'react-router-dom';
 import { useI18n } from '../i18n';
 import type { Planned } from '../lib/schema';
@@ -41,12 +42,13 @@ export function RecommendationWhy({
             {cap(after)}
           </p>
           <p className="micro muted">
-            {t('readiness')}: {result.score}/100 · {t('algorithmLabel')}
+            {t('readiness')}: {result.score}/100
           </p>
           {result.level === 'red' && <p className="notice danger">{t('emergencyHelp')}</p>}
         </>
       )}
       <p className="micro muted">{t('sfWhyLimits')}</p>
+      <AlgorithmChip />
       <Link className="text-link" to="/program">
         {t('science')} →
       </Link>

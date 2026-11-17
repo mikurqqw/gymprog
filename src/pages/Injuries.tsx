@@ -1,3 +1,4 @@
+import { ContextNotice } from '../components/ContextNotice';
 import { useState } from 'react';
 import { injurySchema, joints, type Injury } from '../lib/injuries';
 import { update, replaceWithUndo, useProfileStore as useStore } from '../lib/store';
@@ -19,7 +20,8 @@ export default function Injuries() {
     });
   return (
     <>
-      <PageTitle title={t('injuryModule')} description={t('medicalContext')} />
+      <PageTitle title={t('injuryModule')} />
+      <ContextNotice kind="injury" />
       <Card>
         <h2>{t('healthScreen')}</h2>
         <div className="check-grid">
