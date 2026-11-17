@@ -37,3 +37,5 @@ import './royalBlue.css';
 import './landing.css';
 
 import './polish.css';
+
+import './exerciseContent.css';

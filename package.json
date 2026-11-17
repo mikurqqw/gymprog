@@ -18,7 +18,8 @@
     "format": "prettier --write src e2e scripts public/sw.js public/theme.js --ignore-unknown",
     "format:check": "prettier --check src e2e scripts public/sw.js public/theme.js --ignore-unknown",
     "check:bundle": "node scripts/check-bundle.mjs",
-    "media:capture": "playwright test --config scripts/capture.config.ts"
+    "media:capture": "playwright test --config scripts/capture.config.ts",
+    "check:content": "node scripts/check-content.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "4.3.5",

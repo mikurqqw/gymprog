@@ -1,3 +1,4 @@
+import { ExerciseReview } from './ExerciseReview';
 import { Link } from 'react-router-dom';
 import type { Exercise } from '../lib/schema';
 import { useI18n } from '../i18n';
@@ -8,6 +9,7 @@ export function FocusTechnique({ exercise }: { exercise: Exercise }) {
     <details className="focus-technique">
       <summary>{t('focusHowTo')}</summary>
       <ExerciseMedia exercise={exercise} />
+      <ExerciseReview exercise={exercise} />
       {exercise.setup && <p>{local(exercise.setup)}</p>}
       <ol>
         {exercise.steps?.map((step, index) => (

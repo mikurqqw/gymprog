@@ -1,8 +1,10 @@
+import techniqueIds from '../data/technique-ids.json';
 import registry from '../data/media.json';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import { mediaAllowed, readPreferences, PREFERENCES_KEY } from '../lib/consent';
 import type { Exercise } from '../lib/schema';
 import { useI18n } from '../i18n';
+const TechniqueIllustration = lazy(() => import('./TechniqueIllustration'));
 export function ExerciseMedia({ exercise: ex }: { exercise: Exercise }) {
   const { t, local } = useI18n(),
     [failed, setFailed] = useState(false),
@@ -83,6 +85,12 @@ export function ExerciseMedia({ exercise: ex }: { exercise: Exercise }) {
           {t('openYoutube')}
         </a>
       </div>
+    );
+  if (techniqueIds.includes(ex.id))
+    return (
+      <Suspense fallback={<div className="technique-skeleton" aria-busy="true" />}>
+        <TechniqueIllustration exercise={ex} />
+      </Suspense>
     );
   return (
     <div className="technique-diagram">

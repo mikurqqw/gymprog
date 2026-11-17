@@ -50,3 +50,9 @@ Catalog and personal hash screens are not claimed as separately indexable pages.
 A future static/History-API public catalog is needed for per-program organic search.
 Primary guidance: https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics
 React19 metadata behavior: https://react.dev/reference/react-dom/components/title
+
+## Review-flag correction
+
+Section8 corrects earlier machine-authored native/clinician review booleans to false
+in exercise, science and article content. This does not modify the protected clinical
+injury rule flag requiresClinicalReview. Actual independent content review is outstanding.

@@ -10,7 +10,10 @@
     "titleEn": "Strength — ACSM, 2026",
     "findingsEn": "An overview of 137 systematic reviews (>30,000 participants) identifies sufficiently heavy loading, often ≥80% 1RM, repeated weekly training and skill practice as relevant to strength.",
     "applicationEn": "The cycle uses heavy submaximal lifting and repeated technique practice. These are general principles, not a trial of this particular eight-week schedule.",
-    "translationReview": { "kkNativeSpeaker": true, "qualifiedClinician": true }
+    "translationReview": {
+      "kkNativeSpeaker": false,
+      "qualifiedClinician": false
+    }
   },
   {
     "title": "Объём и частота — Pelland et al., 2026",
@@ -23,7 +26,10 @@
     "titleEn": "Volume and frequency — Pelland et al., 2026",
     "findingsEn": "Meta-regression relates volume and frequency to strength improvements, with diminishing additional returns.",
     "applicationEn": "Accessory work is limited so that main-movement quality is supported; the program does not add twenty exercises per session.",
-    "translationReview": { "kkNativeSpeaker": true, "qualifiedClinician": true }
+    "translationReview": {
+      "kkNativeSpeaker": false,
+      "qualifiedClinician": false
+    }
   },
   {
     "title": "Авторегуляция — 2022, метаанализ",
@@ -36,7 +42,10 @@
     "titleEn": "Autoregulation — 2022 meta-analysis",
     "findingsEn": "Autoregulated and percentage-based programs produced similar average 1RM improvements; the result does not establish universal superiority of RPE.",
     "applicationEn": "Percentages determine loads while RPE limits excessive effort. Subjective ratings remain fallible.",
-    "translationReview": { "kkNativeSpeaker": true, "qualifiedClinician": true }
+    "translationReview": {
+      "kkNativeSpeaker": false,
+      "qualifiedClinician": false
+    }
   },
   {
     "title": "Утомление и техника — 2025, обзор",
@@ -49,7 +58,10 @@
     "titleEn": "Fatigue and technique — 2025 review",
     "findingsEn": "Bar velocity decreases as intensity or fatigue rises, while joint mechanics differ substantially between athletes.",
     "applicationEn": "Video, speed and stability guide review. Individual biomechanics matter more than imposing one supposedly ideal angle.",
-    "translationReview": { "kkNativeSpeaker": true, "qualifiedClinician": true }
+    "translationReview": {
+      "kkNativeSpeaker": false,
+      "qualifiedClinician": false
+    }
   },
   {
     "title": "Классика и сумо — Hanen et al., 2025",
@@ -62,7 +74,10 @@
     "titleEn": "Conventional and sumo — Hanen et al., 2025",
     "findingsEn": "Comparisons of conventional and wide-stance deadlifts identify differences in joint kinematics and loading distribution.",
     "applicationEn": "The main variant remains conventional. Broad claims such as sumo always being a quadriceps lift do not replace individual technique analysis.",
-    "translationReview": { "kkNativeSpeaker": true, "qualifiedClinician": true }
+    "translationReview": {
+      "kkNativeSpeaker": false,
+      "qualifiedClinician": false
+    }
   },
   {
     "title": "Пик силы — Pritchard et al., 2020",
@@ -75,7 +90,10 @@
     "titleEn": "Peaking — Pritchard et al., 2020",
     "findingsEn": "Taper reviews discuss reducing volume by roughly 30–70% over one to two weeks; evidence for a single optimal taper is limited.",
     "applicationEn": "Weeks seven and eight reduce fatigue before testing. The exact schedule is not universal.",
-    "translationReview": { "kkNativeSpeaker": true, "qualifiedClinician": true }
+    "translationReview": {
+      "kkNativeSpeaker": false,
+      "qualifiedClinician": false
+    }
   },
   {
     "title": "Сон атлета — Walsh et al., 2021",
@@ -88,7 +106,10 @@
     "titleEn": "Athlete sleep — Walsh et al., 2021",
     "findingsEn": "Expert consensus recommends individual sleep assessment; sleep loss may affect health and performance.",
     "applicationEn": "The program encourages exploring more sleep than the current approximately seven hours, without promising a specific performance increase.",
-    "translationReview": { "kkNativeSpeaker": true, "qualifiedClinician": true }
+    "translationReview": {
+      "kkNativeSpeaker": false,
+      "qualifiedClinician": false
+    }
   },
   {
     "title": "Белок — ISSN, 2017",
@@ -101,7 +122,10 @@
     "titleEn": "Protein — ISSN, 2017",
     "findingsEn": "The position stand gives an approximate protein range of 1.4–2.0 g/kg/day for most regularly exercising people.",
     "applicationEn": "The practical range is 1.6–2.0 g/kg/day without requiring aggressive bulking or cutting.",
-    "translationReview": { "kkNativeSpeaker": true, "qualifiedClinician": true }
+    "translationReview": {
+      "kkNativeSpeaker": false,
+      "qualifiedClinician": false
+    }
   },
   {
     "title": "Аэробная + силовая — Schumann et al., 2022",
@@ -114,7 +138,10 @@
     "titleEn": "Concurrent aerobic and strength work — Schumann et al., 2022",
     "findingsEn": "An updated meta-analysis finds aerobic and strength work can be combined without a meaningful reduction in maximal-strength gains on average.",
     "applicationEn": "Use twenty to twenty-five minutes of easy cardio once or twice weekly and avoid sprints before heavy squats.",
-    "translationReview": { "kkNativeSpeaker": true, "qualifiedClinician": true }
+    "translationReview": {
+      "kkNativeSpeaker": false,
+      "qualifiedClinician": false
+    }
   },
   {
     "title": "Доказательность программы — вывод",
@@ -127,6 +154,9 @@
     "titleEn": "Evidence limitations — conclusion",
     "findingsEn": "Studies involve different populations and protocols, so one study cannot identify the optimal volume for an individual athlete.",
     "applicationEn": "Track RPE, completion, sleep and video; adjust volume when tolerance is poor rather than ignoring feedback.",
-    "translationReview": { "kkNativeSpeaker": true, "qualifiedClinician": true }
+    "translationReview": {
+      "kkNativeSpeaker": false,
+      "qualifiedClinician": false
+    }
   }
 ]

@@ -30,6 +30,7 @@ jobs:
       - run: npm run typecheck
       - run: npm test
       - run: npm run audit
+      - run: npm run check:content
       - run: npm run check:i18n
       - run: npm run check:security
       - run: npm run build

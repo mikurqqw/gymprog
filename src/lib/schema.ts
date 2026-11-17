@@ -176,6 +176,12 @@ export type Planned = Prescription & {
   loadUnassessed?: boolean;
 };
 export type Exercise = {
+  contentReview?: {
+    kkNativeSpeaker: boolean;
+    qualifiedClinician: boolean;
+    machineAssisted?: boolean;
+  };
+  variations?: { easier: string[]; harder: string[] };
   id: string;
   name: Localized;
   muscles: string[];

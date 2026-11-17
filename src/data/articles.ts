@@ -106,7 +106,7 @@ const entry = (
   title: { ru: ruTitle, en: enTitle, kk: articleKk[id].title },
   body: { ru, en, kk: articleKk[id].body },
   requiresReview: true,
-  translationReview: { kkNativeSpeaker: true, qualifiedClinician: true },
+  translationReview: { kkNativeSpeaker: false, qualifiedClinician: false },
 });
 export const articles: Article[] = [
   entry(

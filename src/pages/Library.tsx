@@ -1,3 +1,4 @@
+import { ExerciseReview } from '../components/ExerciseReview';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ArrowUpRight, Search } from 'lucide-react';
@@ -93,6 +94,7 @@ export default function Library() {
               </div>
             ))}
           </div>
+          <ExerciseReview exercise={selected} />
           <p className="micro muted">{t('stressEstimate')}</p>
           <div className="chip-list">
             {Object.entries(selected.jointStress ?? {}).map(([joint, score]) => (
@@ -101,6 +103,29 @@ export default function Library() {
               </span>
             ))}
           </div>
+          {(['easier', 'harder'] as const).map((level) => {
+            const variants = (selected.variations?.[level] ?? [])
+              .map(exerciseById)
+              .filter((ex) =>
+                alternatives(selected.id, s.profile).some((allowed) => allowed.id === ex.id),
+              );
+            return variants.length > 0 ? (
+              <div key={level}>
+                <h3>{t(level === 'easier' ? 'exerciseEasier' : 'exerciseHarder')}</h3>
+                <div className="chip-list">
+                  {variants.map((ex) => (
+                    <button
+                      className="chip"
+                      key={ex.id}
+                      onClick={() => setParams({ exercise: ex.id })}
+                    >
+                      {local(ex.name)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ) : null;
+          })}
           <h3>{t('chooseAlternative')}</h3>
           <div className="chip-list">
             {alternatives(selected.id, s.profile).map((e) => (

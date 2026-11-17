@@ -1,0 +1,34 @@
+.technique-illustration {
+  margin: 0;
+  color: var(--text);
+}
+.technique-illustration svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+}
+.technique-illustration figcaption {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.5;
+  padding-block: 12px;
+}
+.technique-skeleton {
+  aspect-ratio: 16/9;
+  background: var(--surface2);
+  border-radius: 8px;
+}
+.exercise-media {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: contain;
+}
+.exercise-review {
+  padding-block: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.exercise-detail ol {
+  line-height: 1.7;
+  padding-left: 24px;
+}

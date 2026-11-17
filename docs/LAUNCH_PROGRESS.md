@@ -141,3 +141,21 @@ colors match. Tokens and the visual choice are documented in DESIGN_SYSTEM.md.
   now include the visible set text. Existing import/offline/update/storage/undo states retained.
 - Native installation is a platform enhancement: automated tests simulate the event and
   iOS UA; an actual device install remains a manual check.
+
+## Section8 — complete; human review remains external
+
+- All93 original RU/KK/EN rewrites integrated: specific summary/setup,3–5 execution
+  steps, breathing,3 mistakes/fixes, safety and filming guidance.
+-33 original schematic designs cover34 entries, including all competition lifts,
+  face pull, triceps and reverse lunge. Paused bench variants share the same valid pose.
+- Restricted React-rendered SVG trees avoid HTML injection/external assets; start/end
+  labels localize, colors follow Royal Blue themes, and reserved aspect ratios prevent jumps.
+- Original owner WebP/MP4 pipeline retained; exact missing filenames in MEDIA_TODO.md.
+- Variants reference only existing same-pattern substitutions/difficulty and still pass
+  the existing profile-compatibility filter. Protected rule fields/calculations unchanged.
+- Exercise/article/science human-review assertions corrected to false. A configurable
+  educational/pending-coach footer is shown; no human approval is fabricated.
+- check:content added to CI/Pages: translation, uniqueness, length, template, URL,
+  variant and SVG safety checks. Full chain:140 unit +58 browser scenarios pass.
+- Specific instruction and schematics tested in all3 languages/both themes, with axe.
+- Initial JS163.9 KiB gzip. No dependency or personal-data schema change.

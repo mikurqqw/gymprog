@@ -1,3 +1,4 @@
+import { exerciseStrings } from './exerciseStrings';
 import { polishStrings } from './polishStrings';
 import { landingStrings } from './landingStrings';
 import { noticeStrings } from './noticeStrings';
@@ -20,6 +21,7 @@ export const featureStrings: Record<string, { ru: string; kk: string; en: string
   ...noticeStrings,
   ...landingStrings,
   ...polishStrings,
+  ...exerciseStrings,
   ...launchStrings,
   ...injuryStrings,
   ...privacyStrings,
