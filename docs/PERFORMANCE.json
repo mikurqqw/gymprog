@@ -1,0 +1,67 @@
+[
+  {
+    "url": "http://127.0.0.1:4175/#/welcome",
+    "scores": {
+      "performance": 94,
+      "accessibility": 100,
+      "best-practices": 96,
+      "seo": 100
+    },
+    "lcpMs": 3106,
+    "tbtMs": 7,
+    "cls": 0,
+    "lighthouseVersion": "13.6.0"
+  },
+  {
+    "url": "http://127.0.0.1:4175/#/",
+    "scores": {
+      "performance": 87,
+      "accessibility": 100,
+      "best-practices": 96,
+      "seo": 100
+    },
+    "lcpMs": 4056,
+    "tbtMs": 83,
+    "cls": 0,
+    "lighthouseVersion": "13.6.0"
+  },
+  {
+    "url": "http://127.0.0.1:4175/#/workout",
+    "scores": {
+      "performance": 84,
+      "accessibility": 100,
+      "best-practices": 96,
+      "seo": 100
+    },
+    "lcpMs": 4505,
+    "tbtMs": 83,
+    "cls": 0,
+    "lighthouseVersion": "13.6.0"
+  },
+  {
+    "url": "http://127.0.0.1:4175/#/nutrition",
+    "scores": {
+      "performance": 85,
+      "accessibility": 100,
+      "best-practices": 96,
+      "seo": 100
+    },
+    "lcpMs": 4349,
+    "tbtMs": 91,
+    "cls": 0,
+    "lighthouseVersion": "13.6.0"
+  },
+  {
+    "url": "http://127.0.0.1:4175/#/program",
+    "scores": {
+      "performance": 86,
+      "accessibility": 100,
+      "best-practices": 96,
+      "seo": 100
+    },
+    "lcpMs": 4203,
+    "tbtMs": 81,
+    "cls": 0,
+    "lighthouseVersion": "13.6.0"
+  }
+]

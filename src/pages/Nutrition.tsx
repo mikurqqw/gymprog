@@ -1,7 +1,8 @@
 import { FoodCatalog } from '../components/FoodCatalog';
 import { CalorieNotice } from '../components/CalorieNotice';
 import { ProgressRing } from '../components/ProgressRing';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
+import { useMealPlan } from '../lib/useMealPlan';
 import { Download, RefreshCw, Trash2 } from 'lucide-react';
 import foodsRaw from '../data/foods.json';
 import { mealPlan, nutrition, totals, weightTrend, type Portion } from '../lib/nutrition';
@@ -29,13 +30,7 @@ export default function Nutrition() {
       kcal: logged.reduce((n, f) => n + f.kcal, 0),
       protein: logged.reduce((n, f) => n + f.protein, 0),
     };
-  const menu = useMemo(() => {
-    try {
-      return Array.from({ length: 7 }, (_, d) => mealPlan(s.profile, foods, seed + d, dayType));
-    } catch {
-      return null;
-    }
-  }, [s.profile, seed, dayType]);
+  const { menu, pending, failed, retry } = useMealPlan(s.profile, seed, dayType);
   const meals = menu?.[menuDay].meals.map((meal, i) => swapped[`${menuDay}-${i}`] ?? meal) ?? [],
     sum = totals(meals.flat()),
     trend = weightTrend(
@@ -294,8 +289,19 @@ export default function Nutrition() {
                 {t('fat')} {Math.round(sum.fat)} · {t('carbs')} {Math.round(sum.carbs)}
               </p>
             </>
+          ) : pending ? (
+            <p role="status" aria-busy="true">
+              {t('loading')}
+            </p>
           ) : (
-            <p className="notice warning">{t('dietUnavailable')}</p>
+            <div role="alert">
+              <p className="notice warning">
+                {t(failed ? 'mealPlanLoadError' : 'dietUnavailable')}
+              </p>
+              <button className="button secondary" onClick={retry}>
+                {t('retry')}
+              </button>
+            </div>
           )}
           <p className="micro muted">{t('foodApprox')}</p>
         </Card>

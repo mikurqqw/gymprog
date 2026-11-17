@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { foodRepository, initializeFoodCatalog } from '../lib/foodRepository';
 import type { FoodRecord } from '../lib/foodSchema';
-import sources from '../data/food-sources.json';
+import { FoodFacts } from './FoodFacts';
 import { useI18n } from '../i18n';
 import { CustomFood } from './CustomFood';
 import { Field, Num, Select } from './ui';
@@ -44,8 +44,7 @@ export function FoodCatalog({ onAdd }: { onAdd: (food: FoodRecord, grams: number
     }
   }, [ready, query, favoritesOnly]);
   const foods = result?.foods ?? [],
-    food = foods.find((item) => item.id === selected) ?? foods[0],
-    source = sources.find((item) => item.id === food?.sourceId);
+    food = foods.find((item) => item.id === selected) ?? foods[0];
   const action = async (operation: () => Promise<unknown>) => {
     try {
       await operation();
@@ -102,27 +101,7 @@ export function FoodCatalog({ onAdd }: { onAdd: (food: FoodRecord, grams: number
               </button>
             ))}
           </div>
-          <p className="micro">
-            {t('per100')}: {food.kcal} {t('kcal')} · {t('protein')} {food.p} · {t('fat')} {food.f} ·{' '}
-            {t('carbs')} {food.c}
-          </p>
-          {food.estimated && <p className="micro warning">{t('estimatedFood')}</p>}
-          {food.nutritionNote && <p className="micro">{local(food.nutritionNote)}</p>}
-          <p className="micro">
-            {t('foodSource')}:{' '}
-            {source ? (
-              <a target="_blank" rel="noopener noreferrer" href={source.url}>
-                {local(source.title)}
-              </a>
-            ) : (
-              food.sourceId
-            )}{' '}
-            · {food.license}
-          </p>
-          <p className="micro">
-            {food.allergens.join(', ') || '—'} · {food.halal}
-          </p>
-          <p className="micro muted">{t('foodFlags')}</p>
+          <FoodFacts food={food} />
           {food.custom && (
             <button
               className="text-button"

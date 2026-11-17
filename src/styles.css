@@ -68,10 +68,7 @@ button:disabled {
   cursor: not-allowed;
 }
 button {
-  transition:
-    background 0.18s,
-    color 0.18s,
-    transform 0.18s;
+  transition: transform 0.18s;
 }
 button:active:not(:disabled),
 .button:active {

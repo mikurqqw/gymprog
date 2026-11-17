@@ -21,7 +21,8 @@
     "media:capture": "playwright test --config scripts/capture.config.ts",
     "check:content": "node scripts/check-content.mjs",
     "check:launch": "node scripts/check-launch.mjs",
-    "check:launch:preview": "node scripts/check-launch.mjs --preview"
+    "check:launch:preview": "node scripts/check-launch.mjs --preview",
+    "lighthouse": "node scripts/lighthouse-fixture.mjs && lhci autorun"
   },
   "dependencies": {
     "@tailwindcss/vite": "4.3.5",

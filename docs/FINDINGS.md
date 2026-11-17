@@ -56,3 +56,7 @@ React19 metadata behavior: https://react.dev/reference/react-dom/components/titl
 Section8 corrects earlier machine-authored native/clinician review booleans to false
 in exercise, science and article content. This does not modify the protected clinical
 injury rule flag requiresClinicalReview. Actual independent content review is outstanding.
+
+## Cold mobile performance limit
+
+The protected mealPlan performs1200 coordinate-descent iterations per meal and is called for7 days. It remains byte-equivalent; a same-origin worker now keeps that computation away from input/rendering. Cold-route initial JS/data dependency loading still misses the90/2.5s mobile targets on personal screens. PERFORMANCE.json records the final candidate. Further work should split the public/application entry and exercise instruction payloads without changing the protected prescription/rule fields. Lighthouse assertions were not weakened or disabled.

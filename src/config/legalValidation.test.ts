@@ -19,3 +19,18 @@ describe('production legal guard', () => {
     );
   });
 });
+
+it('rejects contact control characters and impossible effective dates', () => {
+  expect(legalReleaseIssues({ ...legalConfig, effectiveDate: '2026-02-30' })).toContain(
+    'effectiveDate',
+  );
+  expect(
+    legalReleaseIssues(legalConfig, {
+      launch: {
+        siteUrl: 'https://example.com/',
+        supportEmail: 'team@example.com',
+        securityContact: 'mailto:team@example.com\n#ignored',
+      },
+    }),
+  ).toContain('securityContact');
+});

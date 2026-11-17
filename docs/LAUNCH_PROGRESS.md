@@ -170,3 +170,12 @@ colors match. Tokens and the visual choice are documented in DESIGN_SYSTEM.md.
 - Direct license inventory now includes existing Prettier; all29 direct entries match installed versions/licenses. npm audit: zero vulnerabilities. No dependency added.
 - Validation: lint/typecheck,147 unit tests, i18n/security/content/build-preview/launch-preview; initial JS164.5 KiB gzip. Browser tests include pre-consent read monitoring and bounded diagnostics.
 - Final section9 browser run:61/61 passed, including policy renewal preserving profile records.
+
+## Section10 — functional/security checks complete; performance target partial
+
+- Response-header templates add COOP; DEPLOY.md covers Pages limits, real custom-domain/HTTPS setup and Cloudflare/Netlify static deployment. No DNS/host migration was performed. Inline styles are retained for documented dynamic React/chart layouts; script/font/connection policy remains self-only.
+- CI retains strict checks, CodeQL/Dependabot and content/format/launch budgets. Key flows run in Chromium, Firefox and WebKit. Separate manual production-readiness workflow keeps genuine launch fields mandatory.
+- Expanded axe matrix:29 representative routes,3 languages,2 themes, plus More. Fixed real4.48:1 active-week contrast, keyboard access to scrollable progress tables, preview landmark and opacity transitions during button activation. Widths320/375/414/768/1024/1280/1440/1920, landscape and200% zoom checked; no horizontal overflow. All74 browser cases passed across the full run plus the corrected Kazakh-light rerun.
+- Weekly menus run in a same-origin cancellable worker with pending/error/retry states; protected calculations and ingredients are unchanged. Catalog parsing/indexing yields in bounded batches and commits metadata atomically. Food status/allergen labels now localize; custom labels remain intact.
+-148 unit tests, lint/types/i18n/security/content/preview-build pass. Initial JS165.0 KiB gzip, below170 budget. npm audit reports zero vulnerabilities with unchanged dependencies.
+- Lighthouse13.6 mobile cold-cache results: welcome94, home87, workout84, nutrition85, program86 performance; all have accessibility100, best-practices96, SEO100 and CLS0. LCP3.1–4.5s exceeds2.5s. Strict assertions FAIL and remain enabled. Three bounded optimization iterations completed; further performance work is explicitly deferred rather than weakening checks or reporting warm scores as cold. See PERFORMANCE.json/FINDINGS.md.

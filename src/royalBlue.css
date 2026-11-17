@@ -75,3 +75,18 @@
     padding: 20px;
   }
 }
+
+.week-selector button.active {
+  background: var(--surface);
+}
+.table-scroll:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+select {
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+.page-title {
+  animation: none;
+}

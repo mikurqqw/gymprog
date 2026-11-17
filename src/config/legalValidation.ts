@@ -11,7 +11,8 @@ export function legalReleaseIssues(
   }
   if (
     !/^\d{4}-\d{2}-\d{2}$/.test(config.effectiveDate) ||
-    !Number.isFinite(Date.parse(config.effectiveDate))
+    !Number.isFinite(Date.parse(config.effectiveDate)) ||
+    new Date(config.effectiveDate).toISOString().slice(0, 10) !== config.effectiveDate
   )
     issues.push('effectiveDate');
   if (!config.reviewedByKazakhstanLawyer && !options.allowUnreviewedLawyer)
@@ -23,6 +24,13 @@ export function legalReleaseIssues(
   )
     issues.push('supportEmail');
   try {
+    if (
+      /\s/.test(launch.securityContact) ||
+      Array.from(launch.securityContact).some(
+        (char) => char.charCodeAt(0) < 32 || char.charCodeAt(0) === 127,
+      )
+    )
+      throw Error('Invalid contact whitespace');
     const contact = new URL(launch.securityContact);
     if (
       !['https:', 'mailto:'].includes(contact.protocol) ||

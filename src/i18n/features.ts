@@ -1,3 +1,4 @@
+import { foodStatusStrings } from './foodStatusStrings';
 import { feedbackStrings } from './feedbackStrings';
 import { exerciseStrings } from './exerciseStrings';
 import { polishStrings } from './polishStrings';
@@ -24,6 +25,7 @@ export const featureStrings: Record<string, { ru: string; kk: string; en: string
   ...polishStrings,
   ...exerciseStrings,
   ...feedbackStrings,
+  ...foodStatusStrings,
   ...launchStrings,
   ...injuryStrings,
   ...privacyStrings,

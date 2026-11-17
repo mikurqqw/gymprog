@@ -11,12 +11,25 @@ export interface FoodRepository {
   restore(food: FoodRecord): Promise<void>;
 }
 export async function initializeFoodCatalog(catalog: unknown, version = '2026-11-catalog-v2') {
-  const foods = foodSchema.array().min(600).max(10000).parse(catalog),
-    db = getDatabase();
-  if (new Set(foods.map((f) => f.id)).size !== foods.length) throw Error('Duplicate food IDs');
+  if (!Array.isArray(catalog) || catalog.length < 600 || catalog.length > 10000)
+    throw Error('Invalid food catalog size');
+  const foods: FoodRecord[] = [],
+    ids = new Set<string>();
+  // Yield between bounded batches so first-use validation/indexing cannot freeze controls.
+  for (let offset = 0; offset < catalog.length; offset += 24) {
+    for (const input of catalog.slice(offset, offset + 24)) {
+      const food = foodSchema.parse(input);
+      if (ids.has(food.id)) throw Error('Duplicate food IDs');
+      ids.add(food.id);
+      foods.push(indexFood(food));
+    }
+    await new Promise<void>((resolve) => setTimeout(resolve, 0));
+  }
+  const db = getDatabase();
   if ((await db.metadata.get('food-catalog'))?.value === version) return;
   await db.transaction('rw', db.foods, db.metadata, async () => {
-    await db.foods.bulkPut(foods.map(indexFood));
+    for (let offset = 0; offset < foods.length; offset += 24)
+      await db.foods.bulkPut(foods.slice(offset, offset + 24));
     await db.metadata.put({ key: 'food-catalog', value: version });
   });
 }

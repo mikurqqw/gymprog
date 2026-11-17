@@ -153,7 +153,7 @@ export default function Progress() {
         )}
         <details>
           <summary>{t('actual')}</summary>
-          <div className="table-scroll">
+          <div className="table-scroll" tabIndex={0} role="region" aria-label={t('actual')}>
             <table>
               <thead>
                 <tr>
@@ -215,7 +215,7 @@ export default function Progress() {
               </AreaChart>
             </ResponsiveContainer>
           </div>
-          <div className="table-scroll">
+          <div className="table-scroll" tabIndex={0} role="region" aria-label={t('forecast')}>
             <table>
               <thead>
                 <tr>
