@@ -48,3 +48,29 @@ for (const language of ['ru', 'kk', 'en'] as const)
       audit.violations.filter((v) => ['serious', 'critical'].includes(v.impact ?? '')),
     ).toEqual([]);
   });
+
+test.describe('experience draft validation', () => {
+  test.use({ configuredProfile: false });
+  test('empty or invalid exact years never corrupt the saved draft', async ({ page }) => {
+    const t = journeyMessages('ru');
+    await page.goto('/#/profile');
+    await page.locator('.experience-field summary').click();
+    const years = page.getByLabel(t('experience'), { exact: true });
+    for (const value of ['', '999', '-1']) {
+      await years.fill(value);
+      expect(
+        await page.evaluate(
+          () => JSON.parse(localStorage.getItem('ironcycle:data')!).draftProfile.experience,
+        ),
+      ).toBe(0);
+    }
+    await years.fill('2.25');
+    await page.reload();
+    expect(
+      await page.evaluate(
+        () => JSON.parse(localStorage.getItem('ironcycle:data')!).draftProfile.experience,
+      ),
+    ).toBe(2.25);
+    await expect(page.locator('.onboarding-goals input')).toHaveCount(8);
+  });
+});

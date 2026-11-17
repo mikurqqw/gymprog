@@ -1,3 +1,9 @@
+# Publication blocker — current UX revision
+
+Latest compact UI is saved on codex/compact-product-ux. Attempted Pages run44140040134 failed at npm audit, before deployment. The previous public Pages version remains live; do not claim the new compact UI was deployed. A local preview on127.0.0.1:4183 is available for owner review while the session runs.
+
+Existing picomatch4.0.7 now triggers GHSA-fc5q-39xc-vjpf (high ReDoS); the reviewed advisory currently lists affected<=4.0.7 and no patched release. Registry latest is4.0.7. No dependency version, audit threshold, workflow guard or program was changed to evade this block. Do not run npm audit fix --force (it suggests a breaking downgrade). Resume deployment after a genuine reviewed fix exists; otherwise keep the blocker explicit. Source: https://github.com/advisories/GHSA-fc5q-39xc-vjpf
+
 # Latest user constraint and UX revision
 
 2026-11-17: training programs are FROZEN until the owner sends replacement files and authorizes changes. Do not alter program contents/generators/sets/reps/loads/progression/selection/injury rules, now or on continuation. UI-only work is authorized. Read root AGENTS.md and COMPACT_UX.md first. All existing src/data files are unchanged in this revision; current lib-only diff recognizes /about.
