@@ -179,3 +179,10 @@ colors match. Tokens and the visual choice are documented in DESIGN_SYSTEM.md.
 - Weekly menus run in a same-origin cancellable worker with pending/error/retry states; protected calculations and ingredients are unchanged. Catalog parsing/indexing yields in bounded batches and commits metadata atomically. Food status/allergen labels now localize; custom labels remain intact.
 -148 unit tests, lint/types/i18n/security/content/preview-build pass. Initial JS165.0 KiB gzip, below170 budget. npm audit reports zero vulnerabilities with unchanged dependencies.
 - Lighthouse13.6 mobile cold-cache results: welcome94, home87, workout84, nutrition85, program86 performance; all have accessibility100, best-practices96, SEO100 and CLS0. LCP3.1–4.5s exceeds2.5s. Strict assertions FAIL and remain enabled. Three bounded optimization iterations completed; further performance work is explicitly deferred rather than weakening checks or reporting warm scores as cold. See PERFORMANCE.json/FINDINGS.md.
+
+## Section11 — localized journeys verified
+
+-22 additional cases cover the entire first workout→progress table, unknown strength, under18/no storage, all replacement scopes+undo, nutrition activity/foods, uncleared elbow/pain≥4, legacy imports with restored backup language then explicit language switching, full erasure and worker failure/retry.
+- Full browser run:95cases passed; the A/B fixture exposed an inconsistent renamed-entry dependency. Fixed the fixture to rewrite imports in shared chunks as a real rebuild does; its2cases then pass, including offline B. No production cache assertion or timeout was relaxed. Total96cases have passing evidence; final consolidated run follows documentation.
+-148 unit tests and lint/types/i18n/security/build-preview pass. Protected hashes unchanged.
+- Withdrawal retains existing records while revoking processing as the current disclosure states; only confirmed erasure wipes every store. This distinction is recorded in FINDINGS.md rather than silently adding destructive behavior.

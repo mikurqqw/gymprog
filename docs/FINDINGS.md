@@ -60,3 +60,7 @@ injury rule flag requiresClinicalReview. Actual independent content review is ou
 ## Cold mobile performance limit
 
 The protected mealPlan performs1200 coordinate-descent iterations per meal and is called for7 days. It remains byte-equivalent; a same-origin worker now keeps that computation away from input/rendering. Cold-route initial JS/data dependency loading still misses the90/2.5s mobile targets on personal screens. PERFORMANCE.json records the final candidate. Further work should split the public/application entry and exercise instruction payloads without changing the protected prescription/rule fields. Lighthouse assertions were not weakened or disabled.
+
+## Withdrawal versus explicit erasure
+
+The preserved withdrawal action revokes required consent and stops personal-record reads; it intentionally retains the existing journal, as explained by withdrawalInfo and the privacy document. Only the separately confirmed Delete all action removes all application stores/caches/worker registrations. Section11 verifies full erasure on Delete all and does not falsely assert that withdrawal itself erases the journal. Automatically erasing on withdrawal would change existing retention behavior and needs a deliberate, clearly disclosed product decision.

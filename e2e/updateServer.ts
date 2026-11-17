@@ -1,6 +1,6 @@
 import { createServer } from 'node:http';
-import { cp, readFile, writeFile, mkdir, mkdtemp, rm } from 'node:fs/promises';
-import { resolve, extname, join, sep } from 'node:path';
+import { cp, readFile, writeFile, mkdir, mkdtemp, rm, readdir } from 'node:fs/promises';
+import { resolve, extname, join, sep, basename } from 'node:path';
 export async function updateServer() {
   const artifacts = resolve('artifacts');
   await mkdir(artifacts, { recursive: true });
@@ -19,6 +19,14 @@ export async function updateServer() {
       `window.__IRONCYCLE_TEST_BUILD__='${id}';\n` + module,
     );
     await writeFile(join(directory, 'index.html'), html.replaceAll(original, replacement));
+    // Emulate a real rebuild: shared chunks must import the renamed entry too.
+    for (const asset of await readdir(join(directory, 'assets'))) {
+      if (!asset.endsWith('.js')) continue;
+      const path = join(directory, 'assets', asset);
+      const script = await readFile(path, 'utf8');
+      await writeFile(path, script.replaceAll(basename(original), basename(replacement)));
+    }
+
     const worker = await readFile(join(directory, 'sw.js'), 'utf8');
     await writeFile(
       join(directory, 'sw.js'),
