@@ -86,3 +86,9 @@ Development uses an explicit preview banner. `npm run build` intentionally fails
 ## Program storefront
 
 Open `/#/welcome` to review the public program presentation, `/#/catalog` for all directions and `/#/demo` for the in-memory demo. Returning users keep their dashboard and all existing tools. Training summaries and resumable sessions are documented in [STOREFRONT.md](docs/STOREFRONT.md). Payments are not connected.
+
+## Current Royal Blue preview
+
+App 1.1.0 uses the owner-approved Royal Blue palette (dark#4F8CFF/light#2563EB), clearer navigation/Focus/onboarding,93 specific RU/KK/EN exercise guides and schematics for34 entries. Existing routes, records and protected calculations remain preserved. No backend or monetization/tracking service was added.
+
+Read [LAUNCH_REPORT](docs/LAUNCH_REPORT.md) for all 12 section statuses, checks and screenshots, and [NEXT_STEPS](docs/NEXT_STEPS.md) to resume. Production is blocked by genuine operator/contact details and independent reviews; explicit preview only. Cold mobile performance/LCP remains below target and strict Lighthouse assertions fail; do not call every check green. Confirmed Delete all erases application stores; withdrawal intentionally retains the journal while stopping access.

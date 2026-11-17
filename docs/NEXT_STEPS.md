@@ -1,62 +1,24 @@
-# IronCycle continuation checkpoint
+# Continuation checkpoint — Royal Blue preview
 
-Owner requested to finish the essential work and publish a working preview on2026-11-17.
-Repository: https://github.com/mikurqqw/gymprog
-Pages: https://mikurqqw.github.io/gymprog/
-Branch: codex/launch-polish
-Request source: C:/Users/mikur/Desktop/ga.txt (full12-section specification).
+Date2026-11-17. Repository https://github.com/mikurqqw/gymprog; preview https://mikurqqw.github.io/gymprog/.
+Branch codex/royal-blue-launch. Request source C:/Users/mikur/Desktop/ga.txt plus owner's Royal Blue image.
 
-## Verified implementation
+Implemented sections1–9 and functional parts10–12. Read LAUNCH_REPORT.md for exact status, evidence and limits; LAUNCH_PROGRESS.md for section commits. Preserve current features, paths and existing records. App state schema5, necessary preferences schema2. Privacy/storage versions preview-2 require renewal without deleting existing records. Theme bootstrap only reads nonpersonal preferences before consent.
 
-Sections1–4 implemented. Formatting/PWA/empty new-user profiles; grouped desktop navigation,
-5 mobile tabs and search; actionable home; Focus with validated per-set logs, timer and
-legacy compatibility; fast onboarding with known/estimated/unassessed strength.
-See LAUNCH_PROGRESS.md for individual commits and evidence. Final local chain:
-lint, typecheck,136 unit tests, check:i18n, check:security, build:preview,50 Playwright tests.
-Bundle161.0 KiB gzip (budget170). Protected hashes unchanged.
-No account/server/payment/subscription/advertising/default tracking added.
+## Resume here
 
-## Resume here: section9 of ga.txt
+1. Cold mobile startup: Lighthouse performance welcome94/home87/workout84/nutrition85/program86; LCP3.1–4.5s, goal2.5s. Accessibility100/best-practices96/SEO100/CLS0. Strict assertions intentionally remain failing. Three optimization attempts completed; do not repeat the same blind attempts. Split entry/code/data loading with profiling and preserve protected rules. Current menus already run in a cancellable local worker; catalog initialization batches are atomic.
+2. Owner supplies actual legal/operator/hosting/domain/support/security facts and obtains real lawyer/native-Kazakh/coach-clinician reviews. Do not invent values or turn review flags true. LAUNCH_CHECKLIST.md lists fields. Feedback disabled until real recipient exists. Preview security.txt explicitly unconfigured; origin-root/custom-domain reporting remains pending.
+3. Real-device install, update, wake-lock/haptics and assistive-technology review. Browser tests do not certify physical devices.
+4. Owner exercise WebP/MP4 assets and rights: MEDIA_TODO.md exact filenames.33 original SVG designs cover34 entries;93 trilingual instructional texts are educational and human review pending.
+5. Withdrawal stops processing and keeps journal as existing disclosure states; confirmed Delete all wipes localStorage/IndexedDB/caches/workers. Do not silently convert withdrawal into destructive erasure.
 
-5. Complete: contextual notices, algorithm chip, compact footer. Royal Blue owner reference
-   supersedes lime; see DESIGN_SYSTEM.md and LAUNCH_PROGRESS.md.
-6. Landing: all8 directions,6 feature sections,8–10 FAQs, actual product WebP screens,
-   canonical/OG1200x630/static fallback/sitemap/robots/route titles via VITE_SITE_URL.
-7. Documented design tokens and consistent controls/states; accessible set controls,
-   install hint after first completed workout, theme/motion/storage quality pass.
-8. Integrate the prepared93 trilingual exercise rewrites and30 original SVG schematics;
-   add check:content, truthful pending-review footer and exact MEDIA_TODO.md.
-   Prepared original assets are versioned in docs/prepared-content/ to avoid losing work.
-   Never change protected exercise rule fields or set human-review flags to true.
-9. Production/preview launch guard, owner checklist, feedback/config and diagnostics.
-   Prepared external-checklist/legal-review notes are in docs/prepared-content/.
-   Optional analytics may remain entirely absent. Update only genuinely changed legal texts.
-10. Hosting headers/docs, multi-engine key flows, complete route/lang/theme a11y and measured
-    Lighthouse budgets. Lighthouse scores have NOT been verified for this checkpoint.
-11. Complete the specified10 journeys in RU/KK/EN where practical.
-12. Final evidence report and updated README/STOREFRONT/COMPLIANCE/DEPLOY/launch docs.
+## Invariants
 
-## Safeguards and known limits
+Never edit protected paths/fields in docs/PROTECTED_SOURCES.json; npm run check:security enforces canonical hashes. Unknown1RM compatibility floor stays internal: plannedProgram suppresses all automatic numeric prescriptions and forecasts for an unknown lift. Existing Log schema fields stay unchanged; per-set IDs end ::set:N and workbook helpers handle legacy entries.
 
-- Keep every protected path/field in docs/PROTECTED_SOURCES.json byte-equivalent after LF
-  canonicalization. npm run check:security enforces this. Report defects to FINDINGS.md.
-- Existing user data must survive all changes; current storage schema is4.
-- Existing Log schema fields are unchanged. New per-set IDs end with ::set:N; use
-  workoutLogs helpers for reading, writing, counting and replacement archiving.
-- Unknown1RM uses an internal numeric compatibility floor tagged unknown; plannedProgram
-  suppresses every numeric prescription for such a lift. Do not expose the floor as strength.
-- Coach/clinician/native review is still external. Existing exercise/science review flags
-  were found to be machine-authored true; correct them honestly in section8.
-- Production remains blocked by real operator/legal fields and legal review. Publish only
-  explicit previews until the owner supplies real values and obtains the required reviews.
-- No Lighthouse score, full three-engine coverage or full language/theme audit is claimed.
+No server, accounts, payments, subscriptions, ads, push or default tracking. No new dependency this revision. Read LAUNCH_REPORT.md and PERFORMANCE.json before claiming release readiness. Continue on a codex/ branch with scoped commits. Never force-push or expose credentials.
 
-## Publication workflow
+## Publication
 
-Windows GCM credentials work for git. GitHub connector PEander1 previously lacked write access.
-Local ignored artifacts/github_cli.py supplies GCM credentials to gh in memory, without
-printing or persisting tokens. Never print credentials. Push only after checking origin/main
-ancestry; no force push. Normal main push intentionally cannot publish a production build
-with placeholders. Dispatch pages.yml with preview=true and follow the run to completion.
-
-Prepared assets are drafts, not human-approved exercise instruction or legal advice.
+Windows GCM authentication works. Ignored artifacts/github_cli.py passes GitHub credential to gh in memory. After local checks fetch origin/main, verify ancestor, push without force; dispatch pages.yml preview=true. Normal production push is intentionally blocked by unknown real facts/reviews. Follow the actual workflow to completion and smoke-test public theme colors, empty new-user gate, manifest/build-info, page errors and zero third-party requests. Do not report publication solely from a local build.

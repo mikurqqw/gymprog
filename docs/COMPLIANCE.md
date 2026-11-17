@@ -63,3 +63,9 @@ The user subsequently authorized GitHub Pages publication of this explicit previ
 ## Program storefront update (2026-11-16)
 
 Public product pages and an anonymous in-memory demo now precede personal-data consent. The age/consent/health gates still protect training data. All tools remain. See STOREFRONT.md for verification, commercial limits and rollback. Final public-entry Lighthouse: {'performance': 100, 'accessibility': 100, 'best-practices': 96, 'seo': 100}; LCP 910 ms; all configured assertions passed. This supersedes the previous entry-page performance result, not the pending cross-engine review.
+
+## 2026-11-17 verification and limits
+
+App 1.1.0 uses the owner-approved Royal Blue palette (dark#4F8CFF/light#2563EB), clearer navigation/Focus/onboarding,93 specific RU/KK/EN exercise guides and schematics for34 entries. Existing routes, records and protected calculations remain preserved. No backend or monetization/tracking service was added.
+
+Read [LAUNCH_REPORT](LAUNCH_REPORT.md) for all 12 section statuses, checks and screenshots, and [NEXT_STEPS](NEXT_STEPS.md) to resume. Production is blocked by genuine operator/contact details and independent reviews; explicit preview only. Cold mobile performance/LCP remains below target and strict Lighthouse assertions fail; do not call every check green. Confirmed Delete all erases application stores; withdrawal intentionally retains the journal while stopping access.

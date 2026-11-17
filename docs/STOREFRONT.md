@@ -83,3 +83,9 @@ profile data. Images have fixed intrinsic dimensions and lazy loading.
 VITE_SITE_URL controls canonical, OG1200x630, language alternates, sitemap and robots.
 Only the root and localized query-language landing URLs appear in the sitemap.
 The existing hash catalog stays compatible but is not separately indexable; see FINDINGS.md.
+
+## Launch polish handoff
+
+App 1.1.0 uses the owner-approved Royal Blue palette (dark#4F8CFF/light#2563EB), clearer navigation/Focus/onboarding,93 specific RU/KK/EN exercise guides and schematics for34 entries. Existing routes, records and protected calculations remain preserved. No backend or monetization/tracking service was added.
+
+Read [LAUNCH_REPORT](LAUNCH_REPORT.md) for all 12 section statuses, checks and screenshots, and [NEXT_STEPS](NEXT_STEPS.md) to resume. Production is blocked by genuine operator/contact details and independent reviews; explicit preview only. Cold mobile performance/LCP remains below target and strict Lighthouse assertions fail; do not call every check green. Confirmed Delete all erases application stores; withdrawal intentionally retains the journal while stopping access.

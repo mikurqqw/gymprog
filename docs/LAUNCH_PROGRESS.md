@@ -186,3 +186,7 @@ colors match. Tokens and the visual choice are documented in DESIGN_SYSTEM.md.
 - Full browser run:95cases passed; the A/B fixture exposed an inconsistent renamed-entry dependency. Fixed the fixture to rewrite imports in shared chunks as a real rebuild does; its2cases then pass, including offline B. No production cache assertion or timeout was relaxed. Total96cases have passing evidence; final consolidated run follows documentation.
 -148 unit tests and lint/types/i18n/security/build-preview pass. Protected hashes unchanged.
 - Withdrawal retains existing records while revoking processing as the current disclosure states; only confirmed erasure wipes every store. This distinction is recorded in FINDINGS.md rather than silently adding destructive behavior.
+
+## Section12 — handoff
+
+LAUNCH_REPORT.md records every numbered status and actual limitations; NEXT_STEPS.md records the exact resumption point. README, STOREFRONT, COMPLIANCE, DEPLOY, launch checklist, findings, content/media inventory and screenshots are retained. Final functional suite is consolidated again after documentation; strict Lighthouse and genuine production facts remain explicit blockers. No hidden reduction of test thresholds or fabricated human review.
