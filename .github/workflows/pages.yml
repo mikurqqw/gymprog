@@ -37,7 +37,7 @@ jobs:
       - run: npm run build
       - name: Check artifact launch mode
         run: node scripts/check-launch.mjs ${{ env.IRONCYCLE_PREVIEW == '1' && '--preview' || '' }}
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v4
         with:
           path: dist
