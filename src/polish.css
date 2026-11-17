@@ -1,0 +1,71 @@
+.install-hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-block: 24px;
+}
+.install-hint > div {
+  flex: 1;
+  min-width: 0;
+}
+.install-hint h2 {
+  font-size: 18px;
+}
+.install-hint p {
+  color: var(--muted);
+  font-size: 13px;
+}
+.set-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.set-checkboxes .set-control,
+.sf-demo-set-buttons .set-control {
+  width: auto;
+  min-width: 100px;
+  min-height: 48px;
+  height: auto;
+  padding: 10px 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 12px;
+}
+.home-week-session {
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  background: transparent;
+}
+.home-week-session:hover {
+  background: var(--surface2);
+}
+.home-week-grid {
+  gap: 12px;
+}
+@media (max-width: 767px) {
+  .install-hint {
+    padding: 16px;
+    gap: 12px;
+  }
+  .install-hint > .icon-button {
+    width: 44px;
+    flex: 0 0 44px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

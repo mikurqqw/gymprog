@@ -125,3 +125,19 @@ colors match. Tokens and the visual choice are documented in DESIGN_SYSTEM.md.
 - Two visual passes in dark/light; screenshot capture now actually loads lazy images
   before taking full-page review shots. Default public routes make no third-party requests.
 - Initial static JS162.9 KiB gzip /511.8 KiB raw. No new dependency or stored-data change.
+
+## Section7 — complete
+
+- Royal Blue token documentation, neutral secondary actions, independent semantic colors,
+  tabular numbers, rectangular labeled set controls and reduced-motion handling.
+- Dark default; explicit Light/Use device theme; pre-React bootstrap and one global
+  controller cover public/legal/app routes. System changes and reload persistence tested.
+- Install promotion only follows first completed workout; Android/desktop native prompt
+  is captured before lazy routes mount; iOS gets home-screen instructions. Close persists.
+- Schema5 versioned migration preserves earlier themes/profiles/logs; malformed string
+  versions are rejected. No tracking or new dependency added.
+- Full chain:140 unit +57 browser scenarios pass. Initial JS163.6 KiB gzip.
+- Two visual/accessibility iterations fixed label-in-name mismatch; voice-control labels
+  now include the visible set text. Existing import/offline/update/storage/undo states retained.
+- Native installation is a platform enhancement: automated tests simulate the event and
+  iOS UA; an actual device install remains a manual check.

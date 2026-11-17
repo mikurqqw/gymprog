@@ -12,7 +12,9 @@ test('public demo and catalog show product value without storing personal data o
   await page.getByRole('link', { name: 'Попробовать демо', exact: true }).first().click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Одна минута внутри IronCycle.');
   await page.getByRole('button', { name: 'Открыть пример тренировки' }).click();
-  await page.getByRole('button', { name: 'Отметить пример подхода 1', exact: true }).click();
+  await page
+    .getByRole('button', { name: 'Подход 1 · Отметить пример подхода 1', exact: true })
+    .click();
   await page.getByRole('button', { name: 'Показать итог' }).click();
   await expect(page.getByText('Теперь видно, сколько сделано', { exact: false })).toBeVisible();
   await page.goto('/#/catalog/strength');

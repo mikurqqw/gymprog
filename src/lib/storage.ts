@@ -6,7 +6,9 @@ import exerciseIds from '../data/exercise-ids.json' with { type: 'json' };
 import { checkinSchema, logSchema, profileSchema } from './schema';
 export const stateSchema = z.lazy(() =>
   z.object({
-    version: z.literal(4),
+    version: z.literal(5),
+    themePreference: z.enum(['dark', 'light', 'system']).default('dark'),
+    installHintDismissed: z.boolean().default(false),
     workoutView: z.enum(['focus', 'overview']).nullable().default(null),
     activeSession: z
       .object({
@@ -68,7 +70,9 @@ export const stateSchema = z.lazy(() =>
 );
 export type AppState = z.infer<typeof stateSchema>;
 export const initialState: AppState = {
-  version: 4,
+  version: 5,
+  themePreference: 'dark',
+  installHintDismissed: false,
   workoutView: null,
   activeSession: null,
   sessionCompletions: {},
@@ -122,15 +126,19 @@ export function download(name: string, data: string, type = 'application/json') 
 
 export function migrateState(value: unknown): unknown {
   if (typeof value !== 'object' || value === null || !('version' in value)) return value;
-  if (value.version === 0 || value.version === 1)
+  if (typeof value.version === 'number' && [0, 1, 2, 3, 4].includes(value.version))
     return {
       ...initialState,
       ...value,
-      version: 4,
-      workoutView: null,
-      draftProfile: newUserProfile,
+      version: 5,
+      themePreference:
+        'theme' in value && (value.theme === 'dark' || value.theme === 'light')
+          ? value.theme
+          : 'dark',
+      installHintDismissed: false,
+      ...(value.version === 0 || value.version === 1
+        ? { draftProfile: newUserProfile, workoutView: null }
+        : {}),
     };
-  if (value.version === 3) return { ...value, version: 4 };
-  if (value.version === 2) return { ...value, version: 4, workoutView: null };
   return value;
 }

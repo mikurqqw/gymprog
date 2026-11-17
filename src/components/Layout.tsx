@@ -1,3 +1,4 @@
+import { InstallHint } from './InstallHint';
 import { useEffect } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Sun, Moon } from 'lucide-react';
@@ -15,10 +16,6 @@ export function Layout() {
     { t } = useI18n(),
     location = useLocation();
   usePreviewInset();
-  useEffect(() => {
-    document.documentElement.dataset.theme = state.theme;
-    document.documentElement.lang = state.language;
-  }, [state.theme, state.language]);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
@@ -77,6 +74,7 @@ export function Layout() {
           )}
           <OfflineStatus />
           <Outlet />
+          <InstallHint />
         </main>
         <LegalFooter />
         <RestTimer />

@@ -1,3 +1,4 @@
+import { SetControl } from './SetControl';
 import { FocusSets } from './FocusSets';
 import { FocusTechnique } from './FocusTechnique';
 import { useWorkoutLog } from '../lib/useWorkoutLog';
@@ -143,18 +144,16 @@ export function WorkoutLine({
           </div>
           <div className="set-checkboxes">
             {log.sets.map((checked, i) => (
-              <button
-                disabled={conflict}
-                className={checked ? 'checked' : ''}
+              <SetControl
                 key={i}
-                aria-label={t('sets') + ' ' + (i + 1) + ' ' + local(ex.name)}
-                aria-pressed={checked}
+                index={i}
+                checked={checked}
+                disabled={conflict}
+                label={t('sets') + ' ' + (i + 1) + ' ' + local(ex.name)}
                 onClick={() =>
                   write({ sets: log.sets.map((n, j) => (i === j ? !n : n)) }, !checked)
                 }
-              >
-                {checked ? <Check size={19} /> : i + 1}
-              </button>
+              />
             ))}
           </div>
           <button

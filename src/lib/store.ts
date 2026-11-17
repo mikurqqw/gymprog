@@ -1,3 +1,4 @@
+import { resolveTheme, systemTheme } from './theme';
 import { languageFromSearch, syncLanguageUrl } from './languageUrl';
 import { dataAllowed, readConsent, readPreferences, PREFERENCES_KEY } from './consent';
 import { detectLanguage } from './language';
@@ -6,13 +7,24 @@ import { readStorage, STORAGE_KEY, initialState, type AppState } from './storage
 let active = false;
 let state = {
   ...initialState,
+  theme:
+    document.documentElement.dataset.theme === 'light' ? ('light' as const) : ('dark' as const),
+  themePreference: ['dark', 'light', 'system'].includes(
+    document.documentElement.dataset.themePreference ?? '',
+  )
+    ? (document.documentElement.dataset.themePreference as AppState['themePreference'])
+    : ('dark' as const),
   language: languageFromSearch(location.search) ?? detectLanguage(navigator.languages),
 };
 let storageError = false;
 let undoState: AppState | null = null;
 const listeners = new Set<() => void>();
 export function update(patch: Partial<AppState> | ((old: AppState) => Partial<AppState>)) {
-  const next = { ...state, ...(typeof patch === 'function' ? patch(state) : patch) };
+  const changes = typeof patch === 'function' ? patch(state) : patch;
+  const next = { ...state, ...changes };
+  if (changes.theme && changes.themePreference === undefined) next.themePreference = changes.theme;
+  if (changes.themePreference)
+    next.theme = resolveTheme(changes.themePreference, systemTheme() === 'light');
   try {
     if (active && dataAllowed()) localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
     storageError = false;
@@ -74,6 +86,7 @@ export function activateStorage() {
   const consent = readConsent();
   state = {
     ...loaded.data,
+    theme: resolveTheme(loaded.data.themePreference, systemTheme() === 'light'),
     language:
       languageFromSearch(location.search) ??
       readPreferences()?.language ??
@@ -99,3 +112,8 @@ export function useProfileStore() {
   if (!current.profile) throw Error('Profile setup required');
   return { ...current, profile: current.profile };
 }
+
+matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
+  if (state.themePreference === 'system')
+    update({ theme: systemTheme(), themePreference: 'system' });
+});

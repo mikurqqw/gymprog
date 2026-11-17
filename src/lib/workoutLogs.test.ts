@@ -64,7 +64,7 @@ describe('shared Focus and Overview log writes', () => {
     const legacy = { ...initialState, version: 2, profile: fixtureProfile, logs: [baseLog(row)] };
     const migrated = parseBackup(JSON.stringify(legacy));
     expect(migrated).toMatchObject({
-      version: 4,
+      version: 5,
       workoutView: null,
       profile: fixtureProfile,
       logs: legacy.logs,

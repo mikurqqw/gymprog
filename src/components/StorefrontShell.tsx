@@ -1,4 +1,4 @@
-import { useEffect, type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { ArrowUpRight, Moon, Sun } from 'lucide-react';
 import { useStore, update } from '../lib/store';
@@ -9,10 +9,6 @@ import { PreviewBanner } from './PreviewBanner';
 export function StorefrontShell({ children }: { children: ReactNode }) {
   const state = useStore(),
     { t } = useI18n();
-  useEffect(() => {
-    document.documentElement.dataset.theme = state.theme;
-    document.documentElement.lang = state.language;
-  }, [state.theme, state.language]);
   return (
     <div className="storefront">
       <PreviewBanner />

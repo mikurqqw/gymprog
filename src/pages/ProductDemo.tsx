@@ -1,3 +1,4 @@
+import { SetControl } from '../components/SetControl';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Check, ArrowRight } from 'lucide-react';
@@ -44,15 +45,13 @@ export default function ProductDemo() {
             </p>
             <div className="sf-demo-set-buttons">
               {[0, 1, 2].map((i) => (
-                <button
-                  className={i < sets ? 'checked' : ''}
-                  aria-label={t('sfDemoMark') + ' ' + (i + 1)}
-                  aria-pressed={i < sets}
+                <SetControl
                   key={i}
+                  index={i}
+                  checked={i < sets}
+                  label={t('sfDemoMark') + ' ' + (i + 1)}
                   onClick={() => setSets(i < sets ? i : i + 1)}
-                >
-                  {i < sets ? <Check size={24} /> : i + 1}
-                </button>
+                />
               ))}
             </div>
             <p>{t('sfDemoWhy')}</p>

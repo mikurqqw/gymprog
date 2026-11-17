@@ -44,7 +44,7 @@ it('forecast retains scenario ordering and returning PR goal', () => {
 });
 it('migrates a compatible version-zero backup', () => {
   const legacy = { ...initialState, version: 0 };
-  expect(parseBackup(JSON.stringify(legacy)).version).toBe(4);
+  expect(parseBackup(JSON.stringify(legacy)).version).toBe(5);
 });
 it('coarse plate steps never turn a third-attempt suggestion into a jump above 5 kg', () => {
   const attempts = [

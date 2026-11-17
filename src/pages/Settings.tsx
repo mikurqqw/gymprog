@@ -31,9 +31,12 @@ export default function Settings() {
             />
             <Select
               label={t('theme')}
-              value={s.theme}
-              options={['dark', 'light'].map((value) => ({ value, label: t(value) }))}
-              onChange={(v) => update({ theme: v as 'dark' | 'light' })}
+              value={s.themePreference}
+              options={['dark', 'light', 'system'].map((value) => ({
+                value,
+                label: t(value === 'system' ? 'systemTheme' : value),
+              }))}
+              onChange={(v) => update({ themePreference: v as 'dark' | 'light' | 'system' })}
             />
             <Select
               label={t('units')}
