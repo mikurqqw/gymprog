@@ -1,4 +1,12 @@
-# Publication blocker — current UX revision
+# Latest compact onboarding refinement
+
+2026-11-17: latest branch is codex/compact-onboarding-ux. Read SIMPLE_UX.md and SIMPLE_PERFORMANCE.json. Personal details first, custom birth-date modal, consent-only age transfer, compact navigation/home and optional result details.151 unit tests,103 consolidated browser scenarios and3 final stop-warning cases pass. Protected programs and all existing src/data and src/lib files are unchanged.
+
+Owner rejected a temporary audit exception and chose to wait for a patched dependency. Existing audit and publication gates remain unchanged. No Pages publication attempted for this revision; public Pages still serves the old Royal Blue preview. Local review:http://127.0.0.1:4183/#/welcome while the retained server runs. Merge/publication waits for the blocker.
+
+Next: owner reviews compact UI. After an actual dependency fix, run existing checks and explicit preview workflow, then smoke-test public birth-trigger/dialog, compact landing, empty gate, build-info, themes and absence of third-party requests. Older smoke scripts expect input[type=date] and need adapting. No new demo flow or training logic changes are wanted.
+
+# Publication blocker — previous UX revision
 
 Latest compact UI is saved on codex/compact-product-ux. Attempted Pages run44140040134 failed at npm audit, before deployment. The previous public Pages version remains live; do not claim the new compact UI was deployed. A local preview on127.0.0.1:4183 is available for owner review while the session runs.
 

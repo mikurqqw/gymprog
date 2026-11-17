@@ -49,8 +49,8 @@ export function OnboardingSchedule({
         </Field>
       </div>
       <OnboardingInjuries draft={draft} edit={edit} />
-      <section className="onboarding-summary">
-        <h2>{t('setupSummary')}</h2>
+      <details className="onboarding-summary">
+        <summary>{t('setupSummary')}</summary>
         <p>
           {t(draft.goal)} · {draft.goal === 'powerlifting' ? 3 : draft.days} {t('days')} ·{' '}
           {draft.start ?? nextMonday(today())}
@@ -70,7 +70,7 @@ export function OnboardingSchedule({
             </li>
           ))}
         </ul>
-      </section>
+      </details>
     </>
   );
 }

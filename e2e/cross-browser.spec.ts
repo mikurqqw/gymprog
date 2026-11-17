@@ -1,3 +1,4 @@
+import { chooseBirth } from './birthDate';
 import { test, expect } from './fixtures';
 import { test as fresh } from '@playwright/test';
 test('key flow: Focus logs survive reload and language changes', async ({ page }) => {
@@ -31,9 +32,11 @@ test('key flow: Focus logs survive reload and language changes', async ({ page }
 });
 fresh('key flow: fresh age gate never pre-fills a birth date or writes data', async ({ page }) => {
   await page.goto('/#/start');
-  await expect(page.locator('input[type="date"]')).toHaveValue('');
-  await page.locator('input[type="date"]').fill('2015-01-01');
+  await expect(
+    page.getByRole('button', { name: 'Дата рождения (не сохраняется)', exact: true }),
+  ).toContainText('Выбрать дату рождения');
+  await chooseBirth(page, '2015-01-01');
   await page.locator('form button[type="submit"]').click();
   expect(await page.evaluate(() => Object.keys(localStorage))).toEqual([]);
-  await expect(page.locator('input[type="date"]')).toHaveCount(0);
+  await expect(page.locator('.birth-trigger')).toHaveCount(0);
 });

@@ -1,0 +1,121 @@
+.storefront .compact-hero {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 900px;
+  padding-block: 48px 24px;
+}
+.compact-hero .sf-hero-copy {
+  max-width: 720px;
+}
+.compact-hero h1 {
+  max-width: 14ch;
+}
+.compact-entry-links {
+  padding-block: 16px;
+}
+.compact-entry-links > a {
+  padding: 16px;
+}
+.home-focus-grid {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+}
+.home-next {
+  padding: 20px;
+}
+.page-title {
+  margin-bottom: 16px;
+}
+.home-next > h2 {
+  font-size: clamp(22px, 3vw, 30px);
+}
+.home-next > .muted {
+  margin-block: 8px;
+}
+.basic-profile-form .form-grid {
+  gap: 12px;
+}
+.basic-profile-form .field {
+  margin-bottom: 0;
+}
+.basic-profile-form .card {
+  padding: 20px;
+}
+.home-next > .eyebrow {
+  margin-block: 16px 8px;
+}
+.home-next > .button {
+  margin-top: 16px;
+}
+.compact-readiness {
+  display: block;
+  padding: 16px;
+}
+.compact-readiness .section-heading {
+  width: 100%;
+  margin: 0;
+  flex-wrap: wrap;
+}
+.compact-readiness h2 {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  gap: 8px;
+  margin: 0;
+}
+.compact-readiness h2 svg {
+  color: var(--accent);
+}
+.compact-readiness .page-help {
+  margin: 0;
+}
+.training-preferences h2 {
+  font-size: 18px;
+  margin-block: 0 8px;
+}
+.training-preferences p {
+  color: var(--muted);
+  font-size: 14px;
+}
+.training-preferences .text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.result-details {
+  margin-block: 16px;
+}
+.result-details > summary {
+  min-height: 44px;
+  align-content: center;
+  cursor: pointer;
+  color: var(--muted);
+}
+.onboarding-goals label {
+  min-height: 48px;
+  align-items: center;
+}
+.onboarding-goals input {
+  margin: 0;
+}
+.onboarding-summary > summary {
+  min-height: 48px;
+  cursor: pointer;
+  font-weight: 600;
+  align-content: center;
+}
+@media (max-width: 420px) {
+  .onboarding-goals > div {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .onboarding-goals label {
+    padding: 10px;
+    gap: 8px;
+  }
+  .onboarding-goals strong {
+    font-size: 13px;
+    overflow-wrap: anywhere;
+  }
+  .compact-hero h1 {
+    font-size: 36px;
+  }
+}

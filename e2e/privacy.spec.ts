@@ -1,3 +1,4 @@
+import { chooseBirth } from './birthDate';
 import { test, expect } from '@playwright/test';
 test('under-18 is blocked, no personal storage or third-party requests before consent', async ({
   page,
@@ -10,7 +11,7 @@ test('under-18 is blocked, no personal storage or third-party requests before co
   await expect(
     page.getByRole('heading', { name: 'IronCycle — только для взрослых 18+' }),
   ).toBeVisible();
-  await page.getByLabel('Дата рождения (не сохраняется)').fill('2010-11-15');
+  await chooseBirth(page, '2010-11-15');
   await page.getByRole('button', { name: 'Далее', exact: true }).click();
   await expect(
     page.getByRole('heading', { name: /До 18 лет приложение недоступно/ }),
@@ -24,7 +25,7 @@ test('adult consent is separate, unchecked, versioned; health screening follows 
   page,
 }) => {
   await page.goto('/#/start');
-  await page.getByLabel('Дата рождения (не сохраняется)').fill('2000-01-01');
+  await chooseBirth(page, '2000-01-01');
   await page.getByRole('button', { name: 'Далее', exact: true }).click();
   const boxes = page.locator('.consent-checkbox input');
   await expect(boxes).toHaveCount(5);

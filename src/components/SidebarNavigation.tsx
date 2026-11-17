@@ -1,6 +1,6 @@
 import { update } from '../lib/store';
 import { NavLink } from 'react-router-dom';
-import { UserRound, Settings, LayoutDashboard } from 'lucide-react';
+import { UserRound, Settings } from 'lucide-react';
 import { primaryNavigation, navigationGroups } from './navigationItems';
 import { useI18n } from '../i18n';
 export function SidebarNavigation() {
@@ -12,33 +12,31 @@ export function SidebarNavigation() {
       </NavLink>
       <nav aria-label={t('trainingCycle')}>
         <div className="nav-primary">
-          {[{ path: '/', label: 'overview', icon: LayoutDashboard }, ...primaryNavigation].map(
-            ({ path, label, icon: Icon }) => (
-              <NavLink
-                className="nav-item"
-                end={path === '/'}
-                key={path}
-                to={path}
-                onClick={() => {
-                  if (path === '/workout')
-                    update((state) => ({ workoutView: state.workoutView ?? 'focus' }));
-                }}
-              >
-                <Icon size={20} />
-                <span>{t(label)}</span>
-              </NavLink>
-            ),
-          )}
+          {primaryNavigation.map(({ path, label, icon: Icon }) => (
+            <NavLink
+              className="nav-item"
+              end={path === '/'}
+              key={path}
+              to={path}
+              onClick={() => {
+                if (path === '/workout')
+                  update((state) => ({ workoutView: state.workoutView ?? 'focus' }));
+              }}
+            >
+              <Icon size={20} />
+              <span>{t(label)}</span>
+            </NavLink>
+          ))}
         </div>
         <details className="sidebar-tools">
-          <summary>{t('compactTools')}</summary>
+          <summary>{t('navMore')}</summary>
           {navigationGroups
             .filter((group) => group.label !== 'navSettings')
             .map((group) => (
               <section className="nav-group" key={group.label}>
                 <h2>{t(group.label)}</h2>
                 {group.items
-                  .filter((item) => !['/', '/settings'].includes(item.path))
+                  .filter((item) => item.path !== '/settings')
                   .map(({ path, label, icon: Icon }) => (
                     <NavLink className="nav-item" key={path} to={path}>
                       <Icon size={18} />

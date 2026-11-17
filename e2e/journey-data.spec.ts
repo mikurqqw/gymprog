@@ -89,7 +89,7 @@ for (const language of ['ru', 'kk', 'en'] as const) {
     await page.goto('/?lang=' + language + '#/privacy-consent');
     page.on('dialog', (d) => d.accept());
     await page.getByRole('button', { name: t('eraseAll'), exact: true }).click();
-    await expect(page.locator('input[type="date"]')).toBeVisible();
+    await expect(page.locator('.birth-trigger')).toBeVisible();
     expect(
       await page.evaluate(() =>
         Object.keys(localStorage).filter((k) => k.startsWith('ironcycle:')),

@@ -1,0 +1,62 @@
+[
+  {
+    "url": "http://127.0.0.1:4175/#/welcome",
+    "scores": {
+      "performance": 94,
+      "accessibility": 100,
+      "best-practices": 96,
+      "seo": 100
+    },
+    "lcpMs": 3148,
+    "tbtMs": 42,
+    "cls": 0
+  },
+  {
+    "url": "http://127.0.0.1:4175/#/",
+    "scores": {
+      "performance": 86,
+      "accessibility": 100,
+      "best-practices": 96,
+      "seo": 100
+    },
+    "lcpMs": 4072,
+    "tbtMs": 106,
+    "cls": 0
+  },
+  {
+    "url": "http://127.0.0.1:4175/#/workout",
+    "scores": {
+      "performance": 83,
+      "accessibility": 100,
+      "best-practices": 96,
+      "seo": 100
+    },
+    "lcpMs": 4553,
+    "tbtMs": 133,
+    "cls": 0
+  },
+  {
+    "url": "http://127.0.0.1:4175/#/nutrition",
+    "scores": {
+      "performance": 83,
+      "accessibility": 100,
+      "best-practices": 96,
+      "seo": 100
+    },
+    "lcpMs": 4393,
+    "tbtMs": 158,
+    "cls": 0
+  },
+  {
+    "url": "http://127.0.0.1:4175/#/program",
+    "scores": {
+      "performance": 85,
+      "accessibility": 100,
+      "best-practices": 96,
+      "seo": 100
+    },
+    "lcpMs": 4210,
+    "tbtMs": 92,
+    "cls": 0
+  }
+]

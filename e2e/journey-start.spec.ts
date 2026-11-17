@@ -1,3 +1,4 @@
+import { chooseBirth } from './birthDate';
 import { test, expect } from '@playwright/test';
 import { journeyMessages } from './journeyMessages';
 for (const language of ['ru', 'kk', 'en'] as const)
@@ -14,7 +15,7 @@ for (const language of ['ru', 'kk', 'en'] as const)
       .locator('.sf-hero')
       .getByRole('link', { name: t('landingStart'), exact: true })
       .click();
-    await page.getByLabel(t('birthDate'), { exact: true }).fill('2000-01-01');
+    await chooseBirth(page, '2000-01-01', language);
     await page.getByRole('button', { name: t('next'), exact: true }).click();
     for (const box of await page.locator('.consent-checkbox input').all()) await box.check();
     await page.getByRole('button', { name: t('rejectOptional'), exact: true }).click();
@@ -22,6 +23,9 @@ for (const language of ['ru', 'kk', 'en'] as const)
     await page.getByRole('button', { name: t('screenAllNo'), exact: true }).click();
     await page.getByRole('button', { name: t('screenConfirm'), exact: true }).click();
     await page.getByRole('button', { name: t('sfApplyProgram'), exact: true }).click();
+    await expect(page.getByLabel(t('age'), { exact: true })).toHaveValue(
+      String(new Date().getFullYear() - 2000),
+    );
     await page.getByLabel(t('age'), { exact: true }).fill('30');
     await page.getByLabel(t('height') + ' (cm)', { exact: true }).fill('175');
     await page.getByLabel(t('bodyweight') + ' (kg)', { exact: true }).fill('70');
@@ -30,6 +34,10 @@ for (const language of ['ru', 'kk', 'en'] as const)
     await expect(page.locator('.strength-entry')).toHaveCount(3);
     await page.getByRole('button', { name: t('next'), exact: true }).click();
     await page.getByRole('button', { name: t('finish'), exact: true }).click();
+    const profile = await page.evaluate(
+      () => JSON.parse(localStorage.getItem('ironcycle:data')!).profile,
+    );
+    expect(profile).toMatchObject({ age: 30, height: 175, weight: 70, sex: 'male', experience: 0 });
     await page.getByRole('link', { name: t('startWorkout'), exact: true }).click();
     const count = Number(
       (await page.locator('.focus-progress p').innerText()).split('/')[1].trim(),
@@ -78,9 +86,9 @@ for (const language of ['ru', 'kk', 'en'] as const)
   test(`under18 stores nothing ${language}`, async ({ page }) => {
     const t = journeyMessages(language);
     await page.goto('/?lang=' + language + '#/start');
-    await page.getByLabel(t('birthDate'), { exact: true }).fill('2015-01-01');
+    await chooseBirth(page, '2015-01-01', language);
     await page.getByRole('button', { name: t('next'), exact: true }).click();
-    await expect(page.locator('input[type="date"]')).toHaveCount(0);
+    await expect(page.locator('.birth-trigger')).toHaveCount(0);
     expect(await page.evaluate(() => Object.keys(localStorage))).toEqual([]);
     expect(await page.evaluate(() => indexedDB.databases())).toEqual([]);
     expect(await page.evaluate(() => caches.keys())).toEqual([]);

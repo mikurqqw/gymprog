@@ -35,7 +35,6 @@ export function WorkoutResult({ rows }: { rows: Planned[] }) {
           <h2>{t(completed ? 'sfFinished' : 'sfSummary')}</h2>
           {completed && <CheckCircle2 size={24} />}
         </div>
-        <p className="micro muted">{t('sfSummaryIntro')}</p>
         <div className="stat-grid">
           <div>
             {t('sfSetCount')}
@@ -54,29 +53,32 @@ export function WorkoutResult({ rows }: { rows: Planned[] }) {
             <strong>{stats.averageRpe?.toFixed(1) ?? '—'}</strong>
           </div>
         </div>
-        <div className="result-comparisons">
-          {stats.matched.map(({ row, log, sets }) => {
-            const previous = previousExerciseLog(log, state.logs);
-            return (
-              <article key={log.id}>
-                <h3>{local(exerciseById(row.exercise).name)}</h3>
-                <p>
-                  {t('sfCurrentResult')}: {sets} × {log.reps} · <Weight value={log.weight} />
-                </p>
-                {previous ? (
-                  <p className="micro muted">
-                    {t('sfPreviousResult')} ({previous.date}):{' '}
-                    {previous.sets.filter(Boolean).length} × {previous.reps} ·{' '}
-                    <Weight value={previous.weight} />
+        <details className="result-details">
+          <summary>{t('simpleResults')}</summary>
+          <div className="result-comparisons">
+            {stats.matched.map(({ row, log, sets }) => {
+              const previous = previousExerciseLog(log, state.logs);
+              return (
+                <article key={log.id}>
+                  <h3>{local(exerciseById(row.exercise).name)}</h3>
+                  <p>
+                    {t('sfCurrentResult')}: {sets} × {log.reps} · <Weight value={log.weight} />
                   </p>
-                ) : (
-                  <p className="micro muted">{t('sfFirstResult')}</p>
-                )}
-              </article>
-            );
-          })}
-        </div>
-        <p className="micro muted">{t('sfNoAutomaticIncrease')}</p>
+                  {previous ? (
+                    <p className="micro muted">
+                      {t('sfPreviousResult')} ({previous.date}):{' '}
+                      {previous.sets.filter(Boolean).length} × {previous.reps} ·{' '}
+                      <Weight value={previous.weight} />
+                    </p>
+                  ) : (
+                    <p className="micro muted">{t('sfFirstResult')}</p>
+                  )}
+                </article>
+              );
+            })}
+          </div>
+          <p className="micro muted">{t('sfNoAutomaticIncrease')}</p>
+        </details>
         <div className="inline">
           {completed ? (
             <button

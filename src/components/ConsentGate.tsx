@@ -1,4 +1,6 @@
 import { GateProgress } from './GateProgress';
+import { BirthDatePicker } from './BirthDatePicker';
+import { birthAge } from './birthDate';
 import { HealthScreen } from './HealthScreen';
 import { HEALTH_SCREEN_VERSION } from '../config/versions';
 import { StoragePreferences } from './StoragePreferences';
@@ -9,7 +11,7 @@ import { useI18n } from '../i18n';
 import { useStore, update, activateStorage, resetMemory } from '../lib/store';
 import { dataAllowed, isAdult, readConsent, saveConsent } from '../lib/consent';
 import { today } from '../lib/formulas';
-import { Card, Field, PageTitle, Select } from './ui';
+import { Card, PageTitle, Select } from './ui';
 import { PreviewBanner } from './PreviewBanner';
 import { LegalFooter } from './LegalFooter';
 const Legal = lazy(() => import('../pages/Legal'));
@@ -112,17 +114,8 @@ export function ConsentGate({ children }: { children: ReactNode }) {
                 }
               }}
             >
-              <Field label={t('birthDate')}>
-                <input
-                  type="date"
-                  required
-                  autoComplete="off"
-                  max={today()}
-                  value={birth}
-                  onChange={(e) => setBirth(e.target.value)}
-                />
-              </Field>
-              <button className="button" type="submit">
+              <BirthDatePicker value={birth} onChange={setBirth} />
+              <button className="button" type="submit" disabled={!birth}>
                 {t('next')}
               </button>
             </form>
@@ -144,6 +137,9 @@ export function ConsentGate({ children }: { children: ReactNode }) {
                 try {
                   saveConsent(s.language, optional, s.themePreference);
                   const loaded = activateStorage();
+                  const age = birthAge(birth, today());
+                  if (!loaded?.profile && age !== null && age >= 18 && age <= 90)
+                    update((state) => ({ draftProfile: { ...state.draftProfile, age } }));
                   setBirth('');
                   if (
                     (loaded?.profile ?? loaded?.draftProfile)?.healthScreenVersion ===

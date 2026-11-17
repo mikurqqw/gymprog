@@ -25,7 +25,6 @@ export function StorefrontShell({ children }: { children: ReactNode }) {
         </Link>
         <nav aria-label={t('sfPrograms')}>
           <NavLink to="/catalog">{t('sfPrograms')}</NavLink>
-          <NavLink to="/demo">{t('sfDemo')}</NavLink>
           <NavLink to="/about">{t('compactAbout')}</NavLink>
         </nav>
         <div className="sf-header-actions">

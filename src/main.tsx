@@ -43,3 +43,5 @@ import './exerciseContent.css';
 import './compactUx.css';
 
 import './compactResponsive.css';
+import './birthDate.css';
+import './simpleUx.css';

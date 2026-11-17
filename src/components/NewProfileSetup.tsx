@@ -21,7 +21,7 @@ export function NewProfileSetup() {
     edit = (patch: Partial<OnboardingDraft>) => update({ draftProfile: { ...draft, ...patch } });
   return (
     <>
-      <PageTitle title={t('onboarding')} description={t('setupFast')} />
+      <PageTitle compact title={t('onboarding')} description={t('setupFast')} />
       <div className="wizard-steps">
         {[0, 1, 2].map((index) => (
           <button
@@ -57,8 +57,8 @@ export function NewProfileSetup() {
         <Card>
           {step === 0 ? (
             <>
-              <OnboardingGoals goal={draft.goal} onChange={(goal) => edit({ goal })} />
               <NewProfileFields draft={draft} edit={edit} />
+              <p className="micro muted">{t('simpleProfileNote')}</p>
             </>
           ) : step === 1 ? (
             <>
@@ -67,7 +67,10 @@ export function NewProfileSetup() {
               ))}
             </>
           ) : (
-            <OnboardingSchedule draft={draft} edit={edit} />
+            <>
+              <OnboardingGoals goal={draft.goal} onChange={(goal) => edit({ goal })} />
+              <OnboardingSchedule draft={draft} edit={edit} />
+            </>
           )}
         </Card>
         {units === 'imperial' && <p className="micro muted">{t('onboardingMetricNotice')}</p>}

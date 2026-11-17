@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { useI18n } from '../i18n';
-import { StorefrontPreview } from '../components/StorefrontPreview';
 export default function Landing() {
   const { t } = useI18n();
   return (
@@ -16,9 +15,6 @@ export default function Landing() {
               {t('landingStart')}
               <ArrowRight size={18} />
             </Link>
-            <Link className="button secondary" to="/demo">
-              {t('sfDemo')}
-            </Link>
           </div>
           <ul className="sf-trust">
             <li>{t('sfEightWeeks')}</li>
@@ -26,7 +22,6 @@ export default function Landing() {
             <li>RU · ҚАЗ · EN</li>
           </ul>
         </div>
-        <StorefrontPreview />
       </section>
       <section className="compact-entry-links sf-container">
         <Link to="/catalog">

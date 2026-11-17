@@ -11,7 +11,7 @@ fresh('theme bootstrap does not open personal records before consent', async ({ 
     };
   });
   await page.goto('/#/start');
-  await expect(page.locator('input[type="date"]')).toBeVisible();
+  await expect(page.locator('.birth-trigger')).toBeVisible();
   const reads = await page.evaluate(
     () => (window as unknown as { __storageReads: string[] }).__storageReads,
   );

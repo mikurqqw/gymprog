@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useProfileStore, update } from '../lib/store';
 import { profileSchema, type Profile } from '../lib/schema';
 import { displayWeight, fromWeight, nextMonday } from '../lib/formulas';
 import { useI18n } from '../i18n';
 import { Card, Num, Select, PageTitle } from './ui';
 import { ExperienceField } from './ExperienceField';
+import { TrainingPreferencesCard } from './TrainingPreferencesCard';
 export function SavedProfile() {
   const state = useProfileStore(),
     { t, units, weightUnit } = useI18n();
@@ -21,6 +21,7 @@ export function SavedProfile() {
     <>
       <PageTitle compact title={t('profile')} description={t('onboardingText')} />
       <form
+        className="basic-profile-form"
         onSubmit={(event) => {
           event.preventDefault();
           const result = profileSchema.safeParse({
@@ -95,11 +96,9 @@ export function SavedProfile() {
           <button className="button" type="submit">
             {t('save')}
           </button>
-          <Link className="button secondary" to="/profile?advanced=1">
-            {t('compactAdvanced')}
-          </Link>
         </div>
       </form>
+      <TrainingPreferencesCard />
     </>
   );
 }

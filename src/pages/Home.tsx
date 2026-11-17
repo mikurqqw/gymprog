@@ -1,7 +1,8 @@
+import { HomeWeek } from '../components/HomeWeek';
 import { Disclosure } from '../components/Disclosure';
-import { AlgorithmChip } from '../components/ContextNotice';
 import { HomeSupportingCards } from '../components/HomeSupportingCards';
-import { ArrowRight, CalendarDays, HeartPulse } from 'lucide-react';
+import { ArrowRight, CalendarDays } from 'lucide-react';
+import { HomeReadiness } from '../components/HomeReadiness';
 import { Link } from 'react-router-dom';
 import { useProfileStore as useStore, update } from '../lib/store';
 import { generate } from '../lib/plannedProgram';
@@ -49,6 +50,7 @@ export function Home() {
   return (
     <>
       <PageTitle
+        compact
         title={t('sfDashboardTitle')}
         description={t('compactHomeLead')}
         action={
@@ -88,7 +90,6 @@ export function Home() {
                 })
               : t('sfFullToolsText')}
           </p>
-          {resume && <p>{t('sfResumeText')}</p>}
           {session.length > 0 && (
             <>
               <p>
@@ -124,76 +125,23 @@ export function Home() {
           )}
           <RecommendationWhy before={session} after={adjusted} readiness={readiness} />
         </Card>
-        <Card className="home-readiness">
-          <HeartPulse size={25} />
-          <h2>{t('readiness')}</h2>
-          <p>{t(readiness ? readiness.level + 'Text' : 'checkinText')}</p>
-          {readiness?.reasons.slice(0, 2).map((reason) => (
-            <p className="micro muted" key={reason}>
-              {t(reason)}
-            </p>
-          ))}
-          <Link className="button secondary" to="/checkin">
-            {t('checkin')}
-            <ArrowRight size={16} />
-          </Link>
-          <AlgorithmChip />
-        </Card>
+        <HomeReadiness readiness={readiness} />
       </div>
-      <Disclosure label="compactWeek">
-        <Card className="home-week">
-          <div className="section-heading">
-            <h2>{t('weekOverview')}</h2>
-            <Link className="text-link" to="/program">
-              {t('viewPlan')} →
-            </Link>
-          </div>
-          <div className="home-week-grid">
-            {weekGroups.map((group) => {
-              const first = group[0],
-                summary = sessionStats(group, state.logs),
-                finished = !!state.sessionCompletions[sessionKey(state, first.week, first.day)];
-              return (
-                <Link
-                  className="home-week-session"
-                  to="/workout"
-                  key={first.day}
-                  onClick={() => update({ day: first.day })}
-                >
-                  <span className="eyebrow">
-                    {formatDate(first.date, locale, {
-                      weekday: 'short',
-                      day: 'numeric',
-                      month: 'short',
-                    })}
-                  </span>
-                  <h3>{local(exerciseById(first.exercise).name)}</h3>
-                  <span className="micro muted">
-                    {finished ? t('sfFinished') : `${summary.done}/${summary.planned} ${t('sets')}`}
-                  </span>
-                  <ArrowRight size={18} />
-                </Link>
-              );
-            })}
-          </div>
-        </Card>
+      <Disclosure label="simpleMore">
+        <Disclosure label="compactWeek">
+          <HomeWeek groups={weekGroups} />
+        </Disclosure>
+        <Disclosure label="compactMetrics">
+          <HomeSupportingCards rows={rows} />
+        </Disclosure>
+        <details className="home-extra">
+          <summary>{t('sfMoreMetrics')}</summary>
+          <StrengthCards />
+          <Link className="text-link" to="/progress">
+            {t('progress')} →
+          </Link>
+        </details>
       </Disclosure>
-      <Disclosure label="compactMetrics">
-        <HomeSupportingCards rows={rows} />
-      </Disclosure>
-      <details className="home-extra">
-        <summary>{t('sfMoreMetrics')}</summary>
-        <StrengthCards />
-        <Link className="text-link" to="/progress">
-          {t('progress')} →
-        </Link>
-      </details>
-      <p className="micro muted">
-        {t('sfAllTools')} ·{' '}
-        <Link className="text-link" to="/welcome">
-          IronCycle
-        </Link>
-      </p>
     </>
   );
 }

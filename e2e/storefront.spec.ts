@@ -1,3 +1,4 @@
+import { chooseBirth } from './birthDate';
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 test('public demo and catalog show product value without storing personal data or making third-party requests', async ({
@@ -9,7 +10,8 @@ test('public demo and catalog show product value without storing personal data o
   });
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Знай, что делать');
-  await page.getByRole('link', { name: 'Попробовать демо', exact: true }).first().click();
+  await expect(page.locator('.sf-hero a[href*=demo]')).toHaveCount(0);
+  await page.goto('/#/demo');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Одна минута внутри IronCycle.');
   await page.getByRole('button', { name: 'Открыть пример тренировки' }).click();
   await page
@@ -29,7 +31,7 @@ test('public demo and catalog show product value without storing personal data o
 test('selected program survives adult consent and is handed to profile setup', async ({ page }) => {
   await page.goto('/#/catalog/fitness');
   await page.getByRole('link', { name: 'Выбрать эту программу' }).click();
-  await page.getByLabel('Дата рождения (не сохраняется)').fill('2000-01-01');
+  await chooseBirth(page, '2000-01-01');
   await page.getByRole('button', { name: 'Далее', exact: true }).click();
   for (const box of await page.locator('.consent-checkbox input').all()) await box.check();
   await page.getByRole('button', { name: 'Отклонить необязательное', exact: true }).click();

@@ -3,7 +3,7 @@ import { test, expect } from './fixtures';
 test.use({ configuredProfile: false });
 async function body(page: import('@playwright/test').Page) {
   await page.goto('/#/profile');
-  await expect(page.locator('.onboarding-goals input')).toHaveCount(8);
+  await expect(page.locator('.onboarding-goals input')).toHaveCount(0);
   await page.getByLabel('Возраст', { exact: true }).fill('30');
   await page.getByLabel('Рост (cm)', { exact: true }).fill('175');
   await page.getByLabel('Масса тела (kg)', { exact: true }).fill('70');
@@ -20,7 +20,8 @@ test('three-step unknown-strength onboarding reaches Focus without automatic num
   await body(page);
   await expect(page.locator('.strength-entry')).toHaveCount(3);
   await page.getByRole('button', { name: 'Далее', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Твой старт', exact: true })).toBeVisible();
+  await expect(page.locator('.onboarding-summary > summary')).toHaveText('Твой старт');
+  await expect(page.locator('.onboarding-goals input')).toHaveCount(8);
   const start = await page.getByLabel('Начало цикла', { exact: true }).inputValue();
   expect(new Date(start + 'T12:00:00Z').getUTCDay()).toBe(1);
   await page.getByRole('button', { name: 'Начать цикл', exact: true }).click();

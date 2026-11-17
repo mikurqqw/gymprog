@@ -24,11 +24,14 @@ export function OnboardingGoals({
             />
             <span>
               <strong>{t(offer.goal)}</strong>
-              <small>{local(offer.description)}</small>
             </span>
           </label>
         ))}
       </div>
+      <details className="page-help">
+        <summary>{t('compactHelp')}</summary>
+        <p>{local(programOffers.find((offer) => offer.goal === goal)!.description)}</p>
+      </details>
     </fieldset>
   );
 }

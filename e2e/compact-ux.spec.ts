@@ -71,6 +71,6 @@ test.describe('experience draft validation', () => {
         () => JSON.parse(localStorage.getItem('ironcycle:data')!).draftProfile.experience,
       ),
     ).toBe(2.25);
-    await expect(page.locator('.onboarding-goals input')).toHaveCount(8);
+    await expect(page.locator('.onboarding-goals input')).toHaveCount(0);
   });
 });
