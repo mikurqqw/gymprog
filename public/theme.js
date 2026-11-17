@@ -1,10 +1,10 @@
 (() => {
   let preference = 'dark';
   try {
-    const raw = localStorage.getItem('ironcycle:data');
-    if (raw) {
+    const raw = localStorage.getItem('ironcycle:preferences');
+    if (raw && raw.length <= 10000) {
       const saved = JSON.parse(raw);
-      const value = saved.themePreference ?? saved.theme;
+      const value = saved.themePreference;
       if (['dark', 'light', 'system'].includes(value)) preference = value;
     }
   } catch {

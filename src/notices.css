@@ -81,3 +81,16 @@
     flex-basis: 100%;
   }
 }
+
+.feedback-tools p {
+  margin-inline: 12px;
+}
+.diagnostics-preview {
+  width: 100%;
+  min-height: 180px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 12px;
+  font-size: 11px;
+}

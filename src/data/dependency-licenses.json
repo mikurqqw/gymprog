@@ -222,5 +222,13 @@
     "license": "MIT",
     "source": "https://github.com/vitest-dev/vitest",
     "reviewRequired": false
+  },
+  {
+    "name": "prettier",
+    "version": "3.10.1",
+    "scope": "development",
+    "license": "MIT",
+    "source": "https://github.com/prettier/prettier",
+    "reviewRequired": false
   }
 ]

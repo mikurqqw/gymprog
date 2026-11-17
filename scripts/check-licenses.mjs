@@ -32,3 +32,16 @@ for (const [path, pkg] of Object.entries(lock.packages)) {
 console.log(
   `Checked ${count} dependency licenses. FSL exception: development-only sentry 0.49.0 via Lighthouse; see COMPLIANCE.md.`,
 );
+
+const pkg = JSON.parse(await readFile('package.json', 'utf8'));
+const inventory = JSON.parse(await readFile('src/data/dependency-licenses.json', 'utf8'));
+for (const [name, version] of Object.entries({ ...pkg.dependencies, ...pkg.devDependencies })) {
+  const item = inventory.find((item) => item.name === name);
+  if (
+    !item ||
+    item.version !== version ||
+    item.license !== lock.packages['node_modules/' + name].license
+  )
+    throw Error('Direct license inventory mismatch: ' + name);
+}
+console.log('Direct dependency inventory is complete.');

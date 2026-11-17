@@ -1,4 +1,5 @@
-import { readFile, writeFile } from 'node:fs/promises';
+import { launchConfig } from '../src/config/launch.config.ts';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 const site = new URL(process.env.VITE_SITE_URL || 'https://mikurqqw.github.io/gymprog/');
 if (site.protocol !== 'https:' || site.username || site.password || site.search || site.hash)
   throw Error('VITE_SITE_URL must be an HTTPS base URL without credentials, query or fragment');
@@ -34,3 +35,18 @@ await writeFile(
   `User-agent: *\nAllow: /\nSitemap: ${new URL('sitemap.xml', site).href}\n`,
 );
 console.log('Generated localized landing canonical/OG/sitemap/robots from ' + site.href);
+
+await mkdir('dist/.well-known', { recursive: true });
+const expires = new Date(Date.now() + 180 * 86400000).toISOString();
+const contact = launchConfig.securityContact.includes('__REQUIRED')
+  ? '# Preview: private reporting contact is not configured.'
+  : 'Contact: ' + launchConfig.securityContact;
+await writeFile(
+  'dist/.well-known/security.txt',
+  contact +
+    '\nExpires: ' +
+    expires +
+    '\nPreferred-Languages: ru, kk, en\nCanonical: ' +
+    new URL('.well-known/security.txt', site).href +
+    '\n',
+);

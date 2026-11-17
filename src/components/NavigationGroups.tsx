@@ -1,3 +1,4 @@
+import { FeedbackActions } from './FeedbackActions';
 import { NavLink } from 'react-router-dom';
 import { navigationGroups, legalNavigation } from './navigationItems';
 import { useI18n } from '../i18n';
@@ -45,6 +46,7 @@ export function NavigationGroups({ onNavigate }: { onNavigate: () => void }) {
           {t('theme')}: {t(state.theme)}
         </button>
       </section>
+      <FeedbackActions />
       <section className="nav-group">
         <h2>{t('navLegal')}</h2>
         {legalNavigation.map((id) => (

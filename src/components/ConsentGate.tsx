@@ -142,7 +142,7 @@ export function ConsentGate({ children }: { children: ReactNode }) {
                 e.preventDefault();
                 if (required.some((key) => !checks.includes(key)) || optional === null) return;
                 try {
-                  saveConsent(s.language, optional);
+                  saveConsent(s.language, optional, s.themePreference);
                   const loaded = activateStorage();
                   setBirth('');
                   if (

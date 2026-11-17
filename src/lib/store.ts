@@ -26,18 +26,24 @@ export function update(patch: Partial<AppState> | ((old: AppState) => Partial<Ap
   if (changes.themePreference)
     next.theme = resolveTheme(changes.themePreference, systemTheme() === 'light');
   try {
-    if (active && dataAllowed()) localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    if (active && dataAllowed()) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      if (next.language !== state.language || next.themePreference !== state.themePreference) {
+        const preferences = readPreferences();
+        if (preferences)
+          localStorage.setItem(
+            PREFERENCES_KEY,
+            JSON.stringify({
+              ...preferences,
+              language: next.language,
+              themePreference: next.themePreference,
+            }),
+          );
+      }
+    }
     storageError = false;
   } catch {
     storageError = true;
-  }
-  if (active && patch && next.language !== state.language) {
-    const preferences = readPreferences();
-    if (preferences)
-      localStorage.setItem(
-        PREFERENCES_KEY,
-        JSON.stringify({ ...preferences, language: next.language }),
-      );
   }
   if (next.language !== state.language) syncLanguageUrl(next.language);
   state = next;
@@ -95,6 +101,16 @@ export function activateStorage() {
   };
   storageError = loaded.error;
   active = true;
+  try {
+    const preferences = readPreferences();
+    if (preferences)
+      localStorage.setItem(
+        PREFERENCES_KEY,
+        JSON.stringify({ ...preferences, themePreference: state.themePreference }),
+      );
+  } catch {
+    storageError = true;
+  }
   document.documentElement.dataset.theme = state.theme;
   document.documentElement.lang = state.language;
   listeners.forEach((fn) => fn());

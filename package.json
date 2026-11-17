@@ -1,6 +1,6 @@
 {
   "name": "ironcycle",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -19,7 +19,9 @@
     "format:check": "prettier --check src e2e scripts public/sw.js public/theme.js --ignore-unknown",
     "check:bundle": "node scripts/check-bundle.mjs",
     "media:capture": "playwright test --config scripts/capture.config.ts",
-    "check:content": "node scripts/check-content.mjs"
+    "check:content": "node scripts/check-content.mjs",
+    "check:launch": "node scripts/check-launch.mjs",
+    "check:launch:preview": "node scripts/check-launch.mjs --preview"
   },
   "dependencies": {
     "@tailwindcss/vite": "4.3.5",

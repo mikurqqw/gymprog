@@ -29,11 +29,9 @@ test('specific exercise instruction, localized schematics and pending human revi
   for (const exercise of ['ex-10', 'ex-5', 'ex-13', 'ex-14', 'ex-25']) {
     await page.goto('/#/library?exercise=' + exercise);
     await expect(page.locator('.technique-illustration svg')).toBeVisible();
-    await page
-      .locator('.technique-illustration')
-      .screenshot({
-        path: `artifacts/screenshots/technique-${exercise}.png`,
-        animations: 'disabled',
-      });
+    await page.locator('.technique-illustration').screenshot({
+      path: `artifacts/screenshots/technique-${exercise}.png`,
+      animations: 'disabled',
+    });
   }
 });

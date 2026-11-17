@@ -159,3 +159,14 @@ colors match. Tokens and the visual choice are documented in DESIGN_SYSTEM.md.
   variant and SVG safety checks. Full chain:140 unit +58 browser scenarios pass.
 - Specific instruction and schematics tested in all3 languages/both themes, with axe.
 - Initial JS163.9 KiB gzip. No dependency or personal-data schema change.
+
+## Section9 — implemented; real identity and independent reviews pending
+
+- Unified preview/production guard; explicit lawyer-only override warns loudly and cannot bypass real operator fields, native review or contacts. Production rejection verified with and without override.
+- Launch config owns real support/security contact slots. Feedback stays disabled until supplied; no invented address, no automatic message. Diagnostics allow only version/browser/coarse storage availability.
+- Necessary preferences schema2 migrates old settings; bootstrap reads only the nonpersonal preferences key. Journal access requires valid consent. Policy changes re-prompt without deleting the existing profile.
+- Privacy/storage preview-2 and a narrow contact update describe actual new processing. Other consent versions and all human review flags remain unchanged. No analytics adapter or tracking added.
+- check:launch validates artifact mode, manifest, metadata assets, ten trilingual legal documents, encoding, CSP and security.txt. Production requires genuine fields and placeholder-free output. Bundled Markdown's intentional replacement-character sentinel is not classified as mojibake.
+- Direct license inventory now includes existing Prettier; all29 direct entries match installed versions/licenses. npm audit: zero vulnerabilities. No dependency added.
+- Validation: lint/typecheck,147 unit tests, i18n/security/content/build-preview/launch-preview; initial JS164.5 KiB gzip. Browser tests include pre-consent read monitoring and bounded diagnostics.
+- Final section9 browser run:61/61 passed, including policy renewal preserving profile records.

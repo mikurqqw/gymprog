@@ -32,6 +32,9 @@ const sw = template
   );
 if (sw.includes('@build-precache')) throw Error('Precache injection failed');
 await writeFile('dist/sw.js', sw);
-await writeFile('dist/build-info.json', JSON.stringify({ buildId }));
+await writeFile(
+  'dist/build-info.json',
+  JSON.stringify({ buildId, preview: process.env.IRONCYCLE_PREVIEW === '1' }),
+);
 await writeFile('dist/.nojekyll', '');
 console.log('Service worker build ' + buildId + '; precached ' + paths.length + ' core resources.');

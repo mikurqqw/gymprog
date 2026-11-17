@@ -1,3 +1,7 @@
+import { parsePreferences, type Preferences } from './preferences';
+import type { ThemePreference } from './theme';
+export { preferencesSchema } from './preferences';
+export type { Preferences } from './preferences';
 import { z } from 'zod';
 import { legalConfig } from '../config/legal.config';
 export const CONSENT_KEY = 'ironcycle:consent';
@@ -15,13 +19,6 @@ export const consentSchema = z.object({
   calories: z.literal(true),
 });
 export type Consent = z.infer<typeof consentSchema>;
-export const preferencesSchema = z.object({
-  language: z.enum(['ru', 'kk', 'en']),
-  necessary: z.literal(true),
-  optionalMedia: z.boolean(),
-  selectedAt: z.iso.datetime(),
-});
-export type Preferences = z.infer<typeof preferencesSchema>;
 export function isAdult(birth: string, on: string) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(birth) || birth > on) return false;
   const d = new Date(birth + 'T12:00:00Z');
@@ -59,8 +56,7 @@ export function readPreferences(): Preferences | null {
   try {
     const raw = localStorage.getItem(PREFERENCES_KEY);
     if (!raw || raw.length > 10000) return null;
-    const parsed = preferencesSchema.safeParse(JSON.parse(raw));
-    return parsed.success ? parsed.data : null;
+    return parsePreferences(JSON.parse(raw));
   } catch {
     return null;
   }
@@ -72,7 +68,11 @@ export function dataAllowed() {
 export function mediaAllowed() {
   return dataAllowed() && readPreferences()?.optionalMedia === true;
 }
-export function saveConsent(language: Consent['language'], optionalMedia: boolean) {
+export function saveConsent(
+  language: Consent['language'],
+  optionalMedia: boolean,
+  themePreference: ThemePreference = 'dark',
+) {
   const acceptedAt = new Date().toISOString();
   const record: Consent = {
     schemaVersion: 1,
@@ -89,7 +89,14 @@ export function saveConsent(language: Consent['language'], optionalMedia: boolea
   localStorage.setItem(CONSENT_KEY, JSON.stringify(record));
   localStorage.setItem(
     PREFERENCES_KEY,
-    JSON.stringify({ language, necessary: true, optionalMedia, selectedAt: acceptedAt }),
+    JSON.stringify({
+      schemaVersion: 2,
+      language,
+      necessary: true,
+      optionalMedia,
+      selectedAt: acceptedAt,
+      themePreference,
+    }),
   );
   window.dispatchEvent(new Event('ironcycle:consent'));
 }
