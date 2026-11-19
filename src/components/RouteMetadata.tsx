@@ -10,6 +10,7 @@ const titles: Record<string, string> = {
   start: 'onboarding',
   profile: 'profile',
   program: 'program',
+  series: 'program',
   workout: 'today',
   checkin: 'checkin',
   nutrition: 'nutrition',

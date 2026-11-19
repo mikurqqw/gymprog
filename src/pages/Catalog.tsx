@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { programOffers } from '../data/programOffers';
 import { useI18n } from '../i18n';
+import { SeriesLinks } from '../components/SeriesLinks';
 export default function Catalog() {
   const { t, local } = useI18n(),
     [group, setGroup] = useState('all');
@@ -11,6 +12,7 @@ export default function Catalog() {
       <p className="sf-kicker">IRONCYCLE / {t('sfPrograms')}</p>
       <h1>{t('sfCatalogTitle')}</h1>
       <p className="sf-lead">{t('sfCatalogIntro')}</p>
+      {group !== 'specialist' && <SeriesLinks />}
       <div className="tabs" aria-label={t('sfPrograms')}>
         {['all', 'general', 'specialist'].map((value) => (
           <button

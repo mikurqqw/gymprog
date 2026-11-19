@@ -5,6 +5,7 @@ import { programOffers } from '../data/programOffers';
 import { useI18n } from '../i18n';
 import { useStore } from '../lib/store';
 import { ProgramEvidence } from '../components/ProgramEvidence';
+import { SeriesLinks } from '../components/SeriesLinks';
 const Sample = lazy(() =>
   import('../components/ProgramSample').then((module) => ({ default: module.ProgramSample })),
 );
@@ -53,6 +54,7 @@ export default function ProgramOffer() {
           <p className="sf-small">{t('sfPreviewTerms')}</p>
         </aside>
       </div>
+      <SeriesLinks goal={offer.goal} />
       <section className="sf-offer-info">
         <div>
           <h2>{t('sfForWhom')}</h2>

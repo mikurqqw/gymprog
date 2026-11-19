@@ -1,5 +1,6 @@
 import { Disclosure } from '../components/Disclosure';
 import { ContextNotice } from '../components/ContextNotice';
+import { ActiveSeriesLink } from '../components/ActiveSeriesLink';
 import { WorkoutFocus } from '../components/WorkoutFocus';
 import { sessionStats } from '../lib/sessionInsights';
 import { RecommendationWhy } from '../components/RecommendationWhy';
@@ -58,6 +59,7 @@ export default function Workout() {
         }
       />
       <ContextNotice kind="workout" />
+      <ActiveSeriesLink />
       <WorkoutScheduleTools days={days} />
       <div className={'compact-readiness readiness-notice ' + (r?.level ?? '')}>
         <HeartPulse size={20} />

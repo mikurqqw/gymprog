@@ -19,6 +19,7 @@ const Test = lazy(() => import('./pages/Test'));
 const Injuries = lazy(() => import('./pages/Injuries'));
 const PrivacyConsent = lazy(() => import('./pages/PrivacyConsent'));
 const Builder = lazy(() => import('./pages/Builder'));
+const Series = lazy(() => import('./pages/Series'));
 export default function App() {
   return (
     <ErrorBoundary>
@@ -45,6 +46,7 @@ export default function App() {
             ['privacy-consent', PrivacyConsent],
             ['injuries', Injuries],
             ['program', Program],
+            ['series/:id', Series],
             ['workout', Workout],
             ['checkin', Checkin],
             ['nutrition', Nutrition],

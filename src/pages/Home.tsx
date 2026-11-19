@@ -1,4 +1,5 @@
 import { HomeWeek } from '../components/HomeWeek';
+import { ActiveSeriesLink } from '../components/ActiveSeriesLink';
 import { Disclosure } from '../components/Disclosure';
 import { HomeSupportingCards } from '../components/HomeSupportingCards';
 import { ArrowRight, CalendarDays } from 'lucide-react';
@@ -69,6 +70,7 @@ export function Home() {
           <ArrowRight size={20} />
         </Link>
       )}
+      <ActiveSeriesLink />
       <div className="home-focus-grid">
         <Card className="home-next">
           <div className="section-heading">

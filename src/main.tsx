@@ -47,3 +47,4 @@ import './birthDate.css';
 import './simpleUx.css';
 
 import './diary.css';
+import './fitSeries.css';

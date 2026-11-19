@@ -1,4 +1,5 @@
 import { foodLogSchema } from './foodLog';
+import { seriesRun } from './fitSeries';
 import { onboardingDraftSchema, newUserProfile } from './onboardingDraft';
 import { programDocumentSchema } from './programDocument';
 import { z } from 'zod';
@@ -27,6 +28,7 @@ export const stateSchema = z.lazy(() =>
       .refine((value) => Object.keys(value).length <= 1000)
       .default({}),
     customProgram: programDocumentSchema.nullable().default(null),
+    seriesRuns: z.array(seriesRun).max(1000).default([]),
     profile: profileSchema.nullable(),
     draftProfile: onboardingDraftSchema.default(newUserProfile),
     onboarded: z.boolean(),
@@ -67,6 +69,7 @@ export const initialState: AppState = {
   activeSession: null,
   sessionCompletions: {},
   customProgram: null,
+  seriesRuns: [],
   profile: null,
   draftProfile: newUserProfile,
   onboarded: false,

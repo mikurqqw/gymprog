@@ -1,0 +1,36 @@
+.series-links {
+  margin-block: 16px;
+}
+.series-links .inline {
+  flex-wrap: wrap;
+}
+.series-links .button {
+  max-width: 100%;
+  white-space: normal;
+  text-align: start;
+}
+.series-day {
+  margin-top: 16px;
+}
+.series-exercises {
+  padding-inline-start: 24px;
+}
+.series-exercises > li {
+  padding-block: 12px;
+  border-bottom: 1px solid var(--border);
+  overflow-wrap: anywhere;
+}
+.series-exercises > li:last-child {
+  border-bottom: 0;
+}
+.series-exercises p {
+  margin-block: 4px;
+}
+.series-exercises summary {
+  min-height: 44px;
+  align-content: center;
+  cursor: pointer;
+}
+.series-links + .sf-offer-info {
+  margin-top: 24px;
+}

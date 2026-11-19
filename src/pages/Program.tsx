@@ -11,6 +11,7 @@ import { useI18n } from '../i18n';
 import { Card, PageTitle, Weight } from '../components/ui';
 import { WeekSelector } from '../components/WeekSelector';
 import { WeeklyReview } from '../components/WeeklyReview';
+import { SeriesLinks } from '../components/SeriesLinks';
 export default function Program() {
   const s = useStore(),
     { t, local, locale } = useI18n(),
@@ -30,6 +31,7 @@ export default function Program() {
         }
       />
       <ContextNotice kind="program" />
+      <SeriesLinks goal={s.profile.goal} />
       <WeekSelector />
       <div className="section-heading">
         <h2>

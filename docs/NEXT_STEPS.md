@@ -1,3 +1,7 @@
+# Training series from the owner archive — 2026-11-20
+
+See FIT_SERIES.md for mapping, entry conditions and import provenance. The uploaded adult templates are selectable under their matching catalog directions. Existing training programs remain available. Design refinements await the owner's prompts.
+
 # Recovery and food diary — 2026-11-18
 
 Recovery ratings and safety fields are visible on Checkin. Exact sleep hours and pain score remain available in disclosures. New records use profile weight and the selected day's previous food entries. The food diary records all available macros, preserves unknown values in older entries, and migrates state version 5 to 6.
