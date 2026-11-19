@@ -50,7 +50,7 @@ export function SeriesDay({ day, index }: { day: SeriesPlan['calendar'][number];
                       rest && t('rest') + ' ' + rest + ' ' + t('sec'),
                       effort && work.effort_scale + ' ' + effort,
                       work.load_fraction_1rm &&
-                        (Number(work.load_fraction_1rm) * 100).toFixed(1) + '% 1RM',
+                        Number((Number(work.load_fraction_1rm) * 100).toFixed(6)) + '% 1RM',
                     ]
                       .filter(Boolean)
                       .join(' · ')}
@@ -69,6 +69,14 @@ export function SeriesDay({ day, index }: { day: SeriesPlan['calendar'][number];
                       </p>
                     )}
                     {work.reference_lift && <p>1RM · {work.reference_lift}</p>}
+                    {(work.load_method || work.load_coefficient) && (
+                      <p>
+                        {t('weight')} ·{' '}
+                        {[work.load_method, work.load_coefficient && '× ' + work.load_coefficient]
+                          .filter(Boolean)
+                          .join(' · ')}
+                      </p>
+                    )}
                     {(work.short_sets || work.short_quantity_min || work.short_seconds_min) && (
                       <p>
                         {s.shortDose[language]} ·{' '}
