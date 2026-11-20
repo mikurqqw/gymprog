@@ -31,7 +31,7 @@ export function ReplacementControl({ row }: { row: Planned }) {
         </select>
       </Field>
       <Select
-        label={t('scope')}
+        label={t('replaceFor')}
         value={scope}
         options={(['session', 'week', 'cycle'] as const).map((value) => ({
           value,

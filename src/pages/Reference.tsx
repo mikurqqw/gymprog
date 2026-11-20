@@ -20,46 +20,52 @@ export default function Reference() {
   return (
     <>
       <PageTitle compact title={t('reference')} description={t('scienceNote')} />
-      <label className="search-field">
-        <Search size={18} />
-        <input
-          type="search"
-          aria-label={t('search')}
-          placeholder={t('search')}
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </label>
-      <div className="tabs">
-        {['all', ...new Set(articles.map((a) => a.category))].map((key) => (
-          <button
-            className={key === category ? 'active' : ''}
-            onClick={() => setCategory(key)}
-            key={key}
-          >
-            {t(key)}
-          </button>
-        ))}
-      </div>
-      <div className="reference-list">
-        {found.map((a) => (
-          <Card key={a.id}>
-            <details>
-              <summary>
-                <span className="eyebrow">{t(a.category)}</span>
-                <h2>{local(a.title)}</h2>
-              </summary>
-              <div className="markdown reading">
-                <ReactMarkdown>{local(a.body)}</ReactMarkdown>
-              </div>
-            </details>
-          </Card>
-        ))}
-      </div>
-      {!found.length && <Empty title={t('emptySearch')} />}
-      <Disclosure label="compactSources">
+      {params.get('view') === 'sources' ? (
         <ProgramEvidence all />
-      </Disclosure>
+      ) : (
+        <>
+          <label className="search-field">
+            <Search size={18} />
+            <input
+              type="search"
+              aria-label={t('search')}
+              placeholder={t('search')}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </label>
+          <div className="tabs">
+            {['all', ...new Set(articles.map((a) => a.category))].map((key) => (
+              <button
+                className={key === category ? 'active' : ''}
+                onClick={() => setCategory(key)}
+                key={key}
+              >
+                {t(key)}
+              </button>
+            ))}
+          </div>
+          <div className="reference-list">
+            {found.map((a) => (
+              <Card key={a.id}>
+                <details>
+                  <summary>
+                    <span className="eyebrow">{t(a.category)}</span>
+                    <h2>{local(a.title)}</h2>
+                  </summary>
+                  <div className="markdown reading">
+                    <ReactMarkdown>{local(a.body)}</ReactMarkdown>
+                  </div>
+                </details>
+              </Card>
+            ))}
+          </div>
+          {!found.length && <Empty title={t('emptySearch')} />}
+          <Disclosure label="compactSources">
+            <ProgramEvidence all />
+          </Disclosure>
+        </>
+      )}
     </>
   );
 }

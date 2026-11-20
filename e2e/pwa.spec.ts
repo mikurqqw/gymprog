@@ -45,8 +45,8 @@ test.describe('unconfigured profile', () => {
   }) => {
     await page.goto('/#/profile');
     await expect(page.getByLabel('Возраст', { exact: true })).toHaveValue('');
-    await expect(page.getByLabel('Рост (cm)', { exact: true })).toHaveValue('');
-    await expect(page.getByLabel('Масса тела (kg)', { exact: true })).toHaveValue('');
+    await expect(page.getByLabel('Рост (см)', { exact: true })).toHaveValue('');
+    await expect(page.getByLabel('Масса тела (кг)', { exact: true })).toHaveValue('');
     await page.goto('/#/workout');
     await expect(page.getByRole('link', { name: 'Перейти к настройке' })).toBeVisible();
     await expect(page.locator('.workout-line')).toHaveCount(0);

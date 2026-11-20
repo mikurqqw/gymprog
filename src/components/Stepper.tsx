@@ -79,7 +79,7 @@ export function Stepper({
             value={value}
             min={min}
             max={max}
-            step={step}
+            step="any"
             disabled={disabled}
             onChange={(event) => onChange(Number(event.target.value))}
           />

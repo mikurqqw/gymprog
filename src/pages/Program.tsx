@@ -11,7 +11,7 @@ import { useI18n } from '../i18n';
 import { Card, PageTitle, Weight } from '../components/ui';
 import { WeekSelector } from '../components/WeekSelector';
 import { WeeklyReview } from '../components/WeeklyReview';
-import { SeriesLinks } from '../components/SeriesLinks';
+import { ActiveSeriesLink } from '../components/ActiveSeriesLink';
 export default function Program() {
   const s = useStore(),
     { t, local, locale } = useI18n(),
@@ -31,11 +31,16 @@ export default function Program() {
         }
       />
       <ContextNotice kind="program" />
-      <SeriesLinks goal={s.profile.goal} />
+      <div className="inline">
+        <ActiveSeriesLink />
+        <Link className="button secondary" to="/profile?training=1">
+          {t('chooseTrainingPlan')}
+        </Link>
+      </div>
       <WeekSelector />
       <div className="section-heading">
         <h2>
-          {t('week')} {s.week} <span className="muted">/ {t('phase' + (s.week - 1))}</span>
+          {t('week')} {s.week}
         </h2>
         <span className="pill">{t(s.profile.goal)}</span>
       </div>
@@ -54,14 +59,14 @@ export default function Program() {
                     })}
                   </p>
                   <h2>
-                    {t('session')} {day + 1}
+                    {t('week')} {s.week} · {t('day')} {day + 1}
                   </h2>
                 </div>
                 <Link
                   to={
                     s.profile.goal === 'powerlifting' && s.week === 8 && day === 2
                       ? '/test'
-                      : '/workout'
+                      : '/workout?source=base'
                   }
                   onClick={() => update({ day })}
                   className="button secondary"

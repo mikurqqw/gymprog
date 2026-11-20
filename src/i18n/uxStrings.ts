@@ -18,7 +18,6 @@ export const uxStrings: Record<string, { ru: string; kk: string; en: string }> =
     kk: 'Браузер экранды қосулы ұстауға рұқсат бермеді. Құрылғы баптауларын тексеріңіз.',
     en: 'The browser did not allow a wake lock. Check device settings.',
   },
-  printWorkout: { ru: 'Распечатать тренировку', kk: 'Жаттығуды басып шығару', en: 'Print workout' },
   notFound: {
     ru: 'Здесь пока нет страницы',
     kk: 'Мұнда бет жоқ',

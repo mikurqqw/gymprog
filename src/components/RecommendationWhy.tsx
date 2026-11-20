@@ -49,7 +49,7 @@ export function RecommendationWhy({
       )}
       <p className="micro muted">{t('sfWhyLimits')}</p>
       <AlgorithmChip />
-      <Link className="text-link" to="/program">
+      <Link className="text-link" to="/reference?view=sources">
         {t('science')} →
       </Link>
     </details>

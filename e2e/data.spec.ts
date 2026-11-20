@@ -32,6 +32,7 @@ test('exercise replacement clears uncalibrated planned weight', async ({ page })
   await page.goto('/#/workout');
   const first = page.locator('.workout-line').first();
   await first.getByRole('button', { name: /Подробнее/ }).click();
+  await first.getByText('Заменить упражнение', { exact: true }).click();
   await first.getByRole('combobox', { name: 'Заменить', exact: true }).selectOption('ex-21');
   await expect(page.locator('.workout-line').first().locator('.workout-plan')).toContainText(
     'Подбери вес по RPE',

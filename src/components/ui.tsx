@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { ArrowUpRight, CircleHelp } from 'lucide-react';
 import { useI18n } from '../i18n';
-import { displayWeight } from '../lib/formulas';
+import { shown } from '../lib/measurements';
 export function PageTitle({
   eyebrow,
   title,
@@ -96,7 +96,7 @@ export function Weight({ value }: { value: number }) {
   const { units, weightUnit } = useI18n();
   return (
     <>
-      {displayWeight(value, units)} <small>{weightUnit}</small>
+      {shown(value, units)} <small>{weightUnit}</small>
     </>
   );
 }

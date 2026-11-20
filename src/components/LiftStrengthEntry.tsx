@@ -2,8 +2,8 @@ import type { OnboardingDraft } from '../lib/onboardingDraft';
 import type { Lift } from '../lib/schema';
 import { assessedStrength, type StrengthInput } from '../lib/strengthSetup';
 import { useI18n } from '../i18n';
-import { DraftNumber } from './DraftNumber';
-import { Num, Select } from './ui';
+import { MeasurementInput } from './MeasurementInput';
+import { Num, Select, Weight } from './ui';
 export function LiftStrengthEntry({
   lift,
   draft,
@@ -47,11 +47,10 @@ export function LiftStrengthEntry({
         }
       />
       {input.method === 'known' ? (
-        <DraftNumber
-          label={t(lift) + ' (kg)'}
+        <MeasurementInput
+          label={t(lift)}
           value={draft.lifts[lift].current}
-          min={1}
-          max={600}
+          limits={[1, 600]}
           example={40}
           onChange={(value) =>
             edit({
@@ -65,11 +64,10 @@ export function LiftStrengthEntry({
       ) : input.method === 'set' ? (
         <>
           <div className="form-grid">
-            <DraftNumber
+            <MeasurementInput
               label={t('setupRecentWeight')}
               value={input.weight}
-              min={0.25}
-              max={300}
+              limits={[0.25, 300]}
               example={30}
               onChange={(weight) => change({ weight })}
             />
@@ -91,7 +89,12 @@ export function LiftStrengthEntry({
           </div>
           <p className="micro muted">
             {t('setupEstimated')}
-            {estimate !== null ? ` · ${Math.round(estimate * 10) / 10} kg` : ''}
+            {estimate !== null && (
+              <>
+                {' '}
+                · <Weight value={estimate} />
+              </>
+            )}
           </p>
         </>
       ) : (

@@ -40,6 +40,7 @@ export function ProgramEditor() {
       replaceWithUndo({
         ...state,
         customProgram,
+        activeSeries: null,
         profile: {
           ...state.profile,
           goal: 'custom',

@@ -7,12 +7,12 @@ import { useProfileStore as useStore, update, replaceWithUndo } from '../lib/sto
 import { download, initialState, parseBackup } from '../lib/storage';
 import { demoData } from '../lib/demo';
 import { useI18n } from '../i18n';
-import { Card, Field, Num, PageTitle, Select } from '../components/ui';
+import { Card, PageTitle, Select } from '../components/ui';
+import { EquipmentSettings } from '../components/EquipmentSettings';
 export default function Settings() {
   const s = useStore(),
     { t } = useI18n(),
-    [message, setMessage] = useState(''),
-    [plateText, setPlateText] = useState(s.plateSizes.join(', '));
+    [message, setMessage] = useState('');
   return (
     <>
       <PageTitle title={t('settings')} />
@@ -46,42 +46,7 @@ export default function Settings() {
               onChange={(v) => update({ units: v as 'metric' | 'imperial' })}
             />
             <Disclosure label="compactEquipment">
-              <Num
-                label={t('rounding')}
-                value={s.profile.step}
-                min={0.25}
-                max={10}
-                step={0.25}
-                onChange={(v) => {
-                  if (v >= 0.25 && v <= 10) update({ profile: { ...s.profile, step: v } });
-                }}
-              />
-              <Num
-                label={t('bar') + ' (' + t('kg') + ')'}
-                value={s.bar}
-                max={30}
-                step={0.5}
-                onChange={(v) => {
-                  if (v >= 0 && v <= 30) update({ bar: v });
-                }}
-              />
-              <Field label={t('plates') + ' (' + t('kg') + ')'}>
-                <input
-                  value={plateText}
-                  onChange={(e) => setPlateText(e.target.value)}
-                  onBlur={() => {
-                    const plates = plateText.split(',').map((v) => Number(v.trim()));
-                    if (
-                      plates.length &&
-                      plates.length <= 20 &&
-                      plates.every((v) => v >= 0.25 && v <= 50)
-                    ) {
-                      update({ plateSizes: [...new Set(plates)] });
-                      setMessage(t('saved'));
-                    } else setMessage(t('invalid'));
-                  }}
-                />
-              </Field>
+              <EquipmentSettings key={s.units} announce={setMessage} />
             </Disclosure>
           </div>
         </Card>

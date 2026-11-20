@@ -89,7 +89,7 @@ export function SeriesTraining({
           (run && !seriesProgress(plan, previous).complete)
         )
           return {};
-        return { seriesRuns: [...old.seriesRuns, entry] };
+        return { seriesRuns: [...old.seriesRuns, entry], activeSeries: entry.program };
       });
       if (hasStorageError()) setFailed(true);
     } catch {

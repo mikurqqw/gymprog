@@ -41,9 +41,6 @@ export function WorkoutTools({ active = false }: { active?: boolean }) {
         />
         {t('keepAwake')}
       </label>
-      <button className="button secondary" onClick={() => window.print()}>
-        {t('printWorkout')}
-      </button>
       {message && <p role="status">{message}</p>}
     </div>
   );

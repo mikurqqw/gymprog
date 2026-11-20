@@ -3,6 +3,7 @@ import type { OnboardingDraft } from '../lib/onboardingDraft';
 import { useI18n } from '../i18n';
 import { Field } from './ui';
 import { DraftNumber } from './DraftNumber';
+import { MeasurementInput } from './MeasurementInput';
 export function NewProfileFields({
   draft,
   edit,
@@ -21,19 +22,18 @@ export function NewProfileFields({
         example={30}
         onChange={(age) => edit({ age })}
       />
-      <DraftNumber
-        label={t('height') + ' (cm)'}
+      <MeasurementInput
+        label={t('height')}
+        measure="height"
         value={draft.height}
-        min={120}
-        max={230}
+        limits={[120, 230]}
         example={175}
         onChange={(height) => edit({ height })}
       />
-      <DraftNumber
-        label={t('bodyweight') + ' (kg)'}
+      <MeasurementInput
+        label={t('bodyweight')}
         value={draft.weight}
-        min={35}
-        max={250}
+        limits={[35, 250]}
         example={70}
         onChange={(weight) => edit({ weight })}
       />

@@ -95,7 +95,8 @@ test('scoped replacement can be undone and restored', async ({ page }) => {
   const first = page.locator('.workout-line').first(),
     name = await first.locator('h2').innerText();
   await first.getByRole('button', { name: /Подробнее/ }).click();
-  await first.getByLabel('Применить к').selectOption('week');
+  await first.getByText('Заменить упражнение', { exact: true }).click();
+  await first.getByLabel('Применить замену').selectOption('week');
   await first.getByLabel('Заменить', { exact: true }).selectOption({ index: 1 });
   await expect(first.locator('h2')).not.toHaveText(name);
   await page.getByRole('button', { name: 'Отменить замену', exact: true }).click();

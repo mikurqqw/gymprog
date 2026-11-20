@@ -1,4 +1,4 @@
-import { activityLevels, calorieSafety } from '../lib/calorieSafety';
+import { activityLevels } from '../lib/calorieSafety';
 import { healthKeys } from '../lib/health';
 import { useState } from 'react';
 import { profileSchema, type Profile } from '../lib/schema';
@@ -14,7 +14,7 @@ export function NutritionPreferences() {
     setP({ ...p, [key]: value });
   return (
     <Card>
-      <h2>{t('nutritionGoal')}</h2>
+      <h2>{t('compactAdvanced')}</h2>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -23,7 +23,6 @@ export function NutritionPreferences() {
             update({
               profile: {
                 ...s.profile,
-                nutritionGoal: p.nutritionGoal,
                 activity: p.activity,
                 pace: p.pace,
                 diet: p.diet,
@@ -40,16 +39,6 @@ export function NutritionPreferences() {
         }}
       >
         <div className="form-grid">
-          <Select
-            label={t('nutritionGoal')}
-            value={p.nutritionGoal}
-            options={[
-              'maintain',
-              'gain',
-              ...(calorieSafety(p).deficitAllowed ? ['loss', 'recomp'] : []),
-            ].map((value) => ({ value, label: t(value) }))}
-            onChange={(v) => change('nutritionGoal', v as Profile['nutritionGoal'])}
-          />
           <Select
             label={t('activity')}
             value={String(p.activity)}

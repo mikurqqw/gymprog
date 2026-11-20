@@ -8,7 +8,8 @@ for (const language of ['ru', 'kk', 'en'] as const) {
       const first = page.locator('.workout-line').first(),
         name = await first.locator('h2').innerText();
       await first.getByRole('button', { name: new RegExp(t('readMore')) }).click();
-      await first.getByLabel(t('scope'), { exact: true }).selectOption(scope);
+      await first.getByText(t('changeExercise'), { exact: true }).click();
+      await first.getByLabel(t('replaceFor'), { exact: true }).selectOption(scope);
       await first.getByLabel(t('swap'), { exact: true }).selectOption({ index: 1 });
       await expect(first.locator('h2')).not.toHaveText(name);
       expect(

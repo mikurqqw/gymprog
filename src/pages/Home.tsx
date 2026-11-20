@@ -1,8 +1,10 @@
+import { HomeShortcuts } from '../components/HomeShortcuts';
+import { activeSeriesRun } from '../lib/activeSeries';
 import { HomeWeek } from '../components/HomeWeek';
 import { ActiveSeriesLink } from '../components/ActiveSeriesLink';
 import { Disclosure } from '../components/Disclosure';
 import { HomeSupportingCards } from '../components/HomeSupportingCards';
-import { ArrowRight, CalendarDays } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { HomeReadiness } from '../components/HomeReadiness';
 import { Link } from 'react-router-dom';
 import { useProfileStore as useStore, update } from '../lib/store';
@@ -25,6 +27,7 @@ import { RecommendationWhy } from '../components/RecommendationWhy';
 export function Home() {
   const state = useStore(),
     { t, local, locale } = useI18n(),
+    active = activeSeriesRun(state),
     rows = generate(
       state.profile,
       state.adjustments,
@@ -41,7 +44,9 @@ export function Home() {
   const session = target
       ? rows.filter((row) => row.week === target.week && row.day === target.day)
       : [],
-    checkin = state.checkins.find((entry) => entry.date === session[0]?.date),
+    checkin = active
+      ? state.checkins.at(-1)
+      : state.checkins.find((entry) => entry.date === session[0]?.date),
     readiness = checkin
       ? dailyReadiness(checkin, state.profile, state.checkins, state.foodLogs)
       : null,
@@ -55,78 +60,75 @@ export function Home() {
         title={t('sfDashboardTitle')}
         description={t('compactHomeLead')}
         action={
-          <Link className="button secondary" to="/catalog">
-            {t('sfPrograms')}
+          <Link className="button secondary" to="/profile?training=1">
+            {t('chooseTrainingPlan')}
             <ArrowRight size={16} />
           </Link>
         }
       />
-      {!state.onboarded && (
-        <Link className="onboarding-banner" to="/profile">
-          <span>
-            <b>{t('onboarding')}</b>
-            <span>{t('sfSetupText')}</span>
-          </span>
-          <ArrowRight size={20} />
-        </Link>
-      )}
-      <ActiveSeriesLink />
+      <HomeShortcuts />
       <div className="home-focus-grid">
-        <Card className="home-next">
-          <div className="section-heading">
-            <span className="pill">
-              {t('week')} {target?.week ?? state.week}/8 · {t(state.profile.goal)}
-            </span>
-            <CalendarDays size={22} />
-          </div>
-          <p className="eyebrow">{t(resume ? 'sfResumeTitle' : 'sfTodayTitle')}</p>
-          <h2>
-            {session[0] ? local(exerciseById(session[0].exercise).name) : t('sfCycleComplete')}
-          </h2>
-          <p className="muted">
-            {session[0]
-              ? formatDate(session[0].date, locale, {
-                  weekday: 'long',
-                  day: 'numeric',
-                  month: 'long',
-                })
-              : t('sfFullToolsText')}
-          </p>
-          {session.length > 0 && (
-            <>
-              <p>
-                {session.length} {t('library').toLowerCase()} · {stats.done}/{stats.planned}{' '}
-                {t('sfSetCount').toLowerCase()}
-              </p>
-              <ProgressBar
-                label={t('completion')}
-                value={(stats.done / Math.max(1, stats.planned)) * 100}
-              />
-              <Link
-                className="button"
-                to="/workout"
-                onClick={() => {
-                  if (target)
-                    update({
-                      week: target.week,
-                      day: target.day,
-                      workoutView: state.workoutView ?? 'focus',
-                    });
-                }}
-              >
-                {t(resume ? 'sfContinue' : 'startWorkout')}
+        {active ? (
+          <Card className="home-next">
+            <h2>{t('currentTrainingPlan')}</h2>
+            <ActiveSeriesLink />
+          </Card>
+        ) : (
+          <Card className="home-next">
+            <div className="section-heading">
+              <span className="pill">
+                {t('week')} {target?.week ?? state.week} · {t('day')}{' '}
+                {(target?.day ?? state.day) + 1}
+              </span>
+            </div>
+            <p className="eyebrow">{t(resume ? 'sfResumeTitle' : 'sfTodayTitle')}</p>
+            <h2>
+              {session[0] ? local(exerciseById(session[0].exercise).name) : t('sfCycleComplete')}
+            </h2>
+            <p className="muted">
+              {session[0]
+                ? formatDate(session[0].date, locale, {
+                    weekday: 'long',
+                    day: 'numeric',
+                    month: 'long',
+                  })
+                : t('sfFullToolsText')}
+            </p>
+            {session.length > 0 && (
+              <>
+                <p>
+                  {stats.done}/{stats.planned} {t('sfSetCount').toLowerCase()}
+                </p>
+                <ProgressBar
+                  label={t('completion')}
+                  value={(stats.done / Math.max(1, stats.planned)) * 100}
+                />
+                <Link
+                  className="button"
+                  to="/workout"
+                  onClick={() => {
+                    if (target)
+                      update({
+                        week: target.week,
+                        day: target.day,
+                        workoutView: state.workoutView ?? 'focus',
+                      });
+                  }}
+                >
+                  {t(resume ? 'sfContinue' : 'startWorkout')}
+                  <ArrowRight size={20} />
+                </Link>
+              </>
+            )}
+            {!session.length && (
+              <Link className="button" to="/catalog">
+                {t('sfChoose')}
                 <ArrowRight size={20} />
               </Link>
-            </>
-          )}
-          {!session.length && (
-            <Link className="button" to="/catalog">
-              {t('sfChoose')}
-              <ArrowRight size={20} />
-            </Link>
-          )}
-          <RecommendationWhy before={session} after={adjusted} readiness={readiness} />
-        </Card>
+            )}
+            <RecommendationWhy before={session} after={adjusted} readiness={readiness} />
+          </Card>
+        )}
         <HomeReadiness readiness={readiness} />
       </div>
       <Disclosure label="simpleMore">

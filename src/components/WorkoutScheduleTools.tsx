@@ -20,9 +20,10 @@ export function WorkoutScheduleTools({ days }: { days: number[] }) {
           <button
             key={day}
             className={state.day === day ? 'active' : ''}
+            aria-pressed={state.day === day}
             onClick={() => update({ day })}
           >
-            {t('session')} {day + 1}
+            {t('day')} {day + 1}
           </button>
         ))}
       </div>
@@ -30,9 +31,7 @@ export function WorkoutScheduleTools({ days }: { days: number[] }) {
   );
   return (
     <details className="focus-schedule">
-      <summary>
-        {t('week')} {state.week} · {t('session')} {state.day + 1} · {t('focusSessionOptions')}
-      </summary>
+      <summary>{t('focusSessionOptions')}</summary>
       {content}
     </details>
   );

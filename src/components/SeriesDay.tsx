@@ -6,17 +6,38 @@ import { Card } from './ui';
 const range = (low?: string, high?: string) =>
   low && high && Number(low) !== Number(high) ? low + '–' + high : low || high || '';
 const reference = (value?: string) => value?.split('/').at(-1);
-export function SeriesDay({ day, index }: { day: SeriesPlan['calendar'][number]; index: number }) {
-  const { language, t } = useI18n();
+export function SeriesDay({
+  day,
+  index,
+  blockDays,
+}: {
+  day: SeriesPlan['calendar'][number];
+  index: number;
+  blockDays: number;
+}) {
+  const { language, t, units, weightUnit } = useI18n();
   const s = seriesStrings,
     session = day.session;
   const warmup = range(session?.warmup_min, session?.warmup_max);
   return (
     <Card className="series-day">
       <h2>
-        {t('day')} {index + 1} · {day.work ? day.name || day.kind : s.recoveryDay[language]}
+        {t('week')} {Math.floor(index / 7) + 1} · {t('day')} {(index % 7) + 1}
       </h2>
-      <p className="micro muted">{day.phase}</p>
+      <p>{day.work ? day.name || day.kind : s.recoveryDay[language]}</p>
+      <details>
+        <summary>{s.original[language]}</summary>
+        <p>
+          {day.phase}
+          {blockDays !== 7 && (
+            <>
+              {' '}
+              · {s.block[language]} {Math.floor(index / blockDays) + 1} · {t('day')}{' '}
+              {(index % blockDays) + 1}
+            </>
+          )}
+        </p>
+      </details>
       {day.work && (
         <>
           {warmup && Number(warmup) !== 0 && (
@@ -65,7 +86,10 @@ export function SeriesDay({ day, index }: { day: SeriesPlan['calendar'][number];
                     )}
                     {work.load_unit && (
                       <p>
-                        {t('weight')} {work.load_unit}
+                        {t('weight')}{' '}
+                        {units === 'imperial'
+                          ? work.load_unit.replace('кг', weightUnit)
+                          : work.load_unit}
                       </p>
                     )}
                     {work.reference_lift && <p>1RM · {work.reference_lift}</p>}

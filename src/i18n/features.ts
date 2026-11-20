@@ -1,3 +1,4 @@
+import { trainingUiStrings } from './trainingUiStrings';
 import { simpleStrings } from './simpleStrings';
 import { compactStrings } from './compactStrings';
 import { foodStatusStrings } from './foodStatusStrings';
@@ -20,6 +21,7 @@ import { privacyStrings } from './privacyStrings';
 import { injuryStrings } from './injuryStrings';
 export const featureStrings: Record<string, { ru: string; kk: string; en: string }> = {
   ...simpleStrings,
+  ...trainingUiStrings,
   ...navigationStrings,
   ...focusStrings,
   ...onboardingStrings,

@@ -99,6 +99,7 @@ export default function Builder() {
           onClick={() => {
             update({
               profile,
+              activeSeries: null,
               week: 1,
               day: 0,
               customProgram:

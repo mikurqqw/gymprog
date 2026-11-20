@@ -5,8 +5,8 @@ async function body(page: import('@playwright/test').Page) {
   await page.goto('/#/profile');
   await expect(page.locator('.onboarding-goals input')).toHaveCount(0);
   await page.getByLabel('Возраст', { exact: true }).fill('30');
-  await page.getByLabel('Рост (cm)', { exact: true }).fill('175');
-  await page.getByLabel('Масса тела (kg)', { exact: true }).fill('70');
+  await page.getByLabel('Рост (см)', { exact: true }).fill('175');
+  await page.getByLabel('Масса тела (кг)', { exact: true }).fill('70');
   await page
     .getByRole('combobox', { name: 'Пол для расчёта калорий', exact: true })
     .selectOption('male');
@@ -56,14 +56,14 @@ test('known and estimated strength choices autosave and remain explicit', async 
   await entries.nth(0).getByRole('combobox').selectOption('known');
   await entries.nth(0).getByRole('spinbutton').fill('60');
   await entries.nth(1).getByRole('combobox').selectOption('set');
-  await entries.nth(1).getByLabel('Вес недавнего подхода (kg)', { exact: true }).fill('30');
+  await entries.nth(1).getByLabel('Вес недавнего подхода (кг)', { exact: true }).fill('30');
   await expect(entries.nth(1)).toContainText('Расчётная оценка, не проверенный максимум');
   await page.reload();
   await expect(page.getByLabel('Возраст', { exact: true })).toHaveValue('30');
   await page.getByRole('button', { name: 'Далее', exact: true }).click();
   await expect(entries.nth(0).getByRole('spinbutton')).toHaveValue('60');
   await expect(
-    entries.nth(1).getByLabel('Вес недавнего подхода (kg)', { exact: true }),
+    entries.nth(1).getByLabel('Вес недавнего подхода (кг)', { exact: true }),
   ).toHaveValue('30');
   await page.getByRole('button', { name: 'Далее', exact: true }).click();
   await page.getByRole('button', { name: 'Начать цикл', exact: true }).click();

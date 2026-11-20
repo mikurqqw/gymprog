@@ -27,8 +27,8 @@ for (const language of ['ru', 'kk', 'en'] as const)
       String(new Date().getFullYear() - 2000),
     );
     await page.getByLabel(t('age'), { exact: true }).fill('30');
-    await page.getByLabel(t('height') + ' (cm)', { exact: true }).fill('175');
-    await page.getByLabel(t('bodyweight') + ' (kg)', { exact: true }).fill('70');
+    await page.getByLabel(t('height') + ' (' + t('cm') + ')', { exact: true }).fill('175');
+    await page.getByLabel(t('bodyweight') + ' (' + t('kg') + ')', { exact: true }).fill('70');
     await page.getByRole('combobox', { name: t('sex'), exact: true }).selectOption('male');
     await page.getByRole('button', { name: t('next'), exact: true }).click();
     await expect(page.locator('.strength-entry')).toHaveCount(3);

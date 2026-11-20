@@ -15,13 +15,14 @@ import { dateOffset, today } from '../lib/formulas';
 import { download } from '../lib/storage';
 import { useDiaryI18n as useI18n } from '../i18n/useDiaryI18n';
 import { Card, Empty, Field, Num, PageTitle, Weight } from '../components/ui';
+import { NutritionTargetsControls } from '../components/NutritionTargetsControls';
 import { NutritionPreferences } from '../components/NutritionPreferences';
 const foods = foodsRaw as Food[];
 export default function Nutrition() {
   const s = useStore(),
     { t, local } = useI18n(),
     [foodError, setFoodError] = useState(''),
-    [dayType, setDayType] = useState<'heavy' | 'medium' | 'rest'>('medium'),
+    dayType = s.nutritionDayType,
     [date, setDate] = useState(today()),
     [quickKcal, setQuickKcal] = useState(300),
     [quickProtein, setQuickProtein] = useState(20),
@@ -90,22 +91,8 @@ export default function Nutrition() {
   return (
     <>
       <PageTitle compact title={t('nutrition')} description={t('nutritionTiming')} />
-      <div className="tabs">
-        {(['heavy', 'medium', 'rest'] as const).map((key) => (
-          <button
-            key={key}
-            className={dayType === key ? 'active' : ''}
-            onClick={() => {
-              setDayType(key);
-              setSwapped({});
-            }}
-          >
-            {t(key === 'rest' ? 'restDay' : key === 'medium' ? 'mediumDay' : key)}
-          </button>
-        ))}
-      </div>
-      <CalorieNotice />
-      {(s.profile.goal === 'fatloss' || s.profile.nutritionGoal === 'loss') && <CuttingGuide />}
+      <NutritionTargetsControls resetMenu={() => setSwapped({})} />
+      {!target.deficitAllowed && <CalorieNotice />}
       {target.automaticAllowed && (
         <>
           <div className="nutrition-stats">
@@ -134,6 +121,8 @@ export default function Nutrition() {
         </>
       )}
       <div className="two-columns">
+        {target.deficitAllowed && <CalorieNotice />}
+        {s.profile.nutritionGoal === 'loss' && target.deficitAllowed && <CuttingGuide />}
         <Card>
           <h2>{t('foodLog')}</h2>
           <Field label={t('day')}>
@@ -232,7 +221,7 @@ export default function Nutrition() {
           )}
         </Card>
         <Disclosure label="compactAdvanced">
-          <NutritionPreferences />
+          <NutritionPreferences key={s.profile.nutritionGoal} />
         </Disclosure>
       </div>
       <Disclosure label="compactMenu">

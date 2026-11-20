@@ -26,7 +26,7 @@ export function HomeWeek({ groups }: { groups: Planned[][] }) {
           return (
             <Link
               className="home-week-session"
-              to="/workout"
+              to="/workout?source=base"
               key={first.day}
               onClick={() => update({ day: first.day })}
             >
@@ -37,7 +37,10 @@ export function HomeWeek({ groups }: { groups: Planned[][] }) {
                   month: 'short',
                 })}
               </span>
-              <h3>{local(exerciseById(first.exercise).name)}</h3>
+              <h3>
+                {t('week')} {first.week} · {t('day')} {first.day + 1}
+              </h3>
+              <span>{local(exerciseById(first.exercise).name)}</span>
               <span className="micro muted">
                 {finished ? t('sfFinished') : `${summary.done}/${summary.planned} ${t('sets')}`}
               </span>

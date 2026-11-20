@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { useI18n } from '../i18n';
+import { trainingLevels } from '../lib/trainingLevels';
 import { Num, Select } from './ui';
 const experienceInput = z.number().min(0).max(60);
 export function ExperienceField({
@@ -14,17 +15,17 @@ export function ExperienceField({
     const parsed = experienceInput.safeParse(next);
     if (parsed.success) onChange(parsed.data);
   };
-  const level = value === 0 ? 0 : value < 1 ? 1 : value < 3 ? 2 : value < 5 ? 3 : 4;
+  const level = value < 1 ? 0 : value < 3 ? 1 : 2;
   return (
     <div className="experience-field">
       <Select
         label={t('experienceLevel')}
         value={String(level)}
-        options={[0, 1, 2, 3, 4].map((level) => ({
+        options={trainingLevels.map((label, level) => ({
           value: String(level),
-          label: t('experience' + level),
+          label: t(label),
         }))}
-        onChange={(next) => change([0, 0.5, 2, 4, 8][Number(next)])}
+        onChange={(next) => change([0, 2, 4][Number(next)])}
       />
       <details>
         <summary>{t('experienceExact')}</summary>

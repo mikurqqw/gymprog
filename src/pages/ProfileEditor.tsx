@@ -1,22 +1,16 @@
+import { MeasurementInput } from '../components/MeasurementInput';
 import { ExperienceField } from '../components/ExperienceField';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Check, Info } from 'lucide-react';
 import { useProfileStore as useStore, update } from '../lib/store';
 import { liftIds, profileSchema, type Lift, type Profile as ProfileType } from '../lib/schema';
-import {
-  displayWeight,
-  e1rm,
-  fromWeight,
-  nextMonday,
-  roundTo,
-  strengthLevel,
-} from '../lib/formulas';
+import { e1rm, nextMonday, roundTo, strengthLevel } from '../lib/formulas';
 import { useI18n } from '../i18n';
 import { Card, Field, Num, PageTitle, Select, Weight } from '../components/ui';
 export default function Profile() {
   const s = useStore(),
-    { t, units, weightUnit } = useI18n(),
+    { t } = useI18n(),
     navigate = useNavigate();
   const [p, setP] = useState(s.profile),
     [step, setStep] = useState(0),
@@ -40,6 +34,7 @@ export default function Profile() {
     update({
       profile: { ...parsed.data, days: p.goal === 'powerlifting' ? 3 : p.days },
       onboarded: true,
+      ...(s.profile.goal !== p.goal ? { activeSeries: null } : {}),
     });
     navigate('/');
   };
@@ -79,21 +74,18 @@ export default function Profile() {
                   max={90}
                   onChange={(v) => change('age', v)}
                 />
-                <Num
-                  label={t('height') + ' (' + t(units === 'metric' ? 'cm' : 'in') + ')'}
-                  value={Math.round((p.height / (units === 'metric' ? 1 : 2.54)) * 10) / 10}
-                  min={units === 'metric' ? 120 : 47}
-                  max={units === 'metric' ? 230 : 91}
-                  step={0.1}
-                  onChange={(v) => change('height', v * (units === 'metric' ? 1 : 2.54))}
+                <MeasurementInput
+                  label={t('height')}
+                  measure="height"
+                  value={p.height}
+                  limits={[120, 230]}
+                  onChange={(value) => change('height', value ?? NaN)}
                 />
-                <Num
-                  label={t('bodyweight') + ' (' + weightUnit + ')'}
-                  value={displayWeight(p.weight, units)}
-                  min={units === 'metric' ? 35 : 77}
-                  max={units === 'metric' ? 250 : 551}
-                  step={0.1}
-                  onChange={(v) => change('weight', fromWeight(v, units))}
+                <MeasurementInput
+                  label={t('bodyweight')}
+                  value={p.weight}
+                  limits={[35, 250]}
+                  onChange={(value) => change('weight', value ?? NaN)}
                 />
                 <Select
                   label={t('sex')}
@@ -139,13 +131,11 @@ export default function Profile() {
                   options={['gym', 'limited', 'home'].map((value) => ({ value, label: t(value) }))}
                   onChange={(v) => change('equipment', v as ProfileType['equipment'])}
                 />
-                <Num
-                  label={t('rounding')}
+                <MeasurementInput
+                  label={t('planRounding')}
                   value={p.step}
-                  min={0.25}
-                  max={10}
-                  step={0.25}
-                  onChange={(v) => change('step', v)}
+                  limits={[0.25, 10]}
+                  onChange={(value) => change('step', value ?? NaN)}
                 />
               </div>
               {p.start && p.start !== nextMonday(p.start) && (
@@ -201,25 +191,17 @@ export default function Profile() {
                     ).map((key) => (
                       <div key={key}>
                         <h3>{t(key)}</h3>
-                        <Num
-                          label={t('current') + ' (' + weightUnit + ')'}
-                          value={displayWeight(p.special[key] ?? 0, units)}
-                          min={0}
-                          max={units === 'metric' ? 300 : 661}
-                          step={0.5}
-                          onChange={(v) =>
-                            change('special', { ...p.special, [key]: fromWeight(v, units) })
-                          }
+                        <MeasurementInput
+                          label={t('current')}
+                          value={p.special[key] ?? 0}
+                          limits={[0, 300]}
+                          onChange={(v) => change('special', { ...p.special, [key]: v ?? NaN })}
                         />
-                        <Num
-                          label={t('pr') + ' (' + weightUnit + ')'}
-                          value={displayWeight(p.specialPr[key] ?? p.special[key] ?? 0, units)}
-                          min={0}
-                          max={units === 'metric' ? 300 : 661}
-                          step={0.5}
-                          onChange={(v) =>
-                            change('specialPr', { ...p.specialPr, [key]: fromWeight(v, units) })
-                          }
+                        <MeasurementInput
+                          label={t('pr')}
+                          value={p.specialPr[key] ?? p.special[key] ?? 0}
+                          limits={[0, 300]}
+                          onChange={(v) => change('specialPr', { ...p.specialPr, [key]: v ?? NaN })}
                         />
                         <Num
                           label={t('form')}
@@ -238,21 +220,17 @@ export default function Profile() {
                 <div className="lift-profile" key={lift}>
                   <h3>{t(lift)}</h3>
                   <div className="form-grid">
-                    <Num
-                      label={t('current') + ' (' + weightUnit + ')'}
-                      value={displayWeight(p.lifts[lift].current, units)}
-                      min={1}
-                      max={units === 'metric' ? 600 : 1322}
-                      step={0.1}
-                      onChange={(v) => liftChange(lift, 'current', fromWeight(v, units))}
+                    <MeasurementInput
+                      label={t('current')}
+                      value={p.lifts[lift].current}
+                      limits={[1, 600]}
+                      onChange={(v) => liftChange(lift, 'current', v ?? NaN)}
                     />
-                    <Num
-                      label={t('pr') + ' (' + weightUnit + ')'}
-                      value={displayWeight(p.lifts[lift].pr, units)}
-                      min={1}
-                      max={units === 'metric' ? 600 : 1322}
-                      step={0.1}
-                      onChange={(v) => liftChange(lift, 'pr', fromWeight(v, units))}
+                    <MeasurementInput
+                      label={t('pr')}
+                      value={p.lifts[lift].pr}
+                      limits={[1, 600]}
+                      onChange={(v) => liftChange(lift, 'pr', v ?? NaN)}
                     />
                     <Field label={t('form')} hint={t('formTip')}>
                       <input
@@ -279,11 +257,11 @@ export default function Profile() {
                   </button>
                   {estimate === lift && (
                     <div className="estimate-form">
-                      <Num
-                        label={t('weight') + ' (' + weightUnit + ')'}
-                        value={displayWeight(setWeight, units)}
-                        onChange={(v) => setSetWeight(fromWeight(v, units))}
-                        step={0.5}
+                      <MeasurementInput
+                        label={t('weight')}
+                        value={setWeight}
+                        limits={[0, 600]}
+                        onChange={(v) => setSetWeight(v ?? 0)}
                       />
                       <Num label={t('reps')} value={reps} min={1} max={10} onChange={setReps} />
                       <Num label="RPE" value={rpe} min={6} max={10} step={0.5} onChange={setRpe} />

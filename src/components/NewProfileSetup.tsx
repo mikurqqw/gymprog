@@ -13,7 +13,7 @@ import { useI18n } from '../i18n';
 import { Card, PageTitle } from './ui';
 export function NewProfileSetup() {
   const state = useStore(),
-    { t, units } = useI18n(),
+    { t } = useI18n(),
     navigate = useNavigate(),
     [step, setStep] = useState(0),
     [error, setError] = useState('');
@@ -73,7 +73,6 @@ export function NewProfileSetup() {
             </>
           )}
         </Card>
-        {units === 'imperial' && <p className="micro muted">{t('onboardingMetricNotice')}</p>}
         {error && <p role="alert">{error}</p>}
         <div className="form-actions">
           {step > 0 && (

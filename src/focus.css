@@ -71,8 +71,9 @@
   font-size: 12px;
   font-weight: 400;
 }
-.focus-set.is-done {
-  opacity: 0.8;
+.focus-set.is-done h3 span {
+  color: var(--text);
+  font-weight: 600;
 }
 .focus-numbers {
   display: grid;
@@ -92,4 +93,44 @@
 }
 .focus-options-button {
   width: 100%;
+}
+
+.workout-day-title {
+  margin-block: 12px;
+}
+.focus-exercise {
+  background: var(--surface);
+  box-shadow: none;
+}
+.focus-exercise .workout-line-heading {
+  display: block;
+}
+.focus-exercise .workout-plan {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  padding: 12px;
+  font-size: 14px;
+  gap: 8px 16px;
+}
+.focus-exercise .workout-line-heading p {
+  font-size: 13px;
+}
+.workout-detail > details {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.workout-detail > details > summary {
+  padding-block: 4px;
+  min-height: 44px;
+  align-content: center;
+  cursor: pointer;
+}
+.home-shortcuts {
+  margin-block: 8px 16px;
+}
+.home-shortcuts .button {
+  flex: 0 1 auto;
 }

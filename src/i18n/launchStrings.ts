@@ -11,9 +11,4 @@ export const launchStrings: Record<string, { ru: string; kk: string; en: string 
     kk: 'Белгілі ағымдағы көрсеткіштерді енгізіңіз. Сауалнаманы толтыру үшін максимумды арнайы тексермеңіз.',
     en: 'Enter known current values. Do not test a maximum just to complete this form.',
   },
-  onboardingMetricNotice: {
-    ru: 'На этом шаге рост вводится в сантиметрах, вес — в килограммах. Отображение в фунтах сохранится в приложении.',
-    kk: 'Осы қадамда бой сантиметрмен, салмақ килограммен енгізіледі. Қолданбада фунтпен көрсету сақталады.',
-    en: 'This step uses centimeters and kilograms. Your pounds display preference remains saved for the app.',
-  },
 };

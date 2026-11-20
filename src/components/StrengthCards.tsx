@@ -31,7 +31,7 @@ export function StrengthCards() {
             </span>
             <span className={p.lifts[lift].current < p.lifts[lift].pr ? 'muted' : 'accent'}>
               {p.lifts[lift].current - p.lifts[lift].pr > 0 ? '+' : ''}
-              {p.lifts[lift].current - p.lifts[lift].pr} {t('kg')}
+              <Weight value={p.lifts[lift].current - p.lifts[lift].pr} />
             </span>
           </div>
           <div className="strength-rule">
@@ -59,7 +59,7 @@ export function StrengthCards() {
             </b>
           </span>
           <span>
-            {liftIds.reduce((a, l) => a + p.lifts[l].current - p.lifts[l].pr, 0)} {t('kg')}
+            <Weight value={liftIds.reduce((a, l) => a + p.lifts[l].current - p.lifts[l].pr, 0)} />
           </span>
         </div>
         <div className="strength-rule">

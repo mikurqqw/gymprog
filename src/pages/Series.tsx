@@ -5,6 +5,7 @@ import { seriesStrings } from '../i18n/seriesStrings';
 import { loadVariants, matchesVariant, seriesId, type SeriesId } from '../lib/fitSeries';
 import { useProfileStore } from '../lib/store';
 import { Card, PageTitle, Select } from '../components/ui';
+import { SeriesVariantPicker } from '../components/SeriesVariantPicker';
 import { SeriesTraining } from '../components/SeriesTraining';
 import { useSeriesData } from '../components/useSeriesData';
 
@@ -32,13 +33,15 @@ function SeriesPage({ id }: { id: SeriesId }) {
       : null;
   return (
     <>
-      <PageTitle
-        title={s[id][language]}
-        description={s[id === 'gym_first_month' ? 'intro' : 'three'][language]}
-      />
-      <Link className="text-link" to="/catalog">
-        {t('sfBackCatalog')} →
-      </Link>
+      <PageTitle title={s[id][language]} />
+      <div className="inline">
+        <Link className="text-link" to="/profile?training=1">
+          {t('chooseTrainingPlan')} →
+        </Link>
+        <Link className="text-link" to="/catalog">
+          {t('sfBackCatalog')} →
+        </Link>
+      </div>
       <Card>
         {!result && <p role="status">{t('loading')}</p>}
         {result && 'failed' in result && (
@@ -55,15 +58,7 @@ function SeriesPage({ id }: { id: SeriesId }) {
         {!run && variants.length > 0 && (
           <>
             <p>{s.choose[language]}</p>
-            <Select
-              label={s.variant[language]}
-              value={selected}
-              options={[
-                { value: '', label: t('selectValue') },
-                ...variants.map((item) => ({ value: item.id, label: item.title })),
-              ]}
-              onChange={setSelected}
-            />
+            <SeriesVariantPicker value={selected} variants={variants} onChange={setSelected} />
             {variant && selectedMode && (
               <Select
                 label={t('equipment')}

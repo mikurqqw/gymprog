@@ -10,7 +10,9 @@ for (const language of ['ru', 'kk', 'en'] as const)
     await expect(
       page.getByLabel(t('bodyweight') + ' (' + t('kg') + ')', { exact: true }),
     ).toHaveValue('77');
-    await page.getByRole('combobox', { name: t('experienceLevel'), exact: true }).selectOption('3');
+    const experience = page.getByRole('combobox', { name: t('experienceLevel'), exact: true });
+    await expect(experience.locator('option')).toHaveCount(3);
+    await experience.selectOption({ label: t('trainingAdvanced') });
     await page.getByLabel(t('height') + ' (' + t('cm') + ')', { exact: true }).fill('180');
     await page.getByRole('button', { name: t('save'), exact: true }).click();
     await expect(page.getByRole('status')).toContainText(t('saved'));

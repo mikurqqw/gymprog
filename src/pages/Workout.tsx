@@ -1,6 +1,6 @@
-import { Disclosure } from '../components/Disclosure';
+import { WorkoutSessionStats } from '../components/WorkoutSessionStats';
 import { ContextNotice } from '../components/ContextNotice';
-import { ActiveSeriesLink } from '../components/ActiveSeriesLink';
+import { activeSeriesRun } from '../lib/activeSeries';
 import { WorkoutFocus } from '../components/WorkoutFocus';
 import { sessionStats } from '../lib/sessionInsights';
 import { RecommendationWhy } from '../components/RecommendationWhy';
@@ -9,15 +9,23 @@ import { WorkoutScheduleTools } from '../components/WorkoutScheduleTools';
 import { formatDate } from '../lib/formulas';
 import { sessionMinutes } from '../lib/templateProgression';
 import { dailyReadiness } from '../lib/dailyReadiness';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useSearchParams } from 'react-router-dom';
 import { ArrowRight, HeartPulse } from 'lucide-react';
 import { useProfileStore as useStore, update } from '../lib/store';
 import { generate } from '../lib/plannedProgram';
 import { regulate } from '../lib/autoregulation';
 import { useI18n } from '../i18n';
-import { Card, Empty, PageTitle, Weight } from '../components/ui';
+import { Card, Empty, PageTitle } from '../components/ui';
 import { WorkoutLine } from '../components/WorkoutLine';
 export default function Workout() {
+  const active = activeSeriesRun(useStore());
+  const [params] = useSearchParams();
+  if (active && params.get('source') !== 'base')
+    return <Navigate replace to={'/series/' + active.program} />;
+  return <WorkoutDay />;
+}
+
+function WorkoutDay() {
   const s = useStore(),
     { t, locale } = useI18n(),
     rows = generate(s.profile, s.adjustments, s.shifts, s.swaps, s.customProgram).filter(
@@ -59,7 +67,9 @@ export default function Workout() {
         }
       />
       <ContextNotice kind="workout" />
-      <ActiveSeriesLink />
+      <h2 className="workout-day-title">
+        {t('week')} {s.week} · {t('day')} {s.day + 1}
+      </h2>
       <WorkoutScheduleTools days={days} />
       <div className={'compact-readiness readiness-notice ' + (r?.level ?? '')}>
         <HeartPulse size={20} />
@@ -131,29 +141,7 @@ export default function Workout() {
         </>
       )}
       <WorkoutResult rows={lines} />
-      <Disclosure label="sfSummary">
-        <Card>
-          <h2>{t('session')}</h2>
-          <div className="stat-grid">
-            <div>
-              {t('tonnage')}
-              <strong>
-                <Weight value={stats.tonnage} />
-              </strong>
-            </div>
-            <div>
-              {t('averageRpe')}
-              <strong>{stats.averageRpe?.toFixed(1) ?? '—'}</strong>
-            </div>
-            <div>
-              {t('completion')}
-              <strong>
-                {Math.min(100, Math.round((stats.done / Math.max(1, stats.planned)) * 100))}%
-              </strong>
-            </div>
-          </div>
-        </Card>
-      </Disclosure>
+      <WorkoutSessionStats stats={stats} />
     </>
   );
 }

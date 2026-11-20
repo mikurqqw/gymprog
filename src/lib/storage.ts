@@ -1,5 +1,6 @@
 import { foodLogSchema } from './foodLog';
-import { seriesRun } from './fitSeries';
+import { seriesId, seriesRun } from './fitSeries';
+import { imperialEquipment } from './equipment';
 import { onboardingDraftSchema, newUserProfile } from './onboardingDraft';
 import { programDocumentSchema } from './programDocument';
 import { z } from 'zod';
@@ -29,6 +30,14 @@ export const stateSchema = z.lazy(() =>
       .default({}),
     customProgram: programDocumentSchema.nullable().default(null),
     seriesRuns: z.array(seriesRun).max(1000).default([]),
+    activeSeries: seriesId.nullable().optional(),
+    imperialEquipment: z
+      .object({
+        bar: z.number().min(0).max(30),
+        step: z.number().min(0.25).max(10),
+        plates: z.array(z.number().min(0.25).max(50)).min(1).max(20),
+      })
+      .default(imperialEquipment),
     profile: profileSchema.nullable(),
     draftProfile: onboardingDraftSchema.default(newUserProfile),
     onboarded: z.boolean(),
@@ -44,6 +53,7 @@ export const stateSchema = z.lazy(() =>
     swaps: z.record(z.string(), z.string()),
     timer: z.number().nullable(),
     foodLogs: z.array(foodLogSchema).max(50000),
+    nutritionDayType: z.enum(['heavy', 'medium', 'rest']).default('medium'),
     attempts: z.record(
       z.string(),
       z
@@ -70,6 +80,8 @@ export const initialState: AppState = {
   sessionCompletions: {},
   customProgram: null,
   seriesRuns: [],
+  activeSeries: undefined,
+  imperialEquipment,
   profile: null,
   draftProfile: newUserProfile,
   onboarded: false,
@@ -85,6 +97,7 @@ export const initialState: AppState = {
   swaps: {},
   timer: null,
   foodLogs: [],
+  nutritionDayType: 'medium',
   attempts: {},
   plateSizes: [25, 20, 15, 10, 5, 2.5, 1.25],
   bar: 20,
@@ -98,7 +111,7 @@ export function parseBackup(raw: string): AppState {
     result.logs.some((log) => !ids.has(log.exercise))
   )
     throw Error('Unknown exercise');
-  return result;
+  return { ...result, activeSeries: result.activeSeries };
 }
 export function readStorage() {
   try {

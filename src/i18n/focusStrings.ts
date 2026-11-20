@@ -4,11 +4,6 @@ export const focusStrings: Record<string, { ru: string; kk: string; en: string }
     kk: 'Кесте және баптаулар',
     en: 'Schedule and settings',
   },
-  focusExerciseOptions: {
-    ru: 'Замена, разминка и запись',
-    kk: 'Ауыстыру, қыздыру және жазба',
-    en: 'Replacement, warm-up and notes',
-  },
   focusView: { ru: 'Фокус', kk: 'Назар', en: 'Focus' },
   focusOverview: { ru: 'Обзор', kk: 'Шолу', en: 'Overview' },
   focusSet: { ru: 'Подход', kk: 'Сет', en: 'Set' },

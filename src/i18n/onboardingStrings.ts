@@ -23,9 +23,9 @@ export const onboardingStrings: Record<string, { ru: string; kk: string; en: str
     en: 'Calculated estimate, not a tested maximum',
   },
   setupRecentWeight: {
-    ru: 'Вес недавнего подхода (kg)',
-    kk: 'Жуырдағы сет салмағы (kg)',
-    en: 'Recent set weight (kg)',
+    ru: 'Вес недавнего подхода',
+    kk: 'Жуырдағы сет салмағы',
+    en: 'Recent set weight',
   },
   setupRecentReps: {
     ru: 'Повторы в подходе (1–10)',

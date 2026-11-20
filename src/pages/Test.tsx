@@ -1,3 +1,4 @@
+import { MeasurementInput } from '../components/MeasurementInput';
 import { ContextNotice } from '../components/ContextNotice';
 import { UnassessedStrength } from '../components/UnassessedStrength';
 import { maxTestingAllowed } from '../lib/injuries';
@@ -7,12 +8,12 @@ import { useState } from 'react';
 import { useProfileStore as useStore, update, replaceWithUndo, startRest } from '../lib/store';
 import { liftIds } from '../lib/schema';
 import { nextAttempt, type Attempt } from '../lib/testAttempts';
-import { dateOffset, displayWeight, fromWeight, nextMonday } from '../lib/formulas';
+import { dateOffset, nextMonday } from '../lib/formulas';
 import { useI18n } from '../i18n';
 import { Card, Field, Num, PageTitle, Weight } from '../components/ui';
 export default function Test() {
   const s = useStore(),
-    { t, units, weightUnit } = useI18n(),
+    { t } = useI18n(),
     [safe, setSafe] = useState(false),
     [skipped, setSkipped] = useState<string[]>([]),
     date = s.shifts['8-2'] ?? dateOffset(s.profile.start, 53),
@@ -87,15 +88,18 @@ export default function Test() {
                     <strong>
                       {t('attempt')} {i + 1}
                     </strong>
-                    <Num
-                      label={t('weight') + ' (' + weightUnit + ')'}
-                      value={displayWeight(a.weight, units)}
-                      min={1}
-                      max={units === 'metric' ? 800 : 1764}
-                      step={0.5}
-                      onChange={(v) => {
-                        const weight = fromWeight(v, units);
-                        if (!Number.isFinite(weight) || weight <= 0 || weight > 800) return;
+                    <MeasurementInput
+                      label={t('weight')}
+                      value={a.weight}
+                      limits={[1, 800]}
+                      onChange={(weight) => {
+                        if (
+                          weight === null ||
+                          !Number.isFinite(weight) ||
+                          weight <= 0 ||
+                          weight > 800
+                        )
+                          return;
                         store(
                           lift,
                           attempts.map((x, j) =>

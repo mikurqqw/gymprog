@@ -3,7 +3,8 @@ import { nextMonday, today } from '../lib/formulas';
 import { liftIds } from '../lib/schema';
 import { useI18n } from '../i18n';
 import { OnboardingInjuries } from './OnboardingInjuries';
-import { Field, Num, Select } from './ui';
+import { Field, Num, Select, Weight } from './ui';
+import { shown } from '../lib/measurements';
 export function OnboardingSchedule({
   draft,
   edit,
@@ -11,7 +12,7 @@ export function OnboardingSchedule({
   draft: OnboardingDraft;
   edit: (patch: Partial<OnboardingDraft>) => void;
 }) {
-  const { t } = useI18n();
+  const { t, units, heightUnit } = useI18n();
   return (
     <>
       <div className="form-grid">
@@ -56,17 +57,20 @@ export function OnboardingSchedule({
           {draft.start ?? nextMonday(today())}
         </p>
         <p>
-          {draft.age} · {draft.height} cm · {draft.weight} kg
+          {draft.age} · {shown(draft.height, units, 'height')} {heightUnit} ·{' '}
+          {draft.weight !== null && <Weight value={draft.weight} />}
         </p>
         <ul>
           {liftIds.map((lift) => (
             <li key={lift}>
               {t(lift)}:{' '}
-              {draft.strengthInputs[lift].method === 'unknown'
-                ? t('setupUnknown')
-                : draft.strengthInputs[lift].method === 'set'
-                  ? t('setupEstimated')
-                  : `${draft.lifts[lift].current ?? '—'} kg`}
+              {draft.strengthInputs[lift].method === 'unknown' ? (
+                t('setupUnknown')
+              ) : draft.strengthInputs[lift].method === 'set' ? (
+                t('setupEstimated')
+              ) : (
+                <Weight value={draft.lifts[lift].current ?? 0} />
+              )}
             </li>
           ))}
         </ul>

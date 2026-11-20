@@ -24,8 +24,8 @@ export function SeriesSchedule({
   const progress = seriesProgress(plan, run);
   const [selection, setSelection] = useState<number>();
   const index = selection ?? progress.next ?? 0;
-  const block = Math.floor(index / plan.days);
-  const days = plan.calendar.slice(block * plan.days, (block + 1) * plan.days);
+  const week = Math.floor(index / 7);
+  const days = plan.calendar.slice(week * 7, (week + 1) * 7);
   const current = plan.calendar[index];
   return (
     <>
@@ -34,27 +34,24 @@ export function SeriesSchedule({
           {s.cycle[language]} {['I', 'II', 'III'][plan.cycle - 1]}
         </h2>
         <p>{plan.title}</p>
-        <p>
-          {s.block[language]} {block + 1}/{plan.blocks} · {s.days[language]} {plan.days}
-        </p>
         <p role="status">
           {s.completed[language]} {progress.done}/{progress.total}
         </p>
         <div className="form-grid">
           <Select
-            label={s.block[language]}
-            value={String(block)}
-            options={Array.from({ length: plan.blocks }, (_, i) => ({
+            label={t('week')}
+            value={String(week)}
+            options={Array.from({ length: Math.ceil(plan.calendar.length / 7) }, (_, i) => ({
               value: String(i),
               label: String(i + 1),
             }))}
-            onChange={(value) => setSelection(Number(value) * plan.days)}
+            onChange={(value) => setSelection(Number(value) * 7)}
           />
           <Select
             label={t('day')}
             value={String(index)}
             options={days.map((day, i) => {
-              const value = block * plan.days + i;
+              const value = week * 7 + i;
               return {
                 value: String(value),
                 label: `${i + 1} · ${day.work ? day.name || day.kind : s.recoveryDay[language]}${run?.days[value] ? ' ✓' : ''}`,
@@ -65,7 +62,7 @@ export function SeriesSchedule({
         </div>
         {action}
       </Card>
-      <SeriesDay day={current} index={index % plan.days} />
+      <SeriesDay day={current} index={index} blockDays={plan.days} />
       {run && current.work && !blocked && (
         <Card>
           <p className="micro muted">

@@ -2,7 +2,8 @@ import { Check } from 'lucide-react';
 import { useWorkoutLog } from '../lib/useWorkoutLog';
 import { useProfileStore } from '../lib/store';
 import { compatible, exerciseById } from '../lib/program';
-import { displayWeight, fromWeight } from '../lib/formulas';
+import { canonical, shown } from '../lib/measurements';
+import { workoutEquipment } from '../lib/equipment';
 import type { Planned } from '../lib/schema';
 import { useI18n } from '../i18n';
 import { Stepper } from './Stepper';
@@ -10,6 +11,7 @@ export function FocusSets({ row }: { row: Planned }) {
   const { sets, write, error } = useWorkoutLog(row),
     state = useProfileStore(),
     { t, units, weightUnit } = useI18n();
+  const equipment = workoutEquipment(state);
   const blocked = !compatible(exerciseById(row.exercise), state.profile);
   return (
     <div className="focus-sets">
@@ -26,12 +28,14 @@ export function FocusSets({ row }: { row: Planned }) {
           <div className="focus-numbers">
             <Stepper
               label={t('weight')}
-              value={displayWeight(log.weight, units)}
-              max={units === 'metric' ? 800 : 1763}
-              step={displayWeight(state.profile.step, units)}
+              value={shown(log.weight, units)!}
+              max={shown(800, units)!}
+              step={shown(equipment.step, units)!}
               unit={weightUnit}
               disabled={blocked}
-              onChange={(value) => write({ weight: fromWeight(value, units) }, false, index)}
+              onChange={(value) =>
+                write({ weight: canonical(value, units, 'weight', [0, 800]) }, false, index)
+              }
             />
             <Stepper
               label={t('reps')}

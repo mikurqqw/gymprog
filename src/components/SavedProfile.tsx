@@ -1,14 +1,15 @@
+import { MeasurementInput } from './MeasurementInput';
 import { useState } from 'react';
 import { useProfileStore, update } from '../lib/store';
 import { profileSchema, type Profile } from '../lib/schema';
-import { displayWeight, fromWeight, nextMonday } from '../lib/formulas';
+import { nextMonday } from '../lib/formulas';
 import { useI18n } from '../i18n';
 import { Card, Num, Select, PageTitle } from './ui';
 import { ExperienceField } from './ExperienceField';
 import { TrainingPreferencesCard } from './TrainingPreferencesCard';
-export function SavedProfile() {
+export function SavedProfile({ trainingFirst = false }: { trainingFirst?: boolean }) {
   const state = useProfileStore(),
-    { t, units, weightUnit } = useI18n();
+    { t } = useI18n();
   const [profile, setProfile] = useState(state.profile),
     [message, setMessage] = useState(''),
     [error, setError] = useState('');
@@ -20,6 +21,7 @@ export function SavedProfile() {
   return (
     <>
       <PageTitle compact title={t('profile')} description={t('onboardingText')} />
+      {trainingFirst && <TrainingPreferencesCard />}
       <form
         className="basic-profile-form"
         onSubmit={(event) => {
@@ -54,21 +56,18 @@ export function SavedProfile() {
               max={90}
               onChange={(value) => change('age', value)}
             />
-            <Num
-              label={t('height') + ' (' + t(units === 'metric' ? 'cm' : 'in') + ')'}
-              value={Math.round((profile.height / (units === 'metric' ? 1 : 2.54)) * 10) / 10}
-              min={units === 'metric' ? 120 : 47}
-              max={units === 'metric' ? 230 : 91}
-              step={0.1}
-              onChange={(value) => change('height', value * (units === 'metric' ? 1 : 2.54))}
+            <MeasurementInput
+              label={t('height')}
+              measure="height"
+              value={profile.height}
+              limits={[120, 230]}
+              onChange={(value) => change('height', value ?? NaN)}
             />
-            <Num
-              label={t('bodyweight') + ' (' + weightUnit + ')'}
-              value={displayWeight(profile.weight, units)}
-              min={units === 'metric' ? 35 : 77}
-              max={units === 'metric' ? 250 : 551}
-              step={0.1}
-              onChange={(value) => change('weight', fromWeight(value, units))}
+            <MeasurementInput
+              label={t('bodyweight')}
+              value={profile.weight}
+              limits={[35, 250]}
+              onChange={(value) => change('weight', value ?? NaN)}
             />
             <Select
               label={t('sex')}
@@ -98,7 +97,7 @@ export function SavedProfile() {
           </button>
         </div>
       </form>
-      <TrainingPreferencesCard />
+      {!trainingFirst && <TrainingPreferencesCard />}
     </>
   );
 }

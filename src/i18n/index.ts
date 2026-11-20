@@ -18,5 +18,6 @@ export function useI18n() {
     local: (value: Localized) => value[language] ?? value.en,
     locale: language === 'ru' ? 'ru-RU' : language === 'kk' ? 'kk-KZ' : 'en-GB',
     weightUnit: units === 'metric' ? dictionary.kg : dictionary.lb,
+    heightUnit: units === 'metric' ? dictionary.cm : dictionary.in,
   };
 }

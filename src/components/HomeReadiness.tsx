@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-import { HeartPulse, ArrowRight } from 'lucide-react';
+import { HeartPulse } from 'lucide-react';
 import type { dailyReadiness } from '../lib/dailyReadiness';
 import { useI18n } from '../i18n';
 import { AlgorithmChip } from './ContextNotice';
@@ -16,10 +15,6 @@ export function HomeReadiness({
         <h2>
           <HeartPulse size={20} /> {t('readiness')}
         </h2>
-        <Link className="button secondary" to="/checkin">
-          {t('checkin')}
-          <ArrowRight size={16} />
-        </Link>
       </div>
       {readiness?.level === 'red' && (
         <div className="notice danger">
@@ -30,7 +25,7 @@ export function HomeReadiness({
         </div>
       )}
       <details className="page-help">
-        <summary>{t('sfWhy')}</summary>
+        <summary>{t('calculationDetails')}</summary>
         {readiness?.level !== 'red' && (
           <p>{t(readiness ? readiness.level + 'Text' : 'checkinText')}</p>
         )}
