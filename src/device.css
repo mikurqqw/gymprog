@@ -101,22 +101,10 @@ summary {
   padding-left: max(16px, env(safe-area-inset-left));
   padding-right: max(16px, env(safe-area-inset-right));
 }
-.preview-banner {
-  position: sticky;
-  top: 0;
-}
 .app-shell:has(.sidebar) {
   isolation: isolate;
 }
-.preview-banner + .app-shell .sidebar {
-  top: 58px;
-  height: calc(100dvh - 58px);
-}
 @media (max-width: 600px) {
-  .preview-banner + .app-shell .sidebar {
-    top: 0;
-    height: auto;
-  }
   .topbar .icon-button,
   .topbar .language-button {
     min-width: 44px;
@@ -143,12 +131,6 @@ summary {
   .reading,
   .legal-content {
     overflow-wrap: anywhere;
-  }
-  .preview-banner {
-    position: relative;
-  }
-  .preview-banner + .app-shell .sidebar {
-    position: relative;
   }
   .gate-heading {
     flex-wrap: wrap;
@@ -200,7 +182,6 @@ summary {
 @media print {
   .sidebar,
   .topbar,
-  .preview-banner,
   .legal-footer,
   .date-strip,
   .global-search,

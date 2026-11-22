@@ -12,7 +12,6 @@ import { useStore, update, activateStorage, resetMemory } from '../lib/store';
 import { dataAllowed, isAdult, readConsent, saveConsent } from '../lib/consent';
 import { today } from '../lib/formulas';
 import { Card, PageTitle, Select } from './ui';
-import { PreviewBanner } from './PreviewBanner';
 import { LegalFooter } from './LegalFooter';
 const Legal = lazy(() => import('../pages/Legal'));
 const required = ['terms', 'privacy', 'health', 'medical', 'calories'] as const;
@@ -54,31 +53,26 @@ export function ConsentGate({ children }: { children: ReactNode }) {
   }, []);
   if (location.pathname.startsWith('/legal/'))
     return (
-      <>
-        <PreviewBanner />
-        <Routes>
-          <Route
-            path="/legal/:id"
-            element={
-              <Suspense fallback={<div className="skeleton" aria-busy="true" />}>
-                <Legal />
-              </Suspense>
-            }
-          />
-        </Routes>
-      </>
+      <Routes>
+        <Route
+          path="/legal/:id"
+          element={
+            <Suspense fallback={<div className="skeleton" aria-busy="true" />}>
+              <Legal />
+            </Suspense>
+          }
+        />
+      </Routes>
     );
   if (phase === 'ready')
     return (
       <>
-        <PreviewBanner />
         <StoragePreferences />
         {children}
       </>
     );
   return (
     <>
-      <PreviewBanner />
       <main className="gate-page">
         <div className="gate-heading">
           <b className="brand">IronCycle · 18+</b>

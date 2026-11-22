@@ -28,11 +28,6 @@ export const privacyStrings = {
     kk: 'Ашық пішіндерді сақтаңыз. Жаңарту үшін қосымшаны қайта жүктейсіз бе?',
     en: 'Save open forms. Reload the app to update?',
   },
-  previewBanner: {
-    ru: 'ПРЕДПРОСМОТР — реквизиты не заполнены, тексты требуют проверки юристом Казахстана и носителем казахского языка. Не публичный релиз.',
-    kk: 'АЛДЫН АЛА ҚАРАУ — деректемелер толтырылмаған, мәтіндерді Қазақстан заңгері мен қазақ тілінің маманы тексеруі керек. Жария шығарылым емес.',
-    en: 'PREVIEW — operator details are incomplete; Kazakhstan lawyer and Kazakh native-speaker review are required. Not a public release.',
-  },
   ageGate: {
     ru: 'IronCycle — только для взрослых 18+',
     kk: 'IronCycle — тек 18 жастан асқандарға',

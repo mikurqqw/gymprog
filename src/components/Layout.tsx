@@ -10,12 +10,10 @@ import { SearchOverlay } from './SearchOverlay';
 import { OfflineStatus } from './OfflineStatus';
 import { LegalFooter } from './LegalFooter';
 import { RestTimer } from './RestTimer';
-import { usePreviewInset } from '../lib/usePreviewInset';
 export function Layout() {
   const state = useStore(),
     { t } = useI18n(),
     location = useLocation();
-  usePreviewInset();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);

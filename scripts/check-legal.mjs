@@ -15,6 +15,4 @@ if (pending.length && process.env.IRONCYCLE_PREVIEW !== '1') {
   );
   process.exitCode = 1;
 } else if (pending.length)
-  console.warn(
-    'Explicit preview only: incomplete legal/contact/review fields; preview banner required.',
-  );
+  console.warn('Preview build: legal and operator details are pending for production.');

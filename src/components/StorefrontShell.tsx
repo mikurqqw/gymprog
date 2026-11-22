@@ -5,13 +5,11 @@ import { useStore, update } from '../lib/store';
 import { useI18n } from '../i18n';
 import { dataAllowed } from '../lib/consent';
 import { LegalFooter } from './LegalFooter';
-import { PreviewBanner } from './PreviewBanner';
 export function StorefrontShell({ children }: { children: ReactNode }) {
   const state = useStore(),
     { t } = useI18n();
   return (
     <div className="storefront">
-      <PreviewBanner />
       <a className="sf-skip" href="#storefront-content">
         {t('sfSkip')}
       </a>
