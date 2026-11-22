@@ -1,0 +1,9 @@
+.load-goals .load-goal + .load-goal {
+  border-top: 1px solid var(--border);
+  margin-top: 12px;
+  padding-top: 12px;
+}
+
+.load-goals .load-goal h3 {
+  overflow-wrap: anywhere;
+}

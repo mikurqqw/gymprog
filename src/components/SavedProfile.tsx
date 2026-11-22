@@ -7,6 +7,7 @@ import { useI18n } from '../i18n';
 import { Card, Num, Select, PageTitle } from './ui';
 import { ExperienceField } from './ExperienceField';
 import { TrainingPreferencesCard } from './TrainingPreferencesCard';
+import { ProfileLoadGoals } from './ProfileLoadGoals';
 export function SavedProfile({ trainingFirst = false }: { trainingFirst?: boolean }) {
   const state = useProfileStore(),
     { t } = useI18n();
@@ -98,6 +99,7 @@ export function SavedProfile({ trainingFirst = false }: { trainingFirst?: boolea
         </div>
       </form>
       {!trainingFirst && <TrainingPreferencesCard />}
+      <ProfileLoadGoals />
     </>
   );
 }

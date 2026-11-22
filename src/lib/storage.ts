@@ -1,4 +1,5 @@
 import { foodLogSchema } from './foodLog';
+import { loadGoalSchema, MAX_LOAD_GOALS } from './loadGoalSchema';
 import { seriesId, seriesRun } from './fitSeries';
 import { imperialEquipment } from './equipment';
 import { onboardingDraftSchema, newUserProfile } from './onboardingDraft';
@@ -30,6 +31,7 @@ export const stateSchema = z.lazy(() =>
       .default({}),
     customProgram: programDocumentSchema.nullable().default(null),
     seriesRuns: z.array(seriesRun).max(1000).default([]),
+    loadGoals: z.array(loadGoalSchema).max(MAX_LOAD_GOALS).default([]),
     activeSeries: seriesId.nullable().optional(),
     imperialEquipment: z
       .object({
@@ -80,6 +82,7 @@ export const initialState: AppState = {
   sessionCompletions: {},
   customProgram: null,
   seriesRuns: [],
+  loadGoals: [],
   activeSeries: undefined,
   imperialEquipment,
   profile: null,
