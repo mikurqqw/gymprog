@@ -30,7 +30,7 @@
     "dexie": "4.4.7",
     "dexie-react-hooks": "4.4.0",
     "idb-keyval": "6.3.0",
-    "lucide-react": "1.73.0",
+    "lucide-react": "1.75.0",
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "react-markdown": "10.1.0",
